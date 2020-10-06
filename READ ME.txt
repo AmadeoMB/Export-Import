@@ -1,0 +1,70 @@
+******* READ ME NOTES *******
+
+Aplikasi Export Import *Done Login
+|
+|
+|
+|
+|
+Sebelum mengetes aplikasi diharapkan untuk menginstall Oracle Versi 11g
+Lalu membuat user dengan nama "export" dan password "import"
+Berikan privilege berupa DBA
+Setelah itu import database "db_export_import.sql" pada user tersebut
+|
+|
+|
+|
+|
+
+Jika semua langkah diatas sudah dilakukan maka anda bisa menjalankan aplikasi 
+dan login dengan format seperti yang ada dibawah
+
+  ||
+  ||
+  ||
+\    /
+ \  /
+  \/
+
+Login :
+
+1. Admin Gudang 	> Username "amadeo" Password "amadeo"
+2. Admin Penjualan	> Username "maikel" Password "anjayani"
+3. Admin Pembelian	> Username "melvern" Password "tallall"
+4. Admin Akutansi	> Username "brian" Password "yahoo"
+
+Aplikasi Export Import *Done List Stock on Master Stock
+|
+|
+|
+|
+|
+Okey, sebelum mengetes aplikasi diharapkan untuk import database ke dalam user "export"
+Karena ada beberapa perubahan dalam database dari kolom dan isinya
+|
+|
+|
+|
+|
+Jika hal diatas sudah dilakukan maka anda bisa menjalankan testingnya
+
+
+
+Aplikasi Export Import *Done All Masters(Probably)
+|
+|
+|
+|
+|
+Okey, ada beberapa perubahan pada database kalian bisa import dulu database ke dalam user "export"
+Jika hal ini sudah dilakukan maka anda bisa mengetesnya lagi.
+
+Must Test:
+-> Login(Harusnya sudah dari kemarin)
+-> Routing(Harusnya ada beberapa tombol yang anda akan dibawa ke form lain tapi tidak bisa kembali karena belum sempurna :D)
+-> Coba liat list stock, New Item masih blm bisa
+-> Pada Master Pembelian, kalian bisa menambahkan supplier baru, juga bisa menghapusnya
+-> Pada Master Penjualan, kalian bisa menambahkan customer baru
+-> Untuk Customer dan Supplier seharusnya bisa update namun entah kenapa di PC saya tidak mau di update mungkin di pc kalian bisa saya kurang tahu cek aja
+
+Notes *Data disini hanya merupakan data dummy yang saya bikin, bila ada kesamaan mohon maaf karena mungkin hanya kebetulan
