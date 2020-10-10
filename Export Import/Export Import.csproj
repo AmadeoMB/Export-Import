@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formInsertUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formInsertUser.Designer.cs">
+      <DependentUpon>formInsertUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="formListCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="formMasterStock.Designer.cs">
       <DependentUpon>formMasterStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formMasterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMasterUser.Designer.cs">
+      <DependentUpon>formMasterUser.cs</DependentUpon>
     </Compile>
     <Compile Include="formPurchaseInvoice.cs">
       <SubType>Form</SubType>
@@ -178,6 +190,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formInsertUser.resx">
+      <DependentUpon>formInsertUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formListCustomer.resx">
       <DependentUpon>formListCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formMasterStock.resx">
       <DependentUpon>formMasterStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMasterUser.resx">
+      <DependentUpon>formMasterUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPurchaseInvoice.resx">
       <DependentUpon>formPurchaseInvoice.cs</DependentUpon>
