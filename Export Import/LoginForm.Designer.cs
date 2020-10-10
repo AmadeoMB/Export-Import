@@ -34,6 +34,7 @@
             this.lblErrorUsername = new System.Windows.Forms.Label();
             this.lblErrorPassword = new System.Windows.Forms.Label();
             this.lblErrorInput = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -111,12 +112,22 @@
             this.lblErrorInput.Text = "Email/Password Salah";
             this.lblErrorInput.Visible = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 203);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "label1";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Export_Import.Properties.Resources.Login;
             this.ClientSize = new System.Drawing.Size(720, 450);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblErrorInput);
             this.Controls.Add(this.lblErrorPassword);
             this.Controls.Add(this.lblErrorUsername);
@@ -140,6 +151,7 @@
         private System.Windows.Forms.Label lblErrorUsername;
         private System.Windows.Forms.Label lblErrorPassword;
         private System.Windows.Forms.Label lblErrorInput;
+        private System.Windows.Forms.Label label1;
     }
 }
 
