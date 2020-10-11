@@ -50,11 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="formInsertUser.cs">
+    <Compile Include="formInsertCategory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formInsertUser.Designer.cs">
-      <DependentUpon>formInsertUser.cs</DependentUpon>
+    <Compile Include="formInsertCategory.Designer.cs">
+      <DependentUpon>formInsertCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formInsertStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formInsertStaff.Designer.cs">
+      <DependentUpon>formInsertStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="formListCustomer.cs">
       <SubType>Form</SubType>
@@ -104,17 +110,23 @@
     <Compile Include="formListStock.Designer.cs">
       <DependentUpon>formListStock.cs</DependentUpon>
     </Compile>
+    <Compile Include="formMasterCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMasterCategory.Designer.cs">
+      <DependentUpon>formMasterCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="formMasterStock.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formMasterStock.Designer.cs">
       <DependentUpon>formMasterStock.cs</DependentUpon>
     </Compile>
-    <Compile Include="formMasterUser.cs">
+    <Compile Include="formMasterStaff.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="formMasterUser.Designer.cs">
-      <DependentUpon>formMasterUser.cs</DependentUpon>
+    <Compile Include="formMasterStaff.Designer.cs">
+      <DependentUpon>formMasterStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="formPurchaseInvoice.cs">
       <SubType>Form</SubType>
@@ -134,6 +146,12 @@
     <Compile Include="formListSupplier.Designer.cs">
       <DependentUpon>formListSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="formUpdateCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUpdateCategory.Designer.cs">
+      <DependentUpon>formUpdateCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="formUpdateCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +163,12 @@
     </Compile>
     <Compile Include="formUpdateItem.Designer.cs">
       <DependentUpon>formUpdateItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUpdateStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUpdateStaff.Designer.cs">
+      <DependentUpon>formUpdateStaff.cs</DependentUpon>
     </Compile>
     <Compile Include="formUpdateSupplier.cs">
       <SubType>Form</SubType>
@@ -190,8 +214,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="formInsertUser.resx">
-      <DependentUpon>formInsertUser.cs</DependentUpon>
+    <EmbeddedResource Include="formInsertCategory.resx">
+      <DependentUpon>formInsertCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formInsertStaff.resx">
+      <DependentUpon>formInsertStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formListCustomer.resx">
       <DependentUpon>formListCustomer.cs</DependentUpon>
@@ -217,11 +244,14 @@
     <EmbeddedResource Include="formListStock.resx">
       <DependentUpon>formListStock.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formMasterCategory.resx">
+      <DependentUpon>formMasterCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formMasterStock.resx">
       <DependentUpon>formMasterStock.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="formMasterUser.resx">
-      <DependentUpon>formMasterUser.cs</DependentUpon>
+    <EmbeddedResource Include="formMasterStaff.resx">
+      <DependentUpon>formMasterStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPurchaseInvoice.resx">
       <DependentUpon>formPurchaseInvoice.cs</DependentUpon>
@@ -232,11 +262,17 @@
     <EmbeddedResource Include="formListSupplier.resx">
       <DependentUpon>formListSupplier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formUpdateCategory.resx">
+      <DependentUpon>formUpdateCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formUpdateCustomer.resx">
       <DependentUpon>formUpdateCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateItem.resx">
       <DependentUpon>formUpdateItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUpdateStaff.resx">
+      <DependentUpon>formUpdateStaff.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateSupplier.resx">
       <DependentUpon>formUpdateSupplier.cs</DependentUpon>

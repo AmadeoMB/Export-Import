@@ -1,6 +1,6 @@
 ﻿namespace Export_Import
 {
-    partial class formInsertUser
+    partial class formInsertStaff
     {
         /// <summary>
         /// Required designer variable.
@@ -48,8 +48,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tanggalLahir = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
-            this.tanggalMasuk = new System.Windows.Forms.DateTimePicker();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.cbJabatan = new System.Windows.Forms.ComboBox();
             this.pnlAtas.SuspendLayout();
@@ -72,19 +70,20 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(240, 59);
+            this.label2.Size = new System.Drawing.Size(237, 59);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Insert User";
+            this.label2.Text = "Insert Staff";
             // 
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(777, 360);
+            this.btnInsert.Location = new System.Drawing.Point(803, 334);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(125, 51);
             this.btnInsert.TabIndex = 25;
             this.btnInsert.Text = "Insert";
             this.btnInsert.UseVisualStyleBackColor = true;
+            this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
             // label6
             // 
@@ -212,6 +211,8 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(275, 27);
             this.txtPassword.TabIndex = 28;
+            this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
+            this.txtPassword.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyUp);
             // 
             // txtUsername
             // 
@@ -220,6 +221,8 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(275, 27);
             this.txtUsername.TabIndex = 27;
+            this.txtUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsername_KeyPress);
+            this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsername_KeyUp);
             // 
             // label4
             // 
@@ -249,29 +252,11 @@
             this.label9.TabIndex = 28;
             this.label9.Text = "Tanggal Lahir :";
             // 
-            // tanggalMasuk
-            // 
-            this.tanggalMasuk.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tanggalMasuk.Location = new System.Drawing.Point(627, 272);
-            this.tanggalMasuk.Name = "tanggalMasuk";
-            this.tanggalMasuk.Size = new System.Drawing.Size(275, 27);
-            this.tanggalMasuk.TabIndex = 29;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(496, 275);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(115, 19);
-            this.label10.TabIndex = 30;
-            this.label10.Text = "Tanggal Masuk :";
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(544, 321);
+            this.label11.Location = new System.Drawing.Point(60, 361);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(67, 19);
             this.label11.TabIndex = 31;
@@ -317,20 +302,18 @@
             "Papua Barat",
             "Papua",
             "Semua"});
-            this.cbJabatan.Location = new System.Drawing.Point(627, 318);
+            this.cbJabatan.Location = new System.Drawing.Point(156, 358);
             this.cbJabatan.Name = "cbJabatan";
             this.cbJabatan.Size = new System.Drawing.Size(275, 27);
             this.cbJabatan.TabIndex = 32;
             // 
-            // formInsertUser
+            // formInsertStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(949, 427);
+            this.ClientSize = new System.Drawing.Size(949, 405);
             this.Controls.Add(this.cbJabatan);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.tanggalMasuk);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tanggalLahir);
             this.Controls.Add(this.groupBox1);
@@ -344,7 +327,7 @@
             this.Controls.Add(this.txtNama);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
-            this.Name = "formInsertUser";
+            this.Name = "formInsertStaff";
             this.Text = "formInsertUser";
             this.Load += new System.EventHandler(this.formInsertUser_Load);
             this.pnlAtas.ResumeLayout(false);
@@ -378,8 +361,6 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.DateTimePicker tanggalLahir;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.DateTimePicker tanggalMasuk;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox cbJabatan;
     }
