@@ -31,6 +31,7 @@
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlBawah = new System.Windows.Forms.Panel();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.btnNewItem = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,7 +57,6 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -67,10 +67,9 @@
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.pnlAtas.Controls.Add(this.label1);
-            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAtas.Location = new System.Drawing.Point(0, 0);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1904, 85);
+            this.pnlAtas.Size = new System.Drawing.Size(920, 85);
             this.pnlAtas.TabIndex = 0;
             // 
             // label1
@@ -92,11 +91,22 @@
             this.pnlBawah.Controls.Add(this.btnPrint);
             this.pnlBawah.Controls.Add(this.btnClose);
             this.pnlBawah.Controls.Add(this.groupFilter);
-            this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
             this.pnlBawah.Name = "pnlBawah";
-            this.pnlBawah.Size = new System.Drawing.Size(1904, 950);
+            this.pnlBawah.Size = new System.Drawing.Size(920, 625);
             this.pnlBawah.TabIndex = 1;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(347, 119);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(85, 30);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnNewItem
             // 
@@ -128,11 +138,10 @@
             this.harga_jual_item,
             this.harga_beli_item,
             this.balance_cost});
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 155);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1904, 795);
+            this.dataGridView.Size = new System.Drawing.Size(920, 417);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -349,23 +358,11 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Enabled = false;
-            this.btnUpdate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(347, 119);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(85, 30);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // formListStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formListStock";

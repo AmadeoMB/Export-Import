@@ -46,10 +46,10 @@
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupFilter = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbJabatan = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.cbJabatan = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -60,10 +60,9 @@
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.pnlAtas.Controls.Add(this.label1);
-            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAtas.Location = new System.Drawing.Point(0, 0);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1904, 85);
+            this.pnlAtas.Size = new System.Drawing.Size(697, 85);
             this.pnlAtas.TabIndex = 2;
             // 
             // label1
@@ -85,10 +84,9 @@
             this.pnlBawah.Controls.Add(this.dataGridView);
             this.pnlBawah.Controls.Add(this.btnClose);
             this.pnlBawah.Controls.Add(this.groupFilter);
-            this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
             this.pnlBawah.Name = "pnlBawah";
-            this.pnlBawah.Size = new System.Drawing.Size(1904, 950);
+            this.pnlBawah.Size = new System.Drawing.Size(892, 575);
             this.pnlBawah.TabIndex = 3;
             // 
             // btnDelete
@@ -139,11 +137,10 @@
             this.no_hp,
             this.tgl_masuk,
             this.email});
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 155);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1904, 795);
+            this.dataGridView.Size = new System.Drawing.Size(697, 278);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -252,6 +249,26 @@
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(20, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 19);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Jabatan :";
+            // 
+            // cbJabatan
+            // 
+            this.cbJabatan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbJabatan.FormattingEnabled = true;
+            this.cbJabatan.Location = new System.Drawing.Point(93, 64);
+            this.cbJabatan.Name = "cbJabatan";
+            this.cbJabatan.Size = new System.Drawing.Size(200, 27);
+            this.cbJabatan.TabIndex = 2;
+            this.cbJabatan.DropDownClosed += new System.EventHandler(this.cbJabatan_DropDownClosed);
+            // 
             // txtKeyword
             // 
             this.txtKeyword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -271,31 +288,11 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
-            // cbJabatan
-            // 
-            this.cbJabatan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbJabatan.FormattingEnabled = true;
-            this.cbJabatan.Location = new System.Drawing.Point(93, 64);
-            this.cbJabatan.Name = "cbJabatan";
-            this.cbJabatan.Size = new System.Drawing.Size(200, 27);
-            this.cbJabatan.TabIndex = 2;
-            this.cbJabatan.DropDownClosed += new System.EventHandler(this.cbJabatan_DropDownClosed);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(20, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Jabatan :";
-            // 
             // formMasterStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formMasterStaff";

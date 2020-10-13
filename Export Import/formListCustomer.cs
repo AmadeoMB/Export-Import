@@ -130,5 +130,10 @@ namespace Export_Import
 
             refreshTabel();
         }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

@@ -158,5 +158,10 @@ namespace Export_Import
                 refreshTabel();
             }
         }
+
+        private void pnlBawah_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

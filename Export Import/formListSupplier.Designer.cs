@@ -56,10 +56,9 @@
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.pnlAtas.Controls.Add(this.label1);
-            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAtas.Location = new System.Drawing.Point(0, 0);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1904, 85);
+            this.pnlAtas.Size = new System.Drawing.Size(733, 85);
             this.pnlAtas.TabIndex = 1;
             // 
             // label1
@@ -80,11 +79,11 @@
             this.pnlBawah.Controls.Add(this.dataGridView);
             this.pnlBawah.Controls.Add(this.btnClose);
             this.pnlBawah.Controls.Add(this.groupFilter);
-            this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
             this.pnlBawah.Name = "pnlBawah";
-            this.pnlBawah.Size = new System.Drawing.Size(1904, 950);
+            this.pnlBawah.Size = new System.Drawing.Size(769, 576);
             this.pnlBawah.TabIndex = 2;
+            this.pnlBawah.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBawah_Paint);
             // 
             // btnUpdate
             // 
@@ -119,11 +118,10 @@
             this.provinsi,
             this.no_hp,
             this.email});
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 155);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1904, 795);
+            this.dataGridView.Size = new System.Drawing.Size(743, 403);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
@@ -248,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formListSupplier";

@@ -53,10 +53,9 @@
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.pnlAtas.Controls.Add(this.label1);
-            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAtas.Location = new System.Drawing.Point(0, 0);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1904, 85);
+            this.pnlAtas.Size = new System.Drawing.Size(1027, 85);
             this.pnlAtas.TabIndex = 2;
             // 
             // label1
@@ -77,10 +76,9 @@
             this.pnlBawah.Controls.Add(this.dataGridView);
             this.pnlBawah.Controls.Add(this.btnClose);
             this.pnlBawah.Controls.Add(this.groupFilter);
-            this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
             this.pnlBawah.Name = "pnlBawah";
-            this.pnlBawah.Size = new System.Drawing.Size(1904, 950);
+            this.pnlBawah.Size = new System.Drawing.Size(1270, 506);
             this.pnlBawah.TabIndex = 3;
             // 
             // btnUpdate
@@ -115,13 +113,13 @@
             this.alamat_customer,
             this.no_telp_customer,
             this.email_customer});
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 155);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1904, 795);
+            this.dataGridView.Size = new System.Drawing.Size(1266, 283);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // id_customer
             // 
@@ -209,14 +207,14 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
-            // formCustomer
+            // formListCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
-            this.Name = "formCustomer";
+            this.Name = "formListCustomer";
             this.Text = "formCustomer";
             this.Load += new System.EventHandler(this.formCustomer_Load);
             this.pnlAtas.ResumeLayout(false);
