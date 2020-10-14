@@ -31,7 +31,6 @@ namespace Export_Import
         {
             txtNama.Text = form.nama;
             conn = form.conn;
-            conn.Open();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

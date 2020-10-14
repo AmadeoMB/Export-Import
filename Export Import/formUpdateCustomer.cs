@@ -98,16 +98,7 @@ namespace Export_Import
             txtNoTelp.Text = form.data[3];
             txtEmail.Text = form.data[4];
 
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            this.conn = form.conn;
         }
     }
 }

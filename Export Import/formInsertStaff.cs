@@ -43,8 +43,6 @@ namespace Export_Import
         private void formInsertUser_Load(object sender, EventArgs e)
         {
             conn = form.conn;
-
-            conn.Open();
             isiCB();
         }
 

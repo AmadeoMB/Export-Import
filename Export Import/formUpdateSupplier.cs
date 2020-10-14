@@ -35,16 +35,7 @@ namespace Export_Import
             txtNoTelp.Text = form.data[4];
             txtEmail.Text = form.data[5];
 
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            conn = form.conn;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -93,8 +84,6 @@ namespace Export_Import
                 }
 
                 String id_supplier = form.data[0];
-
-                MessageBox.Show(id_supplier);
                 OracleCommand cmd2;
                 cmd2 = new OracleCommand("update SUPPLIER set nama_supplier = :nama, alamat_supplier = :alamat, provinsi_supplier = :provinsi, no_telp_supplier = :nomer, email_supplier = :email where id_supplier = '" + id_supplier + "'", conn);
                 cmd2.Parameters.Add(":nama", txtNama.Text);

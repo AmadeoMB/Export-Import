@@ -48,7 +48,6 @@ namespace Export_Import
 
             try
             {
-                conn.Open();
                 isiCB();
 
                 int id_jabatan = -1;

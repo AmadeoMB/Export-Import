@@ -34,16 +34,6 @@ namespace Export_Import
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "Category";
             cbCategory.SelectedIndex = form.ds.Tables["category"].Rows.Count - 1;
-
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
 
         private bool cekAngka(TextBox text)
@@ -184,6 +174,7 @@ namespace Export_Import
             cmd2.Parameters.Add(":ppn", ppn);
             cmd2.ExecuteNonQuery();//ini buat insert update delete
 
+            this.DialogResult = DialogResult.Yes;
             this.Close();
         }
 

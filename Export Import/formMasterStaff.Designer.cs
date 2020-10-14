@@ -35,6 +35,12 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.groupFilter = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbJabatan = new System.Windows.Forms.ComboBox();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_jabatan = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,12 +50,6 @@
             this.no_hp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgl_masuk = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.groupFilter = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbJabatan = new System.Windows.Forms.ComboBox();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -60,9 +60,10 @@
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.pnlAtas.Controls.Add(this.label1);
+            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAtas.Location = new System.Drawing.Point(0, 0);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(697, 85);
+            this.pnlAtas.Size = new System.Drawing.Size(1350, 85);
             this.pnlAtas.TabIndex = 2;
             // 
             // label1
@@ -84,9 +85,10 @@
             this.pnlBawah.Controls.Add(this.dataGridView);
             this.pnlBawah.Controls.Add(this.btnClose);
             this.pnlBawah.Controls.Add(this.groupFilter);
+            this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
             this.pnlBawah.Name = "pnlBawah";
-            this.pnlBawah.Size = new System.Drawing.Size(892, 575);
+            this.pnlBawah.Size = new System.Drawing.Size(1350, 638);
             this.pnlBawah.TabIndex = 3;
             // 
             // btnDelete
@@ -137,92 +139,13 @@
             this.no_hp,
             this.tgl_masuk,
             this.email});
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 155);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(697, 278);
+            this.dataGridView.Size = new System.Drawing.Size(1350, 483);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id_staff";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama_staff";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 250;
-            // 
-            // nama_jabatan
-            // 
-            this.nama_jabatan.DataPropertyName = "nm_jabatan";
-            this.nama_jabatan.Frozen = true;
-            this.nama_jabatan.HeaderText = "Jabatan";
-            this.nama_jabatan.Name = "nama_jabatan";
-            this.nama_jabatan.ReadOnly = true;
-            this.nama_jabatan.Width = 150;
-            // 
-            // username_staff
-            // 
-            this.username_staff.DataPropertyName = "username_staff";
-            this.username_staff.Frozen = true;
-            this.username_staff.HeaderText = "Username";
-            this.username_staff.Name = "username_staff";
-            this.username_staff.ReadOnly = true;
-            this.username_staff.Width = 150;
-            // 
-            // tgl_lahir_stff
-            // 
-            this.tgl_lahir_stff.DataPropertyName = "tgl_lahir_staff";
-            this.tgl_lahir_stff.Frozen = true;
-            this.tgl_lahir_stff.HeaderText = "Tanggal Lahir";
-            this.tgl_lahir_stff.Name = "tgl_lahir_stff";
-            this.tgl_lahir_stff.ReadOnly = true;
-            this.tgl_lahir_stff.Width = 225;
-            // 
-            // id_gudang
-            // 
-            this.id_gudang.DataPropertyName = "alamat_staff";
-            this.id_gudang.Frozen = true;
-            this.id_gudang.HeaderText = "Alamat";
-            this.id_gudang.Name = "id_gudang";
-            this.id_gudang.ReadOnly = true;
-            this.id_gudang.Width = 360;
-            // 
-            // no_hp
-            // 
-            this.no_hp.DataPropertyName = "nomer_telp_staff";
-            this.no_hp.Frozen = true;
-            this.no_hp.HeaderText = "No HP";
-            this.no_hp.Name = "no_hp";
-            this.no_hp.ReadOnly = true;
-            this.no_hp.Width = 150;
-            // 
-            // tgl_masuk
-            // 
-            this.tgl_masuk.DataPropertyName = "tgl_masuk";
-            this.tgl_masuk.Frozen = true;
-            this.tgl_masuk.HeaderText = "Tanggal Masuk";
-            this.tgl_masuk.Name = "tgl_masuk";
-            this.tgl_masuk.ReadOnly = true;
-            this.tgl_masuk.Width = 225;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email_staff";
-            this.email.Frozen = true;
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Width = 250;
             // 
             // btnClose
             // 
@@ -288,6 +211,86 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id_staff";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            this.id_item.Width = 50;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama_staff";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 175;
+            // 
+            // nama_jabatan
+            // 
+            this.nama_jabatan.DataPropertyName = "nm_jabatan";
+            this.nama_jabatan.Frozen = true;
+            this.nama_jabatan.HeaderText = "Jabatan";
+            this.nama_jabatan.Name = "nama_jabatan";
+            this.nama_jabatan.ReadOnly = true;
+            // 
+            // username_staff
+            // 
+            this.username_staff.DataPropertyName = "username_staff";
+            this.username_staff.Frozen = true;
+            this.username_staff.HeaderText = "Username";
+            this.username_staff.Name = "username_staff";
+            this.username_staff.ReadOnly = true;
+            this.username_staff.Width = 125;
+            // 
+            // tgl_lahir_stff
+            // 
+            this.tgl_lahir_stff.DataPropertyName = "tgl_lahir_staff";
+            this.tgl_lahir_stff.Frozen = true;
+            this.tgl_lahir_stff.HeaderText = "Tanggal Lahir";
+            this.tgl_lahir_stff.Name = "tgl_lahir_stff";
+            this.tgl_lahir_stff.ReadOnly = true;
+            this.tgl_lahir_stff.Width = 150;
+            // 
+            // id_gudang
+            // 
+            this.id_gudang.DataPropertyName = "alamat_staff";
+            this.id_gudang.Frozen = true;
+            this.id_gudang.HeaderText = "Alamat";
+            this.id_gudang.Name = "id_gudang";
+            this.id_gudang.ReadOnly = true;
+            this.id_gudang.Width = 250;
+            // 
+            // no_hp
+            // 
+            this.no_hp.DataPropertyName = "nomer_telp_staff";
+            this.no_hp.Frozen = true;
+            this.no_hp.HeaderText = "No HP";
+            this.no_hp.Name = "no_hp";
+            this.no_hp.ReadOnly = true;
+            this.no_hp.Width = 150;
+            // 
+            // tgl_masuk
+            // 
+            this.tgl_masuk.DataPropertyName = "tgl_masuk";
+            this.tgl_masuk.Frozen = true;
+            this.tgl_masuk.HeaderText = "Tanggal Masuk";
+            this.tgl_masuk.Name = "tgl_masuk";
+            this.tgl_masuk.ReadOnly = true;
+            this.tgl_masuk.Width = 150;
+            // 
+            // email
+            // 
+            this.email.DataPropertyName = "email_staff";
+            this.email.Frozen = true;
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            this.email.Width = 150;
+            // 
             // formMasterStaff
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,6 +324,8 @@
         public System.Windows.Forms.TextBox txtKeyword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbJabatan;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_jabatan;
@@ -330,7 +335,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn no_hp;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgl_masuk;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cbJabatan;
     }
 }
