@@ -146,6 +146,18 @@
     <Compile Include="formListSupplier.Designer.cs">
       <DependentUpon>formListSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="formSearchCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSearchCustomer.Designer.cs">
+      <DependentUpon>formSearchCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formSearchItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSearchItem.Designer.cs">
+      <DependentUpon>formSearchItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="formUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -261,6 +273,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formListSupplier.resx">
       <DependentUpon>formListSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSearchCustomer.resx">
+      <DependentUpon>formSearchCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSearchItem.resx">
+      <DependentUpon>formSearchItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateCategory.resx">
       <DependentUpon>formUpdateCategory.cs</DependentUpon>
