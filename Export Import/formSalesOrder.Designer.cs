@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.Panel();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -116,6 +116,17 @@
             this.pnlAtas.Name = "pnlAtas";
             this.pnlAtas.Size = new System.Drawing.Size(1350, 289);
             this.pnlAtas.TabIndex = 1;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(420, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(72, 27);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label10
             // 
@@ -456,8 +467,11 @@
             this.subtotal});
             this.dataGridView.Location = new System.Drawing.Point(3, 81);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1347, 247);
             this.dataGridView.TabIndex = 2;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // groupButton
             // 
@@ -482,6 +496,7 @@
             this.btnRedo.TabIndex = 26;
             this.btnRedo.Text = "Redo";
             this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // btnUndo
             // 
@@ -491,6 +506,7 @@
             this.btnUndo.TabIndex = 25;
             this.btnUndo.Text = "Undo";
             this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
             // 
             // btnMoveDown
             // 
@@ -500,6 +516,7 @@
             this.btnMoveDown.TabIndex = 24;
             this.btnMoveDown.Text = "Down";
             this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
             // btnMoveUp
             // 
@@ -509,6 +526,7 @@
             this.btnMoveUp.TabIndex = 23;
             this.btnMoveUp.Text = "Up";
             this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMinus
             // 
@@ -518,6 +536,7 @@
             this.btnMinus.TabIndex = 22;
             this.btnMinus.Text = "-";
             this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
             // 
             // btnPlus
             // 
@@ -538,17 +557,6 @@
             this.label11.Size = new System.Drawing.Size(95, 26);
             this.label11.TabIndex = 0;
             this.label11.Text = "List Order";
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(420, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(72, 27);
-            this.btnSearch.TabIndex = 21;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // id_item
             // 
@@ -577,6 +585,7 @@
             // 
             // jenis_satuan
             // 
+            this.jenis_satuan.DataPropertyName = "satuan_item";
             this.jenis_satuan.Frozen = true;
             this.jenis_satuan.HeaderText = "Satuan";
             this.jenis_satuan.Name = "jenis_satuan";
@@ -585,6 +594,7 @@
             // 
             // harga_satuan
             // 
+            this.harga_satuan.DataPropertyName = "harga_jual_item";
             this.harga_satuan.Frozen = true;
             this.harga_satuan.HeaderText = "Harga Satuan";
             this.harga_satuan.Name = "harga_satuan";
@@ -593,6 +603,7 @@
             // 
             // berat_total
             // 
+            this.berat_total.DataPropertyName = "berat";
             this.berat_total.Frozen = true;
             this.berat_total.HeaderText = "Berat Total";
             this.berat_total.Name = "berat_total";
@@ -600,6 +611,7 @@
             // 
             // jenis_ppn
             // 
+            this.jenis_ppn.DataPropertyName = "jenis_ppn";
             this.jenis_ppn.Frozen = true;
             this.jenis_ppn.HeaderText = "Jenis PPN";
             this.jenis_ppn.Name = "jenis_ppn";
@@ -608,6 +620,7 @@
             // 
             // total_ppn
             // 
+            this.total_ppn.DataPropertyName = "total_ppn";
             this.total_ppn.Frozen = true;
             this.total_ppn.HeaderText = "Total PPN";
             this.total_ppn.Name = "total_ppn";
@@ -625,6 +638,7 @@
             // 
             // subtotal
             // 
+            this.subtotal.DataPropertyName = "subtotal";
             this.subtotal.Frozen = true;
             this.subtotal.HeaderText = "Subtotal";
             this.subtotal.Name = "subtotal";
