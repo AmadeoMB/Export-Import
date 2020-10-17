@@ -33,6 +33,7 @@ namespace Export_Import
             cbcreditor.ValueMember = "ID";
             cbcreditor.DisplayMember = "nama";
         
+        
         }
         private void formPurchaseOrder_Load(object sender, EventArgs e)
         {
