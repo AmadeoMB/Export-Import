@@ -81,6 +81,11 @@ namespace Export_Import
             }
             
         }
+        public void refreshlocalnet() {
+            int ubahnettotal = Int32.Parse(textBox5.Text);
+            int ubahrate = Int32.Parse(textBox7.Text);
+            LNTotal.Text = (ubahnettotal / ubahrate).ToString();
+        }
         private void formPurchaseOrder_Load(object sender, EventArgs e)
         {
             conn = new OracleConnection("user id=export;password=import;data source=orcl");
@@ -92,6 +97,7 @@ namespace Export_Import
             generatecreateNomerPO();
             isicbCurrent();
             refreshnettotal();
+            refreshlocalnet();
         }
         String getNomerPO(String tgl)
         {
@@ -167,6 +173,7 @@ namespace Export_Import
             }
             klik++;
             refreshnettotal();
+            refreshlocalnet();
         }
 
         private void Kurang_Click(object sender, EventArgs e)
@@ -176,6 +183,7 @@ namespace Export_Import
                 ds.Tables["item"].Rows.RemoveAt(idx);
                 klik--;
                 refreshnettotal();
+                refreshlocalnet();
             }
             else
             {
@@ -205,6 +213,8 @@ namespace Export_Import
             {
                 MessageBox.Show("Click salah satu baris pada tabel terlebih dahulu");
             }
+            refreshnettotal();
+            refreshlocalnet();
         }
         private void btnDown_Click(object sender, EventArgs e)
         {
@@ -222,6 +232,8 @@ namespace Export_Import
                 {
                     MessageBox.Show("Data sudah berada dipaling bawah");
                 }
+                refreshnettotal();
+                refreshlocalnet();
             }
             else
             {
@@ -244,6 +256,8 @@ namespace Export_Import
                 {
                     InsertItem(temp);
                 }
+                refreshnettotal();
+                refreshlocalnet();
             }
         }
 
@@ -275,19 +289,67 @@ namespace Export_Import
                     ds.Tables["item"].Rows.RemoveAt(ds.Tables["item"].Rows.Count - 1);
                 }
             }
+            refreshnettotal();
+            refreshlocalnet();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            if () {
-                textBox6.Text = "mantap";
+            //kurang pengecekan textbox atau combobox
+            //buat header PO
+            OracleCommand cmd2;
+            cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :shipinfo, :currencypo, :rate, :totalh, :totalhc)", conn);
+            cmd2.Parameters.Add(":idp", PONO.Text);
+            cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
+            cmd2.Parameters.Add(":idst", comboBox3.SelectedValue);
+            cmd2.Parameters.Add(":idg", comboBox1.SelectedValue);
+            cmd2.Parameters.Add(":nama", tbnama.Text);
+            cmd2.Parameters.Add(":alamat", textBox1.Text);
+            cmd2.Parameters.Add(":tgl", DateToday.Value);
+            cmd2.Parameters.Add(":creditterm", id_item);
+            cmd2.Parameters.Add(":shipvia", comboBox2.SelectedItem);
+            cmd2.Parameters.Add(":shipinfo", textBox2.Text);
+            cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedItem);
+            cmd2.Parameters.Add(":rate", textBox7.Text);
+            cmd2.Parameters.Add(":totalh", textBox5.Text);
+            cmd2.Parameters.Add(":totalhc", LNTotal.Text);
+            cmd2.ExecuteNonQuery();
+
+            //buat detail PO (belum jadi sama sekali)
+            OracleCommand cmd3;
+            for (int i = 0; i < klik; i++)
+            {
+                string iditems = ds.Tables["item"].Rows[i][0].ToString();
+                string qtyy = ds.Tables["item"].Rows[i][2].ToString();
+                string jeniss = ds.Tables["item"].Rows[i][3].ToString();
+                string hargas = ds.Tables["item"].Rows[i][4].ToString();
+                string diskoun = ds.Tables["item"].Rows[i][5].ToString();
+                string jenisppn = ds.Tables["item"].Rows[i][6].ToString();
+                string totalppn = ds.Tables["item"].Rows[i][7].ToString();
+                string subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
+                cmd3.Parameters.Add(":iditem", iditems);
+                cmd3.Parameters.Add(":idpo", PONO.Text);
+                cmd3.Parameters.Add(":qty", qtyy);
+                cmd3.Parameters.Add(":jeniss", jeniss);
+                cmd3.Parameters.Add(":hargas", hargas);
+                cmd3.Parameters.Add(":diskon", diskoun);
+                cmd3.Parameters.Add(":jenisppn", jenisppn);
+                cmd3.Parameters.Add(":totalppn", totalppn);
+                cmd3.Parameters.Add(":subtotal", subtotal);
+                cmd3.ExecuteNonQuery();
             }
+            
         }
 
         private void cbCurrent_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idx = cbCurrent.SelectedIndex;
             textBox7.Text = ds.Tables["currency"].Rows[idx][2].ToString();
+            if (textBox5.Text != "") {
+                refreshlocalnet();
+            }
+            
         }
     }
 }
