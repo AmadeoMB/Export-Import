@@ -279,7 +279,9 @@ namespace Export_Import
 
         private void button11_Click(object sender, EventArgs e)
         {
-
+            if () {
+                textBox6.Text = "mantap";
+            }
         }
 
         private void cbCurrent_SelectedIndexChanged(object sender, EventArgs e)

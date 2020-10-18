@@ -317,6 +317,7 @@
             this.textBox1.Location = new System.Drawing.Point(153, 78);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(251, 79);
             this.textBox1.TabIndex = 5;
             // 
@@ -335,6 +336,7 @@
             this.tbnama.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbnama.Location = new System.Drawing.Point(153, 48);
             this.tbnama.Name = "tbnama";
+            this.tbnama.ReadOnly = true;
             this.tbnama.Size = new System.Drawing.Size(251, 27);
             this.tbnama.TabIndex = 3;
             // 
