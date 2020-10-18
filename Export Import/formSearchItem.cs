@@ -13,7 +13,7 @@ namespace Export_Import
 {
     public partial class formSearchItem : Form
     {
-        formSalesOrder form;
+        formSalesOrder formSO; formPurchaseOrder formPO;
         OracleDataAdapter daItem;
         DataSet ds = new DataSet();
         OracleConnection conn;
@@ -27,7 +27,15 @@ namespace Export_Import
         public formSearchItem(formSalesOrder form)
         {
             InitializeComponent();
-            this.form = form;
+            this.formSO = form;
+            this.conn = form.conn;
+        }
+
+        public formSearchItem(formPurchaseOrder form)
+        {
+            InitializeComponent();
+            this.formPO = form;
+            this.conn = form.conn;
         }
 
         private void checkDiscount_CheckedChanged(object sender, EventArgs e)
@@ -43,7 +51,16 @@ namespace Export_Import
 
         void refreshTable()
         {
-            String cmd = "select id_item, nama_item, harga_jual_item from item";
+            String cmd = "select id_item, nama_item, ";
+            if (formSO != null)
+            {
+                cmd += "harga_jual_item as harga";
+            }
+            else
+            {
+                cmd += "harga_beli_item as harga";
+            }
+            cmd += " from item";
 
             daItem = new OracleDataAdapter(cmd, conn);
             daItem.Fill(ds, "item");
@@ -54,8 +71,15 @@ namespace Export_Import
         {
             keyword = keyword.ToLower();
 
-            String cmd = "select id_item, nama_item, harga_jual_item from item " +
-                "where Lower(id_item) like '%"+ keyword +"%' OR Lower(nama_item) like '%"+ keyword +"%'";
+            String cmd = "select id_item, nama_item, ";
+            if (formSO != null)
+            {
+                cmd += "harga_jual_item as harga";
+            }
+            else { 
+                cmd += "harga_beli_item as harga";
+            }
+            cmd += " from item where Lower(id_item) like '%" + keyword +"%' OR Lower(nama_item) like '%"+ keyword +"%'";
 
             daItem = new OracleDataAdapter(cmd, conn);
             daItem.Fill(ds, "item");
@@ -64,8 +88,6 @@ namespace Export_Import
 
         private void formSearchItem_Load(object sender, EventArgs e)
         {
-            this.conn = form.conn;
-
             refreshTable();
         }
 

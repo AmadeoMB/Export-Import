@@ -13,7 +13,7 @@ namespace Export_Import
 {
     public partial class formPurchaseOrder : Form
     {
-        OracleConnection conn;
+        public OracleConnection conn;
         OracleDataAdapter daSupplier;
         OracleDataAdapter daGudang;
         OracleDataAdapter daSales;

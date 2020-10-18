@@ -33,9 +33,9 @@
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupDiscount = new System.Windows.Forms.GroupBox();
-            this.checkDiscount = new System.Windows.Forms.CheckBox();
-            this.numDiscount = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.numDiscount = new System.Windows.Forms.NumericUpDown();
+            this.checkDiscount = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numQty = new System.Windows.Forms.NumericUpDown();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,6 +105,23 @@
             this.groupDiscount.TabStop = false;
             this.groupDiscount.Text = "Discount";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(132, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 19);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "%";
+            // 
+            // numDiscount
+            // 
+            this.numDiscount.Enabled = false;
+            this.numDiscount.Location = new System.Drawing.Point(6, 55);
+            this.numDiscount.Name = "numDiscount";
+            this.numDiscount.Size = new System.Drawing.Size(120, 27);
+            this.numDiscount.TabIndex = 1;
+            // 
             // checkDiscount
             // 
             this.checkDiscount.AutoSize = true;
@@ -115,23 +132,6 @@
             this.checkDiscount.Text = "Add Discount";
             this.checkDiscount.UseVisualStyleBackColor = true;
             this.checkDiscount.CheckedChanged += new System.EventHandler(this.checkDiscount_CheckedChanged);
-            // 
-            // numDiscount
-            // 
-            this.numDiscount.Enabled = false;
-            this.numDiscount.Location = new System.Drawing.Point(6, 55);
-            this.numDiscount.Name = "numDiscount";
-            this.numDiscount.Size = new System.Drawing.Size(120, 27);
-            this.numDiscount.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(132, 57);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 19);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "%";
             // 
             // label3
             // 
@@ -176,7 +176,7 @@
             // 
             // harga_jual
             // 
-            this.harga_jual.DataPropertyName = "harga_jual_item";
+            this.harga_jual.DataPropertyName = "harga";
             this.harga_jual.Frozen = true;
             this.harga_jual.HeaderText = "Harga";
             this.harga_jual.Name = "harga_jual";
