@@ -176,9 +176,9 @@
             this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(1024, 104);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(47, 19);
+            this.label12.Size = new System.Drawing.Size(85, 19);
             this.label12.TabIndex = 17;
-            this.label12.Text = "Agent";
+            this.label12.Text = "Nama Sales";
             // 
             // label11
             // 
@@ -280,9 +280,9 @@
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(7, 168);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 19);
+            this.label4.Size = new System.Drawing.Size(86, 19);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Purchase Location";
+            this.label4.Text = "Dikirim Dari";
             // 
             // textBox1
             // 

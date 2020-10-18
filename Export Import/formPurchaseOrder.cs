@@ -15,6 +15,8 @@ namespace Export_Import
     {
         OracleConnection conn;
         OracleDataAdapter daSupplier;
+        OracleDataAdapter daGudang;
+        OracleDataAdapter daSales;
         DataSet ds;
         public formPurchaseOrder()
         {
@@ -32,14 +34,30 @@ namespace Export_Import
             cbcreditor.DataSource = ds.Tables["supplier"];
             cbcreditor.ValueMember = "ID";
             cbcreditor.DisplayMember = "nama";
-        
-        
+        }
+        public void isicbGudang() {
+            daGudang = new OracleDataAdapter("select id_gudang as ID, nama_gudang as nama from gudang", conn);
+            ds = new DataSet();
+            daGudang.Fill(ds, "gudang");
+            comboBox1.DataSource = ds.Tables["gudang"];
+            comboBox1.ValueMember = "ID";
+            comboBox1.DisplayMember = "nama";
+        }
+        public void isicbSales() {
+            daSales = new OracleDataAdapter("select id_staff as ID, nama_staff as nama from staff where id_jabatan = '3'", conn);
+            ds = new DataSet();
+            daSales.Fill(ds, "staff");
+            comboBox3.DataSource = ds.Tables["staff"];
+            comboBox3.ValueMember = "ID";
+            comboBox3.DisplayMember = "nama";
         }
         private void formPurchaseOrder_Load(object sender, EventArgs e)
         {
             conn = new OracleConnection("user id=export;password=import;data source=orcl");
             conn.Open();
             isicbsupplier();
+            isicbGudang();
+            isicbSales();
         }
 
         private void button2_Click(object sender, EventArgs e)
