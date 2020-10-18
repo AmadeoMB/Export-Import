@@ -117,6 +117,7 @@ namespace Export_Import
                 conn.Open();
 
                 isiCBCustomer();
+                isiCBCurrency();
                 isiCBGudang();
                 isiCBSales();
                 generatecreateNomerSO();
@@ -195,6 +196,8 @@ namespace Export_Import
                 Array.Resize(ref temp, temp.Length+1);
                 temp[3] = "insert";
                 done.Push(temp);
+
+                refreshTotal();
             }
         }
 
@@ -210,6 +213,7 @@ namespace Export_Import
             if (idx > -1)
             {
                 ds.Tables["item"].Rows.RemoveAt(idx);
+                refreshTotal();
             }
             else
             {
@@ -283,6 +287,7 @@ namespace Export_Import
                 {
                     insertItem(temp);
                 }
+                refreshTotal();
             }
         }
 
@@ -301,7 +306,61 @@ namespace Export_Import
                 {
                     ds.Tables["item"].Rows.RemoveAt(ds.Tables["item"].Rows.Count - 1);
                 }
+                refreshTotal();
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            String id_customer = cbIdCust.SelectedValue + "";
+            String id_gudang = cbGudang.SelectedValue + "";
+            String id_SO = txtIdSO.Text;
+            DateTime tanggalSO = dateSO.Value;
+            String creditTerm = cbCreditTerm.Text;
+            String shipVia = cbShip.Text;
+            String shipInfo = txtShip.Text;
+
+        }
+
+        void refreshTotal()
+        {
+            int total = 0;
+            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            {
+                total += Convert.ToInt32(ds.Tables["item"].Rows[i][9]);
+            }
+            txtTotalHarga.Text = "Rp " + total;
+
+            txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
+            int totalRp = total;
+            int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate);
+        }
+
+        private void cbIdCust_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int idx = cbIdCust.SelectedIndex;
+            txtNamaCust.Text = ds.Tables["customer"].Rows[idx][1].ToString();
+            txtAlamatCust.Text = ds.Tables["customer"].Rows[idx][2].ToString();
+        }
+
+        void isiCBCurrency()
+        {
+            String cmd = "select * from currency";
+            new OracleDataAdapter(cmd, conn).Fill(ds, "currency");
+            cbCurrency.DataSource = ds.Tables["currency"];
+            cbCurrency.DisplayMember = "nama_currency";
+            cbCurrency.ValueMember = "rate";
+        }
+
+        private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
+            int totalRp = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
+            int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate) ;
         }
     }
 }

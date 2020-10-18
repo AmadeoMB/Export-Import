@@ -63,14 +63,6 @@
             this.txtTotalHarga = new System.Windows.Forms.TextBox();
             this.txtTotalHargaConvert = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.groupButton = new System.Windows.Forms.GroupBox();
-            this.btnRedo = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnMoveDown = new System.Windows.Forms.Button();
-            this.btnMoveUp = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,6 +73,14 @@
             this.total_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupButton = new System.Windows.Forms.GroupBox();
+            this.btnRedo = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnMoveDown = new System.Windows.Forms.Button();
+            this.btnMoveUp = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -170,6 +170,7 @@
             // 
             // cbCreditTerm
             // 
+            this.cbCreditTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCreditTerm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCreditTerm.FormattingEnabled = true;
             this.cbCreditTerm.Location = new System.Drawing.Point(1038, 78);
@@ -197,6 +198,7 @@
             // 
             // cbStaff
             // 
+            this.cbStaff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbStaff.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbStaff.FormattingEnabled = true;
             this.cbStaff.Location = new System.Drawing.Point(1038, 111);
@@ -284,6 +286,7 @@
             // 
             // cbGudang
             // 
+            this.cbGudang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGudang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGudang.FormattingEnabled = true;
             this.cbGudang.Location = new System.Drawing.Point(114, 203);
@@ -293,12 +296,14 @@
             // 
             // cbIdCust
             // 
+            this.cbIdCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbIdCust.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIdCust.FormattingEnabled = true;
             this.cbIdCust.Location = new System.Drawing.Point(114, 12);
             this.cbIdCust.Name = "cbIdCust";
             this.cbIdCust.Size = new System.Drawing.Size(300, 27);
             this.cbIdCust.TabIndex = 2;
+            this.cbIdCust.SelectedIndexChanged += new System.EventHandler(this.cbIdCust_SelectedIndexChanged);
             this.cbIdCust.DropDownClosed += new System.EventHandler(this.cbIdCust_DropDownClosed);
             // 
             // txtAlamatCust
@@ -351,6 +356,7 @@
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnPreview
             // 
@@ -379,7 +385,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(572, 370);
+            this.label15.Location = new System.Drawing.Point(451, 370);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(66, 19);
             this.label15.TabIndex = 17;
@@ -389,10 +395,11 @@
             // 
             this.cbCurrency.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Location = new System.Drawing.Point(644, 367);
+            this.cbCurrency.Location = new System.Drawing.Point(523, 367);
             this.cbCurrency.Name = "cbCurrency";
-            this.cbCurrency.Size = new System.Drawing.Size(75, 27);
+            this.cbCurrency.Size = new System.Drawing.Size(196, 27);
             this.cbCurrency.TabIndex = 16;
+            this.cbCurrency.SelectedIndexChanged += new System.EventHandler(this.cbCurrency_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -441,6 +448,7 @@
             this.txtTotalHarga.Name = "txtTotalHarga";
             this.txtTotalHarga.Size = new System.Drawing.Size(300, 27);
             this.txtTotalHarga.TabIndex = 11;
+            this.txtTotalHarga.Text = "Rp 0";
             // 
             // txtTotalHargaConvert
             // 
@@ -450,6 +458,7 @@
             this.txtTotalHargaConvert.Name = "txtTotalHargaConvert";
             this.txtTotalHargaConvert.Size = new System.Drawing.Size(300, 27);
             this.txtTotalHargaConvert.TabIndex = 10;
+            this.txtTotalHargaConvert.Text = "Rp 0";
             // 
             // dataGridView
             // 
@@ -472,91 +481,6 @@
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // groupButton
-            // 
-            this.groupButton.Controls.Add(this.btnRedo);
-            this.groupButton.Controls.Add(this.btnUndo);
-            this.groupButton.Controls.Add(this.btnMoveDown);
-            this.groupButton.Controls.Add(this.btnMoveUp);
-            this.groupButton.Controls.Add(this.btnMinus);
-            this.groupButton.Controls.Add(this.btnPlus);
-            this.groupButton.Location = new System.Drawing.Point(3, 30);
-            this.groupButton.Name = "groupButton";
-            this.groupButton.Size = new System.Drawing.Size(1898, 45);
-            this.groupButton.TabIndex = 1;
-            this.groupButton.TabStop = false;
-            this.groupButton.Text = "Table Button";
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Location = new System.Drawing.Point(235, 16);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(50, 23);
-            this.btnRedo.TabIndex = 26;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Location = new System.Drawing.Point(179, 16);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(50, 23);
-            this.btnUndo.TabIndex = 25;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnMoveDown
-            // 
-            this.btnMoveDown.Location = new System.Drawing.Point(123, 16);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(50, 23);
-            this.btnMoveDown.TabIndex = 24;
-            this.btnMoveDown.Text = "Down";
-            this.btnMoveDown.UseVisualStyleBackColor = true;
-            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
-            // 
-            // btnMoveUp
-            // 
-            this.btnMoveUp.Location = new System.Drawing.Point(67, 16);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(50, 23);
-            this.btnMoveUp.TabIndex = 23;
-            this.btnMoveUp.Text = "Up";
-            this.btnMoveUp.UseVisualStyleBackColor = true;
-            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
-            // 
-            // btnMinus
-            // 
-            this.btnMinus.Location = new System.Drawing.Point(38, 16);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(23, 23);
-            this.btnMinus.TabIndex = 22;
-            this.btnMinus.Text = "-";
-            this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
-            // 
-            // btnPlus
-            // 
-            this.btnPlus.Location = new System.Drawing.Point(9, 16);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(23, 23);
-            this.btnPlus.TabIndex = 21;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = true;
-            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(655, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 26);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "List Order";
             // 
             // id_item
             // 
@@ -644,6 +568,91 @@
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             this.subtotal.Width = 200;
+            // 
+            // groupButton
+            // 
+            this.groupButton.Controls.Add(this.btnRedo);
+            this.groupButton.Controls.Add(this.btnUndo);
+            this.groupButton.Controls.Add(this.btnMoveDown);
+            this.groupButton.Controls.Add(this.btnMoveUp);
+            this.groupButton.Controls.Add(this.btnMinus);
+            this.groupButton.Controls.Add(this.btnPlus);
+            this.groupButton.Location = new System.Drawing.Point(3, 30);
+            this.groupButton.Name = "groupButton";
+            this.groupButton.Size = new System.Drawing.Size(1898, 45);
+            this.groupButton.TabIndex = 1;
+            this.groupButton.TabStop = false;
+            this.groupButton.Text = "Table Button";
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.Location = new System.Drawing.Point(235, 16);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(50, 23);
+            this.btnRedo.TabIndex = 26;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Location = new System.Drawing.Point(179, 16);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(50, 23);
+            this.btnUndo.TabIndex = 25;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnMoveDown
+            // 
+            this.btnMoveDown.Location = new System.Drawing.Point(123, 16);
+            this.btnMoveDown.Name = "btnMoveDown";
+            this.btnMoveDown.Size = new System.Drawing.Size(50, 23);
+            this.btnMoveDown.TabIndex = 24;
+            this.btnMoveDown.Text = "Down";
+            this.btnMoveDown.UseVisualStyleBackColor = true;
+            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
+            // 
+            // btnMoveUp
+            // 
+            this.btnMoveUp.Location = new System.Drawing.Point(67, 16);
+            this.btnMoveUp.Name = "btnMoveUp";
+            this.btnMoveUp.Size = new System.Drawing.Size(50, 23);
+            this.btnMoveUp.TabIndex = 23;
+            this.btnMoveUp.Text = "Up";
+            this.btnMoveUp.UseVisualStyleBackColor = true;
+            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.Location = new System.Drawing.Point(38, 16);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(23, 23);
+            this.btnMinus.TabIndex = 22;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Location = new System.Drawing.Point(9, 16);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(23, 23);
+            this.btnPlus.TabIndex = 21;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(655, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(95, 26);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "List Order";
             // 
             // formSalesOrder
             // 

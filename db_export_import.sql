@@ -21,7 +21,7 @@ create table CURRENCY
 (
    ID_CURRENCY          VARCHAR2(3)          not null,
    NAMA_CURRENCY        VARCHAR2(255)        not null,
-   RATE                 FLOAT(11)            not null,
+   RATE                 INTEGER            not null,
    constraint PK_CURRENCY primary key (ID_CURRENCY)
 );
 
@@ -119,7 +119,7 @@ create table H_SALES_ORDER
    SHIP_VIA             VARCHAR2(255)        not null,
    SHIP_INFO            CLOB,
    CURRENCY_SALES_ORDER VARCHAR2(255)        not null,
-   RATE                 FLOAT(11)            not null,
+   RATE                 INTEGER            not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_H_SALES_ORDER primary key (ID_SALES_ORDER)
@@ -154,7 +154,7 @@ create table H_DELIVERY_ORDER
    SHIP_VIA             VARCHAR2(255)        not null,
    SHIP_INFO            CLOB,
    TOTAL_HARGA          INTEGER              not null,
-   RATE                 FLOAT(11)            not null,
+   RATE                 INTEGER            not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_DELIVERY_ORDER primary key (ID_DELIVERY_ORDER)
 );
@@ -189,7 +189,7 @@ create table H_INVOICE
    SHIP_VIA             VARCHAR2(255)        not null,
    SHIP_INFO            CLOB,
    TOTAL_HARGA          INTEGER              not null,
-   RATE                 FLOAT(11)            not null,
+   RATE                 INTEGER            not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_INVOICE primary key (ID_INVOICE)
 );
@@ -321,5 +321,17 @@ insert into CUSTOMER values('MK001', 'Manusia Karet', 'Jalan Anjayani IV no 65',
 insert into CUSTOMER values('IJ001', 'Invisible John', 'Perum WWA Cluster SmackDown no 48', 082853463821, 'iaminvisible@yahoo.com');
 insert into CUSTOMER values('DI001', 'Dea Impostor', 'Jalan Ventilasi no 13', 087123564889, 'fitnahenak@gmail.com');
 insert into CUSTOMER values('BC001', 'Bambank Crewmate', 'Perum Mirahq Cluster Cafetaria no 2', 089396467124, 'donttrustanybody@gmail.com');
+
+insert into CURRENCY values('IDR', 'Indonesia Rupiah', 1);
+insert into CURRENCY values('CNY', 'Chinese Yuan', 2190);
+insert into CURRENCY values('EUR', 'Euro', 17190);
+insert into CURRENCY values('HKD', 'Hong Kong Dollar', 1893);
+insert into CURRENCY values('INR', 'Indian Rupee', 200);
+insert into CURRENCY values('JPY', 'Japanese Yen', 139);
+insert into CURRENCY values('MYR', 'Malaysian Ringgit', 3534);
+insert into CURRENCY values('USD', 'US Dollar', 14670);
+insert into CURRENCY values('SGD', 'Singapore Dollar', 10796);
+insert into CURRENCY values('TWD', 'Yaiwan Dollar', 510);
+
 
 commit;
