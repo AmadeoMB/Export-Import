@@ -33,11 +33,11 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DateToday = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.PONO = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -58,11 +58,11 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnUndo = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.Kurang = new System.Windows.Forms.Button();
+            this.Tambah = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -80,6 +80,15 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diskon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -94,11 +103,11 @@
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.DateToday);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.PONO);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label8);
@@ -161,14 +170,15 @@
             this.label14.TabIndex = 20;
             this.label14.Text = "Shopping Info";
             // 
-            // dateTimePicker1
+            // DateToday
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(1138, 43);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePicker1.TabIndex = 18;
-            this.dateTimePicker1.Value = new System.DateTime(2020, 9, 28, 0, 0, 0, 0);
+            this.DateToday.Enabled = false;
+            this.DateToday.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateToday.Location = new System.Drawing.Point(1138, 43);
+            this.DateToday.Name = "DateToday";
+            this.DateToday.Size = new System.Drawing.Size(200, 27);
+            this.DateToday.TabIndex = 18;
+            this.DateToday.Value = new System.DateTime(2020, 10, 18, 14, 31, 33, 0);
             // 
             // label12
             // 
@@ -200,14 +210,14 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Date";
             // 
-            // textBox2
+            // PONO
             // 
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1138, 11);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(200, 27);
-            this.textBox2.TabIndex = 14;
+            this.PONO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PONO.Location = new System.Drawing.Point(1138, 11);
+            this.PONO.Name = "PONO";
+            this.PONO.ReadOnly = true;
+            this.PONO.Size = new System.Drawing.Size(200, 27);
+            this.PONO.TabIndex = 14;
             // 
             // label9
             // 
@@ -348,11 +358,11 @@
             this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Controls.Add(this.button8);
             this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.BtnUndo);
+            this.groupBox2.Controls.Add(this.btnDown);
+            this.groupBox2.Controls.Add(this.btnUp);
+            this.groupBox2.Controls.Add(this.Kurang);
+            this.groupBox2.Controls.Add(this.Tambah);
             this.groupBox2.Location = new System.Drawing.Point(0, 236);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1353, 319);
@@ -362,10 +372,23 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_item,
+            this.nama_item,
+            this.qty,
+            this.satuan_item,
+            this.harga_beli_item,
+            this.diskon,
+            this.ppn,
+            this.total_ppn,
+            this.subtotal});
             this.dataGridView1.Location = new System.Drawing.Point(6, 46);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1341, 270);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button10
             // 
@@ -407,56 +430,60 @@
             this.button7.Text = "Group Total";
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // BtnUndo
             // 
-            this.button6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(172, 10);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(52, 30);
-            this.button6.TabIndex = 4;
-            this.button6.Text = "Undo";
-            this.button6.UseVisualStyleBackColor = true;
+            this.BtnUndo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnUndo.Location = new System.Drawing.Point(172, 10);
+            this.BtnUndo.Name = "BtnUndo";
+            this.BtnUndo.Size = new System.Drawing.Size(52, 30);
+            this.BtnUndo.TabIndex = 4;
+            this.BtnUndo.Text = "Undo";
+            this.BtnUndo.UseVisualStyleBackColor = true;
+            this.BtnUndo.Click += new System.EventHandler(this.BtnUndo_Click);
             // 
-            // button5
+            // btnDown
             // 
-            this.button5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(111, 10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(55, 30);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Down";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnDown.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDown.Location = new System.Drawing.Point(111, 10);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(55, 30);
+            this.btnDown.TabIndex = 3;
+            this.btnDown.Text = "Down";
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
             // 
-            // button4
+            // btnUp
             // 
-            this.button4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(70, 10);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(35, 30);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Up";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnUp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUp.Location = new System.Drawing.Point(70, 10);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(35, 30);
+            this.btnUp.TabIndex = 2;
+            this.btnUp.Text = "Up";
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
-            // button3
+            // Kurang
             // 
-            this.button3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(38, 10);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(26, 30);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "-";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Kurang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Kurang.Location = new System.Drawing.Point(38, 10);
+            this.Kurang.Name = "Kurang";
+            this.Kurang.Size = new System.Drawing.Size(26, 30);
+            this.Kurang.TabIndex = 1;
+            this.Kurang.Text = "-";
+            this.Kurang.UseVisualStyleBackColor = true;
+            this.Kurang.Click += new System.EventHandler(this.Kurang_Click);
             // 
-            // button2
+            // Tambah
             // 
-            this.button2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(6, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(26, 30);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "+";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.Tambah.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Tambah.Location = new System.Drawing.Point(6, 10);
+            this.Tambah.Name = "Tambah";
+            this.Tambah.Size = new System.Drawing.Size(26, 30);
+            this.Tambah.TabIndex = 0;
+            this.Tambah.Text = "+";
+            this.Tambah.UseVisualStyleBackColor = true;
+            this.Tambah.Click += new System.EventHandler(this.Tambah_Click);
             // 
             // label15
             // 
@@ -629,6 +656,65 @@
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             // 
+            // id_item
+            // 
+            this.id_item.HeaderText = "ID ITEM";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 230;
+            // 
+            // qty
+            // 
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 80;
+            // 
+            // satuan_item
+            // 
+            this.satuan_item.HeaderText = "Satuan";
+            this.satuan_item.Name = "satuan_item";
+            this.satuan_item.ReadOnly = true;
+            // 
+            // harga_beli_item
+            // 
+            this.harga_beli_item.HeaderText = "Harga";
+            this.harga_beli_item.Name = "harga_beli_item";
+            this.harga_beli_item.ReadOnly = true;
+            this.harga_beli_item.Width = 200;
+            // 
+            // diskon
+            // 
+            this.diskon.HeaderText = "Discount";
+            this.diskon.Name = "diskon";
+            this.diskon.ReadOnly = true;
+            // 
+            // ppn
+            // 
+            this.ppn.HeaderText = "PPN";
+            this.ppn.Name = "ppn";
+            this.ppn.ReadOnly = true;
+            // 
+            // total_ppn
+            // 
+            this.total_ppn.HeaderText = "Total PPN";
+            this.total_ppn.Name = "total_ppn";
+            this.total_ppn.ReadOnly = true;
+            this.total_ppn.Width = 200;
+            // 
+            // subtotal
+            // 
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
+            // 
             // formPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -663,11 +749,11 @@
         private System.Windows.Forms.ComboBox cbcreditor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DateToday;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PONO;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
@@ -682,17 +768,17 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Tambah;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button BtnUndo;
+        private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button Kurang;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Label label20;
@@ -709,5 +795,14 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn satuan_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn harga_beli_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn diskon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ppn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total_ppn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
     }
 }
