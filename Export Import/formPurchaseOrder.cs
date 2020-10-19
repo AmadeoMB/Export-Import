@@ -295,6 +295,14 @@ namespace Export_Import
 
         private void button11_Click(object sender, EventArgs e)
         {
+            if (comboBox2.SelectedIndex < 0) {
+                MessageBox.Show("Mohon pilih credit term");
+                return;
+            }
+            if (comboBox4.SelectedIndex < 0) {
+                MessageBox.Show("Mohon pilih ship via");
+                return;
+            }
             //kurang pengecekan textbox atau combobox
             //buat header PO
             int lntot = Int32.Parse(LNTotal.Text);
@@ -323,6 +331,7 @@ namespace Export_Import
             cmd2.ExecuteNonQuery();
 
             //buat detail PO (belum jadi sama sekali)
+            
             OracleCommand cmd3;
             for (int i = 0; i < klik; i++)
             {
@@ -332,10 +341,10 @@ namespace Export_Import
                 string jeniss = ds.Tables["item"].Rows[i][3].ToString();
                 string hargas = ds.Tables["item"].Rows[i][4].ToString();
                 int hargass = Int32.Parse(hargas);
-                string diskoun = ds.Tables["item"].Rows[i][5].ToString();
+                string diskoun = ds.Tables["item"].Rows[i][7].ToString();
                 int discroun = Int32.Parse(diskoun);
-                string jenisppn = ds.Tables["item"].Rows[i][6].ToString();
-                string totalppn = ds.Tables["item"].Rows[i][7].ToString();
+                string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
+                string totalppn = ds.Tables["item"].Rows[i][6].ToString();
                 int tppn = Int32.Parse(totalppn);
                 string subtotal = ds.Tables["item"].Rows[i][8].ToString();
                 int stotal = Int32.Parse(subtotal);

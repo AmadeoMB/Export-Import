@@ -230,7 +230,7 @@ create table H_PURCHASE_ORDER
    constraint PK_H_PURCHASE_ORDER primary key (ID_PURCHASE_ORDER)
 );
 
-create table D_PUCHASE_ORDER 
+create table D_PURCHASE_ORDER 
 (
    ID_ITEM              VARCHAR2(5)          not null,
    ID_PURCHASE_ORDER    VARCHAR2(12)         not null,
