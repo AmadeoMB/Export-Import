@@ -188,6 +188,12 @@
     <Compile Include="formUpdateSupplier.Designer.cs">
       <DependentUpon>formUpdateSupplier.cs</DependentUpon>
     </Compile>
+    <Compile Include="formSearchSO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSearchSO.Designer.cs">
+      <DependentUpon>formSearchSO.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formSearchItem.resx">
       <DependentUpon>formSearchItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSearchSO.resx">
+      <DependentUpon>formSearchSO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateCategory.resx">
       <DependentUpon>formUpdateCategory.cs</DependentUpon>

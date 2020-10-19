@@ -22,7 +22,6 @@ namespace Export_Import
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
-        private string id_cust;
 
         public formSalesOrder()
         {
