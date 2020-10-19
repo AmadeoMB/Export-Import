@@ -19,7 +19,6 @@ namespace Export_Import
         public DataSet ds = new DataSet();
         public Form form;
         public String[] data;
-        bool sudah = false;
 
         public formListStock()
         {
