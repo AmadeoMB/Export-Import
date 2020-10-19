@@ -297,6 +297,13 @@ namespace Export_Import
         {
             //kurang pengecekan textbox atau combobox
             //buat header PO
+            int lntot = Int32.Parse(LNTotal.Text);
+            int tot = Int32.Parse(textBox5.Text);
+            int rat = Int32.Parse(textBox7.Text);
+            string a = comboBox2.SelectedItem.ToString();
+            string b = a.Substring(0, 1);
+            int c = Int32.Parse(b);
+            
             OracleCommand cmd2;
             cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :shipinfo, :currencypo, :rate, :totalh, :totalhc)", conn);
             cmd2.Parameters.Add(":idp", PONO.Text);
@@ -306,13 +313,13 @@ namespace Export_Import
             cmd2.Parameters.Add(":nama", tbnama.Text);
             cmd2.Parameters.Add(":alamat", textBox1.Text);
             cmd2.Parameters.Add(":tgl", DateToday.Value);
-            cmd2.Parameters.Add(":creditterm", id_item);
-            cmd2.Parameters.Add(":shipvia", comboBox2.SelectedItem);
+            cmd2.Parameters.Add(":creditterm", c);
+            cmd2.Parameters.Add(":shipvia", comboBox4.SelectedItem);
             cmd2.Parameters.Add(":shipinfo", textBox2.Text);
-            cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedItem);
-            cmd2.Parameters.Add(":rate", textBox7.Text);
-            cmd2.Parameters.Add(":totalh", textBox5.Text);
-            cmd2.Parameters.Add(":totalhc", LNTotal.Text);
+            cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedValue);
+            cmd2.Parameters.Add(":rate", rat);
+            cmd2.Parameters.Add(":totalh", tot);
+            cmd2.Parameters.Add(":totalhc", lntot);
             cmd2.ExecuteNonQuery();
 
             //buat detail PO (belum jadi sama sekali)
@@ -321,22 +328,27 @@ namespace Export_Import
             {
                 string iditems = ds.Tables["item"].Rows[i][0].ToString();
                 string qtyy = ds.Tables["item"].Rows[i][2].ToString();
+                int qtty = Int32.Parse(qtyy);
                 string jeniss = ds.Tables["item"].Rows[i][3].ToString();
                 string hargas = ds.Tables["item"].Rows[i][4].ToString();
+                int hargass = Int32.Parse(hargas);
                 string diskoun = ds.Tables["item"].Rows[i][5].ToString();
+                int discroun = Int32.Parse(diskoun);
                 string jenisppn = ds.Tables["item"].Rows[i][6].ToString();
                 string totalppn = ds.Tables["item"].Rows[i][7].ToString();
+                int tppn = Int32.Parse(totalppn);
                 string subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                int stotal = Int32.Parse(subtotal);
                 cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);
-                cmd3.Parameters.Add(":qty", qtyy);
+                cmd3.Parameters.Add(":qty", qtty);
                 cmd3.Parameters.Add(":jeniss", jeniss);
-                cmd3.Parameters.Add(":hargas", hargas);
-                cmd3.Parameters.Add(":diskon", diskoun);
+                cmd3.Parameters.Add(":hargas", hargass);
+                cmd3.Parameters.Add(":diskon", discroun);
                 cmd3.Parameters.Add(":jenisppn", jenisppn);
-                cmd3.Parameters.Add(":totalppn", totalppn);
-                cmd3.Parameters.Add(":subtotal", subtotal);
+                cmd3.Parameters.Add(":totalppn", tppn);
+                cmd3.Parameters.Add(":subtotal", stotal);
                 cmd3.ExecuteNonQuery();
             }
             

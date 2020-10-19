@@ -224,7 +224,7 @@ create table H_PURCHASE_ORDER
    SHIP_VIA             VARCHAR2(255)        not null,
    SHIPPING_INFO        CLOB,
    CURRENCY_PURCHASE_ORDER VARCHAR2(255)        not null,
-   RATE                 FLOAT(11)            not null,
+   RATE                 INTEGER            not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_H_PURCHASE_ORDER primary key (ID_PURCHASE_ORDER)
