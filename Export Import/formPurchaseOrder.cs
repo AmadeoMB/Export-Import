@@ -360,7 +360,9 @@ namespace Export_Import
                 cmd3.Parameters.Add(":subtotal", stotal);
                 cmd3.ExecuteNonQuery();
             }
-            
+
+            MessageBox.Show("Berhasil  Menyimpan");
+
         }
 
         private void cbCurrent_SelectedIndexChanged(object sender, EventArgs e)
