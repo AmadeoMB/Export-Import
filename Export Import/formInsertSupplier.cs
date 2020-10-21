@@ -32,6 +32,39 @@ namespace Export_Import
         {
             try
             {
+                if (txtNama.Text == "")
+                {
+                    MessageBox.Show("Nama harus di isi");
+                    return;
+                }
+
+                int j = 0;
+                for (; j < txtNama.Text.Length; j++)
+                {
+                    int num = Convert.ToInt32(txtNama.Text[j]);
+                    if (num == 32 || num == 46)
+                    {
+                        break;
+                    }
+                }
+
+                if (txtNama.Text[0].ToString().ToLower().Equals("p") && txtNama.Text[1].ToString().ToLower().Equals("t"))
+                {
+                    MessageBox.Show("Test");
+                    if (txtNama.Text[j + 1].Equals(' '))
+                    {
+                        txtNama.Text = "PT. " + txtNama.Text.Substring(j + 2);
+                    }
+                    else
+                    {
+                        txtNama.Text = "PT. " + txtNama.Text.Substring(j + 1);
+                    }
+                }
+                else
+                {
+                    txtNama.Text = "PT. " + txtNama.Text;
+                }
+
                 try
                 {
                     if (txtNoTelp.Text.Length == 0)

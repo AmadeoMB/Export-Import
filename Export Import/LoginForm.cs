@@ -55,6 +55,11 @@ namespace Export_Import
                         this.Hide();
                         new formMasterCategory(this).Show();
                     }
+                    else if (txtUsername.Text.Equals("master") && txtPassword.Text.Equals("ekspedisi"))
+                    {
+                        this.Hide();
+                        new formMasterEkspedisi(this).Show();
+                    }
                     else
                     {
                         conn.Open();

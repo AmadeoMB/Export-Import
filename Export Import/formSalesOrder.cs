@@ -311,13 +311,67 @@ namespace Export_Import
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 0)
+            {
+                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
+                return;
+            }
+            if (cbCreditTerm.SelectedIndex < 0)
+            {
+                MessageBox.Show("Pilih Credit Term");
+                return;
+            }
+
             String id_customer = cbIdCust.SelectedValue + "";
             String id_gudang = cbGudang.SelectedValue + "";
             String id_SO = txtIdSO.Text;
+            String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
             String creditTerm = cbCreditTerm.Text;
             String shipVia = cbShip.Text;
-            String shipInfo = txtShip.Text;
+            String currency = cbCurrency.SelectedValue + "";
+            int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+
+            OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :convert)", conn);
+            cmd.Parameters.Add(":id", id_SO);
+            cmd.Parameters.Add(":do", "-");
+            cmd.Parameters.Add(":gudang", id_gudang);
+            cmd.Parameters.Add(":staff", id_staff);
+            cmd.Parameters.Add(":customer", id_customer);
+            cmd.Parameters.Add(":invoice", "-");
+            cmd.Parameters.Add(":nama", txtNamaCust.Text);
+            cmd.Parameters.Add(":alamat", txtAlamatCust.Text);
+            cmd.Parameters.Add(":tgl", tanggalSO);
+            cmd.Parameters.Add(":credit", creditTerm);
+            cmd.Parameters.Add(":ship", shipVia);
+
+            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            {
+                String id_item = ds.Tables["item"].Rows[i][0].ToString();
+                String nama_item = ds.Tables["item"].Rows[i][1].ToString();
+                String qty_item = ds.Tables["item"].Rows[i][2].ToString();
+                String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
+                String hJual_item = ds.Tables["item"].Rows[i][4].ToString();
+                String berat_item = ds.Tables["item"].Rows[i][5].ToString();
+                String jenis_ppn = ds.Tables["item"].Rows[i][6].ToString();
+                String totalPPN = ds.Tables["item"].Rows[i][7].ToString();
+                String discount = ds.Tables["item"].Rows[i][8].ToString();
+                String subtotal = ds.Tables["item"].Rows[i][9].ToString();
+
+                OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :ppnT, :subtotal)", conn);
+                cmdDetail.Parameters.Add(":id", id_item);
+                cmdDetail.Parameters.Add(":so", id_SO);
+                cmdDetail.Parameters.Add(":nama", nama_item);
+                cmdDetail.Parameters.Add(":qty", qty_item);
+                cmdDetail.Parameters.Add(":jenis", satuan_item);
+                cmdDetail.Parameters.Add(":harga", hJual_item);
+                cmdDetail.Parameters.Add(":berat", berat_item);
+                cmdDetail.Parameters.Add(":ppn", jenis_ppn);
+                cmdDetail.Parameters.Add(":discount", discount);
+                cmdDetail.Parameters.Add(":ppnT", totalPPN);
+                cmdDetail.Parameters.Add(":subtotal", subtotal);
+                cmdDetail.ExecuteNonQuery();
+            }
 
         }
 
@@ -350,7 +404,7 @@ namespace Export_Import
             new OracleDataAdapter(cmd, conn).Fill(ds, "currency");
             cbCurrency.DataSource = ds.Tables["currency"];
             cbCurrency.DisplayMember = "nama_currency";
-            cbCurrency.ValueMember = "rate";
+            cbCurrency.ValueMember = "id_currency";
         }
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)

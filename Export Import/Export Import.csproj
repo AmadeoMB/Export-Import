@@ -56,6 +56,12 @@
     <Compile Include="formInsertCategory.Designer.cs">
       <DependentUpon>formInsertCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="formInsertEkspedisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formInsertEkspedisi.Designer.cs">
+      <DependentUpon>formInsertEkspedisi.cs</DependentUpon>
+    </Compile>
     <Compile Include="formInsertStaff.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,12 @@
     <Compile Include="formInvoice.Designer.cs">
       <DependentUpon>formInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="formListSalesOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formListSalesOrder.Designer.cs">
+      <DependentUpon>formListSalesOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="formListStock.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +127,12 @@
     </Compile>
     <Compile Include="formMasterCategory.Designer.cs">
       <DependentUpon>formMasterCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formMasterEkspedisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formMasterEkspedisi.Designer.cs">
+      <DependentUpon>formMasterEkspedisi.cs</DependentUpon>
     </Compile>
     <Compile Include="formMasterStock.cs">
       <SubType>Form</SubType>
@@ -169,6 +187,12 @@
     </Compile>
     <Compile Include="formUpdateCustomer.Designer.cs">
       <DependentUpon>formUpdateCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formUpdateEkspedisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formUpdateEkspedisi.Designer.cs">
+      <DependentUpon>formUpdateEkspedisi.cs</DependentUpon>
     </Compile>
     <Compile Include="formUpdateItem.cs">
       <SubType>Form</SubType>
@@ -235,6 +259,9 @@
     <EmbeddedResource Include="formInsertCategory.resx">
       <DependentUpon>formInsertCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formInsertEkspedisi.resx">
+      <DependentUpon>formInsertEkspedisi.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formInsertStaff.resx">
       <DependentUpon>formInsertStaff.cs</DependentUpon>
     </EmbeddedResource>
@@ -259,11 +286,17 @@
     <EmbeddedResource Include="formInvoice.resx">
       <DependentUpon>formInvoice.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formListSalesOrder.resx">
+      <DependentUpon>formListSalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formListStock.resx">
       <DependentUpon>formListStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formMasterCategory.resx">
       <DependentUpon>formMasterCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formMasterEkspedisi.resx">
+      <DependentUpon>formMasterEkspedisi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formMasterStock.resx">
       <DependentUpon>formMasterStock.cs</DependentUpon>
@@ -294,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateCustomer.resx">
       <DependentUpon>formUpdateCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formUpdateEkspedisi.resx">
+      <DependentUpon>formUpdateEkspedisi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateItem.resx">
       <DependentUpon>formUpdateItem.cs</DependentUpon>

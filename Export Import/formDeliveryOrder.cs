@@ -20,6 +20,7 @@ namespace Export_Import
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
+        private String id_so = "";
 
         public formDeliveryOrder()
         {
@@ -32,6 +33,13 @@ namespace Export_Import
             this.master = master;
         }
 
+        public formDeliveryOrder(formListSalesOrder list)
+        {
+            InitializeComponent();
+            this.master = list.gudang;
+            this.id_so = list.id_sales_order;
+        }
+
         private void formDeliveryOrder_Load(object sender, EventArgs e)
         {
             conn = new OracleConnection("user id=export;password=import;data source=orcl");
@@ -40,7 +48,14 @@ namespace Export_Import
             {
                 conn.Open();
 
-                isiCBCustomer();
+                if (id_so == "")
+                {
+                    isiCBCustomer();
+                }
+                else
+                {
+                    isiCBCustomer(id_so); 
+                }
             }
             catch (Exception ex)
             {
@@ -53,6 +68,17 @@ namespace Export_Import
         {
             String cmd = "select distinct c.id_customer, c.nama_customer, c.alamat_customer from h_sales_order h join customer c " +
                 "on h.id_customer = c.id_customer";
+            daCustomer = new OracleDataAdapter(cmd, conn);
+            daCustomer.Fill(ds, "customer");
+            cbIdCust.DataSource = ds.Tables["customer"];
+            cbIdCust.DisplayMember = "id_customer";
+            cbIdCust.ValueMember = "id_customer";
+        }
+
+        void isiCBCustomer(String id)
+        {
+            String cmd = "select distinct c.id_customer, c.nama_customer, c.alamat_customer from h_sales_order h join customer c " +
+                "on h.id_customer = c.id_customer where id_sales_order = '" + id + "'";
             daCustomer = new OracleDataAdapter(cmd, conn);
             daCustomer.Fill(ds, "customer");
             cbIdCust.DataSource = ds.Tables["customer"];

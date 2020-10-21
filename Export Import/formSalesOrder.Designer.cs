@@ -30,12 +30,10 @@
         {
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cbCreditTerm = new System.Windows.Forms.ComboBox();
-            this.txtShip = new System.Windows.Forms.TextBox();
             this.cbShip = new System.Windows.Forms.ComboBox();
             this.cbStaff = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -91,12 +89,10 @@
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
             this.pnlAtas.Controls.Add(this.btnSearch);
-            this.pnlAtas.Controls.Add(this.label10);
             this.pnlAtas.Controls.Add(this.label9);
             this.pnlAtas.Controls.Add(this.label8);
             this.pnlAtas.Controls.Add(this.label7);
             this.pnlAtas.Controls.Add(this.cbCreditTerm);
-            this.pnlAtas.Controls.Add(this.txtShip);
             this.pnlAtas.Controls.Add(this.cbShip);
             this.pnlAtas.Controls.Add(this.cbStaff);
             this.pnlAtas.Controls.Add(this.label6);
@@ -127,16 +123,6 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(939, 180);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(93, 19);
-            this.label10.TabIndex = 20;
-            this.label10.Text = "Shipping Info";
             // 
             // label9
             // 
@@ -177,15 +163,6 @@
             this.cbCreditTerm.Name = "cbCreditTerm";
             this.cbCreditTerm.Size = new System.Drawing.Size(300, 27);
             this.cbCreditTerm.TabIndex = 16;
-            // 
-            // txtShip
-            // 
-            this.txtShip.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShip.Location = new System.Drawing.Point(1038, 177);
-            this.txtShip.Multiline = true;
-            this.txtShip.Name = "txtShip";
-            this.txtShip.Size = new System.Drawing.Size(300, 99);
-            this.txtShip.TabIndex = 15;
             // 
             // cbShip
             // 
@@ -308,6 +285,7 @@
             // 
             // txtAlamatCust
             // 
+            this.txtAlamatCust.Enabled = false;
             this.txtAlamatCust.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAlamatCust.Location = new System.Drawing.Point(114, 78);
             this.txtAlamatCust.Multiline = true;
@@ -317,6 +295,7 @@
             // 
             // txtNamaCust
             // 
+            this.txtNamaCust.Enabled = false;
             this.txtNamaCust.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNamaCust.Location = new System.Drawing.Point(114, 45);
             this.txtNamaCust.Name = "txtNamaCust";
@@ -690,14 +669,12 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dateSO;
-        private System.Windows.Forms.TextBox txtShip;
         private System.Windows.Forms.ComboBox cbShip;
         private System.Windows.Forms.ComboBox cbStaff;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbCreditTerm;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.GroupBox groupButton;
         private System.Windows.Forms.Button btnMinus;

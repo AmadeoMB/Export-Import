@@ -117,8 +117,7 @@ create table H_SALES_ORDER
    TGL_SALES_ORDER      DATE                 not null,
    CREDIT_TERM_SALES_ORDER INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
-   SHIP_INFO            CLOB,
-   CURRENCY_SALES_ORDER VARCHAR2(255)        not null,
+   CURRENCY_SALES_ORDER VARCHAR2(3)        not null,
    RATE                 INTEGER            not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
@@ -152,7 +151,6 @@ create table H_DELIVERY_ORDER
    TGL_DELIVERY_ORDER   DATE                 not null,
    CREDIT_TERM_DELIVERY_ORDER INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
-   SHIP_INFO            CLOB,
    TOTAL_HARGA          INTEGER              not null,
    RATE                 INTEGER            not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
@@ -187,7 +185,6 @@ create table H_INVOICE
    TGL_INVOICE          DATE                 not null,
    CREDIT_TERM_INVOICE  INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
-   SHIP_INFO            CLOB,
    TOTAL_HARGA          INTEGER              not null,
    RATE                 INTEGER            not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
@@ -222,7 +219,6 @@ create table H_PURCHASE_ORDER
    TGL_PURCHASE_ORDER   DATE                 not null,
    CREDIT_TERM_PURCHASE_ORDER INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
-   SHIPPING_INFO        CLOB,
    CURRENCY_PURCHASE_ORDER VARCHAR2(255)        not null,
    RATE                 INTEGER            not null,
    TOTAL_HARGA          INTEGER              not null,
@@ -298,6 +294,10 @@ insert into SUPPLIER values('JT002', 'PT. Naik Turun Aja', 'Jalan MumboWumbo no 
 insert into GUDANG values('GB001', 'Gudang Besar', 'Jalan Gibah Santuy no 69', 081286323486);
 insert into GUDANG values('GK001', 'Gudang Kecil', 'Jalan In Aja Dulu no 28', 081372647643);
 insert into GUDANG values('GU001', 'Gudang Utama', 'Jalan Sama Aku Aja no 13', 083246856583);
+
+insert into h_sales_order values ('12345', '-', '123', 'qwe', 'asd', '-', 'abc', 'abc', sysdate, 2, 'ship', 'idr', 123, 123, 123);
+insert into d_sales_order values ('1', '12345', 'asd', 12, 'abs', 1234, 234, 'exc', 3, 12345, 123456);
+insert into d_sales_order values ('1', '12345', '123', 12, 'dsf', 123, 234, 'exc', 3, 12345, 123456);
 
 insert into CATEGORY values('M01', 'Makanan');
 insert into CATEGORY values('M02', 'Minuman');
