@@ -40,6 +40,40 @@ namespace Export_Import
                 MessageBox.Show("Nama harus di isi");
                 return;
             }
+            if (txtContactPerson.Text == "")
+            {
+                MessageBox.Show("Nama Contact Person harus di isi");
+                return;
+            }
+            if (txtAlamat.Text == "")
+            {
+                MessageBox.Show("Alamat harus di isi");
+                return;
+            }
+
+            try
+            {
+                if (txtNoTelp.Text.Length == 0)
+                {
+                    MessageBox.Show("Nomer telpon harus di isi");
+                    return;
+                }
+                else if (txtNoTelp.Text.Length < 10 || txtNoTelp.Text.Length > 14)
+                {
+                    MessageBox.Show("Nomer telpon setidaknya 10 digit angka");
+                    return;
+                }
+                foreach (char item in txtNoTelp.Text)
+                {
+                    int noTelp = Convert.ToInt32(item.ToString());
+                }
+            }
+            catch
+            {
+                MessageBox.Show("No Telp harus berupa angka");
+                txtNoTelp.Text = "";
+                return;
+            }
 
             int j = 0;
             for (; j < txtNama.Text.Length; j++)
@@ -53,7 +87,6 @@ namespace Export_Import
 
             if (txtNama.Text[0].ToString().ToLower().Equals("p") && txtNama.Text[1].ToString().ToLower().Equals("t"))
             {
-                MessageBox.Show("Test");
                 if (txtNama.Text[j + 1].Equals(' '))
                 {
                     txtNama.Text = "PT. " + txtNama.Text.Substring(j + 2);
@@ -105,10 +138,15 @@ namespace Export_Import
                 id_ekspedisi += jum;
             }
 
-            OracleCommand cmd = new OracleCommand("insert into ekspedisi values (:id, :nama)", conn);
+            OracleCommand cmd = new OracleCommand("insert into ekspedisi values (:id, :nama, :alamat, :cp, :no)", conn);
             cmd.Parameters.Add(":id", id_ekspedisi);
             cmd.Parameters.Add(":nama", txtNama.Text);
+            cmd.Parameters.Add(":alamat", txtAlamat.Text);
+            cmd.Parameters.Add(":cp", txtContactPerson.Text);
+            cmd.Parameters.Add(":no", txtNoTelp.Text);
+            cmd.ExecuteNonQuery();
 
+            this.Close();
         }
 
         String keyChar = "";

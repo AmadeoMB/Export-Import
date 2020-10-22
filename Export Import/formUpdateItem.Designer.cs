@@ -69,6 +69,7 @@
             // 
             // cbSatuan
             // 
+            this.cbSatuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSatuan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSatuan.FormattingEnabled = true;
             this.cbSatuan.Items.AddRange(new object[] {
@@ -360,6 +361,7 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(111, 155);

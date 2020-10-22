@@ -295,5 +295,29 @@ namespace Export_Import
                 btnUpdate.Enabled = true;
             }
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (idx > -1)
+            {
+                try
+                {
+
+                    String cmd = "delete from item where id_item = '" + ds.Tables["item"].Rows[idx][0] + "'";
+                    new OracleCommand(cmd, conn).ExecuteNonQuery();
+                    ds.Tables["item"].Clear();
+                    refreshTabel();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih lah item pada tabel terlebih dahulu");
+            }
+        }
     }
 }

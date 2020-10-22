@@ -46,6 +46,7 @@
             this.cbProvinsi = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -75,6 +76,7 @@
             // pnlBawah
             // 
             this.pnlBawah.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlBawah.Controls.Add(this.btnDelete);
             this.pnlBawah.Controls.Add(this.btnUpdate);
             this.pnlBawah.Controls.Add(this.btnInsert);
             this.pnlBawah.Controls.Add(this.dataGridView);
@@ -245,6 +247,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(256, 119);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(85, 30);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click_1);
+            // 
             // formListSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -286,5 +300,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn provinsi;
         private System.Windows.Forms.DataGridViewTextBoxColumn no_hp;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

@@ -31,10 +31,10 @@
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.btnGet = new System.Windows.Forms.Button();
             this.id_sales_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgl_sales_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnGet = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,16 +70,8 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(467, 243);
             this.dataGridView.TabIndex = 8;
-            // 
-            // btnGet
-            // 
-            this.btnGet.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGet.Location = new System.Drawing.Point(380, 12);
-            this.btnGet.Name = "btnGet";
-            this.btnGet.Size = new System.Drawing.Size(75, 35);
-            this.btnGet.TabIndex = 9;
-            this.btnGet.Text = "Get";
-            this.btnGet.UseVisualStyleBackColor = true;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // id_sales_order
             // 
@@ -107,6 +99,17 @@
             this.tgl_sales_order.Name = "tgl_sales_order";
             this.tgl_sales_order.ReadOnly = true;
             this.tgl_sales_order.Width = 150;
+            // 
+            // btnGet
+            // 
+            this.btnGet.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGet.Location = new System.Drawing.Point(380, 12);
+            this.btnGet.Name = "btnGet";
+            this.btnGet.Size = new System.Drawing.Size(75, 35);
+            this.btnGet.TabIndex = 9;
+            this.btnGet.Text = "Get";
+            this.btnGet.UseVisualStyleBackColor = true;
+            this.btnGet.Click += new System.EventHandler(this.btnGet_Click);
             // 
             // formSearchSO
             // 

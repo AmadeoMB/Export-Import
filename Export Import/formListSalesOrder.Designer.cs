@@ -31,24 +31,24 @@
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlBawah = new System.Windows.Forms.Panel();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.groupFilter = new System.Windows.Forms.GroupBox();
+            this.numJumlah = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateFilter = new System.Windows.Forms.DateTimePicker();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.dateFilter = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.numJumlah = new System.Windows.Forms.NumericUpDown();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.id_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlAtas
@@ -82,6 +82,35 @@
             this.pnlBawah.Size = new System.Drawing.Size(1350, 656);
             this.pnlBawah.TabIndex = 4;
             // 
+            // btnCreate
+            // 
+            this.btnCreate.Enabled = false;
+            this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Location = new System.Drawing.Point(528, 80);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(150, 42);
+            this.btnCreate.TabIndex = 6;
+            this.btnCreate.Text = "Create D/O";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // dataGridView
+            // 
+            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_so,
+            this.nama_customer,
+            this.tgl_so,
+            this.jumlah_barang});
+            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dataGridView.Location = new System.Drawing.Point(0, 128);
+            this.dataGridView.Name = "dataGridView";
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView.Size = new System.Drawing.Size(1350, 528);
+            this.dataGridView.TabIndex = 2;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
             // groupFilter
             // 
             this.groupFilter.Controls.Add(this.numJumlah);
@@ -97,6 +126,43 @@
             this.groupFilter.TabIndex = 1;
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
+            // 
+            // numJumlah
+            // 
+            this.numJumlah.Location = new System.Drawing.Point(313, 64);
+            this.numJumlah.Name = "numJumlah";
+            this.numJumlah.Size = new System.Drawing.Size(191, 23);
+            this.numJumlah.TabIndex = 5;
+            this.numJumlah.ValueChanged += new System.EventHandler(this.numJumlah_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(309, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(112, 19);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Jumlah Barang :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(19, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 19);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Tanggal :";
+            // 
+            // dateFilter
+            // 
+            this.dateFilter.CalendarFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateFilter.Location = new System.Drawing.Point(93, 64);
+            this.dateFilter.Name = "dateFilter";
+            this.dateFilter.Size = new System.Drawing.Size(200, 23);
+            this.dateFilter.TabIndex = 2;
+            this.dateFilter.ValueChanged += new System.EventHandler(this.dateFilter_ValueChanged);
             // 
             // txtKeyword
             // 
@@ -117,99 +183,41 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama :";
             // 
-            // dateFilter
-            // 
-            this.dateFilter.CalendarFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFilter.Location = new System.Drawing.Point(93, 64);
-            this.dateFilter.Name = "dateFilter";
-            this.dateFilter.Size = new System.Drawing.Size(200, 23);
-            this.dateFilter.TabIndex = 2;
-            this.dateFilter.ValueChanged += new System.EventHandler(this.dateFilter_ValueChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 67);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tanggal :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(309, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 19);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Jumlah Barang :";
-            // 
-            // numJumlah
-            // 
-            this.numJumlah.Location = new System.Drawing.Point(313, 64);
-            this.numJumlah.Name = "numJumlah";
-            this.numJumlah.Size = new System.Drawing.Size(191, 23);
-            this.numJumlah.TabIndex = 5;
-            this.numJumlah.ValueChanged += new System.EventHandler(this.numJumlah_ValueChanged);
-            // 
-            // dataGridView
-            // 
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_so,
-            this.nama_customer,
-            this.tgl_so,
-            this.jumlah_barang});
-            this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 128);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1350, 528);
-            this.dataGridView.TabIndex = 2;
-            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
             // id_so
             // 
+            this.id_so.DataPropertyName = "id";
             this.id_so.Frozen = true;
             this.id_so.HeaderText = "Nomer S/O";
             this.id_so.Name = "id_so";
             this.id_so.ReadOnly = true;
+            this.id_so.Width = 150;
             // 
             // nama_customer
             // 
+            this.nama_customer.DataPropertyName = "nama";
             this.nama_customer.Frozen = true;
             this.nama_customer.HeaderText = "Nama Customer";
             this.nama_customer.Name = "nama_customer";
             this.nama_customer.ReadOnly = true;
+            this.nama_customer.Width = 150;
             // 
             // tgl_so
             // 
+            this.tgl_so.DataPropertyName = "tanggal";
             this.tgl_so.Frozen = true;
             this.tgl_so.HeaderText = "Tanggal";
             this.tgl_so.Name = "tgl_so";
             this.tgl_so.ReadOnly = true;
+            this.tgl_so.Width = 150;
             // 
             // jumlah_barang
             // 
+            this.jumlah_barang.DataPropertyName = "jumlah";
             this.jumlah_barang.Frozen = true;
             this.jumlah_barang.HeaderText = "Jumlah Barang";
             this.jumlah_barang.Name = "jumlah_barang";
             this.jumlah_barang.ReadOnly = true;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Enabled = false;
-            this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(528, 80);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(150, 42);
-            this.btnCreate.TabIndex = 6;
-            this.btnCreate.Text = "Create D/O";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            this.jumlah_barang.Width = 150;
             // 
             // formListSalesOrder
             // 
@@ -224,10 +232,10 @@
             this.pnlAtas.ResumeLayout(false);
             this.pnlAtas.PerformLayout();
             this.pnlBawah.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupFilter.ResumeLayout(false);
             this.groupFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,10 +253,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numJumlah;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_so;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
         private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
-        private System.Windows.Forms.Button btnCreate;
     }
 }

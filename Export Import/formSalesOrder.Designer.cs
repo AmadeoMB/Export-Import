@@ -159,6 +159,14 @@
             this.cbCreditTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCreditTerm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCreditTerm.FormattingEnabled = true;
+            this.cbCreditTerm.Items.AddRange(new object[] {
+            "Cash",
+            "COD",
+            "7 Days",
+            "14 Days",
+            "21 Days",
+            "30 Days",
+            "60 Days"});
             this.cbCreditTerm.Location = new System.Drawing.Point(1038, 78);
             this.cbCreditTerm.Name = "cbCreditTerm";
             this.cbCreditTerm.Size = new System.Drawing.Size(300, 27);

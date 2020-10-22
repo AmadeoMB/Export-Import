@@ -33,6 +33,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtNama = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtNoTelp = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtContactPerson = new System.Windows.Forms.TextBox();
+            this.txtAlamat = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +76,7 @@
             // txtNama
             // 
             this.txtNama.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNama.Location = new System.Drawing.Point(211, 82);
+            this.txtNama.Location = new System.Drawing.Point(211, 113);
             this.txtNama.Name = "txtNama";
             this.txtNama.Size = new System.Drawing.Size(275, 27);
             this.txtNama.TabIndex = 19;
@@ -80,17 +86,78 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(85, 85);
+            this.label1.Location = new System.Drawing.Point(85, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 19);
             this.label1.TabIndex = 18;
             this.label1.Text = "Nama Ekspedisi :";
+            // 
+            // txtNoTelp
+            // 
+            this.txtNoTelp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNoTelp.Location = new System.Drawing.Point(211, 294);
+            this.txtNoTelp.Name = "txtNoTelp";
+            this.txtNoTelp.Size = new System.Drawing.Size(275, 27);
+            this.txtNoTelp.TabIndex = 29;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(98, 297);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 19);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "Nomer Telpon :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(90, 255);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(115, 19);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Contact Person :";
+            // 
+            // txtContactPerson
+            // 
+            this.txtContactPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtContactPerson.Location = new System.Drawing.Point(211, 252);
+            this.txtContactPerson.Name = "txtContactPerson";
+            this.txtContactPerson.Size = new System.Drawing.Size(275, 27);
+            this.txtContactPerson.TabIndex = 26;
+            // 
+            // txtAlamat
+            // 
+            this.txtAlamat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAlamat.Location = new System.Drawing.Point(211, 155);
+            this.txtAlamat.Multiline = true;
+            this.txtAlamat.Name = "txtAlamat";
+            this.txtAlamat.Size = new System.Drawing.Size(275, 82);
+            this.txtAlamat.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(77, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(128, 19);
+            this.label3.TabIndex = 24;
+            this.label3.Text = "Alamat Ekspedisi :";
             // 
             // formUpdateEkspedisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 358);
+            this.Controls.Add(this.txtNoTelp);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtContactPerson);
+            this.Controls.Add(this.txtAlamat);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtNama);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
@@ -112,5 +179,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNoTelp;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtContactPerson;
+        private System.Windows.Forms.TextBox txtAlamat;
+        private System.Windows.Forms.Label label3;
     }
 }

@@ -17,6 +17,7 @@ namespace Export_Import
         OracleConnection conn;
         private OracleDataAdapter daSalesOrder;
         private DataSet ds = new DataSet();
+        public String id_so = "";
 
         public formSearchSO()
         {
@@ -28,16 +29,34 @@ namespace Export_Import
             InitializeComponent();
             this.form = form;
             this.conn = form.conn;
+            this.id_so = form.id_so;
         }
 
         private void formSearchSO_Load(object sender, EventArgs e)
         {
+            if (!id_so.Equals(""))
+            {
+                String nama_customer = new OracleCommand("select nama_customer from h_sales_order where id_sales_order = '" + id_so + "'", conn).ExecuteScalar().ToString();
+
+                refreshTable(id_so, nama_customer);
+                return;
+            }
             refreshTable();
         }
 
         void refreshTable()
         {
-            String cmd = "select id_sales_order, nama_customer from h_sales_order";
+            String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order";
+            daSalesOrder = new OracleDataAdapter(cmd, conn);
+            daSalesOrder.Fill(ds, "SalesOrder");
+            dataGridView.DataSource = ds.Tables["SalesOrder"];
+        }
+
+        void refreshTable(String id, String keyword)
+        {
+            String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order " +
+                "where id_sales_order != '" + id + "' AND " +
+                "nama_customer = '" + keyword + "'";
             daSalesOrder = new OracleDataAdapter(cmd, conn);
             daSalesOrder.Fill(ds, "SalesOrder");
             dataGridView.DataSource = ds.Tables["SalesOrder"];
@@ -45,7 +64,7 @@ namespace Export_Import
 
         void refreshTable(String keyword)
         {
-            String cmd = "select id_sales_order, nama_customer from h_sales_order " +
+            String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order " +
                 "where id_sales_order = '" + keyword + "' OR " +
                 "nama_customer = '" + keyword + "'";
             daSalesOrder = new OracleDataAdapter(cmd, conn);
@@ -57,6 +76,27 @@ namespace Export_Import
         {
             ds.Tables["SalesOrder"].Clear();
             refreshTable(txtKeyword.Text);
+        }
+
+        private void btnGet_Click(object sender, EventArgs e)
+        {
+            if (idx > -1)
+            {
+                this.id_so = ds.Tables["SalesOrder"].Rows[idx][0].ToString();
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
+            }
+        }
+
+        int idx = -1;
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
         }
     }
 }

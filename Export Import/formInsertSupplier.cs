@@ -72,6 +72,11 @@ namespace Export_Import
                         MessageBox.Show("Nomer telpon harus di isi");
                         return;
                     }
+                    else if (txtNoTelp.Text.Length < 10 && txtNoTelp.Text.Length > 14)
+                    {
+                        MessageBox.Show("Nomer telpon setidaknya 10 digit angka");
+                        return;
+                    }
                     foreach (char item in txtNoTelp.Text)
                     {
                         int noTelp = Convert.ToInt32(item.ToString());

@@ -136,8 +136,6 @@ namespace Export_Import
             cmd2.Parameters.Add(":nomer", txtNoTelp.Text);
             cmd2.Parameters.Add(":email", txtEmail.Text);
             cmd2.ExecuteNonQuery();//ini buat insert update delete
-
-            conn.Close();
             this.Close();
         }
 
@@ -181,6 +179,23 @@ namespace Export_Import
                 }
                 txtUsername.Text = text;
                 MessageBox.Show("Tidak boleh ada spasi pada username");
+            }
+        }
+
+        private void cbJabatan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbJabatan.SelectedValue + "" == "5")
+            {
+                groupBox1.Enabled = false;
+                txtUsername.Text = "-";
+                txtPassword.Text = "-";
+                txtCPassword.Text = "-";
+            }
+            else
+            {
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                txtCPassword.Text = "";
             }
         }
     }

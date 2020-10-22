@@ -163,5 +163,29 @@ namespace Export_Import
         {
 
         }
+
+        private void btnDelete_Click_1(object sender, EventArgs e)
+        {
+            if (idx > -1)
+            {
+                try
+                {
+
+                    String cmd = "delete from Supplier where id_supplier = '" + ds.Tables["supplier"].Rows[idx][0] + "'";
+                    new OracleCommand(cmd, conn).ExecuteNonQuery();
+                    ds.Tables["supplier"].Clear();
+                    refreshTabel();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih lah supplier pada tabel terlebih dahulu");
+            }
+        }
     }
 }

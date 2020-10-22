@@ -35,24 +35,24 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPanjang = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtLebar = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtTinggi = new System.Windows.Forms.TextBox();
-            this.txtBerat = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtBerat = new System.Windows.Forms.TextBox();
+            this.txtTinggi = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtLebar = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPanjang = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtKadarAir = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupPPN = new System.Windows.Forms.GroupBox();
-            this.rbINC = new System.Windows.Forms.RadioButton();
             this.rbEXC = new System.Windows.Forms.RadioButton();
+            this.rbINC = new System.Windows.Forms.RadioButton();
             this.btnInsert = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtHargaBeli = new System.Windows.Forms.TextBox();
@@ -107,6 +107,7 @@
             // 
             // cbCategory
             // 
+            this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategory.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(111, 144);
@@ -146,107 +147,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ukuran";
             // 
-            // label4
+            // label12
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(253, 23);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(57, 19);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Tinggi :";
-            // 
-            // txtPanjang
-            // 
-            this.txtPanjang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPanjang.Location = new System.Drawing.Point(85, 20);
-            this.txtPanjang.Name = "txtPanjang";
-            this.txtPanjang.Size = new System.Drawing.Size(100, 27);
-            this.txtPanjang.TabIndex = 10;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(10, 23);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 19);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Panjang :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 65);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(53, 19);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Lebar :";
-            // 
-            // txtLebar
-            // 
-            this.txtLebar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLebar.Location = new System.Drawing.Point(85, 62);
-            this.txtLebar.Name = "txtLebar";
-            this.txtLebar.Size = new System.Drawing.Size(100, 27);
-            this.txtLebar.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(258, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 19);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Berat :";
-            // 
-            // txtTinggi
-            // 
-            this.txtTinggi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTinggi.Location = new System.Drawing.Point(316, 20);
-            this.txtTinggi.Name = "txtTinggi";
-            this.txtTinggi.Size = new System.Drawing.Size(100, 27);
-            this.txtTinggi.TabIndex = 15;
-            // 
-            // txtBerat
-            // 
-            this.txtBerat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBerat.Location = new System.Drawing.Point(316, 62);
-            this.txtBerat.Name = "txtBerat";
-            this.txtBerat.Size = new System.Drawing.Size(100, 27);
-            this.txtBerat.TabIndex = 16;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(29, 294);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(76, 19);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Kadar Air :";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(191, 23);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(28, 19);
-            this.label9.TabIndex = 17;
-            this.label9.Text = "cm";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(191, 65);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(28, 19);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "cm";
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(422, 65);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 19);
+            this.label12.TabIndex = 20;
+            this.label12.Text = "gram";
             // 
             // label11
             // 
@@ -258,15 +167,107 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "cm";
             // 
-            // label12
+            // label10
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(422, 65);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 19);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "gram";
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(191, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 19);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "cm";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(191, 23);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 19);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "cm";
+            // 
+            // txtBerat
+            // 
+            this.txtBerat.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBerat.Location = new System.Drawing.Point(316, 62);
+            this.txtBerat.Name = "txtBerat";
+            this.txtBerat.Size = new System.Drawing.Size(100, 27);
+            this.txtBerat.TabIndex = 16;
+            // 
+            // txtTinggi
+            // 
+            this.txtTinggi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTinggi.Location = new System.Drawing.Point(316, 20);
+            this.txtTinggi.Name = "txtTinggi";
+            this.txtTinggi.Size = new System.Drawing.Size(100, 27);
+            this.txtTinggi.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(258, 65);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 19);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Berat :";
+            // 
+            // txtLebar
+            // 
+            this.txtLebar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLebar.Location = new System.Drawing.Point(85, 62);
+            this.txtLebar.Name = "txtLebar";
+            this.txtLebar.Size = new System.Drawing.Size(100, 27);
+            this.txtLebar.TabIndex = 13;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(26, 65);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(53, 19);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Lebar :";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(10, 23);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(69, 19);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Panjang :";
+            // 
+            // txtPanjang
+            // 
+            this.txtPanjang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPanjang.Location = new System.Drawing.Point(85, 20);
+            this.txtPanjang.Name = "txtPanjang";
+            this.txtPanjang.Size = new System.Drawing.Size(100, 27);
+            this.txtPanjang.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(253, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(57, 19);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Tinggi :";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(29, 294);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(76, 19);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "Kadar Air :";
             // 
             // txtKadarAir
             // 
@@ -298,19 +299,6 @@
             this.groupPPN.TabStop = false;
             this.groupPPN.Text = "PPN";
             // 
-            // rbINC
-            // 
-            this.rbINC.AutoSize = true;
-            this.rbINC.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rbINC.Location = new System.Drawing.Point(30, 29);
-            this.rbINC.Name = "rbINC";
-            this.rbINC.Size = new System.Drawing.Size(74, 23);
-            this.rbINC.TabIndex = 0;
-            this.rbINC.TabStop = true;
-            this.rbINC.Text = "Include";
-            this.rbINC.UseVisualStyleBackColor = true;
-            this.rbINC.CheckedChanged += new System.EventHandler(this.rbINC_CheckedChanged);
-            // 
             // rbEXC
             // 
             this.rbEXC.AutoSize = true;
@@ -323,6 +311,19 @@
             this.rbEXC.Text = "Exclude";
             this.rbEXC.UseVisualStyleBackColor = true;
             this.rbEXC.CheckedChanged += new System.EventHandler(this.rbEXC_CheckedChanged);
+            // 
+            // rbINC
+            // 
+            this.rbINC.AutoSize = true;
+            this.rbINC.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbINC.Location = new System.Drawing.Point(30, 29);
+            this.rbINC.Name = "rbINC";
+            this.rbINC.Size = new System.Drawing.Size(74, 23);
+            this.rbINC.TabIndex = 0;
+            this.rbINC.TabStop = true;
+            this.rbINC.Text = "Include";
+            this.rbINC.UseVisualStyleBackColor = true;
+            this.rbINC.CheckedChanged += new System.EventHandler(this.rbINC_CheckedChanged);
             // 
             // btnInsert
             // 
@@ -397,6 +398,7 @@
             // 
             // cbSatuan
             // 
+            this.cbSatuan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSatuan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbSatuan.FormattingEnabled = true;
             this.cbSatuan.Items.AddRange(new object[] {

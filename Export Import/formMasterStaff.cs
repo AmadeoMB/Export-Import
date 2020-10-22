@@ -97,18 +97,13 @@ namespace Export_Import
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            conn.Close();
-
             new formInsertStaff(this).ShowDialog();
-
-            conn.Open();
             ds.Tables["user"].Clear();
             refreshTabel();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            conn.Close();
             String[] obj =
                 {
                     dataGridView.Rows[idx].Cells[0].Value.ToString(),
@@ -124,8 +119,6 @@ namespace Export_Import
 
             data = obj;
             new formUpdateStaff(this).ShowDialog();
-
-            conn.Open();
             ds.Tables["user"].Clear();
 
             refreshTabel();
@@ -150,6 +143,8 @@ namespace Export_Import
                 cmd2 = new OracleCommand("delete from staff where id_staff = '" +
                         dataGridView.Rows[idx].Cells[0].Value.ToString() + "'", conn);
                 cmd2.ExecuteNonQuery();//ini buat insert update delete
+                ds.Tables["user"].Clear();
+                refreshTabel();
             }
         }
 

@@ -264,6 +264,7 @@
             // 
             // cbJabatan
             // 
+            this.cbJabatan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbJabatan.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbJabatan.FormattingEnabled = true;
             this.cbJabatan.Items.AddRange(new object[] {
@@ -306,6 +307,8 @@
             this.cbJabatan.Name = "cbJabatan";
             this.cbJabatan.Size = new System.Drawing.Size(275, 27);
             this.cbJabatan.TabIndex = 32;
+            this.cbJabatan.SelectedIndexChanged += new System.EventHandler(this.cbJabatan_SelectedIndexChanged);
+            this.cbJabatan.DropDownClosed += new System.EventHandler(this.cbJabatan_DropDownClosed);
             // 
             // formInsertStaff
             // 

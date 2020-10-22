@@ -50,11 +50,11 @@ namespace Export_Import
         void refreshTable()
         {
             String cmd =
-                "select h.id_sales_order as id, nama_customer as nama, tgl_sales_order as tanggal( " +
+                "select h.id_sales_order as id, nama_customer as nama, tgl_sales_order as tanggal, ( " +
                     "select count(d.id_item) " +
                     "from d_sales_order d " +
                     "where d.id_sales_order = h.id_sales_order" +
-                ") as jumlah " +
+                " ) as jumlah " +
                 "from h_sales_order h " +
                 "where id_delivery_order = '-'";
 
@@ -66,7 +66,7 @@ namespace Export_Import
         void refreshTable(Object[] data)
         {
             String cmd = 
-                "select h.id_sales_order as id, nama_customer as nama, tgl_sales_order as tanggal( " +
+                "select h.id_sales_order as id, nama_customer as nama, tgl_sales_order as tanggal, ( " +
                     "select count(d.id_item) " +
                     "from d_sales_order d " +
                     "where d.id_sales_order = h.id_sales_order" +
@@ -147,8 +147,8 @@ namespace Export_Import
             if (idx > -1)
             {
                 id_sales_order = ds.Tables["so"].Rows[idx][0].ToString();
-                this.Close();
-                new formDeliveryOrder().Show();
+                this.Hide();
+                new formDeliveryOrder(this).Show();
             }
         }
     }

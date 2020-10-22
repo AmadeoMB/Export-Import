@@ -3,7 +3,7 @@ DROP TABLE CURRENCY CASCADE CONSTRAINTS PURGE;
 DROP TABLE CUSTOMER CASCADE CONSTRAINTS PURGE;
 DROP TABLE D_DELIVERY_ORDER CASCADE CONSTRAINTS PURGE;
 DROP TABLE D_INVOICE CASCADE CONSTRAINTS PURGE;
-DROP TABLE D_PUCHASE_ORDER CASCADE CONSTRAINTS PURGE;
+DROP TABLE D_PURCHASE_ORDER CASCADE CONSTRAINTS PURGE;
 DROP TABLE D_PURCHASE_INVOICE CASCADE CONSTRAINTS PURGE;
 DROP TABLE D_SALES_ORDER CASCADE CONSTRAINTS PURGE;
 DROP TABLE GUDANG CASCADE CONSTRAINTS PURGE;
@@ -16,6 +16,16 @@ DROP TABLE ITEM CASCADE CONSTRAINTS PURGE;
 DROP TABLE JABATAN CASCADE CONSTRAINTS PURGE;
 DROP TABLE STAFF CASCADE CONSTRAINTS PURGE;
 DROP TABLE SUPPLIER CASCADE CONSTRAINTS PURGE;
+DROP TABLE EKSPEDISI CASCADE CONSTRAINTS PURGE;
+
+CREATE TABLE EKSPEDISI
+(
+	ID_EKSPEDISI VARCHAR(5) PRIMARY KEY,
+	NAMA_EKSPEDISI VARCHAR2(255) NOT NULL,
+	ALAMAT_EKSPEDISI VARCHAR2(255) NOT NULL,
+	CP_EKSPEDISI VARCHAR2(50) NOT NULL,
+	NO_TELP NUMBER(20) NOT NULL
+);
 
 create table CURRENCY
 (
@@ -273,6 +283,14 @@ create table D_PURCHASE_INVOICE
    constraint PK_D_PURCHASE_INVOICE primary key (ID_PURCHASE_INVOICE, ID_ITEM)
 );
 
+
+
+INSERT INTO EKSPEDISI VALUES('TM001','PT. TRANS MANDIRI LOGISTIC','JL. BAWAL NO 23, SURABAYA','NOOR', 082256378471);
+INSERT INTO EKSPEDISI VALUES('SL001','PT. SINAR LOGISTIC','JL. KEMBANG KUNING NO 123, SURABAYA','CAHYO', 081132856487);
+INSERT INTO EKSPEDISI VALUES('TL002','PT. TRANSPRATAMA LOGISTIC','JL. TANJUNG PERAK NO 201-206, SURABAYA','ARIF', 085968741264);
+INSERT INTO EKSPEDISI VALUES('LM001','PT. LANCAR MAJU BERSAMA','JL. TANJUNG PERAK BARAT NO 1-4, SURABAYA','CHANDRA', 082154876987);
+INSERT INTO EKSPEDISI VALUES('PI001','PT. PRATAMA INDO LOGISTIC','JL. MANYAR KERTOARJO NO 7, SURABAYA','ALIF', 085789478552);
+
 insert into JABATAN values (1, 'Admin Gudang');
 insert into JABATAN values (2, 'Admin Penjualan');
 insert into JABATAN values (3, 'Admin Pembelian');
@@ -295,9 +313,16 @@ insert into GUDANG values('GB001', 'Gudang Besar', 'Jalan Gibah Santuy no 69', 0
 insert into GUDANG values('GK001', 'Gudang Kecil', 'Jalan In Aja Dulu no 28', 081372647643);
 insert into GUDANG values('GU001', 'Gudang Utama', 'Jalan Sama Aku Aja no 13', 083246856583);
 
-insert into h_sales_order values ('12345', '-', '123', 'qwe', 'asd', '-', 'abc', 'abc', sysdate, 2, 'ship', 'idr', 123, 123, 123);
-insert into d_sales_order values ('1', '12345', 'asd', 12, 'abs', 1234, 234, 'exc', 3, 12345, 123456);
-insert into d_sales_order values ('1', '12345', '123', 12, 'dsf', 123, 234, 'exc', 3, 12345, 123456);
+insert into h_sales_order values ('12346', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 2, 'TM001', 'IDR', 1, 123, 123);
+insert into d_sales_order values ('KK001', '12346', 'Keripik Kentang Original', 12, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
+insert into d_sales_order values ('0M001', '12346', 'Odading Mang Oleh', 12, 'BOX', 123, 234, 'EXC', 3, 12345, 123456);
+
+insert into h_sales_order values ('12347', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 2, 'TM001', 'IDR', 1, 123, 123);
+insert into d_sales_order values ('JL001', '12347', 'Jus Lemon Segar', 12, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
+
+insert into h_sales_order values ('12348', '-', 'GK001', 'NR001', 'MK001', '-', 'Manusia Karet', 'Jalan Bandung Selatan no 15', sysdate, 2, 'TM001', 'IDR', 1, 123, 123);
+insert into d_sales_order values ('KK001', '12348', 'Keripik Kentang Original', 24, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
+insert into d_sales_order values ('0M001', '12348', 'Odading Mang Oleh', 24, 'BOX', 123, 234, 'EXC', 3, 12345, 123456);
 
 insert into CATEGORY values('M01', 'Makanan');
 insert into CATEGORY values('M02', 'Minuman');

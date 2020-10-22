@@ -29,17 +29,15 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.GroupBox();
-            this.txtShipInfo = new System.Windows.Forms.TextBox();
             this.cbShipVia = new System.Windows.Forms.ComboBox();
             this.cbNamaSales = new System.Windows.Forms.ComboBox();
             this.cbCreditTerm = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.dateDO = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtNoDO = new System.Windows.Forms.TextBox();
+            this.txtIdDO = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -55,14 +53,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTotal = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtRate = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cbCurrency = new System.Windows.Forms.ComboBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtTotalConvert = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
@@ -77,6 +75,17 @@
             this.btnUp = new System.Windows.Forms.Button();
             this.btnMin = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID_Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.berat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlAtas.SuspendLayout();
             this.pnlTotal.SuspendLayout();
             this.pnlBawah.SuspendLayout();
@@ -87,17 +96,15 @@
             // pnlAtas
             // 
             this.pnlAtas.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.pnlAtas.Controls.Add(this.txtShipInfo);
             this.pnlAtas.Controls.Add(this.cbShipVia);
             this.pnlAtas.Controls.Add(this.cbNamaSales);
             this.pnlAtas.Controls.Add(this.cbCreditTerm);
-            this.pnlAtas.Controls.Add(this.label14);
             this.pnlAtas.Controls.Add(this.label13);
             this.pnlAtas.Controls.Add(this.dateDO);
             this.pnlAtas.Controls.Add(this.label12);
             this.pnlAtas.Controls.Add(this.label11);
             this.pnlAtas.Controls.Add(this.label10);
-            this.pnlAtas.Controls.Add(this.txtNoDO);
+            this.pnlAtas.Controls.Add(this.txtIdDO);
             this.pnlAtas.Controls.Add(this.label9);
             this.pnlAtas.Controls.Add(this.label8);
             this.pnlAtas.Controls.Add(this.label7);
@@ -117,16 +124,6 @@
             this.pnlAtas.TabIndex = 2;
             this.pnlAtas.TabStop = false;
             this.pnlAtas.Enter += new System.EventHandler(this.pnlAtas_Enter);
-            // 
-            // txtShipInfo
-            // 
-            this.txtShipInfo.Enabled = false;
-            this.txtShipInfo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtShipInfo.Location = new System.Drawing.Point(1137, 169);
-            this.txtShipInfo.Multiline = true;
-            this.txtShipInfo.Name = "txtShipInfo";
-            this.txtShipInfo.Size = new System.Drawing.Size(200, 67);
-            this.txtShipInfo.TabIndex = 24;
             // 
             // cbShipVia
             // 
@@ -157,16 +154,6 @@
             this.cbCreditTerm.Name = "cbCreditTerm";
             this.cbCreditTerm.Size = new System.Drawing.Size(200, 27);
             this.cbCreditTerm.TabIndex = 21;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(976, 172);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(93, 19);
-            this.label14.TabIndex = 20;
-            this.label14.Text = "Shipping Info";
             // 
             // label13
             // 
@@ -218,15 +205,15 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Tanggal D/O";
             // 
-            // txtNoDO
+            // txtIdDO
             // 
-            this.txtNoDO.Enabled = false;
-            this.txtNoDO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoDO.Location = new System.Drawing.Point(1137, 21);
-            this.txtNoDO.Name = "txtNoDO";
-            this.txtNoDO.ReadOnly = true;
-            this.txtNoDO.Size = new System.Drawing.Size(200, 27);
-            this.txtNoDO.TabIndex = 14;
+            this.txtIdDO.Enabled = false;
+            this.txtIdDO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdDO.Location = new System.Drawing.Point(1137, 21);
+            this.txtIdDO.Name = "txtIdDO";
+            this.txtIdDO.ReadOnly = true;
+            this.txtIdDO.Size = new System.Drawing.Size(200, 27);
+            this.txtIdDO.TabIndex = 14;
             // 
             // label9
             // 
@@ -356,14 +343,15 @@
             // pnlTotal
             // 
             this.pnlTotal.Controls.Add(this.groupBox4);
-            this.pnlTotal.Controls.Add(this.textBox7);
+            this.pnlTotal.Controls.Add(this.txtRate);
             this.pnlTotal.Controls.Add(this.label20);
             this.pnlTotal.Controls.Add(this.label19);
-            this.pnlTotal.Controls.Add(this.comboBox6);
+            this.pnlTotal.Controls.Add(this.cbCurrency);
             this.pnlTotal.Controls.Add(this.label18);
             this.pnlTotal.Controls.Add(this.label17);
-            this.pnlTotal.Controls.Add(this.textBox6);
-            this.pnlTotal.Controls.Add(this.textBox5);
+            this.pnlTotal.Controls.Add(this.txtTotalConvert);
+            this.pnlTotal.Controls.Add(this.txtTotal);
+            this.pnlTotal.Enabled = false;
             this.pnlTotal.Location = new System.Drawing.Point(0, 587);
             this.pnlTotal.Name = "pnlTotal";
             this.pnlTotal.Size = new System.Drawing.Size(1347, 106);
@@ -379,13 +367,13 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "groupBox4";
             // 
-            // textBox7
+            // txtRate
             // 
-            this.textBox7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox7.Location = new System.Drawing.Point(944, 75);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(117, 27);
-            this.textBox7.TabIndex = 9;
+            this.txtRate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRate.Location = new System.Drawing.Point(944, 75);
+            this.txtRate.Name = "txtRate";
+            this.txtRate.Size = new System.Drawing.Size(117, 27);
+            this.txtRate.TabIndex = 9;
             // 
             // label20
             // 
@@ -407,14 +395,14 @@
             this.label19.TabIndex = 7;
             this.label19.Text = "Rate";
             // 
-            // comboBox6
+            // cbCurrency
             // 
-            this.comboBox6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(760, 75);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(131, 27);
-            this.comboBox6.TabIndex = 6;
+            this.cbCurrency.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCurrency.FormattingEnabled = true;
+            this.cbCurrency.Location = new System.Drawing.Point(760, 75);
+            this.cbCurrency.Name = "cbCurrency";
+            this.cbCurrency.Size = new System.Drawing.Size(131, 27);
+            this.cbCurrency.TabIndex = 6;
             // 
             // label18
             // 
@@ -436,21 +424,21 @@
             this.label17.TabIndex = 4;
             this.label17.Text = "Net Total";
             // 
-            // textBox6
+            // txtTotalConvert
             // 
-            this.textBox6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(1181, 75);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(157, 27);
-            this.textBox6.TabIndex = 3;
+            this.txtTotalConvert.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalConvert.Location = new System.Drawing.Point(1181, 75);
+            this.txtTotalConvert.Name = "txtTotalConvert";
+            this.txtTotalConvert.Size = new System.Drawing.Size(157, 27);
+            this.txtTotalConvert.TabIndex = 3;
             // 
-            // textBox5
+            // txtTotal
             // 
-            this.textBox5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(1181, 42);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(157, 27);
-            this.textBox5.TabIndex = 2;
+            this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(1181, 42);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(157, 27);
+            this.txtTotal.TabIndex = 2;
             // 
             // pnlBawah
             // 
@@ -524,6 +512,18 @@
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.ID_Sales,
+            this.nama,
+            this.qty,
+            this.satuan,
+            this.harga,
+            this.berat,
+            this.jenis_ppn,
+            this.discount,
+            this.total_ppn,
+            this.subtotal});
             this.dataGridView.Location = new System.Drawing.Point(6, 46);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(1341, 265);
@@ -538,6 +538,7 @@
             this.btnSearchSO.TabIndex = 7;
             this.btnSearchSO.Text = "Search S/O";
             this.btnSearchSO.UseVisualStyleBackColor = true;
+            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
             // 
             // btnRedo
             // 
@@ -599,6 +600,101 @@
             this.btnPlus.Text = "+";
             this.btnPlus.UseVisualStyleBackColor = true;
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "id_item";
+            this.ID.Frozen = true;
+            this.ID.HeaderText = "ID Item";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 75;
+            // 
+            // ID_Sales
+            // 
+            this.ID_Sales.DataPropertyName = "id_sales_order";
+            this.ID_Sales.Frozen = true;
+            this.ID_Sales.HeaderText = "ID S/O";
+            this.ID_Sales.Name = "ID_Sales";
+            this.ID_Sales.ReadOnly = true;
+            this.ID_Sales.Width = 150;
+            // 
+            // nama
+            // 
+            this.nama.DataPropertyName = "nama_item";
+            this.nama.Frozen = true;
+            this.nama.HeaderText = "Nama Item";
+            this.nama.Name = "nama";
+            this.nama.ReadOnly = true;
+            this.nama.Width = 150;
+            // 
+            // qty
+            // 
+            this.qty.DataPropertyName = "qty_item";
+            this.qty.Frozen = true;
+            this.qty.HeaderText = "Qty Item";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            // 
+            // satuan
+            // 
+            this.satuan.DataPropertyName = "jenis_satuan";
+            this.satuan.Frozen = true;
+            this.satuan.HeaderText = "Satuan";
+            this.satuan.Name = "satuan";
+            this.satuan.ReadOnly = true;
+            this.satuan.Width = 75;
+            // 
+            // harga
+            // 
+            this.harga.DataPropertyName = "harga_satuan";
+            this.harga.Frozen = true;
+            this.harga.HeaderText = "Harga";
+            this.harga.Name = "harga";
+            this.harga.ReadOnly = true;
+            this.harga.Width = 150;
+            // 
+            // berat
+            // 
+            this.berat.DataPropertyName = "berat_total";
+            this.berat.Frozen = true;
+            this.berat.HeaderText = "Berat Total";
+            this.berat.Name = "berat";
+            this.berat.ReadOnly = true;
+            // 
+            // jenis_ppn
+            // 
+            this.jenis_ppn.DataPropertyName = "jenis_ppn";
+            this.jenis_ppn.Frozen = true;
+            this.jenis_ppn.HeaderText = "Jenis PPN";
+            this.jenis_ppn.Name = "jenis_ppn";
+            this.jenis_ppn.ReadOnly = true;
+            // 
+            // discount
+            // 
+            this.discount.DataPropertyName = "discount";
+            this.discount.Frozen = true;
+            this.discount.HeaderText = "Discount";
+            this.discount.Name = "discount";
+            this.discount.ReadOnly = true;
+            // 
+            // total_ppn
+            // 
+            this.total_ppn.DataPropertyName = "total_ppn";
+            this.total_ppn.Frozen = true;
+            this.total_ppn.HeaderText = "Total PPN";
+            this.total_ppn.Name = "total_ppn";
+            this.total_ppn.ReadOnly = true;
+            this.total_ppn.Width = 125;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.Frozen = true;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 170;
+            // 
             // formDeliveryOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -627,17 +723,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox pnlAtas;
-        private System.Windows.Forms.TextBox txtShipInfo;
         private System.Windows.Forms.ComboBox cbShipVia;
         private System.Windows.Forms.ComboBox cbNamaSales;
         private System.Windows.Forms.ComboBox cbCreditTerm;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DateTimePicker dateDO;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtNoDO;
+        private System.Windows.Forms.TextBox txtIdDO;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -653,14 +747,14 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox pnlTotal;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cbCurrency;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtTotalConvert;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.GroupBox pnlBawah;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button11;
@@ -675,5 +769,16 @@
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnMin;
         private System.Windows.Forms.Button btnPlus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Sales;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn satuan;
+        private System.Windows.Forms.DataGridViewTextBoxColumn harga;
+        private System.Windows.Forms.DataGridViewTextBoxColumn berat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jenis_ppn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total_ppn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
     }
 }

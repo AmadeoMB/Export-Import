@@ -77,6 +77,7 @@ namespace Export_Import
         private void btnInsert_Click(object sender, EventArgs e)
         {
             new formInsertEkspedisi(this).ShowDialog();
+            ds.Tables["ekspedisi"].Clear();
             refreshTable();
         }
 
@@ -85,11 +86,16 @@ namespace Export_Import
             if (idx > -1)
             {
                 Object[] temp = {
-                    ds.Tables["ekspedisi"].Rows[idx][0]
+                    ds.Tables["ekspedisi"].Rows[idx][0],
+                    ds.Tables["ekspedisi"].Rows[idx][1],
+                    ds.Tables["ekspedisi"].Rows[idx][2],
+                    ds.Tables["ekspedisi"].Rows[idx][3],
+                    ds.Tables["ekspedisi"].Rows[idx][4]
                 };
                 data = temp;
 
                 new formUpdateEkspedisi(this).ShowDialog();
+                ds.Tables["ekspedisi"].Clear();
                 refreshTable();
             }
             else
@@ -133,8 +139,9 @@ namespace Export_Import
                 try
                 {
 
-                    String cmd = "delete from eksepedisi where id_ekspedisi = '" + ds.Tables["ekspedisi"].Rows[idx][0] + "'";
+                    String cmd = "delete from ekspedisi where id_ekspedisi = '" + ds.Tables["ekspedisi"].Rows[idx][0] + "'";
                     new OracleCommand(cmd, conn).ExecuteNonQuery();
+                    ds.Tables["ekspedisi"].Clear();
                     refreshTable();
                 }
                 catch (Exception ex)

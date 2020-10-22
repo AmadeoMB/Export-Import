@@ -135,5 +135,29 @@ namespace Export_Import
         {
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (idx > -1)
+            {
+                try
+                {
+
+                    String cmd = "delete from customer where id_customer = '" + ds.Tables["customer"].Rows[idx][0] + "'";
+                    new OracleCommand(cmd, conn).ExecuteNonQuery();
+                    ds.Tables["customer"].Clear();
+                    refreshTabel();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih lah customer pada tabel terlebih dahulu");
+            }
+        }
     }
 }

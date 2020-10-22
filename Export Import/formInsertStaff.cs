@@ -55,6 +55,11 @@ namespace Export_Import
                     MessageBox.Show(text.Name.Substring(3) + " harus di isi");
                     return false;
                 }
+                else if (txtNoTelp.Text.Length < 10 && txtNoTelp.Text.Length > 14)
+                {
+                    MessageBox.Show("Nomer telpon setidaknya 10 digit angka");
+                    return false;
+                }
                 foreach (char staff in text.Text)
                 {
                     int temp = Convert.ToInt32(staff.ToString());
@@ -165,7 +170,7 @@ namespace Export_Import
 
             OracleCommand cmd2;
             cmd2 = new OracleCommand("insert into staff values(:id, :jabatan, :nama, :username, :password, :lahir, :alamat, :nomer, SYSDATE, :email)", conn);
-            cmd2.Parameters.Add(":id", id_staff);
+            cmd2.Parameters.Add(":id", id_staff.ToUpper());
             cmd2.Parameters.Add(":jabatan", cbJabatan.SelectedValue);
             cmd2.Parameters.Add(":nama", txtNama.Text);
             cmd2.Parameters.Add(":username", txtUsername.Text);
@@ -175,8 +180,6 @@ namespace Export_Import
             cmd2.Parameters.Add(":nomer", txtNoTelp.Text);
             cmd2.Parameters.Add(":email", txtEmail.Text);
             cmd2.ExecuteNonQuery();//ini buat insert update delete
-
-            conn.Close();
             this.Close();
         }
 
@@ -217,6 +220,40 @@ namespace Export_Import
                 }
                 txtUsername.Text = text;
                 MessageBox.Show("Tidak boleh ada spasi pada password");
+            }
+        }
+
+        private void cbJabatan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbJabatan.SelectedValue + "" == "5")
+            {
+                groupBox1.Enabled = false;
+                txtUsername.Text = "-";
+                txtPassword.Text = "-";
+                txtCPassword.Text = "-";
+            }
+            else
+            {
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                txtCPassword.Text = "";
+            }
+        }
+
+        private void cbJabatan_DropDownClosed(object sender, EventArgs e)
+        {
+            if (cbJabatan.SelectedValue + "" == "5")
+            {
+                groupBox1.Enabled = false;
+                txtUsername.Text = "-";
+                txtPassword.Text = "-";
+                txtCPassword.Text = "-";
+            }
+            else
+            {
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+                txtCPassword.Text = "";
             }
         }
     }

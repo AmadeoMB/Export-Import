@@ -18,6 +18,7 @@ namespace Export_Import
         private OracleDataAdapter daCustomer;
         private OracleDataAdapter daStaff;
         private OracleDataAdapter daGudang;
+        private OracleDataAdapter daEkspedisi;
         private OracleDataAdapter daItem;
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
@@ -107,6 +108,16 @@ namespace Export_Import
             cbStaff.ValueMember = "nama_staff";
         }
 
+        void isiCBShipVia()
+        {
+            String cmd = "select id_ekspedisi, nama_ekspedisi from ekspedisi";
+            daEkspedisi = new OracleDataAdapter(cmd, conn);
+            daEkspedisi.Fill(ds, "ekspedisi");
+            cbShip.DataSource = ds.Tables["ekspedisi"];
+            cbShip.DisplayMember = "nama_ekspedisi";
+            cbShip.ValueMember = "id_ekspedisi";
+        }
+
         private void formSalesOrder_Load(object sender, EventArgs e)
         {
             conn = new OracleConnection("user id=export;password=import;data source=orcl");
@@ -117,6 +128,7 @@ namespace Export_Import
 
                 isiCBCustomer();
                 isiCBCurrency();
+                isiCBShipVia();
                 isiCBGudang();
                 isiCBSales();
                 generatecreateNomerSO();
@@ -322,15 +334,22 @@ namespace Export_Import
                 return;
             }
 
+            int creditTerm = 1;
+            if (cbCreditTerm.Text != "Cash" && cbCreditTerm.Text != "COD")
+            {
+                creditTerm = Convert.ToInt32(cbCreditTerm.Text.Substring(0,2));
+            }
+
             String id_customer = cbIdCust.SelectedValue + "";
             String id_gudang = cbGudang.SelectedValue + "";
             String id_SO = txtIdSO.Text;
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
-            String creditTerm = cbCreditTerm.Text;
             String shipVia = cbShip.Text;
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+
+            MessageBox.Show(id_customer);
 
             OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :convert)", conn);
             cmd.Parameters.Add(":id", id_SO);
@@ -344,6 +363,7 @@ namespace Export_Import
             cmd.Parameters.Add(":tgl", tanggalSO);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
+            cmd.ExecuteNonQuery();
 
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
             {
@@ -372,7 +392,8 @@ namespace Export_Import
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
-
+            this.Close();
+            master.Show();
         }
 
         void refreshTotal()
