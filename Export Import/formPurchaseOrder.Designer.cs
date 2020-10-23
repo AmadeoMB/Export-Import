@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
@@ -85,7 +86,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -126,6 +126,19 @@
             this.groupBox1.Size = new System.Drawing.Size(1353, 204);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "Kendaraan Darat",
+            "Kendaraan Laut",
+            "Kendaraan Udara"});
+            this.comboBox4.Location = new System.Drawing.Point(1138, 135);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(200, 27);
+            this.comboBox4.TabIndex = 27;
             // 
             // textBox2
             // 
@@ -637,6 +650,7 @@
             this.LNTotal.ReadOnly = true;
             this.LNTotal.Size = new System.Drawing.Size(157, 27);
             this.LNTotal.TabIndex = 3;
+            this.LNTotal.Text = "0";
             // 
             // textBox5
             // 
@@ -646,6 +660,7 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(157, 27);
             this.textBox5.TabIndex = 2;
+            this.textBox5.Text = "0";
             // 
             // button11
             // 
@@ -677,6 +692,7 @@
             this.button14.TabIndex = 7;
             this.button14.Text = "Cancel";
             this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // groupBox5
             // 
@@ -689,19 +705,6 @@
             this.groupBox5.Size = new System.Drawing.Size(1339, 51);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "Kendaraan Darat",
-            "Kendaraan Laut",
-            "Kendaraan Udara"});
-            this.comboBox4.Location = new System.Drawing.Point(1138, 135);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(200, 27);
-            this.comboBox4.TabIndex = 27;
             // 
             // formPurchaseOrder
             // 

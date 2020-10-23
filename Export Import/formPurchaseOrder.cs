@@ -24,7 +24,6 @@ namespace Export_Import
         DataSet ds;
         int idx = -1;
         int netTotal = 0;
-        int klik = 0;
         public formPurchaseOrder()
         {
             InitializeComponent();
@@ -66,20 +65,19 @@ namespace Export_Import
         }
         public void refreshnettotal() {
             netTotal = 0;
-            if (klik == -1)
-            {
+            int itung = dataGridView1.Rows.Count;
+            if (itung == 0) {
                 return;
             }
             else {
-                for (int i = 0; i < klik; i++)
+                for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
                 {
                     int harga = Int32.Parse(ds.Tables["item"].Rows[i][8].ToString());
                     netTotal += harga;
-                    
+
                 }
                 textBox5.Text = netTotal.ToString();
             }
-            
         }
         public void refreshlocalnet() {
             int ubahnettotal = Int32.Parse(textBox5.Text);
@@ -171,7 +169,6 @@ namespace Export_Import
                 done.Push(temp);
                 
             }
-            klik++;
             refreshnettotal();
             refreshlocalnet();
         }
@@ -181,7 +178,6 @@ namespace Export_Import
             if (idx > -1)
             {
                 ds.Tables["item"].Rows.RemoveAt(idx);
-                klik--;
                 refreshnettotal();
                 refreshlocalnet();
             }
@@ -333,7 +329,7 @@ namespace Export_Import
             //buat detail PO (belum jadi sama sekali)
             
             OracleCommand cmd3;
-            for (int i = 0; i < klik; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
             {
                 string iditems = ds.Tables["item"].Rows[i][0].ToString();
                 string qtyy = ds.Tables["item"].Rows[i][2].ToString();
@@ -373,6 +369,11 @@ namespace Export_Import
                 refreshlocalnet();
             }
             
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }
