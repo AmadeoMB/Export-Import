@@ -33,13 +33,17 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DateToday = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.PINO = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -56,16 +60,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -82,11 +83,6 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -139,14 +135,14 @@
             this.label14.TabIndex = 20;
             this.label14.Text = "Shopping Info";
             // 
-            // dateTimePicker1
+            // DateToday
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Location = new System.Drawing.Point(1137, 95);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
-            this.dateTimePicker1.TabIndex = 18;
-            this.dateTimePicker1.Value = new System.DateTime(2020, 9, 28, 0, 0, 0, 0);
+            this.DateToday.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateToday.Location = new System.Drawing.Point(1137, 95);
+            this.DateToday.Name = "DateToday";
+            this.DateToday.Size = new System.Drawing.Size(200, 27);
+            this.DateToday.TabIndex = 18;
+            this.DateToday.Value = new System.DateTime(2020, 10, 23, 0, 0, 0, 0);
             // 
             // label12
             // 
@@ -178,14 +174,14 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Date";
             // 
-            // textBox2
+            // PINO
             // 
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1137, 11);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(200, 27);
-            this.textBox2.TabIndex = 14;
+            this.PINO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PINO.Location = new System.Drawing.Point(1137, 11);
+            this.PINO.Name = "PINO";
+            this.PINO.ReadOnly = true;
+            this.PINO.Size = new System.Drawing.Size(200, 27);
+            this.PINO.TabIndex = 14;
             // 
             // label9
             // 
@@ -210,11 +206,11 @@
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
+            this.groupBox1.Controls.Add(this.DateToday);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.PINO);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label8);
@@ -235,6 +231,42 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(976, 70);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(133, 19);
+            this.label22.TabIndex = 28;
+            this.label22.Text = "Supplier Invoice No";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(976, 42);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(114, 19);
+            this.label21.TabIndex = 27;
+            this.label21.Text = "Supplier D/O No";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(1137, 67);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(200, 27);
+            this.textBox9.TabIndex = 26;
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Location = new System.Drawing.Point(1137, 39);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(200, 27);
+            this.textBox8.TabIndex = 25;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -247,12 +279,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(280, 18);
+            this.button1.Location = new System.Drawing.Point(376, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(53, 21);
             this.button1.TabIndex = 12;
             this.button1.Text = " Search";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -296,7 +329,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(153, 166);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 27);
+            this.comboBox1.Size = new System.Drawing.Size(217, 27);
             this.comboBox1.TabIndex = 7;
             // 
             // label4
@@ -305,9 +338,9 @@
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(7, 168);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 19);
+            this.label4.Size = new System.Drawing.Size(62, 19);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Purchase Location";
+            this.label4.Text = "Kirim Ke";
             // 
             // textBox1
             // 
@@ -315,7 +348,7 @@
             this.textBox1.Location = new System.Drawing.Point(153, 78);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 79);
+            this.textBox1.Size = new System.Drawing.Size(217, 79);
             this.textBox1.TabIndex = 5;
             // 
             // label3
@@ -333,7 +366,7 @@
             this.tbnama.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbnama.Location = new System.Drawing.Point(153, 48);
             this.tbnama.Name = "tbnama";
-            this.tbnama.Size = new System.Drawing.Size(121, 27);
+            this.tbnama.Size = new System.Drawing.Size(217, 27);
             this.tbnama.TabIndex = 3;
             // 
             // cbcreditor
@@ -342,8 +375,9 @@
             this.cbcreditor.FormattingEnabled = true;
             this.cbcreditor.Location = new System.Drawing.Point(153, 18);
             this.cbcreditor.Name = "cbcreditor";
-            this.cbcreditor.Size = new System.Drawing.Size(121, 27);
+            this.cbcreditor.Size = new System.Drawing.Size(217, 27);
             this.cbcreditor.TabIndex = 2;
+            this.cbcreditor.SelectedIndexChanged += new System.EventHandler(this.cbcreditor_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -382,46 +416,6 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1341, 265);
             this.dataGridView1.TabIndex = 8;
-            // 
-            // button10
-            // 
-            this.button10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(480, 10);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(105, 30);
-            this.button10.TabIndex = 7;
-            this.button10.Text = "Item Package";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(410, 10);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(64, 30);
-            this.button9.TabIndex = 3;
-            this.button9.Text = "Search";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(329, 10);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 30);
-            this.button8.TabIndex = 6;
-            this.button8.Text = "Discount";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(230, 10);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(93, 30);
-            this.button7.TabIndex = 5;
-            this.button7.Text = "Group Total";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -478,10 +472,6 @@
             this.groupBox2.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.groupBox2.Controls.Add(this.button13);
             this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button7);
             this.groupBox2.Controls.Add(this.button6);
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.button4);
@@ -492,6 +482,16 @@
             this.groupBox2.Size = new System.Drawing.Size(1353, 317);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
+            // 
+            // button13
+            // 
+            this.button13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button13.Location = new System.Drawing.Point(1233, 10);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(105, 30);
+            this.button13.TabIndex = 9;
+            this.button13.Text = "Search PO";
+            this.button13.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
@@ -654,52 +654,6 @@
             this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             // 
-            // button13
-            // 
-            this.button13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button13.Location = new System.Drawing.Point(591, 10);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(105, 30);
-            this.button13.TabIndex = 9;
-            this.button13.Text = "Landed Cost";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox8.Location = new System.Drawing.Point(1137, 39);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(200, 27);
-            this.textBox8.TabIndex = 25;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(1137, 67);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(200, 27);
-            this.textBox9.TabIndex = 26;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(976, 42);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(114, 19);
-            this.label21.TabIndex = 27;
-            this.label21.Text = "Supplier D/O No";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(976, 70);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(133, 19);
-            this.label22.TabIndex = 28;
-            this.label22.Text = "Supplier Invoice No";
-            // 
             // formPurchaseInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,6 +666,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "formPurchaseInvoice";
             this.Text = "formPurchaseInvoice";
+            this.Load += new System.EventHandler(this.formPurchaseInvoice_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -731,11 +686,11 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DateToday;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox PINO;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label13;
@@ -754,10 +709,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
