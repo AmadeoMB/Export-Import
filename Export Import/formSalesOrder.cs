@@ -177,25 +177,29 @@ namespace Export_Import
             int berat = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
             int beratTotal = berat * qty;
 
-            int i = 0;
-            bool ada = false;
-            for (; i < ds.Tables["item"].Rows.Count; i++)
+            if (dataGridView.Rows.Count > 1)
             {
-                if (ds.Tables["item"].Rows[i][0].ToString().Equals(id_item))
+                int i = 0;
+                bool ada = false;
+                for (; i < ds.Tables["item"].Rows.Count; i++)
                 {
-                    ada = true;
+                    if (ds.Tables["item"].Rows[i][0].ToString().Equals(id_item))
+                    {
+                        ada = true;
+                    }
+                }
+
+                if (ada)
+                {
+                    ds.Tables["item"].Rows[i][2] = Convert.ToInt32(ds.Tables["item"].Rows[i][2]) + qty;
+                    ds.Tables["item"].Rows[i][5] = Convert.ToInt32(ds.Tables["item"].Rows[i][5]) + beratTotal;
+                    ds.Tables["item"].Rows[i][7] = Convert.ToInt32(ds.Tables["item"].Rows[i][7]) + totalPPN;
+                    ds.Tables["item"].Rows[i][8] = Convert.ToInt32(ds.Tables["item"].Rows[i][8]) + subtotal;
+
+                    return;
                 }
             }
 
-            if (ada)
-            {
-                ds.Tables["item"].Rows[i][2] = Convert.ToInt32(ds.Tables["item"].Rows[i][2]) + qty;
-                ds.Tables["item"].Rows[i][5] = Convert.ToInt32(ds.Tables["item"].Rows[i][5]) + beratTotal;
-                ds.Tables["item"].Rows[i][7] = Convert.ToInt32(ds.Tables["item"].Rows[i][7]) + totalPPN;
-                ds.Tables["item"].Rows[i][8] = Convert.ToInt32(ds.Tables["item"].Rows[i][8]) + subtotal;
-
-                return;
-            }
             cmd = "select id_item, nama_item, " +
                 qty + " as qty_item, " +
                 "satuan_item, " +

@@ -13,7 +13,7 @@ namespace Export_Import
 {
     public partial class formSearchItem : Form
     {
-        formSalesOrder formSO; formPurchaseOrder formPO;
+        formSalesOrder formSO; formPurchaseOrder formPO; formStockIssue formSI;
         OracleDataAdapter daItem;
         DataSet ds = new DataSet();
         OracleConnection conn;
@@ -35,6 +35,13 @@ namespace Export_Import
         {
             InitializeComponent();
             this.formPO = form;
+            this.conn = form.conn;
+        }
+
+        public formSearchItem(formStockIssue form)
+        {
+            InitializeComponent();
+            this.formSI = form;
             this.conn = form.conn;
         }
 
@@ -89,6 +96,11 @@ namespace Export_Import
         private void formSearchItem_Load(object sender, EventArgs e)
         {
             refreshTable();
+
+            if (formSI != null)
+            {
+                groupDiscount.Enabled = false;
+            }
         }
 
         private void txtKeyword_TextChanged(object sender, EventArgs e)

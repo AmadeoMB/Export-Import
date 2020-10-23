@@ -14,7 +14,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -176,6 +176,12 @@
     <Compile Include="formSearchItem.Designer.cs">
       <DependentUpon>formSearchItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="formStockIssue.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formStockIssue.Designer.cs">
+      <DependentUpon>formStockIssue.cs</DependentUpon>
+    </Compile>
     <Compile Include="formUpdateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -321,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formSearchSO.resx">
       <DependentUpon>formSearchSO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formStockIssue.resx">
+      <DependentUpon>formStockIssue.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formUpdateCategory.resx">
       <DependentUpon>formUpdateCategory.cs</DependentUpon>

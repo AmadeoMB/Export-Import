@@ -665,7 +665,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "formPurchaseInvoice";
-            this.Text = "formPurchaseInvoice";
+            this.Text = "Purchase Invoice";
             this.Load += new System.EventHandler(this.formPurchaseInvoice_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
