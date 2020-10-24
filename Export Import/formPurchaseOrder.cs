@@ -309,7 +309,7 @@ namespace Export_Import
             int c = Int32.Parse(b);
             
             OracleCommand cmd2;
-            cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :shipinfo, :currencypo, :rate, :totalh, :totalhc)", conn);
+            cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :totalh, :totalhc)", conn);
             cmd2.Parameters.Add(":idp", PONO.Text);
             cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
             cmd2.Parameters.Add(":idst", comboBox3.SelectedValue);
@@ -319,7 +319,6 @@ namespace Export_Import
             cmd2.Parameters.Add(":tgl", DateToday.Value);
             cmd2.Parameters.Add(":creditterm", c);
             cmd2.Parameters.Add(":shipvia", comboBox4.SelectedItem);
-            cmd2.Parameters.Add(":shipinfo", textBox2.Text);
             cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedValue);
             cmd2.Parameters.Add(":rate", rat);
             cmd2.Parameters.Add(":totalh", tot);
