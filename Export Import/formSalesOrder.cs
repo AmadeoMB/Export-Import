@@ -152,6 +152,8 @@ namespace Export_Import
             int discount = Convert.ToInt32(data[1]);
             int qty = Convert.ToInt32(data[2]);
             object id_item = data[0];
+            MessageBox.Show(id_item + "");
+            return;
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_jual_item from item where id_item ='" + id_item + "'";
@@ -163,8 +165,8 @@ namespace Export_Import
             subtotal -= totalDiscount;
 
             //Hitung PPN
-            cmd = "select jenis_ppn from item where id_item='" + id_item + "'";
-            String ppn = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+            cmd = "select jenis_ppn from item where id_item ='" + id_item + "'";
+            Object ppn = new OracleCommand(cmd, conn).ExecuteScalar();
             int totalPPN = 0;
             if (ppn.Equals("EXC"))
             {
