@@ -36,5 +36,11 @@ namespace Export_Import
             this.Hide();
             new formListStock(this).Show();
         }
+
+        private void btnStockIssue_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new formStockIssue(this).Show();
+        }
     }
 }

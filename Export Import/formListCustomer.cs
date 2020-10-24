@@ -143,7 +143,7 @@ namespace Export_Import
                 try
                 {
 
-                    String cmd = "delete from customer where id_customer = '" + ds.Tables["customer"].Rows[idx][0] + "'";
+                    String cmd = "delete from customer where id_customer = '" + dataGridView.Rows[idx].Cells[0].ToString() + "'";
                     new OracleCommand(cmd, conn).ExecuteNonQuery();
                     ds.Tables["customer"].Clear();
                     refreshTabel();
