@@ -19,6 +19,7 @@ namespace Export_Import
         OracleDataAdapter daSales;
         OracleDataAdapter daItem;
         OracleDataAdapter daCurrent;
+        OracleDataAdapter daship;
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
         DataSet ds;
@@ -63,6 +64,13 @@ namespace Export_Import
             cbCurrent.ValueMember = "nama_currency";
             cbCurrent.DisplayMember = "nama_currency";
         }
+        public void isicbship() {
+            daship = new OracleDataAdapter("select * from ekspedisi", conn);
+            daship.Fill(ds, "ekspedisi");
+            comboBox4.DataSource = ds.Tables["ekspedisi"];
+            comboBox4.ValueMember = "id_ekspedisi";
+            comboBox4.DisplayMember = "nama_ekspedisi";
+        }
         public void refreshnettotal() {
             netTotal = 0;
             int itung = dataGridView1.Rows.Count;
@@ -94,6 +102,7 @@ namespace Export_Import
             isicbSales();
             generatecreateNomerPO();
             isicbCurrent();
+            isicbship();
             refreshnettotal();
             refreshlocalnet();
         }
@@ -318,7 +327,7 @@ namespace Export_Import
             cmd2.Parameters.Add(":alamat", textBox1.Text);
             cmd2.Parameters.Add(":tgl", DateToday.Value);
             cmd2.Parameters.Add(":creditterm", c);
-            cmd2.Parameters.Add(":shipvia", comboBox4.SelectedItem);
+            cmd2.Parameters.Add(":shipvia", comboBox4.SelectedValue);
             cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedValue);
             cmd2.Parameters.Add(":rate", rat);
             cmd2.Parameters.Add(":totalh", tot);

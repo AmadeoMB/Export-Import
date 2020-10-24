@@ -56,6 +56,7 @@
             this.label1.Size = new System.Drawing.Size(76, 19);
             this.label1.TabIndex = 6;
             this.label1.Text = "Keyword : ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dataGridView
             // 
