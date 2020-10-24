@@ -28,11 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.DateToday = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -90,14 +88,6 @@
             this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox3
-            // 
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(1137, 213);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(200, 27);
-            this.textBox3.TabIndex = 24;
-            // 
             // comboBox4
             // 
             this.comboBox4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,16 +114,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(200, 27);
             this.comboBox2.TabIndex = 21;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(976, 216);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(97, 19);
-            this.label14.TabIndex = 20;
-            this.label14.Text = "Shopping Info";
             // 
             // DateToday
             // 
@@ -200,11 +180,9 @@
             this.groupBox1.Controls.Add(this.label21);
             this.groupBox1.Controls.Add(this.textBox9);
             this.groupBox1.Controls.Add(this.textBox8);
-            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.comboBox4);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.DateToday);
             this.groupBox1.Controls.Add(this.label12);
@@ -492,6 +470,7 @@
             this.button13.TabIndex = 9;
             this.button13.Text = "Search PO";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // groupBox3
             // 
@@ -680,12 +659,9 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DateTimePicker DateToday;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;

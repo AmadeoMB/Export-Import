@@ -81,5 +81,10 @@ namespace Export_Import
             tbnama.Text = ds.Tables["supplier"].Rows[idx][1].ToString();
             textBox1.Text = ds.Tables["supplier"].Rows[idx][2].ToString();
         }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

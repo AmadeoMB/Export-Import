@@ -30,8 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -97,8 +95,6 @@
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label14);
@@ -139,24 +135,6 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(200, 27);
             this.comboBox4.TabIndex = 27;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1138, 165);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(200, 27);
-            this.textBox2.TabIndex = 26;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1024, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(93, 19);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Shipping Info";
             // 
             // comboBox3
             // 
@@ -789,8 +767,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.Button btnRedo;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.ComboBox comboBox4;
     }
 }
