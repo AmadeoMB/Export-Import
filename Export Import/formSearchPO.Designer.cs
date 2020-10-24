@@ -47,6 +47,7 @@
             this.btnGet.TabIndex = 13;
             this.btnGet.Text = "Get";
             this.btnGet.UseVisualStyleBackColor = true;
+            this.btnGet.Click += new System.EventHandler(this.btnGet_Click);
             // 
             // dataGridView
             // 
