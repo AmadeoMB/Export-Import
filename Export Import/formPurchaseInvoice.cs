@@ -17,6 +17,7 @@ namespace Export_Import
         DataSet ds;
         OracleDataAdapter daSupplier;
         OracleDataAdapter daGudang;
+        public string id_po = "";
         public formPurchaseInvoice()
         {
             InitializeComponent();
@@ -81,10 +82,45 @@ namespace Export_Import
             tbnama.Text = ds.Tables["supplier"].Rows[idx][1].ToString();
             textBox1.Text = ds.Tables["supplier"].Rows[idx][2].ToString();
         }
-
+        void isiDataItem(String id)
+        {
+            String cmd = "select * from d_purchase_order where id_purchase_order = '" + id + "'";
+            OracleDataReader reader = new OracleCommand(cmd, conn).ExecuteReader();
+            while (reader.Read())
+            {
+                DataRow newRow = ds.Tables["item"].NewRow();
+                newRow[0] = reader.GetValue(0).ToString();
+                newRow[1] = reader.GetValue(1).ToString();
+                newRow[2] = reader.GetValue(2).ToString();
+                newRow[3] = reader.GetValue(3).ToString();
+                newRow[4] = reader.GetValue(4).ToString();
+                newRow[5] = reader.GetValue(5).ToString();
+                newRow[6] = reader.GetValue(6).ToString();
+                newRow[7] = reader.GetValue(7).ToString();
+                newRow[8] = reader.GetValue(8).ToString();
+                newRow[9] = reader.GetValue(9).ToString();
+                newRow[10] = reader.GetValue(10).ToString();
+                ds.Tables["item"].Rows.Add(newRow);
+            }
+            dataGridView1.DataSource = ds.Tables["item"];
+        }
         private void button13_Click(object sender, EventArgs e)
         {
-
+            formSearchPO search = new formSearchPO(this);
+            if (search.ShowDialog() == DialogResult.Yes)
+            {
+                if (!this.id_po.Equals(""))
+                {
+                    isiDataItem(search.id_po);
+                }
+                else
+                {
+                    MessageBox.Show(search.id_po);
+                    this.id_po = search.id_po;
+                    MessageBox.Show(this.id_po);
+                    //ambilDataSO(this.id_po);
+                }
+            }
         }
     }
 }
