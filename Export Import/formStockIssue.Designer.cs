@@ -29,33 +29,33 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.GroupBox();
-            this.pnlTengah = new System.Windows.Forms.GroupBox();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDeskripsi = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pnlBawah = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.dateStockIssue = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtIdStockIssue = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.txtIdStockIssue = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateStockIssue = new System.Windows.Forms.DateTimePicker();
+            this.txtDeskripsi = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlTengah = new System.Windows.Forms.GroupBox();
             this.btnRedo = new System.Windows.Forms.Button();
+            this.dataGridView = new System.Windows.Forms.DataGridView();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pnlBawah = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTengah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -77,6 +77,62 @@
             this.pnlAtas.TabIndex = 2;
             this.pnlAtas.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(961, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(111, 19);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "No Stock Issue :";
+            // 
+            // txtIdStockIssue
+            // 
+            this.txtIdStockIssue.Enabled = false;
+            this.txtIdStockIssue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdStockIssue.Location = new System.Drawing.Point(1088, 24);
+            this.txtIdStockIssue.Name = "txtIdStockIssue";
+            this.txtIdStockIssue.Size = new System.Drawing.Size(250, 27);
+            this.txtIdStockIssue.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1004, 73);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 19);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Tanggal :";
+            // 
+            // dateStockIssue
+            // 
+            this.dateStockIssue.Enabled = false;
+            this.dateStockIssue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateStockIssue.Location = new System.Drawing.Point(1088, 67);
+            this.dateStockIssue.Name = "dateStockIssue";
+            this.dateStockIssue.Size = new System.Drawing.Size(250, 27);
+            this.dateStockIssue.TabIndex = 2;
+            // 
+            // txtDeskripsi
+            // 
+            this.txtDeskripsi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeskripsi.Location = new System.Drawing.Point(158, 24);
+            this.txtDeskripsi.Name = "txtDeskripsi";
+            this.txtDeskripsi.Size = new System.Drawing.Size(250, 27);
+            this.txtDeskripsi.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(66, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(77, 19);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Deskripsi :";
+            // 
             // pnlTengah
             // 
             this.pnlTengah.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -92,6 +148,17 @@
             this.pnlTengah.Size = new System.Drawing.Size(1353, 515);
             this.pnlTengah.TabIndex = 4;
             this.pnlTengah.TabStop = false;
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRedo.Location = new System.Drawing.Point(230, 10);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(52, 30);
+            this.btnRedo.TabIndex = 9;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // dataGridView
             // 
@@ -110,6 +177,57 @@
             this.dataGridView.Size = new System.Drawing.Size(1347, 466);
             this.dataGridView.TabIndex = 8;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID Item";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 200;
+            // 
+            // qty_item
+            // 
+            this.qty_item.DataPropertyName = "qty";
+            this.qty_item.Frozen = true;
+            this.qty_item.HeaderText = "QTY";
+            this.qty_item.Name = "qty_item";
+            this.qty_item.ReadOnly = true;
+            // 
+            // satuan
+            // 
+            this.satuan.DataPropertyName = "satuan";
+            this.satuan.Frozen = true;
+            this.satuan.HeaderText = "Satuan";
+            this.satuan.Name = "satuan";
+            this.satuan.ReadOnly = true;
+            // 
+            // harga
+            // 
+            this.harga.DataPropertyName = "harga";
+            this.harga.Frozen = true;
+            this.harga.HeaderText = "Harga";
+            this.harga.Name = "harga";
+            this.harga.ReadOnly = true;
+            this.harga.Width = 150;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.Frozen = true;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
             // 
             // btnUndo
             // 
@@ -176,26 +294,9 @@
             this.label15.TabIndex = 5;
             this.label15.Text = "List Order";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(66, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 19);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Deskripsi :";
-            // 
-            // txtDeskripsi
-            // 
-            this.txtDeskripsi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDeskripsi.Location = new System.Drawing.Point(158, 24);
-            this.txtDeskripsi.Name = "txtDeskripsi";
-            this.txtDeskripsi.Size = new System.Drawing.Size(250, 27);
-            this.txtDeskripsi.TabIndex = 1;
-            // 
             // txtTotal
             // 
+            this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(1088, 650);
             this.txtTotal.Name = "txtTotal";
@@ -215,9 +316,9 @@
             // pnlBawah
             // 
             this.pnlBawah.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.pnlBawah.Controls.Add(this.button14);
-            this.pnlBawah.Controls.Add(this.button11);
-            this.pnlBawah.Controls.Add(this.button12);
+            this.pnlBawah.Controls.Add(this.btnCancel);
+            this.pnlBawah.Controls.Add(this.btnSave);
+            this.pnlBawah.Controls.Add(this.btnPreview);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 683);
             this.pnlBawah.Name = "pnlBawah";
@@ -225,135 +326,36 @@
             this.pnlBawah.TabIndex = 7;
             this.pnlBawah.TabStop = false;
             // 
-            // button14
+            // btnCancel
             // 
-            this.button14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(1246, 6);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(78, 34);
-            this.button14.TabIndex = 7;
-            this.button14.Text = "Cancel";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnCancel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(1246, 6);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(78, 34);
+            this.btnCancel.TabIndex = 7;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnSave
             // 
-            this.button11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(1072, 6);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(78, 34);
-            this.button11.TabIndex = 4;
-            this.button11.Text = "Save";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(1072, 6);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(78, 34);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button12
+            // btnPreview
             // 
-            this.button12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(1156, 6);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(84, 34);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Preview";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // dateStockIssue
-            // 
-            this.dateStockIssue.Enabled = false;
-            this.dateStockIssue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateStockIssue.Location = new System.Drawing.Point(1088, 67);
-            this.dateStockIssue.Name = "dateStockIssue";
-            this.dateStockIssue.Size = new System.Drawing.Size(250, 27);
-            this.dateStockIssue.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1004, 73);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tanggal :";
-            // 
-            // txtIdStockIssue
-            // 
-            this.txtIdStockIssue.Enabled = false;
-            this.txtIdStockIssue.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdStockIssue.Location = new System.Drawing.Point(1088, 24);
-            this.txtIdStockIssue.Name = "txtIdStockIssue";
-            this.txtIdStockIssue.Size = new System.Drawing.Size(250, 27);
-            this.txtIdStockIssue.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(961, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(111, 19);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "No Stock Issue :";
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(230, 10);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(52, 30);
-            this.btnRedo.TabIndex = 9;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID Item";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama Item";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 200;
-            // 
-            // qty_item
-            // 
-            this.qty_item.DataPropertyName = "qty";
-            this.qty_item.Frozen = true;
-            this.qty_item.HeaderText = "QTY";
-            this.qty_item.Name = "qty_item";
-            this.qty_item.ReadOnly = true;
-            // 
-            // satuan
-            // 
-            this.satuan.DataPropertyName = "satuan";
-            this.satuan.Frozen = true;
-            this.satuan.HeaderText = "Satuan";
-            this.satuan.Name = "satuan";
-            this.satuan.ReadOnly = true;
-            // 
-            // harga
-            // 
-            this.harga.DataPropertyName = "harga";
-            this.harga.Frozen = true;
-            this.harga.HeaderText = "Harga";
-            this.harga.Name = "harga";
-            this.harga.ReadOnly = true;
-            this.harga.Width = 150;
-            // 
-            // subtotal
-            // 
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.Frozen = true;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 200;
+            this.btnPreview.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Location = new System.Drawing.Point(1156, 6);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(84, 34);
+            this.btnPreview.TabIndex = 5;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
             // 
             // formStockIssue
             // 
@@ -395,9 +397,9 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox pnlBawah;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.DateTimePicker dateStockIssue;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

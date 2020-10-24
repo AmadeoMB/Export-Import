@@ -46,7 +46,7 @@ namespace Export_Import
             }
         }
 
-        void generatecreateNomerSI()
+        void generateNomerSI()
         {
             String nomerSI = "SI";
             nomerSI += dateStockIssue.Value.ToString("ddMMyyyy");
@@ -85,6 +85,7 @@ namespace Export_Import
                     if (ds.Tables["item"].Rows[i][0].ToString().Equals(id_item))
                     {
                         ada = true;
+                        break;
                     }
                 }
 
@@ -118,6 +119,7 @@ namespace Export_Import
             try
             {
                 conn.Open();
+                generateNomerSI();
             }
             catch (Exception ex)
             {
@@ -260,6 +262,49 @@ namespace Export_Import
                 }
                 refreshTotal();
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtDeskripsi.Text.Length == 0)
+            {
+                MessageBox.Show("Mohon isi deskipsi");
+                return;
+            }
+
+            String id_si = txtIdStockIssue.Text;
+            DateTime tanggal = dateStockIssue.Value;
+            String deskripsi = txtDeskripsi.Text;
+            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+
+            OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :do, :gudang, :total)", conn);
+            cmd.Parameters.Add(":id", id_si);
+            cmd.Parameters.Add(":deskripsi", deskripsi);
+            cmd.Parameters.Add(":tanggal", tanggal);
+            cmd.Parameters.Add(":total", total);
+            cmd.ExecuteNonQuery();
+
+            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            {
+                String id_item = ds.Tables["item"].Rows[i][0].ToString();
+                String nama_item = ds.Tables["item"].Rows[i][1].ToString();
+                int qty_item = Convert.ToInt32(ds.Tables["item"].Rows[i][2].ToString());
+                String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
+                String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
+                int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
+
+                OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty, :jenis, :harga, :subtotal)", conn);
+                cmdDetail.Parameters.Add(":id", id_item);
+                cmdDetail.Parameters.Add(":si", id_si);
+                cmdDetail.Parameters.Add(":nama", nama_item);
+                cmdDetail.Parameters.Add(":qty", qty_item);
+                cmdDetail.Parameters.Add(":jenis", satuan_item);
+                cmdDetail.Parameters.Add(":harga", hBeli_item);
+                cmdDetail.Parameters.Add(":subtotal", subtotal);
+                cmdDetail.ExecuteNonQuery();
+            }
+            this.Close();
+            master.Show();
         }
     }
 }

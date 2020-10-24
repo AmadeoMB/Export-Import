@@ -75,6 +75,11 @@ namespace Export_Import
         private void txtKeyword_TextChanged(object sender, EventArgs e)
         {
             ds.Tables["SalesOrder"].Clear();
+            if (!id_so.Equals(""))
+            {
+                refreshTable(id_so, txtKeyword.Text);
+                return;
+            }
             refreshTable(txtKeyword.Text);
         }
 
@@ -82,7 +87,7 @@ namespace Export_Import
         {
             if (idx > -1)
             {
-                this.id_so = ds.Tables["SalesOrder"].Rows[idx][0].ToString();
+                this.id_so = dataGridView.Rows[idx].Cells[0].Value.ToString();
                 this.DialogResult = DialogResult.Yes;
                 this.Close();
             }

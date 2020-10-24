@@ -33,6 +33,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblBack = new System.Windows.Forms.Label();
             this.btnList = new System.Windows.Forms.Button();
+            this.btnStockIssue = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -90,12 +91,26 @@
             this.btnList.UseVisualStyleBackColor = false;
             this.btnList.Click += new System.EventHandler(this.btnList_Click);
             // 
+            // btnStockIssue
+            // 
+            this.btnStockIssue.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnStockIssue.Font = new System.Drawing.Font("Calibri", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockIssue.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnStockIssue.Location = new System.Drawing.Point(186, 222);
+            this.btnStockIssue.Name = "btnStockIssue";
+            this.btnStockIssue.Size = new System.Drawing.Size(330, 62);
+            this.btnStockIssue.TabIndex = 9;
+            this.btnStockIssue.Text = "Stock Issue";
+            this.btnStockIssue.UseVisualStyleBackColor = false;
+            this.btnStockIssue.Click += new System.EventHandler(this.btnStockIssue_Click);
+            // 
             // formMasterStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(720, 450);
+            this.Controls.Add(this.btnStockIssue);
             this.Controls.Add(this.btnList);
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.panel1);
@@ -116,5 +131,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.Button btnList;
+        private System.Windows.Forms.Button btnStockIssue;
     }
 }

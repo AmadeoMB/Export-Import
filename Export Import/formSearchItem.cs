@@ -121,7 +121,7 @@ namespace Export_Import
                         discount = numDiscount.Value;
                     }
                     Object[] temp = {
-                        ds.Tables["item"].Rows[idx][0],
+                        dataGridView.Rows[idx].Cells[0].ToString(),
                         discount,
                         numQty.Value
                     };

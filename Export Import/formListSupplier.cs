@@ -171,7 +171,7 @@ namespace Export_Import
                 try
                 {
 
-                    String cmd = "delete from Supplier where id_supplier = '" + ds.Tables["supplier"].Rows[idx][0] + "'";
+                    String cmd = "delete from Supplier where id_supplier = '" + dataGridView.Rows[idx].Cells[0].ToString() + "'";
                     new OracleCommand(cmd, conn).ExecuteNonQuery();
                     ds.Tables["supplier"].Clear();
                     refreshTabel();
