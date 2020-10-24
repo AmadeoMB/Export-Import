@@ -100,12 +100,12 @@ namespace Export_Import
         }
 
         void isiCBSales() {
-            String cmd = "select nama_staff from staff where id_jabatan = 5";
+            String cmd = "select id_staff, nama_staff from staff where id_jabatan = 5";
             daStaff = new OracleDataAdapter(cmd, conn);
             daStaff.Fill(ds, "staff");
             cbStaff.DataSource = ds.Tables["staff"];
             cbStaff.DisplayMember = "nama_staff";
-            cbStaff.ValueMember = "nama_staff";
+            cbStaff.ValueMember = "id_staff";
         }
 
         void isiCBShipVia()
@@ -186,6 +186,7 @@ namespace Export_Import
                     if (ds.Tables["item"].Rows[i][0].ToString().Equals(id_item))
                     {
                         ada = true;
+                        break;
                     }
                 }
 
@@ -194,7 +195,7 @@ namespace Export_Import
                     ds.Tables["item"].Rows[i][2] = Convert.ToInt32(ds.Tables["item"].Rows[i][2]) + qty;
                     ds.Tables["item"].Rows[i][5] = Convert.ToInt32(ds.Tables["item"].Rows[i][5]) + beratTotal;
                     ds.Tables["item"].Rows[i][7] = Convert.ToInt32(ds.Tables["item"].Rows[i][7]) + totalPPN;
-                    ds.Tables["item"].Rows[i][8] = Convert.ToInt32(ds.Tables["item"].Rows[i][8]) + subtotal;
+                    ds.Tables["item"].Rows[i][9] = Convert.ToInt32(ds.Tables["item"].Rows[i][9]) + subtotal;
 
                     return;
                 }
@@ -385,21 +386,25 @@ namespace Export_Import
             String shipVia = cbShip.Text;
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-
-            MessageBox.Show(id_customer);
+            int total = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
+            int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
 
             OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :convert)", conn);
             cmd.Parameters.Add(":id", id_SO);
-            cmd.Parameters.Add(":do", "-");
+            cmd.Parameters.Add(":do", '-');
             cmd.Parameters.Add(":gudang", id_gudang);
             cmd.Parameters.Add(":staff", id_staff);
             cmd.Parameters.Add(":customer", id_customer);
-            cmd.Parameters.Add(":invoice", "-");
+            cmd.Parameters.Add(":invoice", '-');
             cmd.Parameters.Add(":nama", txtNamaCust.Text);
             cmd.Parameters.Add(":alamat", txtAlamatCust.Text);
             cmd.Parameters.Add(":tgl", tanggalSO);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
+            cmd.Parameters.Add(":currency", currency);
+            cmd.Parameters.Add(":rate", rate);
+            cmd.Parameters.Add(":total", total);
+            cmd.Parameters.Add(":convert", convert);
             cmd.ExecuteNonQuery();
 
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
