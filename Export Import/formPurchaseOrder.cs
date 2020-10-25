@@ -61,7 +61,7 @@ namespace Export_Import
             daCurrent = new OracleDataAdapter("select * from currency", conn);
             daCurrent.Fill(ds, "currency");
             cbCurrent.DataSource = ds.Tables["currency"];
-            cbCurrent.ValueMember = "nama_currency";
+            cbCurrent.ValueMember = "id_currency";
             cbCurrent.DisplayMember = "nama_currency";
         }
         public void isicbship() {
@@ -339,6 +339,7 @@ namespace Export_Import
             OracleCommand cmd3;
             for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
             {
+                string nama = ds.Tables["item"].Rows[i][1].ToString();
                 string iditems = ds.Tables["item"].Rows[i][0].ToString();
                 string qtyy = ds.Tables["item"].Rows[i][2].ToString();
                 int qtty = Int32.Parse(qtyy);
@@ -352,9 +353,10 @@ namespace Export_Import
                 int tppn = Int32.Parse(totalppn);
                 string subtotal = ds.Tables["item"].Rows[i][8].ToString();
                 int stotal = Int32.Parse(subtotal);
-                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);
+                cmd3.Parameters.Add(":nama", nama);
                 cmd3.Parameters.Add(":qty", qtty);
                 cmd3.Parameters.Add(":jeniss", jeniss);
                 cmd3.Parameters.Add(":hargas", hargass);

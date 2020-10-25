@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.Panel();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -79,6 +78,7 @@
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -112,17 +112,6 @@
             this.pnlAtas.Name = "pnlAtas";
             this.pnlAtas.Size = new System.Drawing.Size(1350, 289);
             this.pnlAtas.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(420, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(72, 27);
-            this.btnSearch.TabIndex = 21;
-            this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // label9
             // 
@@ -641,6 +630,17 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "List Order";
             // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(420, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(72, 27);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // formSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,7 +703,6 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty_item;
@@ -714,5 +713,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn total_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

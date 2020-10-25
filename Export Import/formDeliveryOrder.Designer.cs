@@ -68,13 +68,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.btnSearchSO = new System.Windows.Forms.Button();
-            this.btnRedo = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnMin = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,6 +79,13 @@
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearchSO = new System.Windows.Forms.Button();
+            this.btnRedo = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnMin = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTotal.SuspendLayout();
             this.pnlBawah.SuspendLayout();
@@ -313,12 +313,14 @@
             // cbIdCust
             // 
             this.cbIdCust.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIdCust.Enabled = false;
             this.cbIdCust.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIdCust.FormattingEnabled = true;
             this.cbIdCust.Location = new System.Drawing.Point(153, 18);
             this.cbIdCust.Name = "cbIdCust";
             this.cbIdCust.Size = new System.Drawing.Size(251, 27);
             this.cbIdCust.TabIndex = 2;
+            this.cbIdCust.SelectedIndexChanged += new System.EventHandler(this.cbIdCust_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -529,77 +531,6 @@
             this.dataGridView.Size = new System.Drawing.Size(1341, 265);
             this.dataGridView.TabIndex = 8;
             // 
-            // btnSearchSO
-            // 
-            this.btnSearchSO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchSO.Location = new System.Drawing.Point(1138, 10);
-            this.btnSearchSO.Name = "btnSearchSO";
-            this.btnSearchSO.Size = new System.Drawing.Size(200, 30);
-            this.btnSearchSO.TabIndex = 7;
-            this.btnSearchSO.Text = "Search S/O";
-            this.btnSearchSO.UseVisualStyleBackColor = true;
-            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(230, 10);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(52, 30);
-            this.btnRedo.TabIndex = 5;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUndo.Location = new System.Drawing.Point(172, 10);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(52, 30);
-            this.btnUndo.TabIndex = 4;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = true;
-            // 
-            // btnDown
-            // 
-            this.btnDown.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDown.Location = new System.Drawing.Point(111, 10);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(55, 30);
-            this.btnDown.TabIndex = 3;
-            this.btnDown.Text = "Down";
-            this.btnDown.UseVisualStyleBackColor = true;
-            // 
-            // btnUp
-            // 
-            this.btnUp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUp.Location = new System.Drawing.Point(70, 10);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(35, 30);
-            this.btnUp.TabIndex = 2;
-            this.btnUp.Text = "Up";
-            this.btnUp.UseVisualStyleBackColor = true;
-            // 
-            // btnMin
-            // 
-            this.btnMin.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMin.Location = new System.Drawing.Point(38, 10);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(26, 30);
-            this.btnMin.TabIndex = 1;
-            this.btnMin.Text = "-";
-            this.btnMin.UseVisualStyleBackColor = true;
-            // 
-            // btnPlus
-            // 
-            this.btnPlus.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlus.Location = new System.Drawing.Point(6, 10);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(26, 30);
-            this.btnPlus.TabIndex = 0;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = true;
-            // 
             // ID
             // 
             this.ID.DataPropertyName = "id_item";
@@ -694,6 +625,77 @@
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             this.subtotal.Width = 170;
+            // 
+            // btnSearchSO
+            // 
+            this.btnSearchSO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchSO.Location = new System.Drawing.Point(1138, 10);
+            this.btnSearchSO.Name = "btnSearchSO";
+            this.btnSearchSO.Size = new System.Drawing.Size(200, 30);
+            this.btnSearchSO.TabIndex = 7;
+            this.btnSearchSO.Text = "Search S/O";
+            this.btnSearchSO.UseVisualStyleBackColor = true;
+            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRedo.Location = new System.Drawing.Point(230, 10);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(52, 30);
+            this.btnRedo.TabIndex = 5;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUndo.Location = new System.Drawing.Point(172, 10);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(52, 30);
+            this.btnUndo.TabIndex = 4;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            // 
+            // btnDown
+            // 
+            this.btnDown.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDown.Location = new System.Drawing.Point(111, 10);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(55, 30);
+            this.btnDown.TabIndex = 3;
+            this.btnDown.Text = "Down";
+            this.btnDown.UseVisualStyleBackColor = true;
+            // 
+            // btnUp
+            // 
+            this.btnUp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUp.Location = new System.Drawing.Point(70, 10);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(35, 30);
+            this.btnUp.TabIndex = 2;
+            this.btnUp.Text = "Up";
+            this.btnUp.UseVisualStyleBackColor = true;
+            // 
+            // btnMin
+            // 
+            this.btnMin.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMin.Location = new System.Drawing.Point(38, 10);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(26, 30);
+            this.btnMin.TabIndex = 1;
+            this.btnMin.Text = "-";
+            this.btnMin.UseVisualStyleBackColor = true;
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPlus.Location = new System.Drawing.Point(6, 10);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(26, 30);
+            this.btnPlus.TabIndex = 0;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
             // 
             // formDeliveryOrder
             // 

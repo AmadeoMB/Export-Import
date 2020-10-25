@@ -234,12 +234,15 @@ namespace Export_Import
                 }
                 else
                 {
-                    MessageBox.Show(search.id_so);
                     this.id_so = search.id_so;
-                    MessageBox.Show(this.id_so);
                     ambilDataSO(this.id_so);
                 }
             }
+        }
+
+        private void cbIdCust_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
