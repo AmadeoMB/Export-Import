@@ -146,7 +146,7 @@ namespace Export_Import
         {
             if (idx > -1)
             {
-                id_sales_order = dataGridView.Rows[idx].Cells[0].ToString();
+                id_sales_order = dataGridView.Rows[idx].Cells[0].Value.ToString();
                 this.Hide();
                 new formDeliveryOrder(this).Show();
             }

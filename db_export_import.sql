@@ -162,10 +162,11 @@ create table H_DELIVERY_ORDER
    NAMA_CUSTOMER        VARCHAR2(255)        not null,
    ALAMAT_CUSTOMER      VARCHAR2(255)        not null,
    TGL_DELIVERY_ORDER   DATE                 not null,
-   CREDIT_TERM_DELIVERY_ORDER INTEGER              not null,
+   CREDIT_TERM_DELIVERY_ORDER INTEGER        not null,
    SHIP_VIA             VARCHAR2(255)        not null,
+   CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
+   RATE                 INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
-   RATE                 INTEGER            not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_DELIVERY_ORDER primary key (ID_DELIVERY_ORDER)
 );
@@ -198,8 +199,9 @@ create table H_INVOICE
    TGL_INVOICE          DATE                 not null,
    CREDIT_TERM_INVOICE  INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
+   CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
+   RATE                 INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
-   RATE                 INTEGER            not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_INVOICE primary key (ID_INVOICE)
 );
@@ -338,14 +340,14 @@ insert into GUDANG values('GB001', 'Gudang Besar', 'Jalan Gibah Santuy no 69', 0
 insert into GUDANG values('GK001', 'Gudang Kecil', 'Jalan In Aja Dulu no 28', 081372647643);
 insert into GUDANG values('GU001', 'Gudang Utama', 'Jalan Sama Aku Aja no 13', 083246856583);
 
-insert into h_sales_order values ('12346', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 2, 'TM001', 'IDR', 1, 123, 123);
+insert into h_sales_order values ('12346', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 21, 'TM001', 'IDR', 1, 123, 123);
 insert into d_sales_order values ('KK001', '12346', 'Keripik Kentang Original', 12, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
 insert into d_sales_order values ('0M001', '12346', 'Odading Mang Oleh', 12, 'BOX', 123, 234, 'EXC', 3, 12345, 123456);
 
-insert into h_sales_order values ('12347', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 2, 'TM001', 'IDR', 1, 123, 123);
+insert into h_sales_order values ('12347', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 21, 'TM001', 'IDR', 1, 123, 123);
 insert into d_sales_order values ('JL001', '12347', 'Jus Lemon Segar', 12, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
 
-insert into h_sales_order values ('12348', '-', 'GK001', 'NR001', 'MK001', '-', 'Manusia Karet', 'Jalan Bandung Selatan no 15', sysdate, 2, 'TM001', 'IDR', 1, 123, 123);
+insert into h_sales_order values ('12348', '-', 'GK001', 'NR001', 'MK001', '-', 'Manusia Karet', 'Jalan Bandung Selatan no 15', sysdate, 21, 'TM001', 'IDR', 1, 123, 123);
 insert into d_sales_order values ('KK001', '12348', 'Keripik Kentang Original', 24, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
 insert into d_sales_order values ('0M001', '12348', 'Odading Mang Oleh', 24, 'BOX', 123, 234, 'EXC', 3, 12345, 123456);
 

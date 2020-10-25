@@ -123,6 +123,7 @@
             // 
             // comboBox4
             // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
@@ -136,6 +137,7 @@
             // 
             // comboBox3
             // 
+            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Location = new System.Drawing.Point(1138, 102);
@@ -145,6 +147,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
@@ -176,7 +179,7 @@
             this.DateToday.Name = "DateToday";
             this.DateToday.Size = new System.Drawing.Size(200, 27);
             this.DateToday.TabIndex = 18;
-            this.DateToday.Value = new System.DateTime(2020, 10, 18, 14, 31, 33, 0);
+            this.DateToday.Value = new System.DateTime(2020, 10, 26, 0, 54, 13, 0);
             // 
             // label12
             // 
@@ -265,6 +268,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(153, 166);
@@ -313,6 +317,7 @@
             // 
             // cbcreditor
             // 
+            this.cbcreditor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbcreditor.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbcreditor.FormattingEnabled = true;
             this.cbcreditor.Location = new System.Drawing.Point(153, 18);

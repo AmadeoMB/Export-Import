@@ -152,8 +152,6 @@ namespace Export_Import
             int discount = Convert.ToInt32(data[1]);
             int qty = Convert.ToInt32(data[2]);
             object id_item = data[0];
-            MessageBox.Show(id_item + "");
-            return;
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_jual_item from item where id_item ='" + id_item + "'";
@@ -361,7 +359,9 @@ namespace Export_Import
             }
         }
 
-        void save(Boolean tutupForm)
+        Boolean saved = false;
+
+        void save()
         {
             if (dataGridView.Rows.Count <= 0)
             {
@@ -385,7 +385,7 @@ namespace Export_Import
             String id_SO = txtIdSO.Text;
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
-            String shipVia = cbShip.Text;
+            String shipVia = cbShip.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
             int total = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
@@ -437,16 +437,23 @@ namespace Export_Import
                 cmdDetail.ExecuteNonQuery();
             }
 
-            if (tutupForm)
-            {
-                this.Close();
-                master.Show();
-            }
+            saved = true;
+            MessageBox.Show("Save berhasil");
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            save(true);
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
         }
 
         void refreshTotal()
@@ -492,9 +499,116 @@ namespace Export_Import
 
         public String id_so = "";
 
+        void overwrite()
+        {
+            if (dataGridView.Rows.Count <= 0)
+            {
+                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
+                return;
+            }
+            if (cbCreditTerm.SelectedIndex < 0)
+            {
+                MessageBox.Show("Pilih Credit Term");
+                return;
+            }
+
+            int creditTerm = 1;
+            if (cbCreditTerm.Text != "Cash" && cbCreditTerm.Text != "COD")
+            {
+                creditTerm = Convert.ToInt32(cbCreditTerm.Text.Substring(0, 2));
+            }
+
+            String id_customer = cbIdCust.SelectedValue + "";
+            String id_gudang = cbGudang.SelectedValue + "";
+            String id_SO = txtIdSO.Text;
+            String id_staff = cbStaff.SelectedValue + "";
+            DateTime tanggalSO = dateSO.Value;
+            String shipVia = cbShip.Text;
+            String currency = cbCurrency.SelectedValue + "";
+            int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+            int total = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
+            int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
+
+            OracleCommand cmd = new OracleCommand("update h_sales_order " +
+                "set " +
+                "id_gudang = :gudang, " +
+                "id_staff = :staff, " +
+                "id_customer = :customer, " +
+                "nama_customer = :nama, " +
+                "alamat_customer = :alamat, " +
+                "tgl_sales_order = :tgl, " +
+                "credit_term_sales_order = :credit, " +
+                "ship_via = :ship, " +
+                "currency_sales_order = :currency, " +
+                "rate = :rate, " +
+                "total_harga = :total, " +
+                "total_harga_convert = :convert " +
+                "where id_sales_order = '" + id_so + "'", conn);
+
+            cmd.Parameters.Add(":gudang", id_gudang);
+            cmd.Parameters.Add(":staff", id_staff);
+            cmd.Parameters.Add(":customer", id_customer);
+            cmd.Parameters.Add(":nama", txtNamaCust.Text);
+            cmd.Parameters.Add(":alamat", txtAlamatCust.Text);
+            cmd.Parameters.Add(":tgl", tanggalSO);
+            cmd.Parameters.Add(":credit", creditTerm);
+            cmd.Parameters.Add(":ship", shipVia);
+            cmd.Parameters.Add(":currency", currency);
+            cmd.Parameters.Add(":rate", rate);
+            cmd.Parameters.Add(":total", total);
+            cmd.Parameters.Add(":convert", convert);
+
+            cmd.ExecuteNonQuery();
+
+            //Delete last delete
+            cmd = new OracleCommand("delete from d_sales_order where id_sales_order = '" + id_SO + "'", conn);
+            cmd.ExecuteNonQuery();
+
+            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            {
+                String id_item = ds.Tables["item"].Rows[i][0].ToString();
+                String nama_item = ds.Tables["item"].Rows[i][1].ToString();
+                String qty_item = ds.Tables["item"].Rows[i][2].ToString();
+                String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
+                String hJual_item = ds.Tables["item"].Rows[i][4].ToString();
+                String berat_item = ds.Tables["item"].Rows[i][5].ToString();
+                String jenis_ppn = ds.Tables["item"].Rows[i][6].ToString();
+                String totalPPN = ds.Tables["item"].Rows[i][7].ToString();
+                String discount = ds.Tables["item"].Rows[i][8].ToString();
+                String subtotal = ds.Tables["item"].Rows[i][9].ToString();
+
+                OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :ppnT, :subtotal)", conn);
+                cmdDetail.Parameters.Add(":id", id_item);
+                cmdDetail.Parameters.Add(":so", id_SO);
+                cmdDetail.Parameters.Add(":nama", nama_item);
+                cmdDetail.Parameters.Add(":qty", qty_item);
+                cmdDetail.Parameters.Add(":jenis", satuan_item);
+                cmdDetail.Parameters.Add(":harga", hJual_item);
+                cmdDetail.Parameters.Add(":berat", berat_item);
+                cmdDetail.Parameters.Add(":ppn", jenis_ppn);
+                cmdDetail.Parameters.Add(":discount", discount);
+                cmdDetail.Parameters.Add(":ppnT", totalPPN);
+                cmdDetail.Parameters.Add(":subtotal", subtotal);
+                cmdDetail.ExecuteNonQuery();
+            }
+
+            saved = true;
+            MessageBox.Show("Save berhasil");
+        }
+
         private void btnPreview_Click(object sender, EventArgs e)
         {
-            save(false);
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
             this.id_so = txtIdSO.Text;
 
             new formPreviewSO(this).ShowDialog();

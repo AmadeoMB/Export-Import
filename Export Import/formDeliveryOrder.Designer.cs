@@ -63,8 +63,8 @@
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnPreview = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -127,6 +127,7 @@
             // 
             // cbShipVia
             // 
+            this.cbShipVia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbShipVia.Enabled = false;
             this.cbShipVia.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbShipVia.FormattingEnabled = true;
@@ -137,6 +138,7 @@
             // 
             // cbNamaSales
             // 
+            this.cbNamaSales.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbNamaSales.Enabled = false;
             this.cbNamaSales.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNamaSales.FormattingEnabled = true;
@@ -147,9 +149,17 @@
             // 
             // cbCreditTerm
             // 
+            this.cbCreditTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCreditTerm.Enabled = false;
             this.cbCreditTerm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCreditTerm.FormattingEnabled = true;
+            this.cbCreditTerm.Items.AddRange(new object[] {
+            "Cash",
+            "7 Days",
+            "14 Days",
+            "21 Days",
+            "30 Days",
+            "60 Days"});
             this.cbCreditTerm.Location = new System.Drawing.Point(1137, 81);
             this.cbCreditTerm.Name = "cbCreditTerm";
             this.cbCreditTerm.Size = new System.Drawing.Size(200, 27);
@@ -173,7 +183,7 @@
             this.dateDO.Name = "dateDO";
             this.dateDO.Size = new System.Drawing.Size(200, 27);
             this.dateDO.TabIndex = 18;
-            this.dateDO.Value = new System.DateTime(2020, 9, 28, 0, 0, 0, 0);
+            this.dateDO.Value = new System.DateTime(2020, 10, 26, 0, 0, 0, 0);
             // 
             // label12
             // 
@@ -263,6 +273,7 @@
             // 
             // cbGudang
             // 
+            this.cbGudang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbGudang.Enabled = false;
             this.cbGudang.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGudang.FormattingEnabled = true;
@@ -446,8 +457,8 @@
             // 
             this.pnlBawah.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.pnlBawah.Controls.Add(this.button14);
-            this.pnlBawah.Controls.Add(this.button11);
-            this.pnlBawah.Controls.Add(this.button12);
+            this.pnlBawah.Controls.Add(this.btnSave);
+            this.pnlBawah.Controls.Add(this.btnPreview);
             this.pnlBawah.Location = new System.Drawing.Point(0, 693);
             this.pnlBawah.Name = "pnlBawah";
             this.pnlBawah.Size = new System.Drawing.Size(1347, 40);
@@ -464,25 +475,27 @@
             this.button14.Text = "Cancel";
             this.button14.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnSave
             // 
-            this.button11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(1086, 2);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(78, 34);
-            this.button11.TabIndex = 4;
-            this.button11.Text = "Save";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(1086, 2);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(78, 34);
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // button12
+            // btnPreview
             // 
-            this.button12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button12.Location = new System.Drawing.Point(1170, 2);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(84, 34);
-            this.button12.TabIndex = 5;
-            this.button12.Text = "Preview";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnPreview.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreview.Location = new System.Drawing.Point(1170, 2);
+            this.btnPreview.Name = "btnPreview";
+            this.btnPreview.Size = new System.Drawing.Size(84, 34);
+            this.btnPreview.TabIndex = 5;
+            this.btnPreview.Text = "Preview";
+            this.btnPreview.UseVisualStyleBackColor = true;
+            this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
             // label15
             // 
@@ -759,8 +772,8 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.GroupBox pnlBawah;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox pnlTengah;
         private System.Windows.Forms.DataGridView dataGridView;

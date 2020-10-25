@@ -56,6 +56,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
+            this.btnTD = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -71,7 +72,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
-            this.btnTD = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlTengah.SuspendLayout();
@@ -117,7 +117,7 @@
             this.DateToday.Name = "DateToday";
             this.DateToday.Size = new System.Drawing.Size(200, 27);
             this.DateToday.TabIndex = 18;
-            this.DateToday.Value = new System.DateTime(2020, 10, 23, 0, 0, 0, 0);
+            this.DateToday.Value = new System.DateTime(2020, 10, 26, 0, 0, 0, 0);
             // 
             // label12
             // 
@@ -378,6 +378,18 @@
             this.pnlTengah.TabIndex = 3;
             this.pnlTengah.TabStop = false;
             // 
+            // btnTD
+            // 
+            this.btnTD.Enabled = false;
+            this.btnTD.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTD.Location = new System.Drawing.Point(6, 10);
+            this.btnTD.Name = "btnTD";
+            this.btnTD.Size = new System.Drawing.Size(141, 30);
+            this.btnTD.TabIndex = 10;
+            this.btnTD.Text = "Transfer Document";
+            this.btnTD.UseVisualStyleBackColor = true;
+            this.btnTD.Click += new System.EventHandler(this.btnTD_Click);
+            // 
             // button13
             // 
             this.button13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -535,18 +547,6 @@
             this.pnlBawah.Size = new System.Drawing.Size(1347, 40);
             this.pnlBawah.TabIndex = 6;
             this.pnlBawah.TabStop = false;
-            // 
-            // btnTD
-            // 
-            this.btnTD.Enabled = false;
-            this.btnTD.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTD.Location = new System.Drawing.Point(6, 10);
-            this.btnTD.Name = "btnTD";
-            this.btnTD.Size = new System.Drawing.Size(141, 30);
-            this.btnTD.TabIndex = 10;
-            this.btnTD.Text = "Transfer Document";
-            this.btnTD.UseVisualStyleBackColor = true;
-            this.btnTD.Click += new System.EventHandler(this.btnTD_Click);
             // 
             // formPurchaseInvoice
             // 

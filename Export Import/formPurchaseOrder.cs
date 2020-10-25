@@ -298,6 +298,8 @@ namespace Export_Import
             refreshlocalnet();
         }
 
+        Boolean saved = false;
+
         void save()
         {
             if (comboBox2.SelectedIndex < 0)
@@ -369,12 +371,24 @@ namespace Export_Import
                 cmd3.ExecuteNonQuery();
             }
 
+            saved = true;
+
             MessageBox.Show("Berhasil  Menyimpan");
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            save();
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
         }
 
         private void cbCurrent_SelectedIndexChanged(object sender, EventArgs e)
@@ -387,6 +401,96 @@ namespace Export_Import
             
         }
 
+        void overwrite()
+        {
+            if (comboBox2.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih credit term");
+                return;
+            }
+            if (comboBox4.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih ship via");
+                return;
+            }
+            //kurang pengecekan textbox atau combobox
+            //buat header PO
+            int lntot = Int32.Parse(LNTotal.Text);
+            int tot = Int32.Parse(textBox5.Text);
+            int rat = Int32.Parse(textBox7.Text);
+            string a = comboBox2.SelectedItem.ToString();
+            string b = a.Substring(0, 1);
+            int c = Int32.Parse(b);
+
+            OracleCommand cmd2;
+            cmd2 = new OracleCommand("update H_PURCHASE_ORDER " +
+                "set " +
+                "id_supplier = :ids, " +
+                "id_staff = :idst, " +
+                "id_gudang = :idg, " +
+                "nama_supplier = :nama, " +
+                "alamat_supplier = :alamat, " +
+                "tgl_purchase_order = :tgl, " +
+                "credit_term_purchase_order = :creditterm, " +
+                "ship_via = :shipvia, " +
+                "currency_purchase_order = :currencypo, " +
+                "rate = :rate, " +
+                "total_harga = :totalh, " +
+                "total_harga_convert = :totalhc " +
+                "where id_purchase_order = '" + PONO.Text + "'", conn);
+            cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
+            cmd2.Parameters.Add(":idst", comboBox3.SelectedValue);
+            cmd2.Parameters.Add(":idg", comboBox1.SelectedValue);
+            cmd2.Parameters.Add(":nama", tbnama.Text);
+            cmd2.Parameters.Add(":alamat", textBox1.Text);
+            cmd2.Parameters.Add(":tgl", DateToday.Value);
+            cmd2.Parameters.Add(":creditterm", c);
+            cmd2.Parameters.Add(":shipvia", comboBox4.SelectedValue);
+            cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedValue);
+            cmd2.Parameters.Add(":rate", rat);
+            cmd2.Parameters.Add(":totalh", tot);
+            cmd2.Parameters.Add(":totalhc", lntot);
+            cmd2.ExecuteNonQuery();
+
+            //Delete
+            new OracleCommand("delete from d_purchase_order where id_purchase_order = '" + PONO.Text + "'", conn).ExecuteNonQuery();
+
+            OracleCommand cmd3;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                string nama = ds.Tables["item"].Rows[i][1].ToString();
+                string iditems = ds.Tables["item"].Rows[i][0].ToString();
+                string qtyy = ds.Tables["item"].Rows[i][2].ToString();
+                int qtty = Int32.Parse(qtyy);
+                string jeniss = ds.Tables["item"].Rows[i][3].ToString();
+                string hargas = ds.Tables["item"].Rows[i][4].ToString();
+                int hargass = Int32.Parse(hargas);
+                string diskoun = ds.Tables["item"].Rows[i][7].ToString();
+                int discroun = Int32.Parse(diskoun);
+                string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
+                string totalppn = ds.Tables["item"].Rows[i][6].ToString();
+                int tppn = Int32.Parse(totalppn);
+                string subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                int stotal = Int32.Parse(subtotal);
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
+                cmd3.Parameters.Add(":iditem", iditems);
+                cmd3.Parameters.Add(":idpo", PONO.Text);
+                cmd3.Parameters.Add(":nama", nama);
+                cmd3.Parameters.Add(":qty", qtty);
+                cmd3.Parameters.Add(":jeniss", jeniss);
+                cmd3.Parameters.Add(":hargas", hargass);
+                cmd3.Parameters.Add(":diskon", discroun);
+                cmd3.Parameters.Add(":jenisppn", jenisppn);
+                cmd3.Parameters.Add(":totalppn", tppn);
+                cmd3.Parameters.Add(":subtotal", stotal);
+                cmd3.ExecuteNonQuery();
+            }
+
+            saved = true;
+
+            MessageBox.Show("Berhasil  Menyimpan");
+        }
+
         private void button14_Click(object sender, EventArgs e)
         {
             this.Dispose();
@@ -396,7 +500,17 @@ namespace Export_Import
 
         private void button12_Click(object sender, EventArgs e)
         {
-            save();
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
             this.id_po = PONO.Text;
 
             new formPreviewPO(this).ShowDialog();

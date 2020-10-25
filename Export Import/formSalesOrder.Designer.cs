@@ -161,7 +161,6 @@
             this.cbCreditTerm.FormattingEnabled = true;
             this.cbCreditTerm.Items.AddRange(new object[] {
             "Cash",
-            "COD",
             "7 Days",
             "14 Days",
             "21 Days",
@@ -209,6 +208,7 @@
             this.dateSO.Name = "dateSO";
             this.dateSO.Size = new System.Drawing.Size(300, 27);
             this.dateSO.TabIndex = 11;
+            this.dateSO.Value = new System.DateTime(2020, 10, 26, 0, 54, 31, 0);
             // 
             // label5
             // 
