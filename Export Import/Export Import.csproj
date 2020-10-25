@@ -292,6 +292,12 @@
     <Compile Include="formSalesOrder.Designer.cs">
       <DependentUpon>formSalesOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="PreviewPurchaseInvoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviewPurchaseInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PreviewPurchaseOrder.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -422,6 +428,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formSalesOrder.resx">
       <DependentUpon>formSalesOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewPurchaseInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PreviewPurchaseInvoice.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewPurchaseOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
