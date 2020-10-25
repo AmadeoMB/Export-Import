@@ -298,13 +298,15 @@ namespace Export_Import
             refreshlocalnet();
         }
 
-        private void button11_Click(object sender, EventArgs e)
+        void save()
         {
-            if (comboBox2.SelectedIndex < 0) {
+            if (comboBox2.SelectedIndex < 0)
+            {
                 MessageBox.Show("Mohon pilih credit term");
                 return;
             }
-            if (comboBox4.SelectedIndex < 0) {
+            if (comboBox4.SelectedIndex < 0)
+            {
                 MessageBox.Show("Mohon pilih ship via");
                 return;
             }
@@ -316,7 +318,7 @@ namespace Export_Import
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
             int c = Int32.Parse(b);
-            
+
             OracleCommand cmd2;
             cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :totalh, :totalhc)", conn);
             cmd2.Parameters.Add(":idp", PONO.Text);
@@ -335,9 +337,9 @@ namespace Export_Import
             cmd2.ExecuteNonQuery();
 
             //buat detail PO (belum jadi sama sekali)
-            
+
             OracleCommand cmd3;
-            for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 string nama = ds.Tables["item"].Rows[i][1].ToString();
                 string iditems = ds.Tables["item"].Rows[i][0].ToString();
@@ -368,7 +370,11 @@ namespace Export_Import
             }
 
             MessageBox.Show("Berhasil  Menyimpan");
+        }
 
+        private void button11_Click(object sender, EventArgs e)
+        {
+            save();
         }
 
         private void cbCurrent_SelectedIndexChanged(object sender, EventArgs e)
@@ -384,6 +390,16 @@ namespace Export_Import
         private void button14_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        public String id_po = "";
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            save();
+            this.id_po = PONO.Text;
+
+            new formPreviewPO(this).ShowDialog();
         }
     }
 }

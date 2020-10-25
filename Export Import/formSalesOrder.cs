@@ -361,7 +361,7 @@ namespace Export_Import
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        void save(Boolean tutupForm)
         {
             if (dataGridView.Rows.Count <= 0)
             {
@@ -377,7 +377,7 @@ namespace Export_Import
             int creditTerm = 1;
             if (cbCreditTerm.Text != "Cash" && cbCreditTerm.Text != "COD")
             {
-                creditTerm = Convert.ToInt32(cbCreditTerm.Text.Substring(0,2));
+                creditTerm = Convert.ToInt32(cbCreditTerm.Text.Substring(0, 2));
             }
 
             String id_customer = cbIdCust.SelectedValue + "";
@@ -436,8 +436,17 @@ namespace Export_Import
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
-            this.Close();
-            master.Show();
+
+            if (tutupForm)
+            {
+                this.Close();
+                master.Show();
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            save(true);
         }
 
         void refreshTotal()
@@ -479,6 +488,16 @@ namespace Export_Import
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
 
             txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate) ;
+        }
+
+        public String id_so = "";
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            save(false);
+            this.id_so = txtIdSO.Text;
+
+            new formPreviewSO(this).ShowDialog();
         }
     }
 }
