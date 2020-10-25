@@ -16,14 +16,14 @@ namespace Export_Import {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PreviewDeliveryOrder : ReportClass {
+    public class PreviewStockIssue : ReportClass {
         
-        public PreviewDeliveryOrder() {
+        public PreviewStockIssue() {
         }
         
         public override string ResourceName {
             get {
-                return "PreviewDeliveryOrder.rpt";
+                return "PreviewStockIssue.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Export_Import {
         
         public override string FullResourceName {
             get {
-                return "Export_Import.PreviewDeliveryOrder.rpt";
+                return "Export_Import.PreviewStockIssue.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Export_Import {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPreviewDeliveryOrder : Component, ICachedReport {
+    public class CachedPreviewStockIssue : Component, ICachedReport {
         
-        public CachedPreviewDeliveryOrder() {
+        public CachedPreviewStockIssue() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Export_Import {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PreviewDeliveryOrder rpt = new PreviewDeliveryOrder();
+            PreviewStockIssue rpt = new PreviewStockIssue();
             rpt.Site = this.Site;
             return rpt;
         }

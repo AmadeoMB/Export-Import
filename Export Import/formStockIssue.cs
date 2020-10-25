@@ -264,7 +264,56 @@ namespace Export_Import
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        Boolean saved = false;
+
+        void overwrite()
+        {
+            if (txtDeskripsi.Text.Length == 0)
+            {
+                MessageBox.Show("Mohon isi deskipsi");
+                return;
+            }
+
+            String id_si = txtIdStockIssue.Text;
+            DateTime tanggal = dateStockIssue.Value;
+            String deskripsi = txtDeskripsi.Text;
+            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+
+            OracleCommand cmd = new OracleCommand("update h_stock_issue set " +
+                "desk_stock_issue = :deskripsi, " +
+                "tgl_stock_issue = :tanggal, " +
+                "total_stock_issue = :total " +
+                "where id_stock_issue = '" + id_si + "'", conn);
+            cmd.Parameters.Add(":deskripsi", deskripsi);
+            cmd.Parameters.Add(":tanggal", tanggal);
+            cmd.Parameters.Add(":total", total);
+            cmd.ExecuteNonQuery();
+
+            //Delete Last Dokumen
+            new OracleCommand("delete from d_stock_issue where id_stock_issue = '" + id_si + "'", conn).ExecuteNonQuery();
+
+            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            {
+                String id_item = ds.Tables["item"].Rows[i][0].ToString();
+                String nama_item = ds.Tables["item"].Rows[i][1].ToString();
+                int qty_item = Convert.ToInt32(ds.Tables["item"].Rows[i][2].ToString());
+                String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
+                String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
+                int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
+
+                OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty, :jenis, :harga, :subtotal)", conn);
+                cmdDetail.Parameters.Add(":id", id_item);
+                cmdDetail.Parameters.Add(":si", id_si);
+                cmdDetail.Parameters.Add(":nama", nama_item);
+                cmdDetail.Parameters.Add(":qty", qty_item);
+                cmdDetail.Parameters.Add(":jenis", satuan_item);
+                cmdDetail.Parameters.Add(":harga", hBeli_item);
+                cmdDetail.Parameters.Add(":subtotal", subtotal);
+                cmdDetail.ExecuteNonQuery();
+            }
+        }
+
+        void save()
         {
             if (txtDeskripsi.Text.Length == 0)
             {
@@ -303,8 +352,43 @@ namespace Export_Import
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
-            this.Close();
-            master.Show();
+
+            saved = true;
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
+        }
+
+        public String id_si;
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
+
+            this.id_si = txtIdStockIssue.Text;
+            new formPreviewSI(this).ShowDialog();
         }
     }
 }

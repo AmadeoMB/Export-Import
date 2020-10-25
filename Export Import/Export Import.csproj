@@ -154,11 +154,29 @@
     <Compile Include="formMasterStaff.Designer.cs">
       <DependentUpon>formMasterStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="formPreviewDO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPreviewDO.Designer.cs">
+      <DependentUpon>formPreviewDO.cs</DependentUpon>
+    </Compile>
     <Compile Include="formPreviewPO.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="formPreviewPO.Designer.cs">
       <DependentUpon>formPreviewPO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formPreviewPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPreviewPI.Designer.cs">
+      <DependentUpon>formPreviewPI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formPreviewSI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPreviewSI.Designer.cs">
+      <DependentUpon>formPreviewSI.cs</DependentUpon>
     </Compile>
     <Compile Include="formPreviewSO.cs">
       <SubType>Form</SubType>
@@ -292,6 +310,12 @@
     <Compile Include="formSalesOrder.Designer.cs">
       <DependentUpon>formSalesOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="PreviewDeliveryOrder.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviewDeliveryOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PreviewPurchaseInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -308,6 +332,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PreviewSalesOrder.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PreviewStockIssue.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviewStockIssue.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Program.cs" />
@@ -360,8 +390,17 @@
     <EmbeddedResource Include="formMasterStaff.resx">
       <DependentUpon>formMasterStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formPreviewDO.resx">
+      <DependentUpon>formPreviewDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formPreviewPI.resx">
+      <DependentUpon>formPreviewPI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formPreviewPO.resx">
       <DependentUpon>formPreviewPO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formPreviewSI.resx">
+      <DependentUpon>formPreviewSI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPreviewSO.resx">
       <DependentUpon>formPreviewSO.cs</DependentUpon>
@@ -429,6 +468,10 @@
     <EmbeddedResource Include="formSalesOrder.resx">
       <DependentUpon>formSalesOrder.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PreviewDeliveryOrder.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PreviewDeliveryOrder.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="PreviewPurchaseInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PreviewPurchaseInvoice.cs</LastGenOutput>
@@ -440,6 +483,10 @@
     <EmbeddedResource Include="PreviewSalesOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PreviewSalesOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewStockIssue.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PreviewStockIssue.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

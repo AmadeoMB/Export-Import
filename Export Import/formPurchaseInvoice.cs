@@ -284,10 +284,10 @@ namespace Export_Import
                 cbCreditTerm.Text = new OracleCommand(cmd, conn).ExecuteScalar().ToString() + " Months";
 
                 cmd = "select total_harga from h_purchase_order where id_purchase_order = '" + id + "'";
-                txtTotal.Text = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                txtTotal.Text = "Rp " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
 
                 cmd = "select total_harga_convert from h_purchase_order where id_purchase_order = '" + id + "'";
-                txtTotalConvert.Text = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                txtTotalConvert.Text = cbCurrent.SelectedValue + " " +new OracleCommand(cmd, conn).ExecuteScalar().ToString();
 
                 isiDataItem(id);
             }
@@ -374,7 +374,9 @@ namespace Export_Import
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        Boolean saved = false;
+
+        void save()
         {
             if (txtInvoiceSupplier.Text.Equals(""))
             {
@@ -394,8 +396,8 @@ namespace Export_Import
             String admin = cbNamaStaff.SelectedValue.ToString();
             String ekspedisi = cbEkspedisi.SelectedValue.ToString();
 
-            int total = Int32.Parse(txtTotal.Text);
-            int totalConvert = Int32.Parse(txtTotalConvert.Text);
+            int total = Int32.Parse(txtTotal.Text.Substring(3));
+            int totalConvert = Int32.Parse(txtTotalConvert.Text.Substring(4));
             int rate = Int32.Parse(txtRate.Text.Substring(4));
             String currency = cbCurrent.SelectedValue.ToString();
 
@@ -454,7 +456,139 @@ namespace Export_Import
             }
 
             MessageBox.Show("Berhasil  Menyimpan");
+            saved = true;
+        }
 
+        void overwrite()
+        {
+            if (txtInvoiceSupplier.Text.Equals(""))
+            {
+                MessageBox.Show("Mohon isi Nomer Invoice dari Supplier");
+                return;
+            }
+            //kurang pengecekan textbox atau combobox
+            //buat header PO
+            String id_supplier = cbIdSupplier.Text;
+            String nama_supplier = txtNamaSupplier.Text;
+            String alamat_supplier = txtAlamatSupplier.Text;
+            String gudang = cbGudang.SelectedValue.ToString();
+            String id_pi = txtIdPI.Text;
+            String invoice_supplier = txtInvoiceSupplier.Text;
+            DateTime tanggal = DateToday.Value;
+            int creditTerm = Int32.Parse(cbCreditTerm.Text.Substring(0, 2));
+            String admin = cbNamaStaff.SelectedValue.ToString();
+            String ekspedisi = cbEkspedisi.SelectedValue.ToString();
+
+            int total = Int32.Parse(txtTotal.Text);
+            int totalConvert = Int32.Parse(txtTotalConvert.Text);
+            int rate = Int32.Parse(txtRate.Text.Substring(4));
+            String currency = cbCurrent.SelectedValue.ToString();
+
+            OracleCommand cmd2;
+            cmd2 = new OracleCommand("update H_PURCHASE_INVOICE set " +
+                "id_supplier = :ids, " +
+                "id_gudang = :idg, " +
+                "id_staff = :idst, " +
+                "nama_supplier = :nama, " +
+                "alamat_supplier = :alamat, " +
+                "supplier_id_invoice = :invoice, " +
+                "tgl_purchase_invoice = :tgl, " +
+                "credit_term_purchase_invoice = :creditterm, " +
+                "ship_via = :shipvia, " +
+                "currency_purchase_invoice = :currencypo, " +
+                "rate = :rate, " +
+                "total_harga = :totalh, " +
+                "total_harga_convert = :totalhc " +
+                "where id_purchase_invoice = '" + id_pi + "'", conn);
+            cmd2.Parameters.Add(":ids", id_supplier);
+            cmd2.Parameters.Add(":idg", gudang);
+            cmd2.Parameters.Add(":idst", admin);
+            cmd2.Parameters.Add(":nama", nama_supplier);
+            cmd2.Parameters.Add(":alamat", alamat_supplier);
+            cmd2.Parameters.Add(":invoice", invoice_supplier);
+            cmd2.Parameters.Add(":tgl", tanggal);
+            cmd2.Parameters.Add(":creditterm", creditTerm);
+            cmd2.Parameters.Add(":shipvia", ekspedisi);
+            cmd2.Parameters.Add(":currencypo", currency);
+            cmd2.Parameters.Add(":rate", rate);
+            cmd2.Parameters.Add(":totalh", total);
+            cmd2.Parameters.Add(":totalhc", totalConvert);
+            cmd2.ExecuteNonQuery();
+
+            //Delete Last Dokumen
+            new OracleCommand("delete from d_purchase_invoice where id_purchase_invoice = '" + id_pi + "'", conn).ExecuteNonQuery();
+
+            OracleCommand cmd3;
+            for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+            {
+                string iditems = ds.Tables["item"].Rows[i][0].ToString();
+                string nama = ds.Tables["item"].Rows[i][1].ToString();
+                string qtyy = ds.Tables["item"].Rows[i][3].ToString();
+                int qtty = Int32.Parse(qtyy);
+                string jeniss = ds.Tables["item"].Rows[i][4].ToString();
+                string hargas = ds.Tables["item"].Rows[i][5].ToString();
+                int hargass = Int32.Parse(hargas);
+                string diskoun = ds.Tables["item"].Rows[i][6].ToString();
+                int discroun = Int32.Parse(diskoun);
+                string kadar = ds.Tables["item"].Rows[i][7].ToString();
+                int kadarr = Int32.Parse(kadar);
+                string jenisppn = ds.Tables["item"].Rows[i][8].ToString();
+                string totalppn = ds.Tables["item"].Rows[i][9].ToString();
+                int tppn = Int32.Parse(totalppn);
+                string subtotal = ds.Tables["item"].Rows[i][10].ToString();
+                int stotal = Int32.Parse(subtotal);
+                cmd3 = new OracleCommand("insert into D_PURCHASE_INVOICE values(:idpi, :iditem, :nama, :qty, :jeniss, :hargas, :diskon, :kadar, :jenisppn, :totalppn, :subtotal)", conn);
+                cmd3.Parameters.Add(":idpi", id_pi);
+                cmd3.Parameters.Add(":iditem", iditems);
+                cmd3.Parameters.Add(":nama", nama);
+                cmd3.Parameters.Add(":qty", qtty);
+                cmd3.Parameters.Add(":jeniss", jeniss);
+                cmd3.Parameters.Add(":hargas", hargass);
+                cmd3.Parameters.Add(":diskon", discroun);
+                cmd3.Parameters.Add(":kadar", kadarr);
+                cmd3.Parameters.Add(":jenisppn", jenisppn);
+                cmd3.Parameters.Add(":totalppn", tppn);
+                cmd3.Parameters.Add(":subtotal", stotal);
+                cmd3.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Berhasil  Menyimpan");
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
+        }
+
+        public String id_pi;
+
+        private void btnPreview_Click(object sender, EventArgs e)
+        {
+            if (saved)
+            {
+                if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    overwrite();
+                }
+            }
+            else
+            {
+                save();
+            }
+
+            this.id_pi = txtIdPI.Text;
+
+            new formPreviewPI(this).ShowDialog();
         }
     }
 }

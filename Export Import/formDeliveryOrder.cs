@@ -244,7 +244,7 @@ namespace Export_Import
                 txtTotal.Text = "Rp " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
 
                 cmd = "select total_harga_convert from h_sales_order where id_sales_order = '" + id + "'";
-                txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
 
                 isiDataItem(id);
             }
@@ -505,6 +505,8 @@ namespace Export_Import
             }
         }
 
+        public String id_do;
+
         private void btnPreview_Click(object sender, EventArgs e)
         {
             if (saved)
@@ -518,6 +520,9 @@ namespace Export_Import
             {
                 save();
             }
+
+            this.id_do = txtIdDO.Text;
+            new formPreviewDO(this).ShowDialog();
         }
     }
 }
