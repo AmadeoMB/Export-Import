@@ -16,14 +16,14 @@ namespace Export_Import {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PreviewSalesOrder : ReportClass {
+    public class PreviewPurchaseOrder : ReportClass {
         
-        public PreviewSalesOrder() {
+        public PreviewPurchaseOrder() {
         }
         
         public override string ResourceName {
             get {
-                return "PreviewSalesOrder.rpt";
+                return "PreviewPurchaseOrder.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Export_Import {
         
         public override string FullResourceName {
             get {
-                return "Export_Import.PreviewSalesOrder.rpt";
+                return "Export_Import.PreviewPurchaseOrder.rpt";
             }
             set {
                 // Do nothing
@@ -90,7 +90,7 @@ namespace Export_Import {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_ID_SO {
+        public CrystalDecisions.Shared.IParameterField Parameter_ID_po {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -98,9 +98,9 @@ namespace Export_Import {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPreviewSalesOrder : Component, ICachedReport {
+    public class CachedPreviewPurchaseOrder : Component, ICachedReport {
         
-        public CachedPreviewSalesOrder() {
+        public CachedPreviewPurchaseOrder() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace Export_Import {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PreviewSalesOrder rpt = new PreviewSalesOrder();
+            PreviewPurchaseOrder rpt = new PreviewPurchaseOrder();
             rpt.Site = this.Site;
             return rpt;
         }
