@@ -301,13 +301,13 @@ namespace Export_Import
                 String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
                 int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
 
-                OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty, :jenis, :harga, :subtotal)", conn);
+                OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty,  :harga,:jenis, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
                 cmdDetail.Parameters.Add(":si", id_si);
                 cmdDetail.Parameters.Add(":nama", nama_item);
                 cmdDetail.Parameters.Add(":qty", qty_item);
-                cmdDetail.Parameters.Add(":jenis", satuan_item);
                 cmdDetail.Parameters.Add(":harga", hBeli_item);
+                cmdDetail.Parameters.Add(":jenis", satuan_item);
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
