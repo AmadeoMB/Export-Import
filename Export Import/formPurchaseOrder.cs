@@ -303,16 +303,6 @@ namespace Export_Import
 
         void save()
         {
-            if (comboBox2.SelectedIndex < 0)
-            {
-                MessageBox.Show("Mohon pilih credit term");
-                return;
-            }
-            if (comboBox4.SelectedIndex < 0)
-            {
-                MessageBox.Show("Mohon pilih ship via");
-                return;
-            }
             //kurang pengecekan textbox atau combobox
             //buat header PO
             int lntot = Int32.Parse(LNTotal.Text);
@@ -504,6 +494,16 @@ namespace Export_Import
 
         private void button12_Click(object sender, EventArgs e)
         {
+            if (comboBox2.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih credit term");
+                return;
+            }
+            if (comboBox4.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih ship via");
+                return;
+            }
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)

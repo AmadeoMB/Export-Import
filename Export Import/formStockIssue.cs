@@ -268,12 +268,6 @@ namespace Export_Import
 
         void overwrite()
         {
-            if (txtDeskripsi.Text.Length == 0)
-            {
-                MessageBox.Show("Mohon isi deskipsi");
-                return;
-            }
-
             String id_si = txtIdStockIssue.Text;
             DateTime tanggal = dateStockIssue.Value;
             String deskripsi = txtDeskripsi.Text;
@@ -311,6 +305,7 @@ namespace Export_Import
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
+            MessageBox.Show("Save Berhasil");
         }
 
         void save()
@@ -355,6 +350,7 @@ namespace Export_Import
                 cmdDetail.ExecuteNonQuery();
             }
 
+            MessageBox.Show("Save Berhasil");
             saved = true;
         }
 
@@ -377,6 +373,11 @@ namespace Export_Import
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            if (txtDeskripsi.Text.Length == 0)
+            {
+                MessageBox.Show("Mohon isi deskipsi");
+                return;
+            }
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
