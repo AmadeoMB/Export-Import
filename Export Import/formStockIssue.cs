@@ -119,7 +119,6 @@ namespace Export_Import
         {
             try
             {
-                conn.Open();
                 generateNomerSI();
             }
             catch (Exception ex)
