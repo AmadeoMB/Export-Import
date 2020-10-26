@@ -29,7 +29,7 @@ namespace Export_Import
         {
             PreviewStockIssue rep = new PreviewStockIssue();
             rep.SetDatabaseLogon("export", "import", "orcl", "");
-            rep.SetParameterValue("ID_si", form.id_si);
+            rep.SetParameterValue("id_si", form.id_si);
             crystalReportViewer.ReportSource = rep;
         }
 
