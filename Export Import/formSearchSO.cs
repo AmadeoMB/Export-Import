@@ -46,7 +46,7 @@ namespace Export_Import
 
         void refreshTable()
         {
-            String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order";
+            String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order where id_delivery_order = '-'";
             daSalesOrder = new OracleDataAdapter(cmd, conn);
             daSalesOrder.Fill(ds, "SalesOrder");
             dataGridView.DataSource = ds.Tables["SalesOrder"];
@@ -54,9 +54,18 @@ namespace Export_Import
 
         void refreshTable(String id, String keyword)
         {
+            List<String> temp = form.groupSO;
+            MessageBox.Show(temp.Count + "");
+
             String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order " +
                 "where id_sales_order != '" + id + "' AND " +
-                "nama_customer = '" + keyword + "'";
+                "nama_customer = '" + keyword + "' AND " +
+                "id_delivery_order = '-'";
+            for (int i = 0; i < temp.Count; i++)
+            {
+                cmd += " AND id_sales_order != '" + temp[i] + "'";
+            }
+
             daSalesOrder = new OracleDataAdapter(cmd, conn);
             daSalesOrder.Fill(ds, "SalesOrder");
             dataGridView.DataSource = ds.Tables["SalesOrder"];

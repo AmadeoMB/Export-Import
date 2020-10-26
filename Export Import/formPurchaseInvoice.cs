@@ -79,6 +79,7 @@ namespace Export_Import
         {
             ds = new DataSet();
 
+            this.groupPO.Add(search.id_po);
             isicbsupplier();
             isicbGudang();
             isicbCurrent();
@@ -152,6 +153,8 @@ namespace Export_Import
             }
             dataGridView1.DataSource = ds.Tables["item"];
         }
+
+        public List<String> groupPO = new List<String>();
         private void button13_Click(object sender, EventArgs e)
         {
             formSearchPO search = new formSearchPO(this);
@@ -167,6 +170,7 @@ namespace Export_Import
                     ambilDataPO(this.id_po);
                 }
             }
+            this.groupPO.Add(search.id_po);
         }
 
         public void isicbSales()

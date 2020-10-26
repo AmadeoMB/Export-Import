@@ -71,7 +71,7 @@ namespace Export_Import
             {
                 String nama_supplier = new OracleCommand("select nama_supplier from h_purchase_order where id_purchase_order = '" + id_po + "'", conn).ExecuteScalar().ToString();
 
-                //refreshTable(id_po, nama_customer);
+                refreshTable(id_po, nama_supplier);
                 return;
             }
             refreshTable();

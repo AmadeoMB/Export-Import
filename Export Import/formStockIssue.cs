@@ -315,6 +315,11 @@ namespace Export_Import
                 MessageBox.Show("Mohon isi deskipsi");
                 return;
             }
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Mohon isi barang");
+                return;
+            }
 
             String id_si = txtIdStockIssue.Text;
             String id_staff = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
@@ -376,6 +381,11 @@ namespace Export_Import
             if (txtDeskripsi.Text.Length == 0)
             {
                 MessageBox.Show("Mohon isi deskipsi");
+                return;
+            }
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Mohon isi barang");
                 return;
             }
             if (saved)
