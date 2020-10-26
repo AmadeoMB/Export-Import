@@ -79,7 +79,7 @@ namespace Export_Import
         {
             ds = new DataSet();
 
-            this.groupPO.Add(search.id_po);
+            this.groupPO.Add(id_po);
             isicbsupplier();
             isicbGudang();
             isicbCurrent();
