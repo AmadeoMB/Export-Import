@@ -14,6 +14,7 @@ namespace Export_Import
     public partial class formStockIssue : Form
     {
         public OracleConnection conn;
+        public String admin;
         OracleDataAdapter daItem;
         DataSet ds = new DataSet();
         formMasterStock master;
@@ -29,6 +30,8 @@ namespace Export_Import
         {
             InitializeComponent();
             this.master = master;
+            this.conn = master.conn;
+            this.admin = master.admin;
         }
 
         String getNomerSI(String id)
@@ -114,8 +117,6 @@ namespace Export_Import
 
         private void formStockIssue_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-
             try
             {
                 conn.Open();
@@ -322,12 +323,14 @@ namespace Export_Import
             }
 
             String id_si = txtIdStockIssue.Text;
+            String id_staff = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
             DateTime tanggal = dateStockIssue.Value;
             String deskripsi = txtDeskripsi.Text;
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
 
-            OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :do, :gudang, :total)", conn);
+            OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :ids, :do, :gudang, :total)", conn);
             cmd.Parameters.Add(":id", id_si);
+            cmd.Parameters.Add(":ids", id_staff);
             cmd.Parameters.Add(":deskripsi", deskripsi);
             cmd.Parameters.Add(":tanggal", tanggal);
             cmd.Parameters.Add(":total", total);
@@ -389,6 +392,12 @@ namespace Export_Import
 
             this.id_si = txtIdStockIssue.Text;
             new formPreviewSI(this).ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            master.Show();
         }
     }
 }

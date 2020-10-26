@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,17 +13,21 @@ namespace Export_Import
 {
     public partial class formMasterStock : Form
     {
-        Form form;
+        formMasterGudang form;
+        public OracleConnection conn;
+        public String admin;
 
         public formMasterStock()
         {
             InitializeComponent();
         }
 
-        public formMasterStock(Form form)
+        public formMasterStock(formMasterGudang form)
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
+            this.admin = form.admin;
         }
 
         private void lblBack_Click(object sender, EventArgs e)
@@ -41,6 +46,11 @@ namespace Export_Import
         {
             this.Hide();
             new formStockIssue(this).Show();
+        }
+
+        private void formMasterStock_Load(object sender, EventArgs e)
+        {
+            this.Text += " : " + admin;
         }
     }
 }

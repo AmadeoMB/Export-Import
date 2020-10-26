@@ -13,7 +13,7 @@ namespace Export_Import
 {
     public partial class formListSalesOrder : Form
     {
-        OracleConnection conn;
+        public OracleConnection conn;
         public formMasterGudang gudang;
         OracleDataAdapter daSO;
         DataSet ds = new DataSet();
@@ -29,15 +29,13 @@ namespace Export_Import
         {
             InitializeComponent();
             this.gudang = gudang;
+            this.conn = gudang.conn;
         }
 
         private void formListSalesOrder_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-
             try
             {
-                conn.Open();
                 refreshTable();
             }
             catch (Exception ex)
@@ -150,6 +148,12 @@ namespace Export_Import
                 this.Hide();
                 new formDeliveryOrder(this).Show();
             }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            gudang.Show();
         }
     }
 }

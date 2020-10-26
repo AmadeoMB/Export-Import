@@ -17,7 +17,9 @@ namespace Export_Import
         private OracleDataAdapter daItem;
         private OracleDataAdapter daCategory;
         public DataSet ds = new DataSet();
-        public Form form;
+        public formMasterStock formS;
+        public formMasterPenjualan formP;
+        public String admin = "";
         public String[] data;
 
         public formListStock()
@@ -25,18 +27,22 @@ namespace Export_Import
             InitializeComponent();
         }
 
-        public formListStock(Form form)
+        public formListStock(formMasterStock form)
         {
             InitializeComponent();
-            this.form = form;
+            this.formS = form;
+        }
+
+        public formListStock(formMasterPenjualan form)
+        {
+            InitializeComponent();
+            this.formP = form;
         }
 
         public formListStock(Form form, DataSet ds, String keyword, int index)
         {
             InitializeComponent();
             isiCB();
-
-            this.form = form;
             this.ds = ds;
             txtKeyword.Text = keyword;
             cbCategory.SelectedIndex = index;
@@ -190,9 +196,21 @@ namespace Export_Import
             cbCategory.SelectedIndex = ds.Tables["category"].Rows.Count - 1;
         }
 
+
         private void formListStock_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            if (formS != null)
+            {
+                this.conn = formS.conn;
+                this.admin = formS.admin;
+            }
+            else
+            {
+                this.conn = formP.conn;
+                this.admin = formP.admin;
+            }
+
+            this.Text += " : " + this.admin;
 
             this.dataGridView.DefaultCellStyle.Font = new Font("Calibri", 12);
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
@@ -201,17 +219,15 @@ namespace Export_Import
 
             try
             {
-                conn.Open();
+                isiCB();
+
+                refreshTabel();
             }
             catch (Exception)
             {
 
                 throw;
             }
-
-            isiCB();
-
-            refreshTabel();
         }
 
         private void txtKeyword_TextChanged(object sender, EventArgs e)
@@ -224,7 +240,14 @@ namespace Export_Import
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
-            form.Show();
+            if (formS == null)
+            {
+                formP.Show();
+            }
+            else
+            {
+                formS.Show();
+            }
         }
 
         private void btnMore_Click(object sender, EventArgs e)

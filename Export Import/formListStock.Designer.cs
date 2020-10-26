@@ -31,6 +31,7 @@
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlBawah = new System.Windows.Forms.Panel();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnNewItem = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -49,7 +50,6 @@
             this.harga_jual_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balance_cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnPrint = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupFilter = new System.Windows.Forms.GroupBox();
             this.btnMore = new System.Windows.Forms.Button();
@@ -57,7 +57,6 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -91,7 +90,6 @@
             this.pnlBawah.Controls.Add(this.btnUpdate);
             this.pnlBawah.Controls.Add(this.btnNewItem);
             this.pnlBawah.Controls.Add(this.dataGridView);
-            this.pnlBawah.Controls.Add(this.btnPrint);
             this.pnlBawah.Controls.Add(this.btnClose);
             this.pnlBawah.Controls.Add(this.groupFilter);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -99,6 +97,18 @@
             this.pnlBawah.Name = "pnlBawah";
             this.pnlBawah.Size = new System.Drawing.Size(1350, 625);
             this.pnlBawah.TabIndex = 1;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(256, 119);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(85, 30);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -284,16 +294,6 @@
             this.balance_cost.ReadOnly = true;
             this.balance_cost.Width = 150;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.Location = new System.Drawing.Point(103, 119);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(85, 30);
-            this.btnPrint.TabIndex = 2;
-            this.btnPrint.Text = "Print";
-            this.btnPrint.UseVisualStyleBackColor = true;
-            // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -370,18 +370,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(256, 119);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(85, 30);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // formListStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,7 +402,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnMore;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnPrint;
         private System.Windows.Forms.DataGridView dataGridView;
         public System.Windows.Forms.TextBox txtKeyword;
         public System.Windows.Forms.ComboBox cbCategory;

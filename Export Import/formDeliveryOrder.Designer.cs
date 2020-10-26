@@ -62,7 +62,7 @@
             this.txtTotalConvert = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
-            this.button14 = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -80,12 +80,6 @@
             this.total_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearchSO = new System.Windows.Forms.Button();
-            this.btnRedo = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnMin = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTotal.SuspendLayout();
             this.pnlBawah.SuspendLayout();
@@ -456,7 +450,7 @@
             // pnlBawah
             // 
             this.pnlBawah.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.pnlBawah.Controls.Add(this.button14);
+            this.pnlBawah.Controls.Add(this.btnBack);
             this.pnlBawah.Controls.Add(this.btnSave);
             this.pnlBawah.Controls.Add(this.btnPreview);
             this.pnlBawah.Location = new System.Drawing.Point(0, 693);
@@ -465,15 +459,16 @@
             this.pnlBawah.TabIndex = 10;
             this.pnlBawah.TabStop = false;
             // 
-            // button14
+            // btnBack
             // 
-            this.button14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button14.Location = new System.Drawing.Point(1260, 2);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(78, 34);
-            this.button14.TabIndex = 7;
-            this.button14.Text = "Cancel";
-            this.button14.UseVisualStyleBackColor = true;
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(1260, 2);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(78, 34);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnSave
             // 
@@ -512,12 +507,6 @@
             this.pnlTengah.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.pnlTengah.Controls.Add(this.dataGridView);
             this.pnlTengah.Controls.Add(this.btnSearchSO);
-            this.pnlTengah.Controls.Add(this.btnRedo);
-            this.pnlTengah.Controls.Add(this.btnUndo);
-            this.pnlTengah.Controls.Add(this.btnDown);
-            this.pnlTengah.Controls.Add(this.btnUp);
-            this.pnlTengah.Controls.Add(this.btnMin);
-            this.pnlTengah.Controls.Add(this.btnPlus);
             this.pnlTengah.Location = new System.Drawing.Point(0, 273);
             this.pnlTengah.Name = "pnlTengah";
             this.pnlTengah.Size = new System.Drawing.Size(1353, 317);
@@ -650,66 +639,6 @@
             this.btnSearchSO.UseVisualStyleBackColor = true;
             this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
             // 
-            // btnRedo
-            // 
-            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(230, 10);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(52, 30);
-            this.btnRedo.TabIndex = 5;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUndo.Location = new System.Drawing.Point(172, 10);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(52, 30);
-            this.btnUndo.TabIndex = 4;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = true;
-            // 
-            // btnDown
-            // 
-            this.btnDown.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDown.Location = new System.Drawing.Point(111, 10);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(55, 30);
-            this.btnDown.TabIndex = 3;
-            this.btnDown.Text = "Down";
-            this.btnDown.UseVisualStyleBackColor = true;
-            // 
-            // btnUp
-            // 
-            this.btnUp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUp.Location = new System.Drawing.Point(70, 10);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(35, 30);
-            this.btnUp.TabIndex = 2;
-            this.btnUp.Text = "Up";
-            this.btnUp.UseVisualStyleBackColor = true;
-            // 
-            // btnMin
-            // 
-            this.btnMin.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMin.Location = new System.Drawing.Point(38, 10);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(26, 30);
-            this.btnMin.TabIndex = 1;
-            this.btnMin.Text = "-";
-            this.btnMin.UseVisualStyleBackColor = true;
-            // 
-            // btnPlus
-            // 
-            this.btnPlus.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlus.Location = new System.Drawing.Point(6, 10);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(26, 30);
-            this.btnPlus.TabIndex = 0;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = true;
-            // 
             // formDeliveryOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -771,19 +700,13 @@
         private System.Windows.Forms.TextBox txtTotalConvert;
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.GroupBox pnlBawah;
-        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.GroupBox pnlTengah;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnSearchSO;
-        private System.Windows.Forms.Button btnRedo;
-        private System.Windows.Forms.Button btnUndo;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnUp;
-        private System.Windows.Forms.Button btnMin;
-        private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Sales;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama;

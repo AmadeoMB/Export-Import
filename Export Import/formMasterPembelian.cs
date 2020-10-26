@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Export_Import
     public partial class formMasterPembelian : Form
     {
         LoginForm form;
+        public OracleConnection conn;
+        public String admin;
 
         public formMasterPembelian()
         {
@@ -23,18 +26,20 @@ namespace Export_Import
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
+            this.admin = form.user;
         }
 
         private void btnPO_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new formPurchaseOrder().Show();
+            new formPurchaseOrder(this).Show();
         }
 
         private void btnPI_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new formPurchaseInvoice().Show();
+            new formPurchaseInvoice(this).Show();
         }
 
         private void lblSupplier_Click(object sender, EventArgs e)

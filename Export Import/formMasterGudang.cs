@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Export_Import
     public partial class formMasterGudang : Form
     {
         private LoginForm form;
+        public OracleConnection conn;
+        public String admin;
 
         public formMasterGudang()
         {
@@ -23,6 +26,8 @@ namespace Export_Import
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
+            this.admin = form.user;
         }
 
         private void lblStock_Click(object sender, EventArgs e)
@@ -34,7 +39,7 @@ namespace Export_Import
         private void btnDO_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new formDeliveryOrder().Show();
+            new formDeliveryOrder(this).Show();
         }
 
         private void lblSignOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -53,7 +58,8 @@ namespace Export_Import
 
         private void btnSO_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            new formListSalesOrder(this).Show();
         }
     }
 }

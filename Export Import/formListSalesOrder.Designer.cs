@@ -33,6 +33,10 @@
             this.pnlBawah = new System.Windows.Forms.Panel();
             this.btnCreate = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupFilter = new System.Windows.Forms.GroupBox();
             this.numJumlah = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,10 +44,7 @@
             this.dateFilter = new System.Windows.Forms.DateTimePicker();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.id_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBack = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -73,6 +74,7 @@
             // 
             // pnlBawah
             // 
+            this.pnlBawah.Controls.Add(this.btnBack);
             this.pnlBawah.Controls.Add(this.btnCreate);
             this.pnlBawah.Controls.Add(this.dataGridView);
             this.pnlBawah.Controls.Add(this.groupFilter);
@@ -110,6 +112,42 @@
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            // 
+            // id_so
+            // 
+            this.id_so.DataPropertyName = "id";
+            this.id_so.Frozen = true;
+            this.id_so.HeaderText = "Nomer S/O";
+            this.id_so.Name = "id_so";
+            this.id_so.ReadOnly = true;
+            this.id_so.Width = 150;
+            // 
+            // nama_customer
+            // 
+            this.nama_customer.DataPropertyName = "nama";
+            this.nama_customer.Frozen = true;
+            this.nama_customer.HeaderText = "Nama Customer";
+            this.nama_customer.Name = "nama_customer";
+            this.nama_customer.ReadOnly = true;
+            this.nama_customer.Width = 150;
+            // 
+            // tgl_so
+            // 
+            this.tgl_so.DataPropertyName = "tanggal";
+            this.tgl_so.Frozen = true;
+            this.tgl_so.HeaderText = "Tanggal";
+            this.tgl_so.Name = "tgl_so";
+            this.tgl_so.ReadOnly = true;
+            this.tgl_so.Width = 150;
+            // 
+            // jumlah_barang
+            // 
+            this.jumlah_barang.DataPropertyName = "jumlah";
+            this.jumlah_barang.Frozen = true;
+            this.jumlah_barang.HeaderText = "Jumlah Barang";
+            this.jumlah_barang.Name = "jumlah_barang";
+            this.jumlah_barang.ReadOnly = true;
+            this.jumlah_barang.Width = 150;
             // 
             // groupFilter
             // 
@@ -183,41 +221,16 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama :";
             // 
-            // id_so
+            // btnBack
             // 
-            this.id_so.DataPropertyName = "id";
-            this.id_so.Frozen = true;
-            this.id_so.HeaderText = "Nomer S/O";
-            this.id_so.Name = "id_so";
-            this.id_so.ReadOnly = true;
-            this.id_so.Width = 150;
-            // 
-            // nama_customer
-            // 
-            this.nama_customer.DataPropertyName = "nama";
-            this.nama_customer.Frozen = true;
-            this.nama_customer.HeaderText = "Nama Customer";
-            this.nama_customer.Name = "nama_customer";
-            this.nama_customer.ReadOnly = true;
-            this.nama_customer.Width = 150;
-            // 
-            // tgl_so
-            // 
-            this.tgl_so.DataPropertyName = "tanggal";
-            this.tgl_so.Frozen = true;
-            this.tgl_so.HeaderText = "Tanggal";
-            this.tgl_so.Name = "tgl_so";
-            this.tgl_so.ReadOnly = true;
-            this.tgl_so.Width = 150;
-            // 
-            // jumlah_barang
-            // 
-            this.jumlah_barang.DataPropertyName = "jumlah";
-            this.jumlah_barang.Frozen = true;
-            this.jumlah_barang.HeaderText = "Jumlah Barang";
-            this.jumlah_barang.Name = "jumlah_barang";
-            this.jumlah_barang.ReadOnly = true;
-            this.jumlah_barang.Width = 150;
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(528, 20);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(150, 42);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // formListSalesOrder
             // 
@@ -258,5 +271,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
         private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
+        private System.Windows.Forms.Button btnBack;
     }
 }
