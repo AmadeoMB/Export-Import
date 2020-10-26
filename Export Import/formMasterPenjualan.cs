@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Oracle.DataAccess.Client;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace Export_Import
     public partial class formMasterPenjualan : Form
     {
         private LoginForm form = null;
+        public OracleConnection conn;
+        public String admin = "";
 
         public formMasterPenjualan()
         {
@@ -23,12 +26,14 @@ namespace Export_Import
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
+            this.admin = form.user;
         }
 
         private void lblStock_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new formMasterStock(this).Show();
+            new formListStock(this).Show();
         }
 
         private void lblCustomer_Click(object sender, EventArgs e)

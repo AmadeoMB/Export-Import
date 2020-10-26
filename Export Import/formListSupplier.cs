@@ -13,7 +13,7 @@ namespace Export_Import
 {
     public partial class formListSupplier : Form
     {
-        Form form;
+        formMasterPembelian form;
         public OracleConnection conn;
         public String[] data;
         private OracleDataAdapter daProvinsi;
@@ -26,10 +26,11 @@ namespace Export_Import
             InitializeComponent();
         }
 
-        public formListSupplier(Form form)
+        public formListSupplier(formMasterPembelian form)
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
         }
 
         public void refreshTabel()
@@ -77,10 +78,6 @@ namespace Export_Import
 
         private void formSupplier_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-
-            conn.Open();
-
             this.dataGridView.DefaultCellStyle.Font = new Font("Calibri", 12);
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -125,6 +122,12 @@ namespace Export_Import
             if (idx > -1)
             {
                 btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
             }
         }
 
@@ -185,6 +188,22 @@ namespace Export_Import
             else
             {
                 MessageBox.Show("Pilih lah supplier pada tabel terlebih dahulu");
+            }
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
+
+            if (idx > -1)
+            {
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
             }
         }
     }

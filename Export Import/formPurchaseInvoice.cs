@@ -33,6 +33,7 @@ namespace Export_Import
         {
             InitializeComponent();
             this.master = master;
+            this.conn = master.conn;
         }
 
         public void isicbsupplier()
@@ -76,9 +77,8 @@ namespace Export_Import
         }
         private void formPurchaseInvoice_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-            conn.Open();
             ds = new DataSet();
+
             isicbsupplier();
             isicbGudang();
             isicbCurrent();
@@ -589,6 +589,12 @@ namespace Export_Import
             this.id_pi = txtIdPI.Text;
 
             new formPreviewPI(this).ShowDialog();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            master.Show();
         }
     }
 }

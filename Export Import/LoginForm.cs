@@ -78,7 +78,6 @@ namespace Export_Import
                             cmd.Parameters.Add(":pass", txtPassword.Text);
                             user = cmd.ExecuteScalar().ToString();
 
-                            conn.Close();
                             if (jabatan == 1)
                             {
                                 //Form Gudang

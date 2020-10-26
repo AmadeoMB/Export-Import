@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.DateToday = new System.Windows.Forms.DateTimePicker();
@@ -83,6 +82,7 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.txtAgent = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -93,8 +93,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox1.Controls.Add(this.txtAgent);
             this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.comboBox3);
             this.groupBox1.Controls.Add(this.comboBox2);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.DateToday);
@@ -134,16 +134,6 @@
             this.comboBox4.Name = "comboBox4";
             this.comboBox4.Size = new System.Drawing.Size(200, 27);
             this.comboBox4.TabIndex = 27;
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(1138, 102);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(200, 27);
-            this.comboBox3.TabIndex = 22;
             // 
             // comboBox2
             // 
@@ -185,11 +175,11 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1024, 104);
+            this.label12.Location = new System.Drawing.Point(1024, 107);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 19);
+            this.label12.Size = new System.Drawing.Size(47, 19);
             this.label12.TabIndex = 17;
-            this.label12.Text = "Nama Sales";
+            this.label12.Text = "Agent";
             // 
             // label11
             // 
@@ -213,6 +203,7 @@
             // 
             // PONO
             // 
+            this.PONO.Enabled = false;
             this.PONO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PONO.Location = new System.Drawing.Point(1138, 11);
             this.PONO.Name = "PONO";
@@ -661,7 +652,7 @@
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(78, 34);
             this.button14.TabIndex = 7;
-            this.button14.Text = "Cancel";
+            this.button14.Text = "Back";
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
@@ -676,6 +667,16 @@
             this.groupBox5.Size = new System.Drawing.Size(1339, 51);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
+            // 
+            // txtAgent
+            // 
+            this.txtAgent.Enabled = false;
+            this.txtAgent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgent.Location = new System.Drawing.Point(1138, 104);
+            this.txtAgent.Name = "txtAgent";
+            this.txtAgent.ReadOnly = true;
+            this.txtAgent.Size = new System.Drawing.Size(200, 27);
+            this.txtAgent.TabIndex = 28;
             // 
             // formPurchaseOrder
             // 
@@ -724,7 +725,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -760,5 +760,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
         private System.Windows.Forms.Button btnRedo;
         private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.TextBox txtAgent;
     }
 }

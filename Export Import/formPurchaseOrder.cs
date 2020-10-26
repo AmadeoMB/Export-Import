@@ -14,6 +14,7 @@ namespace Export_Import
     public partial class formPurchaseOrder : Form
     {
         public OracleConnection conn;
+        formMasterPembelian form;
         OracleDataAdapter daSupplier;
         OracleDataAdapter daGudang;
         OracleDataAdapter daSales;
@@ -22,12 +23,22 @@ namespace Export_Import
         OracleDataAdapter daship;
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
-        DataSet ds;
+        DataSet ds = new DataSet();
         int idx = -1;
         int netTotal = 0;
+        public String admin = "";
+
         public formPurchaseOrder()
         {
             InitializeComponent();
+        }
+
+        public formPurchaseOrder(formMasterPembelian form)
+        {
+            InitializeComponent();
+            this.form = form;
+            this.conn = form.conn;
+            this.admin = form.admin;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,14 +59,6 @@ namespace Export_Import
             comboBox1.DataSource = ds.Tables["gudang"];
             comboBox1.ValueMember = "ID";
             comboBox1.DisplayMember = "nama";
-        }
-        public void isicbSales() {
-            daSales = new OracleDataAdapter("select id_staff as ID, nama_staff as nama from staff where id_jabatan = '3'", conn);
-
-            daSales.Fill(ds, "staff");
-            comboBox3.DataSource = ds.Tables["staff"];
-            comboBox3.ValueMember = "ID";
-            comboBox3.DisplayMember = "nama";
         }
         public void isicbCurrent() {
             daCurrent = new OracleDataAdapter("select * from currency", conn);
@@ -94,12 +97,10 @@ namespace Export_Import
         }
         private void formPurchaseOrder_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-            conn.Open();
-            ds = new DataSet();
+            txtAgent.Text = admin;
+
             isicbsupplier();
             isicbGudang();
-            isicbSales();
             generatecreateNomerPO();
             isicbCurrent();
             isicbship();
@@ -302,16 +303,6 @@ namespace Export_Import
 
         void save()
         {
-            if (comboBox2.SelectedIndex < 0)
-            {
-                MessageBox.Show("Mohon pilih credit term");
-                return;
-            }
-            if (comboBox4.SelectedIndex < 0)
-            {
-                MessageBox.Show("Mohon pilih ship via");
-                return;
-            }
             //kurang pengecekan textbox atau combobox
             //buat header PO
             int lntot = Int32.Parse(LNTotal.Text);
@@ -320,12 +311,13 @@ namespace Export_Import
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
             int c = Int32.Parse(b);
+            string sales = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
 
             OracleCommand cmd2;
             cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :totalh, :totalhc)", conn);
             cmd2.Parameters.Add(":idp", PONO.Text);
             cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
-            cmd2.Parameters.Add(":idst", comboBox3.SelectedValue);
+            cmd2.Parameters.Add(":idst", sales);
             cmd2.Parameters.Add(":idg", comboBox1.SelectedValue);
             cmd2.Parameters.Add(":nama", tbnama.Text);
             cmd2.Parameters.Add(":alamat", textBox1.Text);
@@ -421,6 +413,7 @@ namespace Export_Import
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
             int c = Int32.Parse(b);
+            string sales = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
 
             OracleCommand cmd2;
             cmd2 = new OracleCommand("update H_PURCHASE_ORDER " +
@@ -439,7 +432,7 @@ namespace Export_Import
                 "total_harga_convert = :totalhc " +
                 "where id_purchase_order = '" + PONO.Text + "'", conn);
             cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
-            cmd2.Parameters.Add(":idst", comboBox3.SelectedValue);
+            cmd2.Parameters.Add(":idst", sales);
             cmd2.Parameters.Add(":idg", comboBox1.SelectedValue);
             cmd2.Parameters.Add(":nama", tbnama.Text);
             cmd2.Parameters.Add(":alamat", textBox1.Text);
@@ -493,13 +486,24 @@ namespace Export_Import
 
         private void button14_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
+            form.Show();
         }
 
         public String id_po = "";
 
         private void button12_Click(object sender, EventArgs e)
         {
+            if (comboBox2.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih credit term");
+                return;
+            }
+            if (comboBox4.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih ship via");
+                return;
+            }
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -514,6 +518,11 @@ namespace Export_Import
             this.id_po = PONO.Text;
 
             new formPreviewPO(this).ShowDialog();
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -35,23 +35,21 @@ namespace Export_Import
         {
             InitializeComponent();
             this.master = master;
+            this.conn = master.conn;
         }
 
         public formDeliveryOrder(formListSalesOrder list)
         {
             InitializeComponent();
             this.master = list.gudang;
+            this.conn = list.conn;
             this.id_so = list.id_sales_order;
         }
 
         private void formDeliveryOrder_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-
             try
             {
-                conn.Open();
-
                 setColomnDS();
                 isiCBCustomer();
                 isiCBCurrency();
@@ -523,6 +521,12 @@ namespace Export_Import
 
             this.id_do = txtIdDO.Text;
             new formPreviewDO(this).ShowDialog();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            master.Show();
         }
     }
 }

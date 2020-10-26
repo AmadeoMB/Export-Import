@@ -116,6 +116,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "formMasterStock";
             this.Text = "Stock";
+            this.Load += new System.EventHandler(this.formMasterStock_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();

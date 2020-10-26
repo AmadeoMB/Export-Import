@@ -23,6 +23,7 @@ namespace Export_Import
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
+        private String admin;
 
         public formSalesOrder()
         {
@@ -34,6 +35,8 @@ namespace Export_Import
             InitializeComponent();
             txtNamaCust.Text = id_cust;
             this.master = master;
+            this.conn = master.conn;
+            this.admin = master.admin;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -120,12 +123,8 @@ namespace Export_Import
 
         private void formSalesOrder_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-
             try
             {
-                conn.Open();
-
                 isiCBCustomer();
                 isiCBCurrency();
                 isiCBShipVia();

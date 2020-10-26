@@ -19,6 +19,7 @@ namespace Export_Import
         DataSet ds = new DataSet();
         OracleDataAdapter daCustomer;
         public String[] data;
+        public String admin = "";
 
         int idx = -1;
 
@@ -31,6 +32,8 @@ namespace Export_Import
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
+            this.admin = form.admin;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -67,9 +70,7 @@ namespace Export_Import
 
         private void formCustomer_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-            conn.Open();
-
+            this.Text += " : " + admin;
             this.dataGridView.DefaultCellStyle.Font = new Font("Calibri", 12);
             dataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Navy;
             dataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -94,7 +95,6 @@ namespace Export_Import
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            conn.Close();
             new formInsertCustomer().ShowDialog();
 
             txtKeyword.Text = "";
@@ -110,6 +110,12 @@ namespace Export_Import
             if (idx > -1)
             {
                 btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
             }
         }
 
@@ -133,7 +139,18 @@ namespace Export_Import
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            idx = e.RowIndex;
 
+            if (idx > -1)
+            {
+                btnDelete.Enabled = true;
+                btnUpdate.Enabled = true;
+            }
+            else
+            {
+                btnDelete.Enabled = false;
+                btnUpdate.Enabled = false;
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -143,7 +160,7 @@ namespace Export_Import
                 try
                 {
 
-                    String cmd = "delete from customer where id_customer = '" + dataGridView.Rows[idx].Cells[0].ToString() + "'";
+                    String cmd = "delete from customer where id_customer = '" + dataGridView.Rows[idx].Cells[0].Value.ToString() + "'";
                     new OracleCommand(cmd, conn).ExecuteNonQuery();
                     ds.Tables["customer"].Clear();
                     refreshTabel();
