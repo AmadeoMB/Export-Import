@@ -141,6 +141,7 @@
             this.Controls.Add(this.lblStock);
             this.Controls.Add(this.panel1);
             this.Name = "formMasterGudang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Gudang : ";
             this.Load += new System.EventHandler(this.formMasterGudang_Load);
             this.panel1.ResumeLayout(false);

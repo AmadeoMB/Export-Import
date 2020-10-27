@@ -331,6 +331,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formInsertStaff";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formInsertUser";
             this.Load += new System.EventHandler(this.formInsertUser_Load);
             this.pnlAtas.ResumeLayout(false);

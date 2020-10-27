@@ -136,6 +136,7 @@
             this.Controls.Add(this.lblNamaItem);
             this.Controls.Add(this.label1);
             this.Name = "formTransferDocument";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transfer Document";
             this.Load += new System.EventHandler(this.formTransferDocument_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numQty)).EndInit();

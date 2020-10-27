@@ -71,6 +71,7 @@
             this.Controls.Add(this.txtNama);
             this.Controls.Add(this.label2);
             this.Name = "formUpdateCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formUpdateCategory";
             this.Load += new System.EventHandler(this.formUpdateCategory_Load);
             this.ResumeLayout(false);

@@ -222,6 +222,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formUpdateSupplier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formUpdateSupplier";
             this.Load += new System.EventHandler(this.formUpdateSupplier_Load);
             this.pnlAtas.ResumeLayout(false);

@@ -268,8 +268,8 @@
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formListSupplier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formSupplier";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.formSupplier_Load);
             this.pnlAtas.ResumeLayout(false);
             this.pnlAtas.PerformLayout();

@@ -73,6 +73,7 @@
             this.Controls.Add(this.txtNama);
             this.Controls.Add(this.label2);
             this.Name = "formInsertCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Insert Category";
             this.Load += new System.EventHandler(this.formInsertCategory_Load);
             this.ResumeLayout(false);

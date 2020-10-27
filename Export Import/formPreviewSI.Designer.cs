@@ -63,6 +63,7 @@
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.crystalReportViewer);
             this.Name = "formPreviewSI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formPreviewSI";
             this.Load += new System.EventHandler(this.formPreviewSI_Load);
             this.ResumeLayout(false);

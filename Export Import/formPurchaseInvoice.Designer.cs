@@ -561,6 +561,7 @@
             this.Controls.Add(this.pnlTengah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formPurchaseInvoice";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Purchase Invoice";
             this.Load += new System.EventHandler(this.formPurchaseInvoice_Load);
             this.pnlAtas.ResumeLayout(false);

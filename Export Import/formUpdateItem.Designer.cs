@@ -427,6 +427,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formUpdateItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Update Item";
             this.Load += new System.EventHandler(this.formUpdateItem_Load);
             this.groupBox3.ResumeLayout(false);

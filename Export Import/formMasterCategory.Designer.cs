@@ -160,6 +160,7 @@
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formMasterCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Master Category";
             this.Load += new System.EventHandler(this.formMasterJabatan_Load);
             this.pnlAtas.ResumeLayout(false);

@@ -30,11 +30,11 @@
         {
             this.btnGet = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.id_purchase_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgl_purchase_order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,25 +64,6 @@
             this.dataGridView.TabIndex = 12;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             // 
-            // txtKeyword
-            // 
-            this.txtKeyword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKeyword.Location = new System.Drawing.Point(95, 11);
-            this.txtKeyword.Name = "txtKeyword";
-            this.txtKeyword.Size = new System.Drawing.Size(200, 27);
-            this.txtKeyword.TabIndex = 11;
-            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 19);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Keyword : ";
-            // 
             // id_purchase_order
             // 
             this.id_purchase_order.DataPropertyName = "id_purchase_order";
@@ -110,6 +91,25 @@
             this.tgl_purchase_order.ReadOnly = true;
             this.tgl_purchase_order.Width = 150;
             // 
+            // txtKeyword
+            // 
+            this.txtKeyword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtKeyword.Location = new System.Drawing.Point(95, 11);
+            this.txtKeyword.Name = "txtKeyword";
+            this.txtKeyword.Size = new System.Drawing.Size(200, 27);
+            this.txtKeyword.TabIndex = 11;
+            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(13, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(76, 19);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Keyword : ";
+            // 
             // formSearchPO
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,6 +120,7 @@
             this.Controls.Add(this.txtKeyword);
             this.Controls.Add(this.label1);
             this.Name = "formSearchPO";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formSearchPO";
             this.Load += new System.EventHandler(this.formSearchPO_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

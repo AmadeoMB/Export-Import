@@ -650,6 +650,7 @@
             this.Controls.Add(this.pnlTengah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formDeliveryOrder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formDeliveryOrder";
             this.Load += new System.EventHandler(this.formDeliveryOrder_Load);
             this.pnlAtas.ResumeLayout(false);

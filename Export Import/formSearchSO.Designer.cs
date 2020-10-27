@@ -122,6 +122,7 @@
             this.Controls.Add(this.txtKeyword);
             this.Controls.Add(this.label1);
             this.Name = "formSearchSO";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tambah Sales Order";
             this.Load += new System.EventHandler(this.formSearchSO_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

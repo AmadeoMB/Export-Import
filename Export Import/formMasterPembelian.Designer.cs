@@ -142,6 +142,7 @@
             this.Controls.Add(this.lblSupplier);
             this.Controls.Add(this.panel1);
             this.Name = "formMasterPembelian";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Pembelian : ";
             this.Load += new System.EventHandler(this.formMasterPembelian_Load);
             this.panel1.ResumeLayout(false);
