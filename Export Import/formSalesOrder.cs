@@ -246,6 +246,14 @@ namespace Export_Import
         {
             if (idx > -1)
             {
+                Object[] temp = {
+                    ds.Tables["item"].Rows[idx][0],
+                    ds.Tables["item"].Rows[idx][7],
+                    ds.Tables["item"].Rows[idx][2],
+                    "delete",
+                };
+                done.Push(temp);
+
                 ds.Tables["item"].Rows.RemoveAt(idx);
                 refreshTotal();
             }
