@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtAgent = new System.Windows.Forms.TextBox();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -82,7 +83,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.txtAgent = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -120,6 +120,16 @@
             this.groupBox1.Size = new System.Drawing.Size(1353, 204);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // txtAgent
+            // 
+            this.txtAgent.Enabled = false;
+            this.txtAgent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAgent.Location = new System.Drawing.Point(1138, 104);
+            this.txtAgent.Name = "txtAgent";
+            this.txtAgent.ReadOnly = true;
+            this.txtAgent.Size = new System.Drawing.Size(200, 27);
+            this.txtAgent.TabIndex = 28;
             // 
             // comboBox4
             // 
@@ -605,6 +615,7 @@
             // 
             // LNTotal
             // 
+            this.LNTotal.Enabled = false;
             this.LNTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LNTotal.Location = new System.Drawing.Point(1155, 85);
             this.LNTotal.Name = "LNTotal";
@@ -615,6 +626,7 @@
             // 
             // textBox5
             // 
+            this.textBox5.Enabled = false;
             this.textBox5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(1155, 52);
             this.textBox5.Name = "textBox5";
@@ -667,16 +679,6 @@
             this.groupBox5.Size = new System.Drawing.Size(1339, 51);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
-            // 
-            // txtAgent
-            // 
-            this.txtAgent.Enabled = false;
-            this.txtAgent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAgent.Location = new System.Drawing.Point(1138, 104);
-            this.txtAgent.Name = "txtAgent";
-            this.txtAgent.ReadOnly = true;
-            this.txtAgent.Size = new System.Drawing.Size(200, 27);
-            this.txtAgent.TabIndex = 28;
             // 
             // formPurchaseOrder
             // 

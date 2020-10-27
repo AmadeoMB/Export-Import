@@ -256,7 +256,14 @@ namespace Export_Import
 
                 if (temp[3].ToString().Equals("insert"))
                 {
-                    ds.Tables["item"].Rows.RemoveAt(ds.Tables["item"].Rows.Count - 1);
+                    for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+                    {
+                        if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
+                        {
+                            ds.Tables["item"].Rows.RemoveAt(i);
+                            break;
+                        }
+                    }
                 }
                 else
                 {
@@ -292,11 +299,18 @@ namespace Export_Import
                 }
                 else
                 {
-                    ds.Tables["item"].Rows.RemoveAt(ds.Tables["item"].Rows.Count - 1);
+                    for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+                    {
+                        if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
+                        {
+                            ds.Tables["item"].Rows.RemoveAt(i);
+                            break;
+                        }
+                    }
                 }
+                refreshnettotal();
+                refreshlocalnet();
             }
-            refreshnettotal();
-            refreshlocalnet();
         }
 
         Boolean saved = false;
