@@ -59,7 +59,6 @@
             this.btnTD = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -72,6 +71,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlAtas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlTengah.SuspendLayout();
@@ -84,7 +87,7 @@
             this.cbEkspedisi.Enabled = false;
             this.cbEkspedisi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEkspedisi.FormattingEnabled = true;
-            this.cbEkspedisi.Location = new System.Drawing.Point(1137, 183);
+            this.cbEkspedisi.Location = new System.Drawing.Point(1137, 162);
             this.cbEkspedisi.Name = "cbEkspedisi";
             this.cbEkspedisi.Size = new System.Drawing.Size(200, 27);
             this.cbEkspedisi.TabIndex = 23;
@@ -94,7 +97,7 @@
             this.cbNamaStaff.Enabled = false;
             this.cbNamaStaff.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbNamaStaff.FormattingEnabled = true;
-            this.cbNamaStaff.Location = new System.Drawing.Point(1137, 154);
+            this.cbNamaStaff.Location = new System.Drawing.Point(1137, 133);
             this.cbNamaStaff.Name = "cbNamaStaff";
             this.cbNamaStaff.Size = new System.Drawing.Size(200, 27);
             this.cbNamaStaff.TabIndex = 22;
@@ -104,7 +107,7 @@
             this.cbCreditTerm.Enabled = false;
             this.cbCreditTerm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCreditTerm.FormattingEnabled = true;
-            this.cbCreditTerm.Location = new System.Drawing.Point(1137, 125);
+            this.cbCreditTerm.Location = new System.Drawing.Point(1137, 104);
             this.cbCreditTerm.Name = "cbCreditTerm";
             this.cbCreditTerm.Size = new System.Drawing.Size(200, 27);
             this.cbCreditTerm.TabIndex = 21;
@@ -113,7 +116,7 @@
             // 
             this.DateToday.Enabled = false;
             this.DateToday.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateToday.Location = new System.Drawing.Point(1137, 95);
+            this.DateToday.Location = new System.Drawing.Point(1137, 74);
             this.DateToday.Name = "DateToday";
             this.DateToday.Size = new System.Drawing.Size(200, 27);
             this.DateToday.TabIndex = 18;
@@ -123,7 +126,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(976, 156);
+            this.label12.Location = new System.Drawing.Point(976, 135);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(47, 19);
             this.label12.TabIndex = 17;
@@ -133,7 +136,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(976, 128);
+            this.label11.Location = new System.Drawing.Point(976, 107);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(84, 19);
             this.label11.TabIndex = 16;
@@ -143,7 +146,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(976, 101);
+            this.label10.Location = new System.Drawing.Point(976, 80);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 19);
             this.label10.TabIndex = 15;
@@ -153,7 +156,7 @@
             // 
             this.txtIdPI.Enabled = false;
             this.txtIdPI.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdPI.Location = new System.Drawing.Point(1137, 39);
+            this.txtIdPI.Location = new System.Drawing.Point(1137, 18);
             this.txtIdPI.Name = "txtIdPI";
             this.txtIdPI.ReadOnly = true;
             this.txtIdPI.Size = new System.Drawing.Size(200, 27);
@@ -163,7 +166,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(975, 42);
+            this.label9.Location = new System.Drawing.Point(975, 21);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(48, 19);
             this.label9.TabIndex = 13;
@@ -198,7 +201,7 @@
             this.pnlAtas.Controls.Add(this.label1);
             this.pnlAtas.Location = new System.Drawing.Point(1, 2);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1354, 242);
+            this.pnlAtas.Size = new System.Drawing.Size(1354, 200);
             this.pnlAtas.TabIndex = 1;
             this.pnlAtas.TabStop = false;
             // 
@@ -206,7 +209,7 @@
             // 
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(976, 70);
+            this.label22.Location = new System.Drawing.Point(976, 49);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(133, 19);
             this.label22.TabIndex = 28;
@@ -215,7 +218,7 @@
             // txtInvoiceSupplier
             // 
             this.txtInvoiceSupplier.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtInvoiceSupplier.Location = new System.Drawing.Point(1137, 67);
+            this.txtInvoiceSupplier.Location = new System.Drawing.Point(1137, 46);
             this.txtInvoiceSupplier.Name = "txtInvoiceSupplier";
             this.txtInvoiceSupplier.Size = new System.Drawing.Size(200, 27);
             this.txtInvoiceSupplier.TabIndex = 26;
@@ -224,7 +227,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(976, 186);
+            this.label13.Location = new System.Drawing.Point(976, 165);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(61, 19);
             this.label13.TabIndex = 19;
@@ -350,7 +353,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(637, 245);
+            this.label15.Location = new System.Drawing.Point(637, 205);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(86, 23);
             this.label15.TabIndex = 4;
@@ -372,9 +375,9 @@
             this.pnlTengah.Controls.Add(this.btnTD);
             this.pnlTengah.Controls.Add(this.button13);
             this.pnlTengah.Controls.Add(this.dataGridView1);
-            this.pnlTengah.Location = new System.Drawing.Point(1, 271);
+            this.pnlTengah.Location = new System.Drawing.Point(1, 231);
             this.pnlTengah.Name = "pnlTengah";
-            this.pnlTengah.Size = new System.Drawing.Size(1353, 317);
+            this.pnlTengah.Size = new System.Drawing.Size(1353, 315);
             this.pnlTengah.TabIndex = 3;
             this.pnlTengah.TabStop = false;
             // 
@@ -403,7 +406,10 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.label14);
+            this.groupBox3.Controls.Add(this.textBox1);
             this.groupBox3.Controls.Add(this.txtRate);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label19);
@@ -412,26 +418,17 @@
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.txtTotalConvert);
             this.groupBox3.Controls.Add(this.txtTotal);
-            this.groupBox3.Location = new System.Drawing.Point(1, 585);
+            this.groupBox3.Location = new System.Drawing.Point(1, 552);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1347, 106);
+            this.groupBox3.Size = new System.Drawing.Size(1347, 139);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Location = new System.Drawing.Point(0, 126);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(883, 40);
-            this.groupBox4.TabIndex = 4;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "groupBox4";
             // 
             // txtRate
             // 
             this.txtRate.Enabled = false;
             this.txtRate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRate.Location = new System.Drawing.Point(943, 75);
+            this.txtRate.Location = new System.Drawing.Point(943, 106);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(117, 27);
             this.txtRate.TabIndex = 9;
@@ -440,7 +437,7 @@
             // 
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(636, 78);
+            this.label20.Location = new System.Drawing.Point(636, 109);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(66, 19);
             this.label20.TabIndex = 8;
@@ -450,7 +447,7 @@
             // 
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(898, 78);
+            this.label19.Location = new System.Drawing.Point(898, 109);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(39, 19);
             this.label19.TabIndex = 7;
@@ -461,7 +458,7 @@
             this.cbCurrent.Enabled = false;
             this.cbCurrent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrent.FormattingEnabled = true;
-            this.cbCurrent.Location = new System.Drawing.Point(708, 75);
+            this.cbCurrent.Location = new System.Drawing.Point(708, 106);
             this.cbCurrent.Name = "cbCurrent";
             this.cbCurrent.Size = new System.Drawing.Size(184, 27);
             this.cbCurrent.TabIndex = 6;
@@ -471,7 +468,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(1069, 78);
+            this.label18.Location = new System.Drawing.Point(1069, 109);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(106, 19);
             this.label18.TabIndex = 5;
@@ -481,7 +478,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1107, 45);
+            this.label17.Location = new System.Drawing.Point(1107, 76);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(68, 19);
             this.label17.TabIndex = 4;
@@ -491,7 +488,7 @@
             // 
             this.txtTotalConvert.Enabled = false;
             this.txtTotalConvert.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalConvert.Location = new System.Drawing.Point(1181, 75);
+            this.txtTotalConvert.Location = new System.Drawing.Point(1181, 106);
             this.txtTotalConvert.Name = "txtTotalConvert";
             this.txtTotalConvert.Size = new System.Drawing.Size(157, 27);
             this.txtTotalConvert.TabIndex = 3;
@@ -500,7 +497,7 @@
             // 
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(1181, 42);
+            this.txtTotal.Location = new System.Drawing.Point(1181, 73);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(157, 27);
             this.txtTotal.TabIndex = 2;
@@ -549,6 +546,44 @@
             this.pnlBawah.Size = new System.Drawing.Size(1347, 40);
             this.pnlBawah.TabIndex = 6;
             this.pnlBawah.TabStop = false;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(1064, 43);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 19);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Total PPN (EXC)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(1180, 40);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(157, 27);
+            this.textBox1.TabIndex = 10;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1133, 10);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 19);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Total";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Enabled = false;
+            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(1180, 7);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(157, 27);
+            this.textBox2.TabIndex = 12;
             // 
             // formPurchaseInvoice
             // 
@@ -604,7 +639,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox pnlTengah;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.TextBox txtRate;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
@@ -621,5 +655,9 @@
         private System.Windows.Forms.TextBox txtInvoiceSupplier;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button btnTD;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -17,7 +17,6 @@ namespace Export_Import
         formMasterPembelian form;
         OracleDataAdapter daSupplier;
         OracleDataAdapter daGudang;
-        OracleDataAdapter daSales;
         OracleDataAdapter daItem;
         OracleDataAdapter daCurrent;
         OracleDataAdapter daship;
@@ -31,6 +30,8 @@ namespace Export_Import
         public formPurchaseOrder()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
         }
 
         public formPurchaseOrder(formMasterPembelian form)
@@ -98,6 +99,9 @@ namespace Export_Import
         private void formPurchaseOrder_Load(object sender, EventArgs e)
         {
             txtAgent.Text = admin;
+
+            this.dataGridView1.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView1.Columns["harga_beli_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             isicbsupplier();
             isicbGudang();
@@ -189,7 +193,7 @@ namespace Export_Import
             {
                 Object[] temp = {
                     ds.Tables["item"].Rows[idx][0],
-                    ds.Tables["item"].Rows[idx][7],
+                    ds.Tables["item"].Rows[idx][8],
                     ds.Tables["item"].Rows[idx][2],
                     "delete",
                 };

@@ -117,6 +117,9 @@ namespace Export_Import
 
         private void formStockIssue_Load(object sender, EventArgs e)
         {
+            this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView.Columns["harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             try
             {
                 generateNomerSI();

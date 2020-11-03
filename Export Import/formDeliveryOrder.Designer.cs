@@ -68,6 +68,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.btnSearchSO = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,9 +78,7 @@
             this.berat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSearchSO = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTotal.SuspendLayout();
             this.pnlBawah.SuspendLayout();
@@ -526,12 +525,22 @@
             this.berat,
             this.jenis_ppn,
             this.discount,
-            this.total_ppn,
             this.subtotal});
             this.dataGridView.Location = new System.Drawing.Point(6, 46);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.Size = new System.Drawing.Size(1341, 265);
             this.dataGridView.TabIndex = 8;
+            // 
+            // btnSearchSO
+            // 
+            this.btnSearchSO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchSO.Location = new System.Drawing.Point(1138, 10);
+            this.btnSearchSO.Name = "btnSearchSO";
+            this.btnSearchSO.Size = new System.Drawing.Size(200, 30);
+            this.btnSearchSO.TabIndex = 7;
+            this.btnSearchSO.Text = "Search S/O";
+            this.btnSearchSO.UseVisualStyleBackColor = true;
+            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
             // 
             // ID
             // 
@@ -610,15 +619,6 @@
             this.discount.Name = "discount";
             this.discount.ReadOnly = true;
             // 
-            // total_ppn
-            // 
-            this.total_ppn.DataPropertyName = "total_ppn";
-            this.total_ppn.Frozen = true;
-            this.total_ppn.HeaderText = "Total PPN";
-            this.total_ppn.Name = "total_ppn";
-            this.total_ppn.ReadOnly = true;
-            this.total_ppn.Width = 125;
-            // 
             // subtotal
             // 
             this.subtotal.DataPropertyName = "subtotal";
@@ -627,17 +627,6 @@
             this.subtotal.Name = "subtotal";
             this.subtotal.ReadOnly = true;
             this.subtotal.Width = 170;
-            // 
-            // btnSearchSO
-            // 
-            this.btnSearchSO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchSO.Location = new System.Drawing.Point(1138, 10);
-            this.btnSearchSO.Name = "btnSearchSO";
-            this.btnSearchSO.Size = new System.Drawing.Size(200, 30);
-            this.btnSearchSO.TabIndex = 7;
-            this.btnSearchSO.Text = "Search S/O";
-            this.btnSearchSO.UseVisualStyleBackColor = true;
-            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
             // 
             // formDeliveryOrder
             // 
@@ -717,7 +706,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn berat;
         private System.Windows.Forms.DataGridViewTextBoxColumn jenis_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
     }
 }
