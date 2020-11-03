@@ -151,6 +151,8 @@ namespace Export_Import
             txtAlamatCust.Text = ds.Tables["customer"].Rows[idx][2].ToString();
         }
 
+        int totalPPN = 0;
+
         void insertItem(Object[] data)
         {
             int discount = Convert.ToInt32(data[1]);
@@ -173,7 +175,7 @@ namespace Export_Import
             if (ppn.Equals("EXC"))
             {
                 totalPPN = subtotal * 10 / 100;
-                subtotal += totalPPN;
+                this.totalPPN += totalPPN;
             }
 
             //Hitung berat
@@ -211,7 +213,6 @@ namespace Export_Import
                 hargaJual + " as harga_jual_item, " +
                 beratTotal + " as berat, " +
                 "jenis_ppn, " +
-                totalPPN + " as total_ppn, " +
                 discount + " as discount, " +
                 subtotal + " as subtotal " +
                 "from item " +
@@ -228,9 +229,7 @@ namespace Export_Import
 
             if (search.ShowDialog() != DialogResult.Cancel)
             {
-                
                 insertItem(search.data);
-
 
                 Object[] temp = search.data;
                 Array.Resize(ref temp, temp.Length+1);
@@ -476,15 +475,19 @@ namespace Export_Import
             int total = 0;
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
             {
-                total += Convert.ToInt32(ds.Tables["item"].Rows[i][9]);
+                total += Convert.ToInt32(ds.Tables["item"].Rows[i][8]);
             }
-            txtTotalHarga.Text = "Rp " + total;
+            txtTotal.Text = "Rp " + total;
+
+            txtTotalPPN.Text = "Rp " + this.totalPPN;
+
+            int netTotal = (total + this.totalPPN);
+            txtTotalHarga.Text = "Rp " + netTotal;
 
             txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
-            int totalRp = total;
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
 
-            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate);
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (netTotal / rate);
         }
 
         private void cbIdCust_SelectedIndexChanged(object sender, EventArgs e)
