@@ -160,6 +160,12 @@
     <Compile Include="formPreviewDO.Designer.cs">
       <DependentUpon>formPreviewDO.cs</DependentUpon>
     </Compile>
+    <Compile Include="formPreviewInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formPreviewInvoice.Designer.cs">
+      <DependentUpon>formPreviewInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="formPreviewPO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +213,12 @@
     </Compile>
     <Compile Include="formSearchCustomer.Designer.cs">
       <DependentUpon>formSearchCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formSearchDO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formSearchDO.Designer.cs">
+      <DependentUpon>formSearchDO.cs</DependentUpon>
     </Compile>
     <Compile Include="formSearchItem.cs">
       <SubType>Form</SubType>
@@ -316,6 +328,12 @@
       <DependentUpon>PreviewDeliveryOrder.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="PreviewInvoice.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PreviewInvoice.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PreviewPurchaseInvoice.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -393,6 +411,9 @@
     <EmbeddedResource Include="formPreviewDO.resx">
       <DependentUpon>formPreviewDO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formPreviewInvoice.resx">
+      <DependentUpon>formPreviewInvoice.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formPreviewPI.resx">
       <DependentUpon>formPreviewPI.cs</DependentUpon>
     </EmbeddedResource>
@@ -416,6 +437,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formSearchCustomer.resx">
       <DependentUpon>formSearchCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formSearchDO.resx">
+      <DependentUpon>formSearchDO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formSearchItem.resx">
       <DependentUpon>formSearchItem.cs</DependentUpon>
@@ -471,6 +495,10 @@
     <EmbeddedResource Include="PreviewDeliveryOrder.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PreviewDeliveryOrder.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewInvoice.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PreviewInvoice.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PreviewPurchaseInvoice.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
