@@ -163,6 +163,7 @@
             this.Controls.Add(this.pnlAtas);
             this.Controls.Add(this.btnUpdate);
             this.Name = "formUpdateEkspedisi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formUpdateEkspedisi";
             this.Load += new System.EventHandler(this.formUpdateEkspedisi_Load);
             this.pnlAtas.ResumeLayout(false);

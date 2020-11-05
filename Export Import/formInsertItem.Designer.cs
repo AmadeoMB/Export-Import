@@ -429,6 +429,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formInsertItem";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "New Item";
             this.Load += new System.EventHandler(this.formInsertItem_Load);
             this.pnlAtas.ResumeLayout(false);

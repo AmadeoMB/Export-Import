@@ -380,7 +380,6 @@
             this.Name = "formListStock";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Stock";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.formListStock_Load);
             this.pnlAtas.ResumeLayout(false);
             this.pnlAtas.PerformLayout();

@@ -155,6 +155,7 @@
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "formMasterPenjualan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Penjualan : ";
             this.Load += new System.EventHandler(this.formMasterPenjualan_Load);
             this.panel1.ResumeLayout(false);

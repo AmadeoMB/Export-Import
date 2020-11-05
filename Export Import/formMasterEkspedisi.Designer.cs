@@ -35,17 +35,17 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnInsert = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alamat_ekspedisi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contact_person = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no_telp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClose = new System.Windows.Forms.Button();
             this.groupFilter = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbJabatan = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alamat_ekspedisi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contact_person = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no_telp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -140,6 +140,50 @@
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id_ekspedisi";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            this.id_item.Width = 50;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama_ekspedisi";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 175;
+            // 
+            // alamat_ekspedisi
+            // 
+            this.alamat_ekspedisi.DataPropertyName = "alamat_ekspedisi";
+            this.alamat_ekspedisi.Frozen = true;
+            this.alamat_ekspedisi.HeaderText = "Alamat";
+            this.alamat_ekspedisi.Name = "alamat_ekspedisi";
+            this.alamat_ekspedisi.ReadOnly = true;
+            this.alamat_ekspedisi.Width = 200;
+            // 
+            // contact_person
+            // 
+            this.contact_person.DataPropertyName = "cp_ekspedisi";
+            this.contact_person.Frozen = true;
+            this.contact_person.HeaderText = "Contact Person";
+            this.contact_person.Name = "contact_person";
+            this.contact_person.ReadOnly = true;
+            this.contact_person.Width = 150;
+            // 
+            // no_telp
+            // 
+            this.no_telp.DataPropertyName = "no_telp";
+            this.no_telp.Frozen = true;
+            this.no_telp.HeaderText = "Nomer Telpon";
+            this.no_telp.Name = "no_telp";
+            this.no_telp.ReadOnly = true;
+            // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -203,50 +247,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id_ekspedisi";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            this.id_item.Width = 50;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama_ekspedisi";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 175;
-            // 
-            // alamat_ekspedisi
-            // 
-            this.alamat_ekspedisi.DataPropertyName = "alamat_ekspedisi";
-            this.alamat_ekspedisi.Frozen = true;
-            this.alamat_ekspedisi.HeaderText = "Alamat";
-            this.alamat_ekspedisi.Name = "alamat_ekspedisi";
-            this.alamat_ekspedisi.ReadOnly = true;
-            this.alamat_ekspedisi.Width = 200;
-            // 
-            // contact_person
-            // 
-            this.contact_person.DataPropertyName = "cp_ekspedisi";
-            this.contact_person.Frozen = true;
-            this.contact_person.HeaderText = "Contact Person";
-            this.contact_person.Name = "contact_person";
-            this.contact_person.ReadOnly = true;
-            this.contact_person.Width = 150;
-            // 
-            // no_telp
-            // 
-            this.no_telp.DataPropertyName = "no_telp";
-            this.no_telp.Frozen = true;
-            this.no_telp.HeaderText = "Nomer Telpon";
-            this.no_telp.Name = "no_telp";
-            this.no_telp.ReadOnly = true;
-            // 
             // formMasterEkspedisi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +255,7 @@
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formMasterEkspedisi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formMasterEkspedisi";
             this.Load += new System.EventHandler(this.formMasterEkspedisi_Load);
             this.pnlAtas.ResumeLayout(false);

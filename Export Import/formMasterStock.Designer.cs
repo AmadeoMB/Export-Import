@@ -115,6 +115,7 @@
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.panel1);
             this.Name = "formMasterStock";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Stock";
             this.Load += new System.EventHandler(this.formMasterStock_Load);
             this.panel1.ResumeLayout(false);

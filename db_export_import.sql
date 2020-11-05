@@ -132,6 +132,8 @@ create table H_SALES_ORDER
    SHIP_VIA             VARCHAR2(255)        not null,
    CURRENCY_SALES_ORDER VARCHAR2(3)        not null,
    RATE                 INTEGER            not null,
+   TOTAL                INTEGER              not null,
+   TOTAL_PPN            INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_H_SALES_ORDER primary key (ID_SALES_ORDER)
@@ -148,7 +150,6 @@ create table D_SALES_ORDER
    BERAT_TOTAL          INTEGER              not null,
    JENIS_PPN            VARCHAR2(3)          not null,
    DISCOUNT             INTEGER              not null,
-   TOTAL_PPN            INTEGER              not null,
    SUBTOTAL             INTEGER              not null,
    constraint PK_D_SALES_ORDER primary key (ID_ITEM, ID_SALES_ORDER)
 );
@@ -166,6 +167,8 @@ create table H_DELIVERY_ORDER
    SHIP_VIA             VARCHAR2(255)        not null,
    CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
    RATE                 INTEGER              not null,
+   TOTAL                INTEGER              not null,
+   TOTAL_PPN            INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_DELIVERY_ORDER primary key (ID_DELIVERY_ORDER)
@@ -182,7 +185,6 @@ create table D_DELIVERY_ORDER
    HARGA_SATUAN         INTEGER              not null,
    BERAT_TOTAL          INTEGER              not null,
    JENIS_PPN            VARCHAR2(3)          not null,
-   TOTAL_PPN            INTEGER              not null,
    DISCOUNT             INTEGER              not null,
    SUBTOTAL             INTEGER              not null,
    constraint PK_D_DELIVERY_ORDER primary key (ID_ITEM, ID_SALES_ORDER, ID_DELIVERY_ORDER)
@@ -201,6 +203,8 @@ create table H_INVOICE
    SHIP_VIA             VARCHAR2(255)        not null,
    CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
    RATE                 INTEGER              not null,
+   TOTAL                INTEGER              not null,
+   TOTAL_PPN            INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_INVOICE primary key (ID_INVOICE)
@@ -217,7 +221,6 @@ create table D_INVOICE
    HARGA_SATUAN         INTEGER              not null,
    BERAT_TOTAL          INTEGER              not null,
    JENIS_PPN            VARCHAR2(3)          not null,
-   TOTAL_PPN            INTEGER              not null,
    DISCOUNT             INTEGER              not null,
    SUBTOTAL             INTEGER              not null,
    constraint PK_D_INVOICE primary key (ID_ITEM, ID_SALES_ORDER, ID_INVOICE)
@@ -236,6 +239,8 @@ create table H_PURCHASE_ORDER
    SHIP_VIA             VARCHAR2(255)        not null,
    CURRENCY_PURCHASE_ORDER VARCHAR2(255)        not null,
    RATE                 INTEGER            not null,
+   TOTAL                INTEGER              not null,
+   TOTAL_PPN            INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_H_PURCHASE_ORDER primary key (ID_PURCHASE_ORDER)
@@ -251,7 +256,6 @@ create table D_PURCHASE_ORDER
    HARGA_SATUAN         INTEGER              not null,
    DISCOUNT             INTEGER              not null,
    JENIS_PPN            VARCHAR2(3)          not null,
-   TOTAL_PPN            INTEGER              not null,
    SUBTOTAL             INTEGER              not null,
    constraint PK_D_PUCHASE_ORDER primary key (ID_ITEM, ID_PURCHASE_ORDER)
 );
@@ -270,6 +274,8 @@ create table H_PURCHASE_INVOICE
    SHIP_VIA             VARCHAR2(255)        not null,
    CURRENCY_PURCHASE_INVOICE VARCHAR2(3)          not null,
    RATE                 FLOAT(11)            not null,
+   TOTAL                INTEGER              not null,
+   TOTAL_PPN            INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
    constraint PK_H_PURCHASE_INVOICE primary key (ID_PURCHASE_INVOICE)
@@ -286,7 +292,6 @@ create table D_PURCHASE_INVOICE
    DISCOUNT             INTEGER              not null,
    KADAR_AIR            NUMBER(3)            not null,
    JENIS_PPN            VARCHAR2(3)          not null,
-   TOTAL_PPN            INTEGER              not null,
    SUBTOTAL             INTEGER              not null,
    constraint PK_D_PURCHASE_INVOICE primary key (ID_PURCHASE_INVOICE, ID_ITEM)
 );

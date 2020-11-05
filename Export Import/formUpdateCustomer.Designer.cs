@@ -162,6 +162,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formUpdateCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formUpdateCustomer";
             this.Load += new System.EventHandler(this.formUpdateCustomer_Load);
             this.pnlAtas.ResumeLayout(false);

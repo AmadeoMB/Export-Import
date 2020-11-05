@@ -371,6 +371,7 @@
             this.Controls.Add(this.pnlTengah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formStockIssue";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formStockIssue";
             this.Load += new System.EventHandler(this.formStockIssue_Load);
             this.pnlAtas.ResumeLayout(false);

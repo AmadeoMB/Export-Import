@@ -165,6 +165,7 @@
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formInsertEkspedisi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "formInsertEkspedisi";
             this.Load += new System.EventHandler(this.formInsertEkspedisi_Load);
             this.pnlAtas.ResumeLayout(false);

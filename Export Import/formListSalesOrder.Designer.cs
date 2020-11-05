@@ -31,6 +31,7 @@
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlBawah = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.id_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,7 +45,6 @@
             this.dateFilter = new System.Windows.Forms.DateTimePicker();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBack = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -83,6 +83,17 @@
             this.pnlBawah.Name = "pnlBawah";
             this.pnlBawah.Size = new System.Drawing.Size(1350, 656);
             this.pnlBawah.TabIndex = 4;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(528, 20);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(150, 42);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // btnCreate
             // 
@@ -221,17 +232,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama :";
             // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(528, 20);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(150, 42);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
             // formListSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +240,7 @@
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formListSalesOrder";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Sales Order";
             this.Load += new System.EventHandler(this.formListSalesOrder_Load);
             this.pnlAtas.ResumeLayout(false);

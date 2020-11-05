@@ -22,6 +22,7 @@ namespace Export_Import
         public formSearchItem()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
         }
 
         public formSearchItem(formSalesOrder form)
@@ -96,6 +97,7 @@ namespace Export_Import
         private void formSearchItem_Load(object sender, EventArgs e)
         {
             refreshTable();
+            this.dataGridView.Columns["harga_jual"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
             if (formSI != null)
             {
@@ -120,6 +122,9 @@ namespace Export_Import
                     {
                         discount = numDiscount.Value;
                     }
+                    MessageBox.Show(dataGridView.Rows[idx].Cells[0].Value.ToString() + " " +
+                        discount + " " +
+                        numQty.Value);
                     Object[] temp = {
                         dataGridView.Rows[idx].Cells[0].Value.ToString(),
                         discount,

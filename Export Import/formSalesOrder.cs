@@ -28,6 +28,8 @@ namespace Export_Import
         public formSalesOrder()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            conn.Open();
         }
 
         public formSalesOrder(formMasterPenjualan master, string id_cust = "")
@@ -123,6 +125,9 @@ namespace Export_Import
 
         private void formSalesOrder_Load(object sender, EventArgs e)
         {
+            this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dataGridView.Columns["harga_satuan"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+
             try
             {
                 isiCBCustomer();
@@ -146,11 +151,13 @@ namespace Export_Import
             txtAlamatCust.Text = ds.Tables["customer"].Rows[idx][2].ToString();
         }
 
+        int totalPPN = 0;
+
         void insertItem(Object[] data)
         {
             int discount = Convert.ToInt32(data[1]);
             int qty = Convert.ToInt32(data[2]);
-            object id_item = data[0];
+            object id_item = data[0]; 
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_jual_item from item where id_item ='" + id_item + "'";
@@ -168,7 +175,7 @@ namespace Export_Import
             if (ppn.Equals("EXC"))
             {
                 totalPPN = subtotal * 10 / 100;
-                subtotal += totalPPN;
+                this.totalPPN += totalPPN;
             }
 
             //Hitung berat
@@ -206,7 +213,6 @@ namespace Export_Import
                 hargaJual + " as harga_jual_item, " +
                 beratTotal + " as berat, " +
                 "jenis_ppn, " +
-                totalPPN + " as total_ppn, " +
                 discount + " as discount, " +
                 subtotal + " as subtotal " +
                 "from item " +
@@ -224,7 +230,6 @@ namespace Export_Import
             if (search.ShowDialog() != DialogResult.Cancel)
             {
                 insertItem(search.data);
-
 
                 Object[] temp = search.data;
                 Array.Resize(ref temp, temp.Length+1);
@@ -248,7 +253,7 @@ namespace Export_Import
             {
                 Object[] temp = {
                     ds.Tables["item"].Rows[idx][0],
-                    ds.Tables["item"].Rows[idx][7],
+                    ds.Tables["item"].Rows[idx][8],
                     ds.Tables["item"].Rows[idx][2],
                     "delete",
                 };
@@ -395,10 +400,12 @@ namespace Export_Import
             String shipVia = cbShip.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-            int total = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
+            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+            int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
+            int netTotal = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
             int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
 
-            OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :convert)", conn);
+            OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
             cmd.Parameters.Add(":id", id_SO);
             cmd.Parameters.Add(":do", '-');
             cmd.Parameters.Add(":gudang", id_gudang);
@@ -413,6 +420,8 @@ namespace Export_Import
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
+            cmd.Parameters.Add(":totalPPN", totalPPN);
+            cmd.Parameters.Add(":netTotal", netTotal);
             cmd.Parameters.Add(":convert", convert);
             cmd.ExecuteNonQuery();
 
@@ -425,11 +434,10 @@ namespace Export_Import
                 String hJual_item = ds.Tables["item"].Rows[i][4].ToString();
                 String berat_item = ds.Tables["item"].Rows[i][5].ToString();
                 String jenis_ppn = ds.Tables["item"].Rows[i][6].ToString();
-                String totalPPN = ds.Tables["item"].Rows[i][7].ToString();
-                String discount = ds.Tables["item"].Rows[i][8].ToString();
-                String subtotal = ds.Tables["item"].Rows[i][9].ToString();
+                String discount = ds.Tables["item"].Rows[i][7].ToString();
+                String subtotal = ds.Tables["item"].Rows[i][8].ToString();
 
-                OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :ppnT, :subtotal)", conn);
+                OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
                 cmdDetail.Parameters.Add(":so", id_SO);
                 cmdDetail.Parameters.Add(":nama", nama_item);
@@ -439,7 +447,6 @@ namespace Export_Import
                 cmdDetail.Parameters.Add(":berat", berat_item);
                 cmdDetail.Parameters.Add(":ppn", jenis_ppn);
                 cmdDetail.Parameters.Add(":discount", discount);
-                cmdDetail.Parameters.Add(":ppnT", totalPPN);
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
@@ -468,15 +475,19 @@ namespace Export_Import
             int total = 0;
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
             {
-                total += Convert.ToInt32(ds.Tables["item"].Rows[i][9]);
+                total += Convert.ToInt32(ds.Tables["item"].Rows[i][8]);
             }
-            txtTotalHarga.Text = "Rp " + total;
+            txtTotal.Text = "Rp " + total;
+
+            txtTotalPPN.Text = "Rp " + this.totalPPN;
+
+            int netTotal = (total + this.totalPPN);
+            txtTotalHarga.Text = "Rp " + netTotal;
 
             txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
-            int totalRp = total;
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
 
-            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate);
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (netTotal / rate);
         }
 
         private void cbIdCust_SelectedIndexChanged(object sender, EventArgs e)
@@ -533,7 +544,9 @@ namespace Export_Import
             String shipVia = cbShip.Text;
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-            int total = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
+            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+            int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
+            int netTotal = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
             int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
 
             OracleCommand cmd = new OracleCommand("update h_sales_order " +
@@ -548,7 +561,9 @@ namespace Export_Import
                 "ship_via = :ship, " +
                 "currency_sales_order = :currency, " +
                 "rate = :rate, " +
-                "total_harga = :total, " +
+                "total = :total, " +
+                "total_ppn = :totalPPN, " +
+                "total_harga = :netTotal, " +
                 "total_harga_convert = :convert " +
                 "where id_sales_order = '" + id_so + "'", conn);
 
@@ -563,6 +578,8 @@ namespace Export_Import
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
+            cmd.Parameters.Add(":totalPPN", totalPPN);
+            cmd.Parameters.Add(":netTotal", netTotal);
             cmd.Parameters.Add(":convert", convert);
 
             cmd.ExecuteNonQuery();
@@ -580,11 +597,10 @@ namespace Export_Import
                 String hJual_item = ds.Tables["item"].Rows[i][4].ToString();
                 String berat_item = ds.Tables["item"].Rows[i][5].ToString();
                 String jenis_ppn = ds.Tables["item"].Rows[i][6].ToString();
-                String totalPPN = ds.Tables["item"].Rows[i][7].ToString();
-                String discount = ds.Tables["item"].Rows[i][8].ToString();
-                String subtotal = ds.Tables["item"].Rows[i][9].ToString();
+                String discount = ds.Tables["item"].Rows[i][7].ToString();
+                String subtotal = ds.Tables["item"].Rows[i][8].ToString();
 
-                OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :ppnT, :subtotal)", conn);
+                OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
                 cmdDetail.Parameters.Add(":so", id_SO);
                 cmdDetail.Parameters.Add(":nama", nama_item);
@@ -594,7 +610,6 @@ namespace Export_Import
                 cmdDetail.Parameters.Add(":berat", berat_item);
                 cmdDetail.Parameters.Add(":ppn", jenis_ppn);
                 cmdDetail.Parameters.Add(":discount", discount);
-                cmdDetail.Parameters.Add(":ppnT", totalPPN);
                 cmdDetail.Parameters.Add(":subtotal", subtotal);
                 cmdDetail.ExecuteNonQuery();
             }
