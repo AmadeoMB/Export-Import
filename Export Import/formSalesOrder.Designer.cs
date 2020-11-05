@@ -334,7 +334,7 @@
             this.pnlBawah.Controls.Add(this.groupButton);
             this.pnlBawah.Controls.Add(this.label11);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBawah.Location = new System.Drawing.Point(0, 199);
+            this.pnlBawah.Location = new System.Drawing.Point(0, 181);
             this.pnlBawah.Name = "pnlBawah";
             this.pnlBawah.Size = new System.Drawing.Size(1350, 548);
             this.pnlBawah.TabIndex = 2;
@@ -687,7 +687,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 747);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formSalesOrder";

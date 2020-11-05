@@ -58,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="formDetailLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formDetailLog.Designer.cs">
+      <DependentUpon>formDetailLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="formInsertCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,12 @@
     </Compile>
     <Compile Include="formInsertStaff.Designer.cs">
       <DependentUpon>formInsertStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLaporanPenjualan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLaporanPenjualan.Designer.cs">
+      <DependentUpon>formLaporanPenjualan.cs</DependentUpon>
     </Compile>
     <Compile Include="formListCustomer.cs">
       <SubType>Form</SubType>
@@ -360,6 +372,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="formDetailLog.resx">
+      <DependentUpon>formDetailLog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formInsertCategory.resx">
       <DependentUpon>formInsertCategory.cs</DependentUpon>
     </EmbeddedResource>
