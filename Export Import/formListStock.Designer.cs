@@ -35,7 +35,15 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnNewItem = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnClose = new System.Windows.Forms.Button();
+            this.groupFilter = new System.Windows.Forms.GroupBox();
+            this.btnMore = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbCategory = new System.Windows.Forms.ComboBox();
+            this.txtKeyword = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnLog = new System.Windows.Forms.Button();
+            this.id_item_dgv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_gudang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,13 +58,6 @@
             this.harga_jual_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.balance_cost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.groupFilter = new System.Windows.Forms.GroupBox();
-            this.btnMore = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cbCategory = new System.Windows.Forms.ComboBox();
-            this.txtKeyword = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -86,6 +87,7 @@
             // pnlBawah
             // 
             this.pnlBawah.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlBawah.Controls.Add(this.btnLog);
             this.pnlBawah.Controls.Add(this.btnDelete);
             this.pnlBawah.Controls.Add(this.btnUpdate);
             this.pnlBawah.Controls.Add(this.btnNewItem);
@@ -135,9 +137,10 @@
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id_item,
+            this.id_item_dgv,
             this.nama_item,
             this.id_gudang,
             this.nama_category,
@@ -159,140 +162,6 @@
             this.dataGridView.Size = new System.Drawing.Size(1350, 470);
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "ID";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            this.id_item.Width = 75;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "Nama";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 150;
-            // 
-            // id_gudang
-            // 
-            this.id_gudang.DataPropertyName = "Lokasi";
-            this.id_gudang.Frozen = true;
-            this.id_gudang.HeaderText = "Lokasi";
-            this.id_gudang.Name = "id_gudang";
-            this.id_gudang.ReadOnly = true;
-            this.id_gudang.Width = 75;
-            // 
-            // nama_category
-            // 
-            this.nama_category.DataPropertyName = "Category";
-            this.nama_category.Frozen = true;
-            this.nama_category.HeaderText = "Category";
-            this.nama_category.Name = "nama_category";
-            this.nama_category.ReadOnly = true;
-            this.nama_category.Width = 75;
-            // 
-            // berat_item
-            // 
-            this.berat_item.DataPropertyName = "Berat";
-            this.berat_item.Frozen = true;
-            this.berat_item.HeaderText = "Berat";
-            this.berat_item.Name = "berat_item";
-            this.berat_item.ReadOnly = true;
-            this.berat_item.Width = 50;
-            // 
-            // panjang_item
-            // 
-            this.panjang_item.DataPropertyName = "Panjang";
-            this.panjang_item.Frozen = true;
-            this.panjang_item.HeaderText = "Panjang";
-            this.panjang_item.Name = "panjang_item";
-            this.panjang_item.ReadOnly = true;
-            this.panjang_item.Width = 50;
-            // 
-            // tinggi_item
-            // 
-            this.tinggi_item.DataPropertyName = "Tinggi";
-            this.tinggi_item.Frozen = true;
-            this.tinggi_item.HeaderText = "Tinggi";
-            this.tinggi_item.Name = "tinggi_item";
-            this.tinggi_item.ReadOnly = true;
-            this.tinggi_item.Width = 50;
-            // 
-            // lebar_item
-            // 
-            this.lebar_item.DataPropertyName = "Lebar";
-            this.lebar_item.Frozen = true;
-            this.lebar_item.HeaderText = "Lebar";
-            this.lebar_item.Name = "lebar_item";
-            this.lebar_item.ReadOnly = true;
-            this.lebar_item.Width = 50;
-            // 
-            // kadar_air_item
-            // 
-            this.kadar_air_item.DataPropertyName = "Kadar";
-            this.kadar_air_item.Frozen = true;
-            this.kadar_air_item.HeaderText = "Kadar Air";
-            this.kadar_air_item.Name = "kadar_air_item";
-            this.kadar_air_item.ReadOnly = true;
-            this.kadar_air_item.Width = 50;
-            // 
-            // jenis_ppn
-            // 
-            this.jenis_ppn.DataPropertyName = "PPN";
-            this.jenis_ppn.Frozen = true;
-            this.jenis_ppn.HeaderText = "Jenis PPN";
-            this.jenis_ppn.Name = "jenis_ppn";
-            this.jenis_ppn.ReadOnly = true;
-            this.jenis_ppn.Width = 50;
-            // 
-            // satuan_item
-            // 
-            this.satuan_item.DataPropertyName = "Satuan";
-            this.satuan_item.Frozen = true;
-            this.satuan_item.HeaderText = "Satuan";
-            this.satuan_item.Name = "satuan_item";
-            this.satuan_item.ReadOnly = true;
-            this.satuan_item.Width = 75;
-            // 
-            // qty_item
-            // 
-            this.qty_item.DataPropertyName = "QTY";
-            this.qty_item.Frozen = true;
-            this.qty_item.HeaderText = "Qty";
-            this.qty_item.Name = "qty_item";
-            this.qty_item.ReadOnly = true;
-            // 
-            // harga_jual_item
-            // 
-            this.harga_jual_item.DataPropertyName = "hJual";
-            this.harga_jual_item.Frozen = true;
-            this.harga_jual_item.HeaderText = "Harga Jual";
-            this.harga_jual_item.Name = "harga_jual_item";
-            this.harga_jual_item.ReadOnly = true;
-            this.harga_jual_item.Width = 150;
-            // 
-            // harga_beli_item
-            // 
-            this.harga_beli_item.DataPropertyName = "hBeli";
-            this.harga_beli_item.Frozen = true;
-            this.harga_beli_item.HeaderText = "Harga Beli";
-            this.harga_beli_item.Name = "harga_beli_item";
-            this.harga_beli_item.ReadOnly = true;
-            this.harga_beli_item.Width = 150;
-            // 
-            // balance_cost
-            // 
-            this.balance_cost.DataPropertyName = "balance_cost";
-            this.balance_cost.Frozen = true;
-            this.balance_cost.HeaderText = "Balance Cost";
-            this.balance_cost.Name = "balance_cost";
-            this.balance_cost.ReadOnly = true;
-            this.balance_cost.Width = 150;
             // 
             // btnClose
             // 
@@ -370,6 +239,151 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
+            // btnLog
+            // 
+            this.btnLog.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLog.Location = new System.Drawing.Point(1273, 119);
+            this.btnLog.Name = "btnLog";
+            this.btnLog.Size = new System.Drawing.Size(65, 30);
+            this.btnLog.TabIndex = 7;
+            this.btnLog.Text = "Log";
+            this.btnLog.UseVisualStyleBackColor = true;
+            this.btnLog.Click += new System.EventHandler(this.btnLog_Click);
+            // 
+            // id_item_dgv
+            // 
+            this.id_item_dgv.DataPropertyName = "ID";
+            this.id_item_dgv.Frozen = true;
+            this.id_item_dgv.HeaderText = "ID";
+            this.id_item_dgv.Name = "id_item_dgv";
+            this.id_item_dgv.ReadOnly = true;
+            this.id_item_dgv.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "Nama";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 150;
+            // 
+            // id_gudang
+            // 
+            this.id_gudang.DataPropertyName = "Lokasi";
+            this.id_gudang.Frozen = true;
+            this.id_gudang.HeaderText = "Lokasi";
+            this.id_gudang.Name = "id_gudang";
+            this.id_gudang.ReadOnly = true;
+            this.id_gudang.Width = 75;
+            // 
+            // nama_category
+            // 
+            this.nama_category.DataPropertyName = "Category";
+            this.nama_category.Frozen = true;
+            this.nama_category.HeaderText = "Category";
+            this.nama_category.Name = "nama_category";
+            this.nama_category.ReadOnly = true;
+            this.nama_category.Width = 75;
+            // 
+            // berat_item
+            // 
+            this.berat_item.DataPropertyName = "Berat";
+            this.berat_item.Frozen = true;
+            this.berat_item.HeaderText = "Berat";
+            this.berat_item.Name = "berat_item";
+            this.berat_item.ReadOnly = true;
+            this.berat_item.Width = 60;
+            // 
+            // panjang_item
+            // 
+            this.panjang_item.DataPropertyName = "Panjang";
+            this.panjang_item.Frozen = true;
+            this.panjang_item.HeaderText = "Panjang";
+            this.panjang_item.Name = "panjang_item";
+            this.panjang_item.ReadOnly = true;
+            this.panjang_item.Width = 60;
+            // 
+            // tinggi_item
+            // 
+            this.tinggi_item.DataPropertyName = "Tinggi";
+            this.tinggi_item.Frozen = true;
+            this.tinggi_item.HeaderText = "Tinggi";
+            this.tinggi_item.Name = "tinggi_item";
+            this.tinggi_item.ReadOnly = true;
+            this.tinggi_item.Width = 60;
+            // 
+            // lebar_item
+            // 
+            this.lebar_item.DataPropertyName = "Lebar";
+            this.lebar_item.Frozen = true;
+            this.lebar_item.HeaderText = "Lebar";
+            this.lebar_item.Name = "lebar_item";
+            this.lebar_item.ReadOnly = true;
+            this.lebar_item.Width = 60;
+            // 
+            // kadar_air_item
+            // 
+            this.kadar_air_item.DataPropertyName = "Kadar";
+            this.kadar_air_item.Frozen = true;
+            this.kadar_air_item.HeaderText = "Kadar Air";
+            this.kadar_air_item.Name = "kadar_air_item";
+            this.kadar_air_item.ReadOnly = true;
+            this.kadar_air_item.Width = 50;
+            // 
+            // jenis_ppn
+            // 
+            this.jenis_ppn.DataPropertyName = "PPN";
+            this.jenis_ppn.Frozen = true;
+            this.jenis_ppn.HeaderText = "Jenis PPN";
+            this.jenis_ppn.Name = "jenis_ppn";
+            this.jenis_ppn.ReadOnly = true;
+            this.jenis_ppn.Width = 50;
+            // 
+            // satuan_item
+            // 
+            this.satuan_item.DataPropertyName = "Satuan";
+            this.satuan_item.Frozen = true;
+            this.satuan_item.HeaderText = "Satuan";
+            this.satuan_item.Name = "satuan_item";
+            this.satuan_item.ReadOnly = true;
+            this.satuan_item.Width = 75;
+            // 
+            // qty_item
+            // 
+            this.qty_item.DataPropertyName = "QTY";
+            this.qty_item.Frozen = true;
+            this.qty_item.HeaderText = "Qty";
+            this.qty_item.Name = "qty_item";
+            this.qty_item.ReadOnly = true;
+            // 
+            // harga_jual_item
+            // 
+            this.harga_jual_item.DataPropertyName = "hJual";
+            this.harga_jual_item.Frozen = true;
+            this.harga_jual_item.HeaderText = "Harga Jual";
+            this.harga_jual_item.Name = "harga_jual_item";
+            this.harga_jual_item.ReadOnly = true;
+            this.harga_jual_item.Width = 125;
+            // 
+            // harga_beli_item
+            // 
+            this.harga_beli_item.DataPropertyName = "hBeli";
+            this.harga_beli_item.Frozen = true;
+            this.harga_beli_item.HeaderText = "Harga Beli";
+            this.harga_beli_item.Name = "harga_beli_item";
+            this.harga_beli_item.ReadOnly = true;
+            this.harga_beli_item.Width = 125;
+            // 
+            // balance_cost
+            // 
+            this.balance_cost.DataPropertyName = "balance_cost";
+            this.balance_cost.Frozen = true;
+            this.balance_cost.HeaderText = "Balance Cost";
+            this.balance_cost.Name = "balance_cost";
+            this.balance_cost.ReadOnly = true;
+            this.balance_cost.Width = 140;
+            // 
             // formListStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -406,7 +420,9 @@
         public System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Button btnNewItem;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnLog;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_item_dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_gudang;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_category;
@@ -421,6 +437,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn harga_jual_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn harga_beli_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn balance_cost;
-        private System.Windows.Forms.Button btnDelete;
     }
 }

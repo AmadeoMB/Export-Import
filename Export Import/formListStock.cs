@@ -25,6 +25,8 @@ namespace Export_Import
         public formListStock()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
         }
 
         public formListStock(formMasterStock form)
@@ -204,7 +206,7 @@ namespace Export_Import
                 this.conn = formS.conn;
                 this.admin = formS.admin;
             }
-            else
+            else if (formP != null)
             {
                 this.conn = formP.conn;
                 this.admin = formP.admin;
@@ -316,6 +318,8 @@ namespace Export_Import
             if (idx > -1)
             {
                 btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnLog.Enabled = true;
             }
         }
 
@@ -341,6 +345,15 @@ namespace Export_Import
             {
                 MessageBox.Show("Pilih lah item pada tabel terlebih dahulu");
             }
+        }
+
+        public String id_item = "";
+
+        private void btnLog_Click(object sender, EventArgs e)
+        {
+            this.id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
+
+            new form
         }
     }
 }

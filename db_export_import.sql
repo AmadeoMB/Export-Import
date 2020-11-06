@@ -19,6 +19,7 @@ DROP TABLE JABATAN CASCADE CONSTRAINTS PURGE;
 DROP TABLE STAFF CASCADE CONSTRAINTS PURGE;
 DROP TABLE SUPPLIER CASCADE CONSTRAINTS PURGE;
 DROP TABLE EKSPEDISI CASCADE CONSTRAINTS PURGE;
+DROP TABLE LOG_STOCK CASCADE CONSTRAINTS PURGE;
 
 
 CREATE TABLE EKSPEDISI
@@ -299,6 +300,7 @@ CREATE TABLE H_STOCK_ISSUE
 (
 	ID_STOCK_ISSUE VARCHAR2(12) NOT NULL,
    ID_STAFF VARCHAR2(5) NOT NULL,
+   JENIS VARCHAR2(10) NOT NULL,
 	DESK_STOCK_ISSUE VARCHAR2(255) NOT NULL,
 	TGL_STOCK_ISSUE DATE NOT NULL,
 	TOTAL_STOCK_ISSUE INTEGER NOT NULL,
@@ -316,13 +318,79 @@ CREATE TABLE D_STOCK_ISSUE
 	constraint PK_D_STOCK_ISSUE primary key (ID_STOCK_ISSUE,ID_ITEM)
 );
 
+CREATE TABLE LOG_STOCK
+(
+   ID_LOG      VARCHAR2(13)   NOT NULL,
+   ID_ITEM     VARCHAR2(5)    NOT NULL,
+   ID_DOKUMEN  VARCHAR2(12)   NOT NULL,
+   TGL_LOG     DATE           NOT NULL
+);
+
+CREATE OR REPLACE PROCEDURE insert_log(id_item in VARCHAR2, id_dokumen in VARCHAR2)
+AS
+    id_log VARCHAR2(13) := 'LOG' || TO_CHAR(sysdate, 'ddMMyyyy');
+    jum number(2);
+BEGIN
+    SELECT count(*) into jum
+    FROM LOG_STOCK
+    WHERE ID_LOG like id_log||'%';
+
+    IF (jum < 10) THEN
+      id_log := id_log||'0'||jum;
+    ELSE
+      id_log := id_log||jum;
+    END IF;
+
+    INSERT INTO LOG_STOCK
+    VALUES (id_log, id_item, id_dokumen, sysdate);
+END;
+/
+
 CREATE OR REPLACE TRIGGER update_stok_after_si
     AFTER INSERT ON D_STOCK_ISSUE
+    FOR EACH ROW 
+DECLARE
+    jenis VARCHAR2(10);
+BEGIN
+    SELECT JENIS INTO jenis
+    FROM D_STOCK_ISSUE
+    WHERE ID_STOCK_ISSUE = :New.ID_STOCK_ISSUE;
+
+    IF ( jenis = 'Tambah' ) THEN
+      UPDATE item
+      set stok_item = (stok_item + :NEW.qty_item)
+      where id_item = :NEW.id_item;
+    ELSE
+      UPDATE item
+      set stok_item = (stok_item - :NEW.qty_item)
+      where id_item = :NEW.id_item;
+    END IF;
+
+    insert_log(:New.id_item, :New.ID_STOCK_ISSUE);
+END;
+/
+
+CREATE OR REPLACE TRIGGER update_stok_after_pi
+    AFTER INSERT ON D_PURCHASE_INVOICE
+    FOR EACH ROW 
+BEGIN
+    UPDATE item
+    set stok_item = (stok_item + :NEW.qty_item)
+    where id_item = :NEW.id_item;
+
+    insert_log(:New.id_item, :New.ID_PURCHASE_INVOICE);
+END;
+/
+
+CREATE OR REPLACE TRIGGER update_stok_after_invoice
+    AFTER INSERT ON D_INVOICE
     FOR EACH ROW 
 BEGIN
     UPDATE item
     set stok_item = (stok_item - :NEW.qty_item)
     where id_item = :NEW.id_item;
+
+    insert_log(:New.id_item, :New.ID_INVOICE);
 END;
 /
 
@@ -353,17 +421,6 @@ insert into SUPPLIER values('JT002', 'PT. Naik Turun Aja', 'Jalan MumboWumbo no 
 insert into GUDANG values('GB001', 'Gudang Besar', 'Jalan Gibah Santuy no 69', 081286323486);
 insert into GUDANG values('GK001', 'Gudang Kecil', 'Jalan In Aja Dulu no 28', 081372647643);
 insert into GUDANG values('GU001', 'Gudang Utama', 'Jalan Sama Aku Aja no 13', 083246856583);
-
-insert into h_sales_order values ('12346', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 21, 'TM001', 'IDR', 1, 123, 123);
-insert into d_sales_order values ('KK001', '12346', 'Keripik Kentang Original', 12, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
-insert into d_sales_order values ('0M001', '12346', 'Odading Mang Oleh', 12, 'BOX', 123, 234, 'EXC', 3, 12345, 123456);
-
-insert into h_sales_order values ('12347', '-', 'GB001', 'NR001', 'MO001', '-', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 21, 'TM001', 'IDR', 1, 123, 123);
-insert into d_sales_order values ('JL001', '12347', 'Jus Lemon Segar', 12, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
-
-insert into h_sales_order values ('12348', '-', 'GK001', 'NR001', 'MK001', '-', 'Manusia Karet', 'Jalan Bandung Selatan no 15', sysdate, 21, 'TM001', 'IDR', 1, 123, 123);
-insert into d_sales_order values ('KK001', '12348', 'Keripik Kentang Original', 24, 'BOX', 1234, 234, 'EXC', 3, 12345, 123456);
-insert into d_sales_order values ('0M001', '12348', 'Odading Mang Oleh', 24, 'BOX', 123, 234, 'EXC', 3, 12345, 123456);
 
 insert into CATEGORY values('M01', 'Makanan');
 insert into CATEGORY values('M02', 'Minuman');
