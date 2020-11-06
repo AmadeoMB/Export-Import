@@ -71,6 +71,7 @@
             this.ClientSize = new System.Drawing.Size(720, 450);
             this.Controls.Add(this.panel1);
             this.Name = "formAkutansi";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Akutansi : ";
             this.Load += new System.EventHandler(this.formAkutansi_Load);
             this.panel1.ResumeLayout(false);
