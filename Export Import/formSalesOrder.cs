@@ -98,7 +98,7 @@ namespace Export_Import
 
         void generatecreateNomerSO() {
             String nomerSO = "SO";
-            nomerSO += dateSO.Value.ToString("ddMMyyyy");
+            nomerSO += dateSO.Value.ToString("/dd/MM/yyyy/");
             nomerSO += getNomerSO(nomerSO);
 
             txtIdSO.Text = nomerSO;

@@ -37,7 +37,7 @@ namespace Export_Import
         {
             InitializeComponent();
             this.form = form;
-            this.conn = conn;
+            this.conn = form.conn;
         }
 
         void isiCBCustomer()
@@ -92,7 +92,7 @@ namespace Export_Import
         void generatecreateNomerInvoice()
         {
             String nomerInvoice = "IN";
-            nomerInvoice += dateInvoice.Value.ToString("ddMMyyyy");
+            nomerInvoice += dateInvoice.Value.ToString("/dd/MM/yyyy/");
             nomerInvoice += getNomerInvoice(nomerInvoice);
 
             txtIdInvoice.Text = nomerInvoice;

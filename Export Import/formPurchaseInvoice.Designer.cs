@@ -59,6 +59,10 @@
             this.btnTD = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtTotalPPN = new System.Windows.Forms.TextBox();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -66,15 +70,11 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtTotalConvert = new System.Windows.Forms.TextBox();
-            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtNetTotal = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.pnlAtas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlTengah.SuspendLayout();
@@ -407,9 +407,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.txtTotal);
             this.groupBox3.Controls.Add(this.label14);
-            this.groupBox3.Controls.Add(this.textBox1);
+            this.groupBox3.Controls.Add(this.txtTotalPPN);
             this.groupBox3.Controls.Add(this.txtRate);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label19);
@@ -417,12 +417,50 @@
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Controls.Add(this.txtTotalConvert);
-            this.groupBox3.Controls.Add(this.txtTotal);
+            this.groupBox3.Controls.Add(this.txtNetTotal);
             this.groupBox3.Location = new System.Drawing.Point(1, 552);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(1347, 139);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1133, 10);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 19);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(1180, 7);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(157, 27);
+            this.txtTotal.TabIndex = 12;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(1064, 43);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 19);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Total PPN (EXC)";
+            // 
+            // txtTotalPPN
+            // 
+            this.txtTotalPPN.Enabled = false;
+            this.txtTotalPPN.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPPN.Location = new System.Drawing.Point(1180, 40);
+            this.txtTotalPPN.Name = "txtTotalPPN";
+            this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
+            this.txtTotalPPN.TabIndex = 10;
             // 
             // txtRate
             // 
@@ -493,14 +531,14 @@
             this.txtTotalConvert.Size = new System.Drawing.Size(157, 27);
             this.txtTotalConvert.TabIndex = 3;
             // 
-            // txtTotal
+            // txtNetTotal
             // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(1181, 73);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(157, 27);
-            this.txtTotal.TabIndex = 2;
+            this.txtNetTotal.Enabled = false;
+            this.txtNetTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNetTotal.Location = new System.Drawing.Point(1181, 73);
+            this.txtNetTotal.Name = "txtNetTotal";
+            this.txtNetTotal.Size = new System.Drawing.Size(157, 27);
+            this.txtNetTotal.TabIndex = 2;
             // 
             // btnCancel
             // 
@@ -546,44 +584,6 @@
             this.pnlBawah.Size = new System.Drawing.Size(1347, 40);
             this.pnlBawah.TabIndex = 6;
             this.pnlBawah.TabStop = false;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1064, 43);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 19);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "Total PPN (EXC)";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(1180, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(157, 27);
-            this.textBox1.TabIndex = 10;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1133, 10);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 19);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "Total";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1180, 7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(157, 27);
-            this.textBox2.TabIndex = 12;
             // 
             // formPurchaseInvoice
             // 
@@ -646,7 +646,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtTotalConvert;
-        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtNetTotal;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnPreview;
@@ -656,8 +656,8 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button btnTD;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotalPPN;
     }
 }

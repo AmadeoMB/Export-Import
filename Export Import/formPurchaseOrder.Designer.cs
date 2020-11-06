@@ -53,6 +53,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diskon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRedo = new System.Windows.Forms.Button();
             this.BtnUndo = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
@@ -61,6 +69,10 @@
             this.Tambah = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtTotalPPN = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -73,18 +85,6 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diskon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -385,6 +385,66 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id_item";
+            this.id_item.HeaderText = "ID ITEM";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama_item";
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 230;
+            // 
+            // qty
+            // 
+            this.qty.DataPropertyName = "qty_item";
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 80;
+            // 
+            // satuan_item
+            // 
+            this.satuan_item.DataPropertyName = "satuan_item";
+            this.satuan_item.HeaderText = "Satuan";
+            this.satuan_item.Name = "satuan_item";
+            this.satuan_item.ReadOnly = true;
+            // 
+            // harga_beli_item
+            // 
+            this.harga_beli_item.DataPropertyName = "harga_beli_item";
+            this.harga_beli_item.HeaderText = "Harga";
+            this.harga_beli_item.Name = "harga_beli_item";
+            this.harga_beli_item.ReadOnly = true;
+            this.harga_beli_item.Width = 200;
+            // 
+            // diskon
+            // 
+            this.diskon.DataPropertyName = "discount";
+            this.diskon.HeaderText = "Discount";
+            this.diskon.Name = "diskon";
+            this.diskon.ReadOnly = true;
+            // 
+            // jenis_ppn
+            // 
+            this.jenis_ppn.DataPropertyName = "jenis_ppn";
+            this.jenis_ppn.HeaderText = "Jenis PPN";
+            this.jenis_ppn.Name = "jenis_ppn";
+            this.jenis_ppn.ReadOnly = true;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
+            // 
             // btnRedo
             // 
             this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -464,9 +524,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Controls.Add(this.textBox3);
+            this.groupBox3.Controls.Add(this.txtTotal);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.txtTotalPPN);
             this.groupBox3.Controls.Add(this.textBox7);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.label19);
@@ -480,6 +540,48 @@
             this.groupBox3.Size = new System.Drawing.Size(1339, 152);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1093, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 19);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(1167, 19);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(157, 27);
+            this.txtTotal.TabIndex = 12;
+            this.txtTotal.Text = "0";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(1051, 55);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(110, 19);
+            this.label13.TabIndex = 11;
+            this.label13.Text = "Total PPN (EXC)";
+            // 
+            // txtTotalPPN
+            // 
+            this.txtTotalPPN.Enabled = false;
+            this.txtTotalPPN.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPPN.Location = new System.Drawing.Point(1167, 52);
+            this.txtTotalPPN.Name = "txtTotalPPN";
+            this.txtTotalPPN.ReadOnly = true;
+            this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
+            this.txtTotalPPN.TabIndex = 10;
+            this.txtTotalPPN.Text = "0";
             // 
             // textBox7
             // 
@@ -607,108 +709,6 @@
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(1051, 55);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(110, 19);
-            this.label13.TabIndex = 11;
-            this.label13.Text = "Total PPN (EXC)";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(1167, 52);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(157, 27);
-            this.textBox2.TabIndex = 10;
-            this.textBox2.Text = "0";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1093, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 19);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "Total";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(1167, 19);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(157, 27);
-            this.textBox3.TabIndex = 12;
-            this.textBox3.Text = "0";
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id_item";
-            this.id_item.HeaderText = "ID ITEM";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama_item";
-            this.nama_item.HeaderText = "Nama Item";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 230;
-            // 
-            // qty
-            // 
-            this.qty.DataPropertyName = "qty_item";
-            this.qty.HeaderText = "QTY";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 80;
-            // 
-            // satuan_item
-            // 
-            this.satuan_item.DataPropertyName = "satuan_item";
-            this.satuan_item.HeaderText = "Satuan";
-            this.satuan_item.Name = "satuan_item";
-            this.satuan_item.ReadOnly = true;
-            // 
-            // harga_beli_item
-            // 
-            this.harga_beli_item.DataPropertyName = "harga_beli_item";
-            this.harga_beli_item.HeaderText = "Harga";
-            this.harga_beli_item.Name = "harga_beli_item";
-            this.harga_beli_item.ReadOnly = true;
-            this.harga_beli_item.Width = 200;
-            // 
-            // diskon
-            // 
-            this.diskon.DataPropertyName = "discount";
-            this.diskon.HeaderText = "Discount";
-            this.diskon.Name = "diskon";
-            this.diskon.ReadOnly = true;
-            // 
-            // jenis_ppn
-            // 
-            this.jenis_ppn.DataPropertyName = "jenis_ppn";
-            this.jenis_ppn.HeaderText = "Jenis PPN";
-            this.jenis_ppn.Name = "jenis_ppn";
-            this.jenis_ppn.ReadOnly = true;
-            // 
-            // subtotal
-            // 
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 200;
-            // 
             // formPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -783,9 +783,9 @@
         private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.TextBox txtAgent;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTotalPPN;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
