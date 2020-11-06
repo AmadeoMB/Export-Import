@@ -24,6 +24,9 @@ namespace Export_Import
         public formStockIssue()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
+            this.admin = "Melvern Tallall";
         }
 
         public formStockIssue(formMasterStock master)
@@ -52,7 +55,7 @@ namespace Export_Import
         void generateNomerSI()
         {
             String nomerSI = "SI";
-            nomerSI += dateStockIssue.Value.ToString("ddMMyyyy");
+            nomerSI += dateStockIssue.Value.ToString("/dd/MM/yyyy/");
             nomerSI += getNomerSI(nomerSI);
 
             txtIdStockIssue.Text = nomerSI;
@@ -273,15 +276,18 @@ namespace Export_Import
         {
             String id_si = txtIdStockIssue.Text;
             DateTime tanggal = dateStockIssue.Value;
+            String jenis = cbJenis.Text;
             String deskripsi = txtDeskripsi.Text;
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
 
             OracleCommand cmd = new OracleCommand("update h_stock_issue set " +
                 "desk_stock_issue = :deskripsi, " +
+                "jenis = :jenis, " +
                 "tgl_stock_issue = :tanggal, " +
                 "total_stock_issue = :total " +
                 "where id_stock_issue = '" + id_si + "'", conn);
             cmd.Parameters.Add(":deskripsi", deskripsi);
+            cmd.Parameters.Add(":jenis", jenis);
             cmd.Parameters.Add(":tanggal", tanggal);
             cmd.Parameters.Add(":total", total);
             cmd.ExecuteNonQuery();
@@ -326,13 +332,15 @@ namespace Export_Import
 
             String id_si = txtIdStockIssue.Text;
             String id_staff = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
+            String jenis = cbJenis.Text;
             DateTime tanggal = dateStockIssue.Value;
             String deskripsi = txtDeskripsi.Text;
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
 
-            OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :ids, :do, :gudang, :total)", conn);
+            OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :ids, :jenis, :do, :gudang, :total)", conn);
             cmd.Parameters.Add(":id", id_si);
             cmd.Parameters.Add(":ids", id_staff);
+            cmd.Parameters.Add(":jenis", jenis);
             cmd.Parameters.Add(":deskripsi", deskripsi);
             cmd.Parameters.Add(":tanggal", tanggal);
             cmd.Parameters.Add(":total", total);

@@ -353,7 +353,7 @@ namespace Export_Import
         {
             this.id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
 
-            new form
+            new formDetailLog(this).ShowDialog();
         }
     }
 }

@@ -77,6 +77,7 @@ namespace Export_Import
         }
         public void refreshnettotal() {
             netTotal = 0;
+            int total = 0;
             int itung = dataGridView1.Rows.Count;
             if (itung == 0) {
                 return;
@@ -84,11 +85,12 @@ namespace Export_Import
             else {
                 for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
                 {
-                    int harga = Int32.Parse(ds.Tables["item"].Rows[i][8].ToString());
-                    netTotal += harga;
-
+                    int harga = Int32.Parse(ds.Tables["item"].Rows[i][7].ToString());
+                    total += harga;
                 }
-                textBox5.Text = netTotal.ToString();
+                txtTotal.Text = total.ToString();
+                txtTotalPPN.Text = totalPPN.ToString();
+                textBox5.Text = (total + totalPPN).ToString();
             }
         }
         public void refreshlocalnet() {
@@ -128,11 +130,13 @@ namespace Export_Import
         void generatecreateNomerPO()
         {
             String nomerPO = "PO";
-            nomerPO += DateToday.Value.ToString("ddMMyyyy");
+            nomerPO += DateToday.Value.ToString("/dd/MM/yyyy/");
             nomerPO += getNomerPO(nomerPO);
 
             PONO.Text = nomerPO;
         }
+        int totalPPN = 0;
+
         public void InsertItem(Object[] data) {
             int diskon = Convert.ToInt32(data[1]);
             int qty = Convert.ToInt32(data[2]);
@@ -147,11 +151,9 @@ namespace Export_Import
 
             cmd = "select jenis_ppn from item where id_item='" + id_item + "'";
             String ppn = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
-            int totalPPN = 0;
             if (ppn.Equals("EXC"))
             {
-                totalPPN = subtotal * 10 / 100;
-                subtotal += totalPPN;
+                this.totalPPN += subtotal * 10 / 100;
             }
             
             cmd = "select id_item, nama_item, " +
@@ -334,6 +336,8 @@ namespace Export_Import
             //buat header PO
             int lntot = Int32.Parse(LNTotal.Text);
             int tot = Int32.Parse(textBox5.Text);
+            int total = Int32.Parse(txtTotal.Text);
+            int totalPPN = Int32.Parse(txtTotalPPN.Text);
             int rat = Int32.Parse(textBox7.Text);
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
@@ -341,7 +345,7 @@ namespace Export_Import
             string sales = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
 
             OracleCommand cmd2;
-            cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :totalh, :totalhc)", conn);
+            cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :total, :totalPPN, :totalh, :totalhc)", conn);
             cmd2.Parameters.Add(":idp", PONO.Text);
             cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
             cmd2.Parameters.Add(":idst", sales);
@@ -353,6 +357,8 @@ namespace Export_Import
             cmd2.Parameters.Add(":shipvia", comboBox4.SelectedValue);
             cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedValue);
             cmd2.Parameters.Add(":rate", rat);
+            cmd2.Parameters.Add(":total", total);
+            cmd2.Parameters.Add(":totalPPN", totalPPN);
             cmd2.Parameters.Add(":totalh", tot);
             cmd2.Parameters.Add(":totalhc", lntot);
             cmd2.ExecuteNonQuery();
@@ -369,14 +375,12 @@ namespace Export_Import
                 string jeniss = ds.Tables["item"].Rows[i][3].ToString();
                 string hargas = ds.Tables["item"].Rows[i][4].ToString();
                 int hargass = Int32.Parse(hargas);
-                string diskoun = ds.Tables["item"].Rows[i][7].ToString();
+                string diskoun = ds.Tables["item"].Rows[i][6].ToString();
                 int discroun = Int32.Parse(diskoun);
                 string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
-                string totalppn = ds.Tables["item"].Rows[i][6].ToString();
-                int tppn = Int32.Parse(totalppn);
-                string subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                string subtotal = ds.Tables["item"].Rows[i][7].ToString();
                 int stotal = Int32.Parse(subtotal);
-                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);
                 cmd3.Parameters.Add(":nama", nama);
@@ -385,7 +389,6 @@ namespace Export_Import
                 cmd3.Parameters.Add(":hargas", hargass);
                 cmd3.Parameters.Add(":diskon", discroun);
                 cmd3.Parameters.Add(":jenisppn", jenisppn);
-                cmd3.Parameters.Add(":totalppn", tppn);
                 cmd3.Parameters.Add(":subtotal", stotal);
                 cmd3.ExecuteNonQuery();
             }
@@ -436,6 +439,8 @@ namespace Export_Import
             //buat header PO
             int lntot = Int32.Parse(LNTotal.Text);
             int tot = Int32.Parse(textBox5.Text);
+            int total = Int32.Parse(txtTotal.Text);
+            int totalPPN = Int32.Parse(txtTotalPPN.Text);
             int rat = Int32.Parse(textBox7.Text);
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
@@ -455,6 +460,8 @@ namespace Export_Import
                 "ship_via = :shipvia, " +
                 "currency_purchase_order = :currencypo, " +
                 "rate = :rate, " +
+                "total = :total, " +
+                "total_ppn = :totalppn, " +
                 "total_harga = :totalh, " +
                 "total_harga_convert = :totalhc " +
                 "where id_purchase_order = '" + PONO.Text + "'", conn);
@@ -468,6 +475,8 @@ namespace Export_Import
             cmd2.Parameters.Add(":shipvia", comboBox4.SelectedValue);
             cmd2.Parameters.Add(":currencypo", cbCurrent.SelectedValue);
             cmd2.Parameters.Add(":rate", rat);
+            cmd2.Parameters.Add(":total", total);
+            cmd2.Parameters.Add(":totalppn", totalPPN);
             cmd2.Parameters.Add(":totalh", tot);
             cmd2.Parameters.Add(":totalhc", lntot);
             cmd2.ExecuteNonQuery();
@@ -485,14 +494,12 @@ namespace Export_Import
                 string jeniss = ds.Tables["item"].Rows[i][3].ToString();
                 string hargas = ds.Tables["item"].Rows[i][4].ToString();
                 int hargass = Int32.Parse(hargas);
-                string diskoun = ds.Tables["item"].Rows[i][7].ToString();
+                string diskoun = ds.Tables["item"].Rows[i][6].ToString();
                 int discroun = Int32.Parse(diskoun);
                 string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
-                string totalppn = ds.Tables["item"].Rows[i][6].ToString();
-                int tppn = Int32.Parse(totalppn);
-                string subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                string subtotal = ds.Tables["item"].Rows[i][7].ToString();
                 int stotal = Int32.Parse(subtotal);
-                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:totalppn,:subtotal)", conn);
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);
                 cmd3.Parameters.Add(":nama", nama);
@@ -501,7 +508,6 @@ namespace Export_Import
                 cmd3.Parameters.Add(":hargas", hargass);
                 cmd3.Parameters.Add(":diskon", discroun);
                 cmd3.Parameters.Add(":jenisppn", jenisppn);
-                cmd3.Parameters.Add(":totalppn", tppn);
                 cmd3.Parameters.Add(":subtotal", stotal);
                 cmd3.ExecuteNonQuery();
             }

@@ -120,7 +120,7 @@ create table ITEM
 
 create table H_SALES_ORDER 
 (
-   ID_SALES_ORDER       VARCHAR2(12)         not null,
+   ID_SALES_ORDER       VARCHAR2(16)         not null,
    ID_DELIVERY_ORDER    VARCHAR2(12)         not null,
    ID_GUDANG            VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
@@ -143,7 +143,7 @@ create table H_SALES_ORDER
 create table D_SALES_ORDER 
 (
    ID_ITEM              VARCHAR2(5)          not null,
-   ID_SALES_ORDER       VARCHAR2(12)         not null,
+   ID_SALES_ORDER       VARCHAR2(16)         not null,
    NAMA_ITEM            VARCHAR2(255)        not null,
    QTY_ITEM             INTEGER              not null,
    JENIS_SATUAN         VARCHAR2(10)         not null,
@@ -157,7 +157,7 @@ create table D_SALES_ORDER
 
 create table H_DELIVERY_ORDER 
 (
-   ID_DELIVERY_ORDER    VARCHAR2(12)         not null,
+   ID_DELIVERY_ORDER    VARCHAR2(16)         not null,
    ID_CUSTOMER          VARCHAR2(5)          not null,
    ID_GUDANG            VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
@@ -178,7 +178,7 @@ create table H_DELIVERY_ORDER
 create table D_DELIVERY_ORDER 
 (
    ID_ITEM              VARCHAR2(5)          not null,
-   ID_SALES_ORDER       VARCHAR2(12)         not null,
+   ID_SALES_ORDER       VARCHAR2(16)         not null,
    ID_DELIVERY_ORDER    VARCHAR2(12)         not null,
    NAMA_ITEM            VARCHAR2(255)        not null,
    QTY_ITEM             INTEGER              not null,
@@ -193,7 +193,7 @@ create table D_DELIVERY_ORDER
 
 create table H_INVOICE 
 (
-   ID_INVOICE           VARCHAR2(12)         not null,
+   ID_INVOICE           VARCHAR2(16)         not null,
    ID_GUDANG            VARCHAR2(5)          not null,
    ID_CUSTOMER          VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
@@ -214,7 +214,7 @@ create table H_INVOICE
 create table D_INVOICE 
 (
    ID_ITEM              VARCHAR2(5)          not null,
-   ID_SALES_ORDER       VARCHAR2(12)         not null,
+   ID_SALES_ORDER       VARCHAR2(16)         not null,
    ID_INVOICE           VARCHAR2(12)         not null,
    NAMA_ITEM            VARCHAR2(255),
    QTY_ITEM             INTEGER              not null,
@@ -229,7 +229,7 @@ create table D_INVOICE
 
 create table H_PURCHASE_ORDER 
 (
-   ID_PURCHASE_ORDER    VARCHAR2(12)         not null,
+   ID_PURCHASE_ORDER    VARCHAR2(16)         not null,
    ID_SUPPLIER          VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
    ID_GUDANG            VARCHAR2(5)          not null,
@@ -250,7 +250,7 @@ create table H_PURCHASE_ORDER
 create table D_PURCHASE_ORDER 
 (
    ID_ITEM              VARCHAR2(5)          not null,
-   ID_PURCHASE_ORDER    VARCHAR2(12)         not null,
+   ID_PURCHASE_ORDER    VARCHAR2(16)         not null,
    NAMA_ITEM            VARCHAR2(255)          not null,
    QTY_ITEM             INTEGER              not null,
    JENIS_SATUAN         VARCHAR2(10)         not null,
@@ -263,7 +263,7 @@ create table D_PURCHASE_ORDER
 
 create table H_PURCHASE_INVOICE 
 (
-   ID_PURCHASE_INVOICE  VARCHAR2(12)         not null,
+   ID_PURCHASE_INVOICE  VARCHAR2(16)         not null,
    ID_SUPPLIER        VARCHAR2(255)        not null,
    ID_GUDANG            VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
@@ -284,7 +284,7 @@ create table H_PURCHASE_INVOICE
 
 create table D_PURCHASE_INVOICE 
 (
-   ID_PURCHASE_INVOICE  VARCHAR2(12)         not null,
+   ID_PURCHASE_INVOICE  VARCHAR2(16)         not null,
    ID_ITEM              VARCHAR2(5)          not null,
    NAMA_ITEM            VARCHAR2(255)          not null,
    QTY_ITEM             INTEGER              not null,
@@ -298,9 +298,9 @@ create table D_PURCHASE_INVOICE
 );
 CREATE TABLE H_STOCK_ISSUE
 (
-	ID_STOCK_ISSUE VARCHAR2(12) NOT NULL,
+	ID_STOCK_ISSUE VARCHAR2(16) NOT NULL,
    ID_STAFF VARCHAR2(5) NOT NULL,
-   JENIS VARCHAR2(10) NOT NULL,
+   JENIS VARCHAR2(6) NOT NULL,
 	DESK_STOCK_ISSUE VARCHAR2(255) NOT NULL,
 	TGL_STOCK_ISSUE DATE NOT NULL,
 	TOTAL_STOCK_ISSUE INTEGER NOT NULL,
@@ -309,7 +309,7 @@ CREATE TABLE H_STOCK_ISSUE
 CREATE TABLE D_STOCK_ISSUE
 (
 	ID_ITEM VARCHAR2(5) NOT NULL,
-	ID_STOCK_ISSUE VARCHAR2(12) NOT NULL,
+	ID_STOCK_ISSUE VARCHAR2(16) NOT NULL,
 	NAMA_ITEM VARCHAR2(255) NOT NULL,
 	QTY_ITEM INTEGER NOT NULL,
 	HARGA_ITEM INTEGER NOT NULL,
@@ -320,15 +320,23 @@ CREATE TABLE D_STOCK_ISSUE
 
 CREATE TABLE LOG_STOCK
 (
-   ID_LOG      VARCHAR2(13)   NOT NULL,
+   ID_LOG      VARCHAR2(17)   NOT NULL,
    ID_ITEM     VARCHAR2(5)    NOT NULL,
-   ID_DOKUMEN  VARCHAR2(12)   NOT NULL,
-   TGL_LOG     DATE           NOT NULL
+   ID_DOKUMEN  VARCHAR2(16)   NOT NULL,
+   QTY         INTEGER        NOT NULL,
+   BALANCE     INTEGER        NOT NULL,
+   TGL_LOG     DATE           NOT NULL,
+   constraint PK_LOG_STOCK primary key (ID_LOG)
 );
 
-CREATE OR REPLACE PROCEDURE insert_log(id_item in VARCHAR2, id_dokumen in VARCHAR2)
+CREATE OR REPLACE PROCEDURE insert_log(
+   id_item in VARCHAR2, 
+   id_dokumen in VARCHAR2, 
+   qty in INTEGER, 
+   balance in INTEGER
+)
 AS
-    id_log VARCHAR2(13) := 'LOG' || TO_CHAR(sysdate, 'ddMMyyyy');
+    id_log VARCHAR2(17) := 'LOG' || TO_CHAR(sysdate, '/dd/MM/yyyy/');
     jum number(2);
 BEGIN
     SELECT count(*) into jum
@@ -342,7 +350,7 @@ BEGIN
     END IF;
 
     INSERT INTO LOG_STOCK
-    VALUES (id_log, id_item, id_dokumen, sysdate);
+    VALUES (id_log, id_item, id_dokumen, qty, balance, sysdate);
 END;
 /
 
@@ -350,13 +358,13 @@ CREATE OR REPLACE TRIGGER update_stok_after_si
     AFTER INSERT ON D_STOCK_ISSUE
     FOR EACH ROW 
 DECLARE
-    jenis VARCHAR2(10);
+    jenis_si VARCHAR2(6);
 BEGIN
-    SELECT JENIS INTO jenis
-    FROM D_STOCK_ISSUE
+    SELECT JENIS INTO jenis_si
+    FROM H_STOCK_ISSUE
     WHERE ID_STOCK_ISSUE = :New.ID_STOCK_ISSUE;
 
-    IF ( jenis = 'Tambah' ) THEN
+    IF ( jenis_si = 'Tambah' ) THEN
       UPDATE item
       set stok_item = (stok_item + :NEW.qty_item)
       where id_item = :NEW.id_item;
@@ -366,7 +374,7 @@ BEGIN
       where id_item = :NEW.id_item;
     END IF;
 
-    insert_log(:New.id_item, :New.ID_STOCK_ISSUE);
+    insert_log(:New.id_item, :New.ID_STOCK_ISSUE, :New.qty_item, (:New.qty_item * :New.HARGA_ITEM));
 END;
 /
 
@@ -378,7 +386,7 @@ BEGIN
     set stok_item = (stok_item + :NEW.qty_item)
     where id_item = :NEW.id_item;
 
-    insert_log(:New.id_item, :New.ID_PURCHASE_INVOICE);
+    insert_log(:New.id_item, :New.ID_PURCHASE_INVOICE, :New.qty_item, (:New.qty_item * :New.HARGA_SATUAN));
 END;
 /
 
@@ -390,7 +398,7 @@ BEGIN
     set stok_item = (stok_item - :NEW.qty_item)
     where id_item = :NEW.id_item;
 
-    insert_log(:New.id_item, :New.ID_INVOICE);
+    insert_log(:New.id_item, :New.ID_INVOICE, :New.qty_item, (:New.qty_item * :New.HARGA_SATUAN));
 END;
 /
 

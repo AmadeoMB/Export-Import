@@ -56,6 +56,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
+            this.cbJenis = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlTengah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -65,6 +67,8 @@
             // pnlAtas
             // 
             this.pnlAtas.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.pnlAtas.Controls.Add(this.label5);
+            this.pnlAtas.Controls.Add(this.cbJenis);
             this.pnlAtas.Controls.Add(this.label4);
             this.pnlAtas.Controls.Add(this.txtIdStockIssue);
             this.pnlAtas.Controls.Add(this.label3);
@@ -359,6 +363,29 @@
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
+            // cbJenis
+            // 
+            this.cbJenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbJenis.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbJenis.FormattingEnabled = true;
+            this.cbJenis.Items.AddRange(new object[] {
+            "Tambah",
+            "Kurang"});
+            this.cbJenis.Location = new System.Drawing.Point(158, 67);
+            this.cbJenis.Name = "cbJenis";
+            this.cbJenis.Size = new System.Drawing.Size(250, 27);
+            this.cbJenis.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(94, 70);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 19);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Jenis :";
+            // 
             // formStockIssue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,5 +441,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn satuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn harga;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
+        private System.Windows.Forms.ComboBox cbJenis;
+        private System.Windows.Forms.Label label5;
     }
 }
