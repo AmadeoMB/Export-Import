@@ -334,7 +334,8 @@ namespace Export_Import
                 try
                 {
 
-                    String cmd = "delete from item where id_item = '" + dataGridView.Rows[idx].Cells[0].ToString() + "'";
+                    String cmd = "delete from item where id_item = '" + dataGridView.Rows[idx].Cells[0].Value.ToString() + "'";
+                    MessageBox.Show(cmd);
                     new OracleCommand(cmd, conn).ExecuteNonQuery();
                     ds.Tables["item"].Clear();
                     refreshTabel();
