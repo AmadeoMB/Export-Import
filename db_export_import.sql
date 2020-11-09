@@ -126,7 +126,7 @@ create table H_SALES_ORDER
    ID_GUDANG            VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
    ID_CUSTOMER          VARCHAR2(5)          not null,
-   ID_INVOICE           VARCHAR2(12)         not null,
+   ID_INVOICE           VARCHAR2(16)         not null,
    NAMA_CUSTOMER        VARCHAR2(255)        not null,
    ALAMAT_CUSTOMER      VARCHAR2(255)        not null,
    TGL_SALES_ORDER      DATE                 not null,

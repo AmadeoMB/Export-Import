@@ -109,7 +109,7 @@ namespace Export_Import
 
         String getNomerInvoice(String id)
         {
-            String cmd = "select count(*)+1 from H_delivery_Order where id_delivery_order like '" + id + "%'";
+            String cmd = "select count(*)+1 from H_invoice where id_invoice like '" + id + "%'";
             int jumlah = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
 
             if (jumlah < 10)
@@ -389,35 +389,12 @@ namespace Export_Import
 
             OracleCommand cmd = new OracleCommand("update h_invoice " +
                 "set " +
-                "id_gudang = :gudang, " +
-                "id_staff = :staff, " +
-                "id_customer = :customer, " +
-                "nama_customer = :nama, " +
-                "alamat_customer = :alamat, " +
-                "tgl_invoice = :tgl, " +
-                "credit_term_invoice = :credit, " +
-                "ship_via = :ship, " +
-                "id_negara = :negara, " +
-                "currency_invoice = :currency, " +
-                "rate = :rate, " +
                 "total = :total, " +
                 "total_ppn = :totalPPN, " +
                 "total_harga = :netTotal, " +
                 "total_harga_convert = :convert " +
                 "where id_invoice = '" + id_invoice + "'", conn);
 
-            cmd.Parameters.Add(":id", id_invoice);
-            cmd.Parameters.Add(":customer", id_customer);
-            cmd.Parameters.Add(":gudang", id_gudang);
-            cmd.Parameters.Add(":staff", id_staff);
-            cmd.Parameters.Add(":nama", txtNamaCustomer.Text);
-            cmd.Parameters.Add(":alamat", txtAlamatCustomer.Text);
-            cmd.Parameters.Add(":tgl", tanggalInvoice);
-            cmd.Parameters.Add(":credit", creditTerm);
-            cmd.Parameters.Add(":ship", shipVia);
-            cmd.Parameters.Add(":negara", negara);
-            cmd.Parameters.Add(":currency", currency);
-            cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
             cmd.Parameters.Add(":totalPPN", totalPPN);
             cmd.Parameters.Add(":netTotal", netTotal);
@@ -443,7 +420,7 @@ namespace Export_Import
                 String subtotal = ds.Tables["item"].Rows[i][9].ToString();
 
                 new OracleCommand("update h_sales_order set id_invoice = '" + id_invoice + "' where id_sales_order = '" + id_SO + "'", conn).ExecuteNonQuery();
-                OracleCommand cmdDetail = new OracleCommand("insert into d_delivery_order values (:id, :so, :do, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
+                OracleCommand cmdDetail = new OracleCommand("insert into d_invoice values (:id, :so, :do, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
                 cmdDetail.Parameters.Add(":so", id_SO);
                 cmdDetail.Parameters.Add(":do", id_invoice);

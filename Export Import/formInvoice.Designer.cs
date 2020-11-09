@@ -60,6 +60,8 @@
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGetSO = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbNegara = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.cbShipVia = new System.Windows.Forms.ComboBox();
             this.cbStaff = new System.Windows.Forms.ComboBox();
             this.cbCreditTerm = new System.Windows.Forms.ComboBox();
@@ -82,8 +84,6 @@
             this.cbIdCustomer = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbNegara = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -119,6 +119,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(157, 27);
             this.txtTotal.TabIndex = 11;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label21
             // 
@@ -194,6 +195,7 @@
             this.txtTotalConvert.Name = "txtTotalConvert";
             this.txtTotalConvert.Size = new System.Drawing.Size(157, 27);
             this.txtTotalConvert.TabIndex = 3;
+            this.txtTotalConvert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtNetTotal
             // 
@@ -202,6 +204,7 @@
             this.txtNetTotal.Name = "txtNetTotal";
             this.txtNetTotal.Size = new System.Drawing.Size(157, 27);
             this.txtNetTotal.TabIndex = 2;
+            this.txtNetTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalPPN
             // 
@@ -210,6 +213,7 @@
             this.txtTotalPPN.Name = "txtTotalPPN";
             this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
             this.txtTotalPPN.TabIndex = 1;
+            this.txtTotalPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label16
             // 
@@ -432,6 +436,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // cbNegara
+            // 
+            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNegara.FormattingEnabled = true;
+            this.cbNegara.Location = new System.Drawing.Point(1137, 165);
+            this.cbNegara.Name = "cbNegara";
+            this.cbNegara.Size = new System.Drawing.Size(200, 27);
+            this.cbNegara.TabIndex = 25;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(976, 168);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 19);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Negara Tujuan";
+            // 
             // cbShipVia
             // 
             this.cbShipVia.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -637,25 +660,6 @@
             this.label1.Size = new System.Drawing.Size(61, 19);
             this.label1.TabIndex = 0;
             this.label1.Text = "Supplier";
-            // 
-            // cbNegara
-            // 
-            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNegara.FormattingEnabled = true;
-            this.cbNegara.Location = new System.Drawing.Point(1137, 165);
-            this.cbNegara.Name = "cbNegara";
-            this.cbNegara.Size = new System.Drawing.Size(200, 27);
-            this.cbNegara.TabIndex = 25;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(976, 168);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(103, 19);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "Negara Tujuan";
             // 
             // formInvoice
             // 
