@@ -473,17 +473,17 @@ insert into CURRENCY values('USD', 'US Dollar', 14670);
 insert into CURRENCY values('SGD', 'Singapore Dollar', 10796);
 insert into CURRENCY values('TWD', 'Yaiwan Dollar', 510);
 
-insert into NEGARA values('1','Indonesia','Jakarta');
-insert into NEGARA values('2','Malaysia','Kuala Lumpur');
-insert into NEGARA values('3','Singapura','Singapura');
-insert into NEGARA values('4','Filipina','Manila');
-insert into NEGARA values('5','Myanmar','Naypyidaw');
-insert into NEGARA values('6','Vietnam','Hanoi');
-insert into NEGARA values('7','Timor-Leste','Dili');
-insert into NEGARA values('8','Thailand','Bangkok');
-insert into NEGARA values('9','Brunei-Darusalam','Bandar seri Bengawan');
-insert into NEGARA values('10','Kamboja','Phomn Phen');
-insert into NEGARA values('11','Laos','Vientiane');
+insert into NEGARA values('INDO1','Indonesia','Jakarta');
+insert into NEGARA values('MALA1','Malaysia','Kuala Lumpur');
+insert into NEGARA values('SING1','Singapura','Singapura');
+insert into NEGARA values('FILI1','Filipina','Manila');
+insert into NEGARA values('MYAN1','Myanmar','Naypyidaw');
+insert into NEGARA values('VIET1','Vietnam','Hanoi');
+insert into NEGARA values('TIMO1','Timor-Leste','Dili');
+insert into NEGARA values('THAI1','Thailand','Bangkok');
+insert into NEGARA values('BRUN1','Brunei-Darusalam','Bandar seri Bengawan');
+insert into NEGARA values('KAMB1','Kamboja','Phomn Phen');
+insert into NEGARA values('LAOS1','Laos','Vientiane');
 
 
 commit;

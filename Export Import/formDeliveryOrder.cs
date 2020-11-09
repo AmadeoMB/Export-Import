@@ -239,7 +239,6 @@ namespace Export_Import
             {
                 cmd += " where id_sales_order = '" + id + "'";
                 ds.Tables["negara"].Clear();
-                MessageBox.Show(cmd);
             }
 
             daNegara = new OracleDataAdapter(cmd, conn);
@@ -388,38 +387,16 @@ namespace Export_Import
             int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
             int netTotal = Convert.ToInt32(txtNetTotal.Text.Substring(3));
             int convert = Convert.ToInt32(txtTotalConvert.Text.Substring(4));
+            MessageBox.Show(negara);
 
             OracleCommand cmd = new OracleCommand("update h_delivery_order " +
                 "set " +
-                "id_gudang = :gudang, " +
-                "id_staff = :staff, " +
-                "id_customer = :customer, " +
-                "nama_customer = :nama, " +
-                "alamat_customer = :alamat, " +
-                "tgl_sales_order = :tgl, " +
-                "credit_term_sales_order = :credit, " +
-                "ship_via = :ship, " +
-                "id_negara = :negara," +
-                "currency_sales_order = :currency, " +
-                "rate = :rate, " +
                 "total = :total, " +
                 "total_ppn = :totalPPN, " +
                 "total_harga = :netTotal, " +
                 "total_harga_convert = :convert " +
                 "where id_delivery_order = '" + id_DO + "'", conn);
 
-            cmd.Parameters.Add(":id", id_DO);
-            cmd.Parameters.Add(":customer", id_customer);
-            cmd.Parameters.Add(":gudang", id_gudang);
-            cmd.Parameters.Add(":staff", id_staff);
-            cmd.Parameters.Add(":nama", txtNamaCust.Text);
-            cmd.Parameters.Add(":alamat", txtAlamatCust.Text);
-            cmd.Parameters.Add(":tgl", tanggalDO);
-            cmd.Parameters.Add(":credit", creditTerm);
-            cmd.Parameters.Add(":ship", shipVia);
-            cmd.Parameters.Add(":negara", negara);
-            cmd.Parameters.Add(":currency", currency);
-            cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
             cmd.Parameters.Add(":totalPPN", totalPPN);
             cmd.Parameters.Add(":netTotal", netTotal);
