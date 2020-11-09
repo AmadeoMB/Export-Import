@@ -219,7 +219,7 @@ create table D_INVOICE
 (
    ID_ITEM              VARCHAR2(5)          not null,
    ID_SALES_ORDER       VARCHAR2(16)         not null,
-   ID_INVOICE           VARCHAR2(12)         not null,
+   ID_INVOICE           VARCHAR2(16)         not null,
    NAMA_ITEM            VARCHAR2(255),
    QTY_ITEM             INTEGER              not null,
    JENIS_SATUAN         VARCHAR2(10)         not null,

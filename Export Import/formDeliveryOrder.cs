@@ -396,11 +396,11 @@ namespace Export_Import
                 "id_customer = :customer, " +
                 "nama_customer = :nama, " +
                 "alamat_customer = :alamat, " +
-                "tgl_delivery_order = :tgl, " +
-                "credit_term_delivery_order = :credit, " +
+                "tgl_sales_order = :tgl, " +
+                "credit_term_sales_order = :credit, " +
                 "ship_via = :ship, " +
-                "id_negara = :Negara, " +
-                "currency_delivery_order = :currency, " +
+                "id_negara = :negara," +
+                "currency_sales_order = :currency, " +
                 "rate = :rate, " +
                 "total = :total, " +
                 "total_ppn = :totalPPN, " +
@@ -417,7 +417,7 @@ namespace Export_Import
             cmd.Parameters.Add(":tgl", tanggalDO);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
-            cmd.Parameters.Add(":Negara", negara);
+            cmd.Parameters.Add(":negara", negara);
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);

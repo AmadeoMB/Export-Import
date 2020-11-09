@@ -82,6 +82,8 @@
             this.cbIdCustomer = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.cbNegara = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -398,6 +400,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.groupBox1.Controls.Add(this.cbNegara);
+            this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.cbShipVia);
             this.groupBox1.Controls.Add(this.cbStaff);
             this.groupBox1.Controls.Add(this.cbCreditTerm);
@@ -634,6 +638,25 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Supplier";
             // 
+            // cbNegara
+            // 
+            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNegara.FormattingEnabled = true;
+            this.cbNegara.Location = new System.Drawing.Point(1137, 165);
+            this.cbNegara.Name = "cbNegara";
+            this.cbNegara.Size = new System.Drawing.Size(200, 27);
+            this.cbNegara.TabIndex = 25;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(976, 168);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(103, 19);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Negara Tujuan";
+            // 
             // formInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -716,5 +739,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn jenis_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
+        private System.Windows.Forms.ComboBox cbNegara;
+        private System.Windows.Forms.Label label14;
     }
 }
