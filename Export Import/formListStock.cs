@@ -224,6 +224,10 @@ namespace Export_Import
                 isiCB();
 
                 refreshTabel();
+                this.dataGridView.Columns["harga_jual_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                this.dataGridView.Columns["harga_beli_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                this.dataGridView.Columns["balance_cost"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                this.dataGridView.Columns["qty_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
             catch (Exception)
             {
@@ -351,9 +355,28 @@ namespace Export_Import
 
         private void btnLog_Click(object sender, EventArgs e)
         {
-            this.id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
+            if (idx >= 0)
+            {
+                this.id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
 
-            new formDetailLog(this).ShowDialog();
+                new formDetailLog(this).ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Tolong click salah satu baris pada tabel");
+            }
+        }
+
+        private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
+
+            if (idx > -1)
+            {
+                btnUpdate.Enabled = true;
+                btnDelete.Enabled = true;
+                btnLog.Enabled = true;
+            }
         }
     }
 }
