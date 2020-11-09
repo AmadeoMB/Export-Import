@@ -20,6 +20,7 @@ namespace Export_Import
         private OracleDataAdapter daGudang;
         private OracleDataAdapter daEkspedisi;
         private OracleDataAdapter daItem;
+        private OracleDataAdapter daNegara;
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
@@ -63,7 +64,15 @@ namespace Export_Import
                 txtAlamatCust.Text = search.data[2].ToString();
             }
         }
-
+        void isiCBNegara()
+        {
+            String cmd = "select * from negara";
+            daNegara = new OracleDataAdapter(cmd, conn);
+            daNegara.Fill(ds, "negara");
+            cbNegara.DataSource = ds.Tables["negara"];
+            cbNegara.DisplayMember = "nama_negara";
+            cbNegara.ValueMember = "id_negara";
+        }
         void isiCBCustomer() {
             String cmd = "select id_customer, nama_customer, alamat_customer from customer";
             daCustomer = new OracleDataAdapter(cmd, conn);
@@ -135,6 +144,7 @@ namespace Export_Import
                 isiCBShipVia();
                 isiCBGudang();
                 isiCBSales();
+                isiCBNegara();
                 generatecreateNomerSO();
             }
             catch (Exception ex)
@@ -398,6 +408,7 @@ namespace Export_Import
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
             String shipVia = cbShip.SelectedValue + "";
+            String Negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
@@ -405,7 +416,7 @@ namespace Export_Import
             int netTotal = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
             int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
 
-            OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
+            OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship,:negara ,:currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
             cmd.Parameters.Add(":id", id_SO);
             cmd.Parameters.Add(":do", '-');
             cmd.Parameters.Add(":gudang", id_gudang);
@@ -417,6 +428,7 @@ namespace Export_Import
             cmd.Parameters.Add(":tgl", tanggalSO);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
+            cmd.Parameters.Add(":negara", Negara);
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
@@ -542,6 +554,7 @@ namespace Export_Import
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
             String shipVia = cbShip.Text;
+            String negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
@@ -559,6 +572,7 @@ namespace Export_Import
                 "tgl_sales_order = :tgl, " +
                 "credit_term_sales_order = :credit, " +
                 "ship_via = :ship, " +
+                "id_negara = :negara," +
                 "currency_sales_order = :currency, " +
                 "rate = :rate, " +
                 "total = :total, " +
@@ -575,6 +589,7 @@ namespace Export_Import
             cmd.Parameters.Add(":tgl", tanggalSO);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
+            cmd.Parameters.Add(":negara", negara);
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);

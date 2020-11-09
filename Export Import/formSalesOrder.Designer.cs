@@ -82,6 +82,8 @@
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbNegara = new System.Windows.Forms.ComboBox();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -91,6 +93,8 @@
             // pnlAtas
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.pnlAtas.Controls.Add(this.label17);
+            this.pnlAtas.Controls.Add(this.cbNegara);
             this.pnlAtas.Controls.Add(this.btnSearch);
             this.pnlAtas.Controls.Add(this.label9);
             this.pnlAtas.Controls.Add(this.label8);
@@ -113,7 +117,7 @@
             this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlAtas.Location = new System.Drawing.Point(0, 0);
             this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1350, 193);
+            this.pnlAtas.Size = new System.Drawing.Size(1350, 210);
             this.pnlAtas.TabIndex = 1;
             // 
             // btnSearch
@@ -334,9 +338,9 @@
             this.pnlBawah.Controls.Add(this.groupButton);
             this.pnlBawah.Controls.Add(this.label11);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBawah.Location = new System.Drawing.Point(0, 181);
+            this.pnlBawah.Location = new System.Drawing.Point(0, 213);
             this.pnlBawah.Name = "pnlBawah";
-            this.pnlBawah.Size = new System.Drawing.Size(1350, 548);
+            this.pnlBawah.Size = new System.Drawing.Size(1350, 516);
             this.pnlBawah.TabIndex = 2;
             this.pnlBawah.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlBawah_Paint);
             // 
@@ -683,6 +687,25 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "List Order";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(971, 180);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(56, 19);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Negara";
+            // 
+            // cbNegara
+            // 
+            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNegara.FormattingEnabled = true;
+            this.cbNegara.Location = new System.Drawing.Point(1038, 177);
+            this.cbNegara.Name = "cbNegara";
+            this.cbNegara.Size = new System.Drawing.Size(300, 27);
+            this.cbNegara.TabIndex = 22;
+            // 
             // formSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -759,5 +782,7 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtTotalPPN;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbNegara;
     }
 }

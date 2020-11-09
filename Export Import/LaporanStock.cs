@@ -16,14 +16,14 @@ namespace Export_Import {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PreviewInvoice : ReportClass {
+    public class LaporanStock : ReportClass {
         
-        public PreviewInvoice() {
+        public LaporanStock() {
         }
         
         public override string ResourceName {
             get {
-                return "PreviewInvoice.rpt";
+                return "LaporanStock.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Export_Import {
         
         public override string FullResourceName {
             get {
-                return "Export_Import.PreviewInvoice.rpt";
+                return "Export_Import.LaporanStock.rpt";
             }
             set {
                 // Do nothing
@@ -106,7 +106,7 @@ namespace Export_Import {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_id_invoice {
+        public CrystalDecisions.Shared.IParameterField Parameter_id_nama {
             get {
                 return this.DataDefinition.ParameterFields[0];
             }
@@ -114,9 +114,9 @@ namespace Export_Import {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPreviewInvoice : Component, ICachedReport {
+    public class CachedLaporanStock : Component, ICachedReport {
         
-        public CachedPreviewInvoice() {
+        public CachedLaporanStock() {
         }
         
         [Browsable(false)]
@@ -153,7 +153,7 @@ namespace Export_Import {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PreviewInvoice rpt = new PreviewInvoice();
+            LaporanStock rpt = new LaporanStock();
             rpt.Site = this.Site;
             return rpt;
         }

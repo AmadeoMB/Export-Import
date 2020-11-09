@@ -22,6 +22,7 @@ namespace Export_Import
         private OracleDataAdapter daStaff;
         private OracleDataAdapter daEkspedisi;
         private OracleDataAdapter daCurrency;
+        private OracleDataAdapter daNegara;
         private OracleDataAdapter daItem;
         private DataSet ds = new DataSet();
         private Boolean saved = false;
@@ -39,7 +40,15 @@ namespace Export_Import
             this.form = form;
             this.conn = form.conn;
         }
-
+        void isiCBNegara()
+        {
+            String cmd = "select * from negara";
+            daNegara = new OracleDataAdapter(cmd, conn);
+            daNegara.Fill(ds, "negara");
+            cbNegara.DataSource = ds.Tables["negara"];
+            cbNegara.DisplayMember = "nama_negara";
+            cbNegara.ValueMember = "id_negara";
+        }
         void isiCBCustomer()
         {
             String cmd = "select id_Customer, nama_Customer, alamat_Customer from Customer";
@@ -188,6 +197,21 @@ namespace Export_Import
             cbShipVia.DisplayMember = "Nama";
             cbShipVia.ValueMember = "ID";
 
+            cmd = "select distinct a.id_negara as ID, b.nama_negara as Nama from h_delivery_order a join negara b on b.id_negara = a.id_negara";
+
+            if (!id.Equals(""))
+            {
+                cmd += " where id_delivery_order = '" + id + "'";
+                ds.Tables["negara"].Clear();
+            }
+
+            MessageBox.Show(cmd);
+            daNegara = new OracleDataAdapter(cmd, conn);
+            daNegara.Fill(ds, "negara");
+            cbNegara.DataSource = ds.Tables["negara"];
+            cbNegara.DisplayMember = "Nama";
+            cbNegara.ValueMember = "ID";
+
             cmd = "select distinct currency_delivery_order as ID, nama_currency as Nama from h_delivery_order h join currency c on currency_delivery_order = id_currency";
 
             if (!id.Equals(""))
@@ -269,6 +293,7 @@ namespace Export_Import
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalInvoice = dateInvoice.Value;
             String shipVia = cbShipVia.SelectedValue + "";
+            String negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(txtRate.Text.Substring(4));
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
@@ -276,7 +301,7 @@ namespace Export_Import
             int netTotal = Convert.ToInt32(txtNetTotal.Text.Substring(3));
             int convert = Convert.ToInt32(txtTotalConvert.Text.Substring(4));
 
-            OracleCommand cmd = new OracleCommand("insert into h_invoice values (:id, :gudang, :customer, :staff, :nama, :alamat, :tgl, :credit, :ship, :currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
+            OracleCommand cmd = new OracleCommand("insert into h_invoice values (:id, :gudang, :customer, :staff, :nama, :alamat, :tgl, :credit, :ship,:negara ,:currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
             cmd.Parameters.Add(":id", id_invoice);
             cmd.Parameters.Add(":gudang", id_gudang);
             cmd.Parameters.Add(":customer", id_customer);
@@ -286,6 +311,7 @@ namespace Export_Import
             cmd.Parameters.Add(":tgl", tanggalInvoice);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
+            cmd.Parameters.Add(":negara", negara);
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
@@ -353,6 +379,7 @@ namespace Export_Import
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalInvoice = dateInvoice.Value;
             String shipVia = cbShipVia.SelectedValue + "";
+            String negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(txtRate.Text.Substring(4));
             int total = Convert.ToInt32(txtTotal.Text.Substring(3));
@@ -370,6 +397,7 @@ namespace Export_Import
                 "tgl_invoice = :tgl, " +
                 "credit_term_invoice = :credit, " +
                 "ship_via = :ship, " +
+                "id_negara = :negara, " +
                 "currency_invoice = :currency, " +
                 "rate = :rate, " +
                 "total = :total, " +
@@ -387,6 +415,7 @@ namespace Export_Import
             cmd.Parameters.Add(":tgl", tanggalInvoice);
             cmd.Parameters.Add(":credit", creditTerm);
             cmd.Parameters.Add(":ship", shipVia);
+            cmd.Parameters.Add(":negara", negara);
             cmd.Parameters.Add(":currency", currency);
             cmd.Parameters.Add(":rate", rate);
             cmd.Parameters.Add(":total", total);
@@ -445,6 +474,7 @@ namespace Export_Import
                 isiCBCurrency();
                 isiCBGudang();
                 isicbStaff();
+                isiCBNegara();
                 isiCBShipVia();
                 generatecreateNomerInvoice();
             }

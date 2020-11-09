@@ -16,14 +16,14 @@ namespace Export_Import {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class PreviewInvoice : ReportClass {
+    public class LaporanMuatan : ReportClass {
         
-        public PreviewInvoice() {
+        public LaporanMuatan() {
         }
         
         public override string ResourceName {
             get {
-                return "PreviewInvoice.rpt";
+                return "LaporanMuatan.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Export_Import {
         
         public override string FullResourceName {
             get {
-                return "Export_Import.PreviewInvoice.rpt";
+                return "Export_Import.LaporanMuatan.rpt";
             }
             set {
                 // Do nothing
@@ -106,17 +106,25 @@ namespace Export_Import {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.Shared.IParameterField Parameter_id_invoice {
+        public CrystalDecisions.Shared.IParameterField Parameter_no_container {
             get {
                 return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_tujuan {
+            get {
+                return this.DataDefinition.ParameterFields[1];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedPreviewInvoice : Component, ICachedReport {
+    public class CachedLaporanMuatan : Component, ICachedReport {
         
-        public CachedPreviewInvoice() {
+        public CachedLaporanMuatan() {
         }
         
         [Browsable(false)]
@@ -153,7 +161,7 @@ namespace Export_Import {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            PreviewInvoice rpt = new PreviewInvoice();
+            LaporanMuatan rpt = new LaporanMuatan();
             rpt.Site = this.Site;
             return rpt;
         }
