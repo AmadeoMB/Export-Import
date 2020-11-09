@@ -16,6 +16,7 @@ namespace Export_Import
         public OracleConnection conn;
         public String admin;
         OracleDataAdapter daItem;
+
         DataSet ds = new DataSet();
         formMasterStock master;
         private Stack<Object[]> done = new Stack<Object[]>(100);
@@ -28,7 +29,6 @@ namespace Export_Import
             this.conn.Open();
             this.admin = "Melvern Tallall";
         }
-
         public formStockIssue(formMasterStock master)
         {
             InitializeComponent();

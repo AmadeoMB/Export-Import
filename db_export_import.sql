@@ -20,6 +20,7 @@ DROP TABLE STAFF CASCADE CONSTRAINTS PURGE;
 DROP TABLE SUPPLIER CASCADE CONSTRAINTS PURGE;
 DROP TABLE EKSPEDISI CASCADE CONSTRAINTS PURGE;
 DROP TABLE LOG_STOCK CASCADE CONSTRAINTS PURGE;
+DROP TABLE NEGARA CASCADE CONSTRAINTS PURGE;
 
 
 CREATE TABLE EKSPEDISI
@@ -121,7 +122,7 @@ create table ITEM
 create table H_SALES_ORDER 
 (
    ID_SALES_ORDER       VARCHAR2(16)         not null,
-   ID_DELIVERY_ORDER    VARCHAR2(12)         not null,
+   ID_DELIVERY_ORDER    VARCHAR2(16)         not null,
    ID_GUDANG            VARCHAR2(5)          not null,
    ID_STAFF             VARCHAR2(5)          not null,
    ID_CUSTOMER          VARCHAR2(5)          not null,
@@ -131,6 +132,7 @@ create table H_SALES_ORDER
    TGL_SALES_ORDER      DATE                 not null,
    CREDIT_TERM_SALES_ORDER INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
+   ID_NEGARA	        VARCHAR2(5)		not null,
    CURRENCY_SALES_ORDER VARCHAR2(3)        not null,
    RATE                 INTEGER            not null,
    TOTAL                INTEGER              not null,
@@ -166,6 +168,7 @@ create table H_DELIVERY_ORDER
    TGL_DELIVERY_ORDER   DATE                 not null,
    CREDIT_TERM_DELIVERY_ORDER INTEGER        not null,
    SHIP_VIA             VARCHAR2(255)        not null,
+   ID_NEGARA	        VARCHAR2(5)	     not null,
    CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
    RATE                 INTEGER              not null,
    TOTAL                INTEGER              not null,
@@ -179,7 +182,7 @@ create table D_DELIVERY_ORDER
 (
    ID_ITEM              VARCHAR2(5)          not null,
    ID_SALES_ORDER       VARCHAR2(16)         not null,
-   ID_DELIVERY_ORDER    VARCHAR2(12)         not null,
+   ID_DELIVERY_ORDER    VARCHAR2(16)         not null,
    NAMA_ITEM            VARCHAR2(255)        not null,
    QTY_ITEM             INTEGER              not null,
    JENIS_SATUAN         VARCHAR2(10)         not null,
@@ -202,6 +205,7 @@ create table H_INVOICE
    TGL_INVOICE          DATE                 not null,
    CREDIT_TERM_INVOICE  INTEGER              not null,
    SHIP_VIA             VARCHAR2(255)        not null,
+   ID_NEGARA	        VARCHAR2(5)          not null,
    CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
    RATE                 INTEGER              not null,
    TOTAL                INTEGER              not null,
@@ -317,7 +321,12 @@ CREATE TABLE D_STOCK_ISSUE
 	SUBTOTAL INTEGER NOT NULL,
 	constraint PK_D_STOCK_ISSUE primary key (ID_STOCK_ISSUE,ID_ITEM)
 );
-
+CREATE TABLE NEGARA
+(
+	ID_NEGARA VARCHAR2(5) PRIMARY KEY,
+	NAMA_NEGARA VARCHAR2(255) NOT NULL,
+	IBUKOTA_NEGARA VARCHAR2(255) NOT NULL
+);
 CREATE TABLE LOG_STOCK
 (
    ID_LOG      VARCHAR2(17)   NOT NULL,
@@ -463,6 +472,18 @@ insert into CURRENCY values('MYR', 'Malaysian Ringgit', 3534);
 insert into CURRENCY values('USD', 'US Dollar', 14670);
 insert into CURRENCY values('SGD', 'Singapore Dollar', 10796);
 insert into CURRENCY values('TWD', 'Yaiwan Dollar', 510);
+
+insert into NEGARA values('1','Indonesia','Jakarta');
+insert into NEGARA values('2','Malaysia','Kuala Lumpur');
+insert into NEGARA values('3','Singapura','Singapura');
+insert into NEGARA values('4','Filipina','Manila');
+insert into NEGARA values('5','Myanmar','Naypyidaw');
+insert into NEGARA values('6','Vietnam','Hanoi');
+insert into NEGARA values('7','Timor-Leste','Dili');
+insert into NEGARA values('8','Thailand','Bangkok');
+insert into NEGARA values('9','Brunei-Darusalam','Bandar seri Bengawan');
+insert into NEGARA values('10','Kamboja','Phomn Phen');
+insert into NEGARA values('11','Laos','Vientiane');
 
 
 commit;

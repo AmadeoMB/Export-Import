@@ -52,6 +52,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTotal = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtTotalPPN = new System.Windows.Forms.TextBox();
             this.txtRate = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -78,10 +82,8 @@
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearchSO = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtTotalPPN = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.cbNegara = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlTotal.SuspendLayout();
             this.pnlBawah.SuspendLayout();
@@ -92,6 +94,8 @@
             // pnlAtas
             // 
             this.pnlAtas.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.pnlAtas.Controls.Add(this.cbNegara);
+            this.pnlAtas.Controls.Add(this.label21);
             this.pnlAtas.Controls.Add(this.cbShipVia);
             this.pnlAtas.Controls.Add(this.cbNamaSales);
             this.pnlAtas.Controls.Add(this.cbCreditTerm);
@@ -370,6 +374,42 @@
             this.pnlTotal.TabIndex = 9;
             this.pnlTotal.TabStop = false;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(1134, 12);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(41, 19);
+            this.label16.TabIndex = 13;
+            this.label16.Text = "Total";
+            // 
+            // txtTotal
+            // 
+            this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(1181, 9);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(157, 27);
+            this.txtTotal.TabIndex = 12;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(1065, 45);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(110, 19);
+            this.label14.TabIndex = 11;
+            this.label14.Text = "Total PPN (EXC)";
+            // 
+            // txtTotalPPN
+            // 
+            this.txtTotalPPN.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalPPN.Location = new System.Drawing.Point(1181, 42);
+            this.txtTotalPPN.Name = "txtTotalPPN";
+            this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
+            this.txtTotalPPN.TabIndex = 10;
+            // 
             // txtRate
             // 
             this.txtRate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -625,41 +665,26 @@
             this.btnSearchSO.UseVisualStyleBackColor = true;
             this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
             // 
-            // label14
+            // cbNegara
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(1065, 45);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(110, 19);
-            this.label14.TabIndex = 11;
-            this.label14.Text = "Total PPN (EXC)";
+            this.cbNegara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNegara.Enabled = false;
+            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNegara.FormattingEnabled = true;
+            this.cbNegara.Location = new System.Drawing.Point(1137, 167);
+            this.cbNegara.Name = "cbNegara";
+            this.cbNegara.Size = new System.Drawing.Size(200, 27);
+            this.cbNegara.TabIndex = 25;
             // 
-            // txtTotalPPN
+            // label21
             // 
-            this.txtTotalPPN.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPPN.Location = new System.Drawing.Point(1181, 42);
-            this.txtTotalPPN.Name = "txtTotalPPN";
-            this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
-            this.txtTotalPPN.TabIndex = 10;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(1134, 12);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(41, 19);
-            this.label16.TabIndex = 13;
-            this.label16.Text = "Total";
-            // 
-            // txtTotal
-            // 
-            this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(1181, 9);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(157, 27);
-            this.txtTotal.TabIndex = 12;
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(966, 169);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(103, 19);
+            this.label21.TabIndex = 24;
+            this.label21.Text = "Negara Tujuan";
             // 
             // formDeliveryOrder
             // 
@@ -743,5 +768,7 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtTotalPPN;
+        private System.Windows.Forms.ComboBox cbNegara;
+        private System.Windows.Forms.Label label21;
     }
 }
