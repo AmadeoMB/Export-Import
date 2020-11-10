@@ -57,11 +57,12 @@ namespace Export_Import
                 MessageBox.Show("Mohon isi nomer container");
                 return;
             }
-            String invoice = cbInvoice.Text.Substring(16);
-
+            String invoice = cbInvoice.Text.Substring(0,16);
+            MessageBox.Show(invoice);
             LaporanMuatan rep = new LaporanMuatan();
             rep.SetDatabaseLogon("export", "import", "orcl", "");
             rep.SetParameterValue("id_invoice", invoice);
+            rep.SetParameterValue("tujuan", "asd");
             rep.SetParameterValue("no_container", txtNomerContainer.Text);
             crystalReportViewer.ReportSource = rep;
         }
