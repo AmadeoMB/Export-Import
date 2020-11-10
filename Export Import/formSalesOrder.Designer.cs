@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.cbNegara = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -82,8 +84,6 @@
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbNegara = new System.Windows.Forms.ComboBox();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -119,6 +119,25 @@
             this.pnlAtas.Name = "pnlAtas";
             this.pnlAtas.Size = new System.Drawing.Size(1350, 210);
             this.pnlAtas.TabIndex = 1;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(971, 180);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(56, 19);
+            this.label17.TabIndex = 23;
+            this.label17.Text = "Negara";
+            // 
+            // cbNegara
+            // 
+            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNegara.FormattingEnabled = true;
+            this.cbNegara.Location = new System.Drawing.Point(1038, 177);
+            this.cbNegara.Name = "cbNegara";
+            this.cbNegara.Size = new System.Drawing.Size(300, 27);
+            this.cbNegara.TabIndex = 22;
             // 
             // btnSearch
             // 
@@ -338,7 +357,7 @@
             this.pnlBawah.Controls.Add(this.groupButton);
             this.pnlBawah.Controls.Add(this.label11);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlBawah.Location = new System.Drawing.Point(0, 213);
+            this.pnlBawah.Location = new System.Drawing.Point(0, 231);
             this.pnlBawah.Name = "pnlBawah";
             this.pnlBawah.Size = new System.Drawing.Size(1350, 516);
             this.pnlBawah.TabIndex = 2;
@@ -348,7 +367,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(991, 360);
+            this.label16.Location = new System.Drawing.Point(991, 327);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(41, 19);
             this.label16.TabIndex = 24;
@@ -358,7 +377,7 @@
             // 
             this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(1038, 357);
+            this.txtTotal.Location = new System.Drawing.Point(1038, 324);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(300, 27);
             this.txtTotal.TabIndex = 23;
@@ -369,7 +388,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(922, 393);
+            this.label10.Location = new System.Drawing.Point(922, 360);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(110, 19);
             this.label10.TabIndex = 22;
@@ -379,7 +398,7 @@
             // 
             this.txtTotalPPN.Enabled = false;
             this.txtTotalPPN.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalPPN.Location = new System.Drawing.Point(1038, 390);
+            this.txtTotalPPN.Location = new System.Drawing.Point(1038, 357);
             this.txtTotalPPN.Name = "txtTotalPPN";
             this.txtTotalPPN.Size = new System.Drawing.Size(300, 27);
             this.txtTotalPPN.TabIndex = 21;
@@ -390,7 +409,7 @@
             // 
             this.btnSave.BackColor = System.Drawing.Color.LimeGreen;
             this.btnSave.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(1026, 497);
+            this.btnSave.Location = new System.Drawing.Point(1026, 464);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 35);
             this.btnSave.TabIndex = 20;
@@ -402,7 +421,7 @@
             // 
             this.btnPreview.BackColor = System.Drawing.Color.DarkOrange;
             this.btnPreview.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPreview.Location = new System.Drawing.Point(1132, 497);
+            this.btnPreview.Location = new System.Drawing.Point(1132, 464);
             this.btnPreview.Name = "btnPreview";
             this.btnPreview.Size = new System.Drawing.Size(100, 35);
             this.btnPreview.TabIndex = 19;
@@ -414,7 +433,7 @@
             // 
             this.btnCancel.BackColor = System.Drawing.Color.Red;
             this.btnCancel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(1238, 497);
+            this.btnCancel.Location = new System.Drawing.Point(1238, 464);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(100, 35);
             this.btnCancel.TabIndex = 18;
@@ -426,7 +445,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(451, 459);
+            this.label15.Location = new System.Drawing.Point(451, 426);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(66, 19);
             this.label15.TabIndex = 17;
@@ -436,7 +455,7 @@
             // 
             this.cbCurrency.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrency.FormattingEnabled = true;
-            this.cbCurrency.Location = new System.Drawing.Point(523, 456);
+            this.cbCurrency.Location = new System.Drawing.Point(523, 423);
             this.cbCurrency.Name = "cbCurrency";
             this.cbCurrency.Size = new System.Drawing.Size(196, 27);
             this.cbCurrency.TabIndex = 16;
@@ -446,7 +465,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(725, 459);
+            this.label14.Location = new System.Drawing.Point(725, 426);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(39, 19);
             this.label14.TabIndex = 15;
@@ -456,7 +475,7 @@
             // 
             this.txtRate.Enabled = false;
             this.txtRate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRate.Location = new System.Drawing.Point(770, 456);
+            this.txtRate.Location = new System.Drawing.Point(770, 423);
             this.txtRate.Name = "txtRate";
             this.txtRate.Size = new System.Drawing.Size(150, 27);
             this.txtRate.TabIndex = 14;
@@ -465,7 +484,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(926, 459);
+            this.label13.Location = new System.Drawing.Point(926, 426);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(106, 19);
             this.label13.TabIndex = 13;
@@ -475,7 +494,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(964, 426);
+            this.label12.Location = new System.Drawing.Point(964, 393);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(68, 19);
             this.label12.TabIndex = 12;
@@ -485,7 +504,7 @@
             // 
             this.txtTotalHarga.Enabled = false;
             this.txtTotalHarga.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalHarga.Location = new System.Drawing.Point(1038, 423);
+            this.txtTotalHarga.Location = new System.Drawing.Point(1038, 390);
             this.txtTotalHarga.Name = "txtTotalHarga";
             this.txtTotalHarga.Size = new System.Drawing.Size(300, 27);
             this.txtTotalHarga.TabIndex = 11;
@@ -496,7 +515,7 @@
             // 
             this.txtTotalHargaConvert.Enabled = false;
             this.txtTotalHargaConvert.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalHargaConvert.Location = new System.Drawing.Point(1038, 456);
+            this.txtTotalHargaConvert.Location = new System.Drawing.Point(1038, 423);
             this.txtTotalHargaConvert.Name = "txtTotalHargaConvert";
             this.txtTotalHargaConvert.Size = new System.Drawing.Size(300, 27);
             this.txtTotalHargaConvert.TabIndex = 10;
@@ -519,7 +538,7 @@
             this.dataGridView.Location = new System.Drawing.Point(3, 81);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1347, 270);
+            this.dataGridView.Size = new System.Drawing.Size(1347, 237);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
@@ -687,30 +706,11 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "List Order";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(971, 180);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 19);
-            this.label17.TabIndex = 23;
-            this.label17.Text = "Negara";
-            // 
-            // cbNegara
-            // 
-            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNegara.FormattingEnabled = true;
-            this.cbNegara.Location = new System.Drawing.Point(1038, 177);
-            this.cbNegara.Name = "cbNegara";
-            this.cbNegara.Size = new System.Drawing.Size(300, 27);
-            this.cbNegara.TabIndex = 22;
-            // 
             // formSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1350, 747);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formSalesOrder";

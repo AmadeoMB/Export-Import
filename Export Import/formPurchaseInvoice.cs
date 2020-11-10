@@ -27,6 +27,8 @@ namespace Export_Import
         public formPurchaseInvoice()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
         }
 
         public formPurchaseInvoice(formMasterPembelian master)

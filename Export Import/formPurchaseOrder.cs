@@ -32,6 +32,7 @@ namespace Export_Import
             InitializeComponent();
             this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
             this.conn.Open();
+            this.admin = "Melvern Tallall";
         }
 
         public formPurchaseOrder(formMasterPembelian form)
@@ -161,7 +162,6 @@ namespace Export_Import
                 "satuan_item, " +
                 hargaBeli + " as harga_beli_item, "+
                 "jenis_ppn, " +
-                totalPPN + " as total_ppn, " +
                 diskon + " as discount, " +
                 subtotal + " as subtotal " +
                 "from item " +
