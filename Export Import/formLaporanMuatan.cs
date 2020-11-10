@@ -32,38 +32,36 @@ namespace Export_Import
 
         private void formLaporanMuatan_Load(object sender, EventArgs e)
         {
-            OracleCommand cmd = new OracleCommand("select distinct nama_negara from h_invoice h join negara n " +
-                                                    "on h.id_negara = n.id_negara", conn);
+            OracleCommand cmd = new OracleCommand("select id_invoice, nama_customer from h_invoice", conn);
             OracleDataReader dr = cmd.ExecuteReader();
 
             List<String> items = new List<String>();
 
             while (dr.Read())
             {
-                items.Add(String.Format("{0}", dr.GetValue(0)));
+                items.Add(String.Format("{0} - {1}", dr.GetValue(0), dr.GetValue(1)));
             }
 
-            cbNegara.Items.AddRange(items.ToArray());
+            cbInvoice.Items.AddRange(items.ToArray());
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            if (cbInvoice.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih Invoice");
+                return;
+            }
             if (txtNomerContainer.Text.Length <= 0)
             {
                 MessageBox.Show("Mohon isi nomer container");
                 return;
             }
-            if (cbNegara.SelectedIndex < 0)
-            {
-                MessageBox.Show("Mohon pilih Negara Tujuan");
-                return;
-            }
-
-            String tujuan = cbNegara.Text;
+            String invoice = cbInvoice.Text.Substring(16);
 
             LaporanMuatan rep = new LaporanMuatan();
             rep.SetDatabaseLogon("export", "import", "orcl", "");
-            rep.SetParameterValue("tujuan", tujuan);
+            rep.SetParameterValue("id_invoice", invoice);
             rep.SetParameterValue("no_container", txtNomerContainer.Text);
             crystalReportViewer.ReportSource = rep;
         }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.cbNegara = new System.Windows.Forms.ComboBox();
+            this.cbInvoice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnPrint = new System.Windows.Forms.Button();
             this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
@@ -37,25 +37,25 @@
             this.txtNomerContainer = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // cbNegara
+            // cbInvoice
             // 
-            this.cbNegara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNegara.FormattingEnabled = true;
-            this.cbNegara.Location = new System.Drawing.Point(140, 15);
-            this.cbNegara.Name = "cbNegara";
-            this.cbNegara.Size = new System.Drawing.Size(300, 27);
-            this.cbNegara.TabIndex = 0;
+            this.cbInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbInvoice.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbInvoice.FormattingEnabled = true;
+            this.cbInvoice.Location = new System.Drawing.Point(140, 15);
+            this.cbInvoice.Name = "cbInvoice";
+            this.cbInvoice.Size = new System.Drawing.Size(300, 27);
+            this.cbInvoice.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(31, 18);
+            this.label1.Location = new System.Drawing.Point(32, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 19);
+            this.label1.Size = new System.Drawing.Size(102, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Negara Tujuan";
+            this.label1.Text = "Nomer Invoice";
             // 
             // btnPrint
             // 
@@ -118,7 +118,7 @@
             this.Controls.Add(this.crystalReportViewer);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbNegara);
+            this.Controls.Add(this.cbInvoice);
             this.Name = "formLaporanMuatan";
             this.Text = "formLaporanMuatan";
             this.Load += new System.EventHandler(this.formLaporanMuatan_Load);
@@ -129,7 +129,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox cbNegara;
+        private System.Windows.Forms.ComboBox cbInvoice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnPrint;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
