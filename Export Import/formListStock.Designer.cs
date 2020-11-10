@@ -58,6 +58,7 @@
             this.cbCategory = new System.Windows.Forms.ComboBox();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -87,6 +88,7 @@
             // pnlBawah
             // 
             this.pnlBawah.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlBawah.Controls.Add(this.btnPrint);
             this.pnlBawah.Controls.Add(this.btnLog);
             this.pnlBawah.Controls.Add(this.btnDelete);
             this.pnlBawah.Controls.Add(this.btnUpdate);
@@ -385,6 +387,17 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Keyword :";
             // 
+            // btnPrint
+            // 
+            this.btnPrint.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(165, 119);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(85, 30);
+            this.btnPrint.TabIndex = 8;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // formListStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,5 +451,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn harga_jual_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn harga_beli_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn balance_cost;
+        private System.Windows.Forms.Button btnPrint;
     }
 }

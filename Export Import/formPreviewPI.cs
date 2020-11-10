@@ -36,6 +36,7 @@ namespace Export_Import
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+            form.Show();
         }
     }
 }

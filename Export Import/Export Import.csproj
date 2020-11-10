@@ -82,6 +82,12 @@
     <Compile Include="formInsertStaff.Designer.cs">
       <DependentUpon>formInsertStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="formLaporanMuatan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLaporanMuatan.Designer.cs">
+      <DependentUpon>formLaporanMuatan.cs</DependentUpon>
+    </Compile>
     <Compile Include="formLaporanPenjualan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,12 @@
     </Compile>
     <Compile Include="formPreviewInvoice.Designer.cs">
       <DependentUpon>formPreviewInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formLaporanStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formLaporanStock.Designer.cs">
+      <DependentUpon>formLaporanStock.cs</DependentUpon>
     </Compile>
     <Compile Include="formPreviewPO.cs">
       <SubType>Form</SubType>
@@ -396,6 +408,9 @@
     <EmbeddedResource Include="formInsertStaff.resx">
       <DependentUpon>formInsertStaff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formLaporanMuatan.resx">
+      <DependentUpon>formLaporanMuatan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formListCustomer.resx">
       <DependentUpon>formListCustomer.cs</DependentUpon>
     </EmbeddedResource>
@@ -440,6 +455,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formPreviewInvoice.resx">
       <DependentUpon>formPreviewInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formLaporanStock.resx">
+      <DependentUpon>formLaporanStock.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formPreviewPI.resx">
       <DependentUpon>formPreviewPI.cs</DependentUpon>

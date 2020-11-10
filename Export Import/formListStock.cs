@@ -379,5 +379,10 @@ namespace Export_Import
                 btnLog.Enabled = true;
             }
         }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            new formLaporanStock(this).ShowDialog();
+        }
     }
 }
