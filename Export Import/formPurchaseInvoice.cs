@@ -109,7 +109,6 @@ namespace Export_Import
                 "discount as discount, " +
                 "0 as kadar, " +
                 "jenis_ppn as ppn, " +
-                "total_ppn as TotalPPN, " +
                 "subtotal as subtotal " +
                 "from d_purchase_order";
             daItem = new OracleDataAdapter(cmd, conn);
@@ -405,10 +404,10 @@ namespace Export_Import
             String admin = cbNamaStaff.SelectedValue.ToString();
             String ekspedisi = cbEkspedisi.SelectedValue.ToString();
 
-            int total = Int32.Parse(txtTotal.Text);
-            int totalPPN = Int32.Parse(txtTotalPPN.Text);
-            int netTotal = Int32.Parse(txtNetTotal.Text);
-            int totalConvert = Int32.Parse(txtTotalConvert.Text);
+            int total = Int32.Parse(txtTotal.Text.Substring(3));
+            int totalPPN = Int32.Parse(txtTotalPPN.Text.Substring(3));
+            int netTotal = Int32.Parse(txtNetTotal.Text.Substring(3));
+            int totalConvert = Int32.Parse(txtTotalConvert.Text.Substring(4));
             int rate = Int32.Parse(txtRate.Text.Substring(4));
             String currency = cbCurrent.SelectedValue.ToString();
 
