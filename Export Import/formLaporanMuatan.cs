@@ -62,7 +62,6 @@ namespace Export_Import
             LaporanMuatan rep = new LaporanMuatan();
             rep.SetDatabaseLogon("export", "import", "orcl", "");
             rep.SetParameterValue("id_invoice", invoice);
-            rep.SetParameterValue("tujuan", "asd");
             rep.SetParameterValue("no_container", txtNomerContainer.Text);
             crystalReportViewer.ReportSource = rep;
         }
