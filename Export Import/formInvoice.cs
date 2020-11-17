@@ -443,6 +443,7 @@ namespace Export_Import
         {
             this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns["harga_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dateInvoice.Value = DateTime.Today;
 
             try
             {
@@ -479,6 +480,7 @@ namespace Export_Import
                 {
                     isiDataItem(reader.GetValue(0).ToString());
                 }
+                btnGetSO.Enabled = false;
             }
         }
 

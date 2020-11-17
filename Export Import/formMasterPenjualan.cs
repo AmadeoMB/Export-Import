@@ -51,7 +51,7 @@ namespace Export_Import
         private void btnInvoice_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new formInvoice().Show();
+            new formInvoice(this).Show();
         }
 
         private void formMasterPenjualan_Load(object sender, EventArgs e)

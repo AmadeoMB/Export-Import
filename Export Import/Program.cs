@@ -13,10 +13,10 @@ namespace Export_Import
         /// </summary>
         [STAThread]
         static void Main()
-      {
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formSalesOrder());
+            Application.Run(new LoginForm());
         }
     }
 }

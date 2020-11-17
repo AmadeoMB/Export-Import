@@ -61,5 +61,11 @@ namespace Export_Import
             this.Hide();
             new formListSalesOrder(this).Show();
         }
+
+        private void btnLaporanMuatan_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new formLaporanMuatan(this).Show();
+        }
     }
 }
