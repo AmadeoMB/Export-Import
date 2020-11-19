@@ -575,5 +575,10 @@ namespace Export_Import
             this.Close();
             master.Show();
         }
+
+        private void cbCreditTerm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

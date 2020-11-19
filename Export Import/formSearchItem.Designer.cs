@@ -30,9 +30,6 @@
         {
             this.btnGet = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.harga_jual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupDiscount = new System.Windows.Forms.GroupBox();
@@ -41,6 +38,9 @@
             this.checkDiscount = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.numQty = new System.Windows.Forms.NumericUpDown();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga_jual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupDiscount.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numDiscount)).BeginInit();
@@ -72,33 +72,6 @@
             this.dataGridView.Size = new System.Drawing.Size(467, 138);
             this.dataGridView.TabIndex = 6;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id_item";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            this.id_item.Width = 75;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama_item";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 175;
-            // 
-            // harga_jual
-            // 
-            this.harga_jual.DataPropertyName = "harga";
-            this.harga_jual.Frozen = true;
-            this.harga_jual.HeaderText = "Harga";
-            this.harga_jual.Name = "harga_jual";
-            this.harga_jual.ReadOnly = true;
-            this.harga_jual.Width = 175;
             // 
             // txtKeyword
             // 
@@ -182,6 +155,33 @@
             this.numQty.Name = "numQty";
             this.numQty.Size = new System.Drawing.Size(120, 27);
             this.numQty.TabIndex = 3;
+            // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id_item";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            this.id_item.Width = 75;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama_item";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 170;
+            // 
+            // harga_jual
+            // 
+            this.harga_jual.DataPropertyName = "harga";
+            this.harga_jual.Frozen = true;
+            this.harga_jual.HeaderText = "Harga";
+            this.harga_jual.Name = "harga_jual";
+            this.harga_jual.ReadOnly = true;
+            this.harga_jual.Width = 175;
             // 
             // formSearchItem
             // 

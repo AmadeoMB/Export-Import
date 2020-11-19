@@ -262,7 +262,7 @@ create table D_PURCHASE_ORDER
    DISCOUNT             INTEGER              not null,
    JENIS_PPN            VARCHAR2(3)          not null,
    SUBTOTAL             INTEGER              not null,
-   constraint PK_D_PUCHASE_ORDER primary key (ID_ITEM, ID_PURCHASE_ORDER)
+   constraint PK_D_PURCHASE_ORDER primary key (ID_ITEM, ID_PURCHASE_ORDER)
 );
 
 create table H_PURCHASE_INVOICE 

@@ -24,6 +24,10 @@ namespace Export_Import
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
+        private List<Int32> qtyList = new List<Int32>(999);
+        private List<Int32> hJualList = new List<Int32>(999);
+        private List<Int32> beratList = new List<Int32>(999);
+        private List<Int32> subtotalList = new List<Int32>(999);
         private String admin;
 
         public formSalesOrder()
@@ -136,6 +140,7 @@ namespace Export_Import
         {
             this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns["harga_satuan"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            this.dateSO.Value = DateTime.Today;
 
             try
             {
@@ -161,27 +166,28 @@ namespace Export_Import
             txtAlamatCust.Text = ds.Tables["customer"].Rows[idx][2].ToString();
         }
 
-        int totalPPN = 0;
-
         void insertItem(Object[] data)
         {
-            int discount = Convert.ToInt32(data[1]);
-            int qty = Convert.ToInt32(data[2]);
+            Int32 discount = Convert.ToInt32(data[1]);
+            Int32 qty = Convert.ToInt32(data[2]);
+            qtyList.Add(qty);
             object id_item = data[0]; 
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_jual_item from item where id_item ='" + id_item + "'";
-            int hargaJual = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
-            int subtotal = hargaJual * qty;
+            Int32 hargaJual = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
+            Int32 subtotal = hargaJual * qty;
+            hJualList.Add(hargaJual);
 
             //Hitung Discount
-            int totalDiscount = subtotal * discount / 100;
+            Int32 totalDiscount = subtotal * discount / 100;
             subtotal -= totalDiscount;
+            subtotalList.Add(subtotal);
 
             //Hitung PPN
             cmd = "select jenis_ppn from item where id_item ='" + id_item + "'";
             Object ppn = new OracleCommand(cmd, conn).ExecuteScalar();
-            int totalPPN = 0;
+            Int32 totalPPN = 0;
             if (ppn.Equals("EXC"))
             {
                 totalPPN = subtotal * 10 / 100;
@@ -190,8 +196,9 @@ namespace Export_Import
 
             //Hitung berat
             cmd = "select berat_item from item where id_item='" + id_item + "'";
-            int berat = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
-            int beratTotal = berat * qty;
+            Int32 berat = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
+            Int32 beratTotal = berat * qty;
+            beratList.Add(beratTotal);
 
             if (dataGridView.Rows.Count > 1)
             {
@@ -208,26 +215,27 @@ namespace Export_Import
 
                 if (ada)
                 {
-                    ds.Tables["item"].Rows[i][2] = Convert.ToInt32(ds.Tables["item"].Rows[i][2]) + qty;
-                    ds.Tables["item"].Rows[i][5] = Convert.ToInt32(ds.Tables["item"].Rows[i][5]) + beratTotal;
-                    ds.Tables["item"].Rows[i][7] = Convert.ToInt32(ds.Tables["item"].Rows[i][7]) + totalPPN;
-                    ds.Tables["item"].Rows[i][9] = Convert.ToInt32(ds.Tables["item"].Rows[i][9]) + subtotal;
+                    qtyList[i] += qty;
+                    beratList[i] += beratTotal;
+                    subtotalList[i] += subtotal;
+                    ds.Tables["item"].Rows[i][2] = qtyList[i].ToString("#,####");
+                    ds.Tables["item"].Rows[i][5] = beratList[i].ToString("#,####") + " g";
+                    ds.Tables["item"].Rows[i][8] = "Rp " + subtotalList[i].ToString("#,##0.00");
 
                     return;
                 }
             }
 
-            cmd = "select id_item, nama_item, " +
-                qty + " as qty_item, " +
-                "satuan_item, " +
-                hargaJual + " as harga_jual_item, " +
-                beratTotal + " as berat, " +
+            cmd = "select id_item, nama_item, '" +
+                qty.ToString("#,###") + "' as qty_item, " +
+                "satuan_item, 'Rp " +
+                hargaJual.ToString("#,##0.00") + "' as harga_jual_item, '" +
+                beratTotal.ToString("#,###") + " g' as berat, " +
                 "jenis_ppn, " +
-                discount + " as discount, " +
-                subtotal + " as subtotal " +
+                discount + " as discount, 'Rp " +
+                subtotal.ToString("#,##0.00") + "' as subtotal " +
                 "from item " +
                 "where id_item = '" + id_item + "'";
-
             daItem = new OracleDataAdapter(cmd, conn);
             daItem.Fill(ds, "item");
             dataGridView.DataSource = ds.Tables["item"];
@@ -259,6 +267,12 @@ namespace Export_Import
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count  <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 Object[] temp = {
@@ -270,6 +284,7 @@ namespace Export_Import
                 done.Push(temp);
 
                 ds.Tables["item"].Rows.RemoveAt(idx);
+                subtotalList.RemoveAt(idx);
                 refreshTotal();
             }
             else
@@ -411,10 +426,10 @@ namespace Export_Import
             String Negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
-            int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
-            int netTotal = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
-            int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
+            int total = this.total;
+            int totalPPN = this.totalPPN;
+            int netTotal = this.netTotal;
+            int convert = this.convertTotal;
 
             OracleCommand cmd = new OracleCommand("insert into h_sales_order values (:id, :do, :gudang, :staff, :customer, :invoice, :nama, :alamat, :tgl, :credit, :ship,:negara ,:currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
             cmd.Parameters.Add(":id", id_SO);
@@ -441,13 +456,13 @@ namespace Export_Import
             {
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][1].ToString();
-                String qty_item = ds.Tables["item"].Rows[i][2].ToString();
+                String qty_item = qtyList[i].ToString();
                 String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
-                String hJual_item = ds.Tables["item"].Rows[i][4].ToString();
-                String berat_item = ds.Tables["item"].Rows[i][5].ToString();
+                String hJual_item = hJualList[i].ToString();
+                String berat_item = beratList[i].ToString();
                 String jenis_ppn = ds.Tables["item"].Rows[i][6].ToString();
                 String discount = ds.Tables["item"].Rows[i][7].ToString();
-                String subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                String subtotal = subtotalList[i].ToString();
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
@@ -484,24 +499,31 @@ namespace Export_Import
 
         void refreshTotal()
         {
-            int total = 0;
-            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            for (int i = 0; i < dataGridView.RowCount - 1; i++)
             {
-                total += Convert.ToInt32(ds.Tables["item"].Rows[i][8]);
+                Int32 subtotal = subtotalList[i];
+                total += Convert.ToInt32(subtotal);
+                if (dataGridView.Rows[i].Cells[6].Value.Equals("EXC"))
+                {
+                    totalPPN += (subtotal / 10);
+                }
             }
-            txtTotal.Text = "Rp " + total;
+            txtTotal.Text = "Rp " + total.ToString("#,##0.00");
 
-            txtTotalPPN.Text = "Rp " + this.totalPPN;
+            txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
 
-            int netTotal = (total + this.totalPPN);
-            txtTotalHarga.Text = "Rp " + netTotal;
+            netTotal = (total + totalPPN);
+            txtTotalHarga.Text = "Rp " + netTotal.ToString("#,##0.00");
 
-            txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
-            int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-
-            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (netTotal / rate);
+            txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2];
+            Int32 rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+            convertTotal = (netTotal / rate);
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + convertTotal.ToString("#,##0.00");
         }
-
+        Int32 total = 0;
+        Int32 totalPPN = 0;
+        Int32 netTotal = 0;
+        Int32 convertTotal = 0;
         private void cbIdCust_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idx = cbIdCust.SelectedIndex;
@@ -521,10 +543,10 @@ namespace Export_Import
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
         {
             txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
-            int totalRp = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
+            Int32 totalRp = netTotal;
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
 
-            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate) ;
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate).ToString("#,##0.00") ;
         }
 
         public String id_so = "";
@@ -557,10 +579,10 @@ namespace Export_Import
             String negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
-            int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
-            int netTotal = Convert.ToInt32(txtTotalHarga.Text.Substring(3));
-            int convert = Convert.ToInt32(txtTotalHargaConvert.Text.Substring(4));
+            int total = this.total;
+            int totalPPN = this.totalPPN;
+            int netTotal = this.netTotal;
+            int convert = this.convertTotal;
 
             OracleCommand cmd = new OracleCommand("update h_sales_order " +
                 "set " +
@@ -607,13 +629,13 @@ namespace Export_Import
             {
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][1].ToString();
-                String qty_item = ds.Tables["item"].Rows[i][2].ToString();
+                String qty_item = qtyList[i].ToString();
                 String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
-                String hJual_item = ds.Tables["item"].Rows[i][4].ToString();
-                String berat_item = ds.Tables["item"].Rows[i][5].ToString();
+                String hJual_item = hJualList[i].ToString();
+                String berat_item = beratList[i].ToString();
                 String jenis_ppn = ds.Tables["item"].Rows[i][6].ToString();
                 String discount = ds.Tables["item"].Rows[i][7].ToString();
-                String subtotal = ds.Tables["item"].Rows[i][8].ToString();
+                String subtotal = subtotalList [i].ToString();
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_sales_order values (:id, :so, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);

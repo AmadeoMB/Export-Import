@@ -79,8 +79,6 @@
             this.groupButton = new System.Windows.Forms.GroupBox();
             this.btnRedo = new System.Windows.Forms.Button();
             this.btnUndo = new System.Windows.Forms.Button();
-            this.btnMoveDown = new System.Windows.Forms.Button();
-            this.btnMoveUp = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -453,6 +451,7 @@
             // 
             // cbCurrency
             // 
+            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrency.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Location = new System.Drawing.Point(523, 423);
@@ -625,8 +624,6 @@
             // 
             this.groupButton.Controls.Add(this.btnRedo);
             this.groupButton.Controls.Add(this.btnUndo);
-            this.groupButton.Controls.Add(this.btnMoveDown);
-            this.groupButton.Controls.Add(this.btnMoveUp);
             this.groupButton.Controls.Add(this.btnMinus);
             this.groupButton.Controls.Add(this.btnPlus);
             this.groupButton.Location = new System.Drawing.Point(3, 30);
@@ -638,7 +635,7 @@
             // 
             // btnRedo
             // 
-            this.btnRedo.Location = new System.Drawing.Point(235, 16);
+            this.btnRedo.Location = new System.Drawing.Point(123, 16);
             this.btnRedo.Name = "btnRedo";
             this.btnRedo.Size = new System.Drawing.Size(50, 23);
             this.btnRedo.TabIndex = 26;
@@ -648,33 +645,13 @@
             // 
             // btnUndo
             // 
-            this.btnUndo.Location = new System.Drawing.Point(179, 16);
+            this.btnUndo.Location = new System.Drawing.Point(67, 16);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(50, 23);
             this.btnUndo.TabIndex = 25;
             this.btnUndo.Text = "Undo";
             this.btnUndo.UseVisualStyleBackColor = true;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnMoveDown
-            // 
-            this.btnMoveDown.Location = new System.Drawing.Point(123, 16);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(50, 23);
-            this.btnMoveDown.TabIndex = 24;
-            this.btnMoveDown.Text = "Down";
-            this.btnMoveDown.UseVisualStyleBackColor = true;
-            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
-            // 
-            // btnMoveUp
-            // 
-            this.btnMoveUp.Location = new System.Drawing.Point(67, 16);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(50, 23);
-            this.btnMoveUp.TabIndex = 23;
-            this.btnMoveUp.Text = "Up";
-            this.btnMoveUp.UseVisualStyleBackColor = true;
-            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
             // btnMinus
             // 
@@ -752,8 +729,6 @@
         private System.Windows.Forms.GroupBox groupButton;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.Button btnPlus;
-        private System.Windows.Forms.Button btnMoveDown;
-        private System.Windows.Forms.Button btnMoveUp;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnRedo;
         private System.Windows.Forms.DataGridView dataGridView;
