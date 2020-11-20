@@ -64,12 +64,12 @@ namespace Export_Import
                 "i.tinggi_item||'cm' as Tinggi, " +
                 "i.lebar_item||'cm' as Lebar, " +
                 "i.kadar_air_item||'%' as Kadar, " +
-                "'Rp '||i.harga_jual_item as hJual, " +
-                "'Rp '||i.harga_beli_item as hBeli, " +
-                "'Rp '||balance_cost as balance_cost, " +
+                "'Rp '||TO_CHAR(i.harga_jual_item,'9G999G999') as hJual, " +
+                "'Rp '||TO_CHAR(i.harga_beli_item,'9G999G999') as hBeli, " +
+                "'Rp '||TO_CHAR(balance_cost,'999G999G999G999') as balance_cost, " +
                 "satuan_item as Satuan, " +
                 "jenis_ppn as PPN, " +
-                "stok_item as Qty " +
+                "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category";
 
             daItem = new OracleDataAdapter(cmd, conn);
@@ -89,12 +89,12 @@ namespace Export_Import
                 "i.tinggi_item||'cm' as Tinggi, " +
                 "i.lebar_item||'cm' as Lebar, " +
                 "i.kadar_air_item||'%' as Kadar, " +
-                "'Rp '||i.harga_jual_item as hJual, " +
-                "'Rp '||i.harga_beli_item as hBeli, " +
-                "'Rp '||balance_cost as balance_cost, " +
+                "'Rp '||TO_CHAR(i.harga_jual_item,'9G999G999') as hJual, " +
+                "'Rp '||TO_CHAR(i.harga_beli_item,'9G999G999') as hBeli, " +
+                "'Rp '||TO_CHAR(balance_cost,'999G999G999G999') as balance_cost, " +
                 "satuan_item as Satuan, " +
                 "jenis_ppn as PPN, " +
-                "stok_item as Qty " +
+                "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category " +
                 "where lower(i.nama_item) like '%" + keyword.ToLower() + "%'";
             if (index != ds.Tables["category"].Rows.Count - 1)
@@ -109,7 +109,6 @@ namespace Export_Import
 
         public void refreshTabel(params object[] optional)
         {
-
             string cmd = "select " +
                 "i.id_item as ID, " +
                 "i.nama_item as Nama, " +
@@ -120,12 +119,12 @@ namespace Export_Import
                 "i.tinggi_item||'cm' as Tinggi, " +
                 "i.lebar_item||'cm' as Lebar, " +
                 "i.kadar_air_item||'%' as Kadar, " +
-                "'Rp '||i.harga_jual_item as hJual, " +
-                "'Rp '||i.harga_beli_item as hBeli, " +
-                "'Rp '||balance_cost as balance_cost, " +
+                "'Rp '||TO_CHAR(i.harga_jual_item,'9G999G999') as hJual, " +
+                "'Rp '||TO_CHAR(i.harga_beli_item,'9G999G999') as hBeli, " +
+                "'Rp '||TO_CHAR(balance_cost,'999G999G999G999') as balance_cost, " +
                 "satuan_item as Satuan, " +
                 "jenis_ppn as PPN, " +
-                "stok_item as Qty " +
+                "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category " +
                 "where lower(i.nama_item) like '%" + optional[0].ToString().ToLower() + "%'";
             if (Convert.ToInt32(optional[1]) < ds.Tables["category"].Rows.Count - 1 && Convert.ToInt32(optional[1]) > -1)

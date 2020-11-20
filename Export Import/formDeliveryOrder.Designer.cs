@@ -170,7 +170,6 @@
             // 
             // cbCreditTerm
             // 
-            this.cbCreditTerm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCreditTerm.Enabled = false;
             this.cbCreditTerm.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCreditTerm.FormattingEnabled = true;
@@ -413,6 +412,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(157, 27);
             this.txtTotal.TabIndex = 12;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label14
             // 
@@ -431,6 +431,7 @@
             this.txtTotalPPN.Name = "txtTotalPPN";
             this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
             this.txtTotalPPN.TabIndex = 10;
+            this.txtTotalPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtRate
             // 
@@ -496,6 +497,7 @@
             this.txtTotalConvert.Name = "txtTotalConvert";
             this.txtTotalConvert.Size = new System.Drawing.Size(157, 27);
             this.txtTotalConvert.TabIndex = 3;
+            this.txtTotalConvert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtNetTotal
             // 
@@ -504,6 +506,7 @@
             this.txtNetTotal.Name = "txtNetTotal";
             this.txtNetTotal.Size = new System.Drawing.Size(157, 27);
             this.txtNetTotal.TabIndex = 2;
+            this.txtNetTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // pnlBawah
             // 

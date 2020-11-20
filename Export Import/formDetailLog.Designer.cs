@@ -38,7 +38,9 @@
             this.date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tipe_dokumen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_dokumen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Old_Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.New_Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Balance_Qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -50,12 +52,14 @@
             this.date,
             this.tipe_dokumen,
             this.id_dokumen,
+            this.Old_Stock,
             this.qty,
+            this.New_Stock,
             this.Balance_Qty});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 64);
             this.dataGridView.Name = "dataGridView";
-            this.dataGridView.Size = new System.Drawing.Size(744, 281);
+            this.dataGridView.Size = new System.Drawing.Size(1026, 281);
             this.dataGridView.TabIndex = 0;
             // 
             // label1
@@ -72,7 +76,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(188, 25);
+            this.label2.Location = new System.Drawing.Point(401, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 19);
             this.label2.TabIndex = 2;
@@ -82,7 +86,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(483, 25);
+            this.label3.Location = new System.Drawing.Point(822, 25);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 19);
             this.label3.TabIndex = 3;
@@ -102,7 +106,7 @@
             // 
             this.lblNamaItem.AutoSize = true;
             this.lblNamaItem.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNamaItem.Location = new System.Drawing.Point(286, 25);
+            this.lblNamaItem.Location = new System.Drawing.Point(499, 25);
             this.lblNamaItem.Name = "lblNamaItem";
             this.lblNamaItem.Size = new System.Drawing.Size(92, 19);
             this.lblNamaItem.TabIndex = 5;
@@ -112,7 +116,7 @@
             // 
             this.lblHargaItem.AutoSize = true;
             this.lblHargaItem.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHargaItem.Location = new System.Drawing.Point(582, 25);
+            this.lblHargaItem.Location = new System.Drawing.Point(921, 25);
             this.lblHargaItem.Name = "lblHargaItem";
             this.lblHargaItem.Size = new System.Drawing.Size(93, 19);
             this.lblHargaItem.TabIndex = 6;
@@ -134,6 +138,7 @@
             this.tipe_dokumen.HeaderText = "Tipe Dokumen";
             this.tipe_dokumen.Name = "tipe_dokumen";
             this.tipe_dokumen.ReadOnly = true;
+            this.tipe_dokumen.Width = 75;
             // 
             // id_dokumen
             // 
@@ -144,14 +149,32 @@
             this.id_dokumen.ReadOnly = true;
             this.id_dokumen.Width = 125;
             // 
+            // Old_Stock
+            // 
+            this.Old_Stock.DataPropertyName = "old";
+            this.Old_Stock.Frozen = true;
+            this.Old_Stock.HeaderText = "Old Stock";
+            this.Old_Stock.Name = "Old_Stock";
+            this.Old_Stock.ReadOnly = true;
+            this.Old_Stock.Width = 150;
+            // 
             // qty
             // 
-            this.qty.DataPropertyName = "Qty";
+            this.qty.DataPropertyName = "changes";
             this.qty.Frozen = true;
-            this.qty.HeaderText = "Qty";
+            this.qty.HeaderText = "Qty Change";
             this.qty.Name = "qty";
             this.qty.ReadOnly = true;
             this.qty.Width = 150;
+            // 
+            // New_Stock
+            // 
+            this.New_Stock.DataPropertyName = "new";
+            this.New_Stock.Frozen = true;
+            this.New_Stock.HeaderText = "New Stock";
+            this.New_Stock.Name = "New_Stock";
+            this.New_Stock.ReadOnly = true;
+            this.New_Stock.Width = 150;
             // 
             // Balance_Qty
             // 
@@ -166,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(744, 345);
+            this.ClientSize = new System.Drawing.Size(1026, 345);
             this.Controls.Add(this.lblHargaItem);
             this.Controls.Add(this.lblNamaItem);
             this.Controls.Add(this.lblIdItem);
@@ -196,7 +219,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn date;
         private System.Windows.Forms.DataGridViewTextBoxColumn tipe_dokumen;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_dokumen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Old_Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty;
+        private System.Windows.Forms.DataGridViewTextBoxColumn New_Stock;
         private System.Windows.Forms.DataGridViewTextBoxColumn Balance_Qty;
     }
 }

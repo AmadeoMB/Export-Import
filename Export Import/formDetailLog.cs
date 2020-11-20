@@ -68,11 +68,14 @@ namespace Export_Import
                 "tgl_log as Tanggal, " +
                 "SUBSTR(id_dokumen, 0, 2) as Tipe, " +
                 "id_dokumen as Id, " +
-                "qty as Qty, " +
-                "balance as Balance from log_stock where id_item = '" + id + "'";
+                "TO_CHAR(old_qty, '9G999G999') as Old, " +
+                "TO_CHAR(qty, '9G999G999') as Changes, " +
+                "TO_CHAR(new_qty, '9G999G999') as New, " +
+                "'Rp '||TO_CHAR(balance, '9G999G999G999') as Balance from log_stock where id_item = '" + id + "'";
             daLog = new OracleDataAdapter(cmd, conn);
             daLog.Fill(ds, "log");
             dataGridView.DataSource = ds.Tables["log"];
+            dataGridView.Columns["Balance_Qty"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
 
         private void formDetailLog_Load(object sender, EventArgs e)

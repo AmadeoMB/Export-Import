@@ -20,6 +20,8 @@ namespace Export_Import
         public formMasterStock()
         {
             InitializeComponent();
+            conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            conn.Open();
         }
 
         public formMasterStock(formMasterGudang form)

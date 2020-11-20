@@ -55,7 +55,6 @@ namespace Export_Import
         void refreshTable(String id, String keyword)
         {
             List<String> temp = form.groupSO;
-            MessageBox.Show(temp.Count + "");
 
             String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order " +
                 "where id_sales_order != '" + id + "' AND " +

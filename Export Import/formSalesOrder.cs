@@ -184,16 +184,6 @@ namespace Export_Import
             subtotal -= totalDiscount;
             subtotalList.Add(subtotal);
 
-            //Hitung PPN
-            cmd = "select jenis_ppn from item where id_item ='" + id_item + "'";
-            Object ppn = new OracleCommand(cmd, conn).ExecuteScalar();
-            Int32 totalPPN = 0;
-            if (ppn.Equals("EXC"))
-            {
-                totalPPN = subtotal * 10 / 100;
-                this.totalPPN += totalPPN;
-            }
-
             //Hitung berat
             cmd = "select berat_item from item where id_item='" + id_item + "'";
             Int32 berat = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
@@ -412,7 +402,7 @@ namespace Export_Import
             }
 
             int creditTerm = 1;
-            if (cbCreditTerm.Text != "Cash" && cbCreditTerm.Text != "COD")
+            if (cbCreditTerm.Text != "Cash")
             {
                 creditTerm = Convert.ToInt32(cbCreditTerm.Text.Substring(0, 2));
             }
