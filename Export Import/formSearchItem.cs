@@ -113,7 +113,13 @@ namespace Export_Import
 
         private void btnGet_Click(object sender, EventArgs e)
         {
-            if (idx != -1)
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
+            if (idx > -1)
             {
                 if (numQty.Value > 0)
                 {

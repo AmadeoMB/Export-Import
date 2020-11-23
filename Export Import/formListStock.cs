@@ -96,7 +96,8 @@ namespace Export_Import
                 "jenis_ppn as PPN, " +
                 "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category " +
-                "where lower(i.nama_item) like '%" + keyword.ToLower() + "%'";
+                "where lower(i.nama_item) like '%" + keyword.ToLower() + "%' " +
+                "and lower(i.id_item) like '%"+ keyword.ToLower() +"%'";
             if (index != ds.Tables["category"].Rows.Count - 1)
             {
                 cmd += " AND i.id_category = '" + cbCategory.SelectedValue + "'";
@@ -126,7 +127,8 @@ namespace Export_Import
                 "jenis_ppn as PPN, " +
                 "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category " +
-                "where lower(i.nama_item) like '%" + optional[0].ToString().ToLower() + "%'";
+                "where lower(i.nama_item) like '%" + optional[0].ToString().ToLower() + "%' " +
+                "and lower(i.id_item) like '%" + optional[0].ToString().ToLower() + "%'";
             if (Convert.ToInt32(optional[1]) < ds.Tables["category"].Rows.Count - 1 && Convert.ToInt32(optional[1]) > -1)
             {
                 cmd += " AND i.id_category = '" + cbCategory.SelectedValue + "'";
@@ -285,11 +287,19 @@ namespace Export_Import
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            OracleCommand cmd = new OracleCommand("select id_category from category where nama_category = '" + dataGridView.Rows[idx].Cells[3].Value.ToString() + "'", conn);
-            String id_category = cmd.ExecuteScalar().ToString();
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
 
-            String[] obj =
-                {
+            if (idx > -1)
+            {
+                OracleCommand cmd = new OracleCommand("select id_category from category where nama_category = '" + dataGridView.Rows[idx].Cells[3].Value.ToString() + "'", conn);
+                String id_category = cmd.ExecuteScalar().ToString();
+
+                String[] obj =
+                    {
                     dataGridView.Rows[idx].Cells[0].Value.ToString(),// ID 0
                     dataGridView.Rows[idx].Cells[1].Value.ToString(),// Nama 1
                     id_category,// Category 2
@@ -304,12 +314,13 @@ namespace Export_Import
                     dataGridView.Rows[idx].Cells[10].Value.ToString(),// Harga Beli 11
                 };
 
-            data = obj;
+                data = obj;
 
-            new formUpdateItem(this).ShowDialog();
+                new formUpdateItem(this).ShowDialog();
 
-            ds.Tables["item"].Clear();
-            refreshTabel();
+                ds.Tables["item"].Clear();
+                refreshTabel();
+            }
         }
 
         private int idx = -1;
@@ -328,6 +339,12 @@ namespace Export_Import
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 try
@@ -355,6 +372,12 @@ namespace Export_Import
 
         private void btnLog_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
+
             if (idx >= 0)
             {
                 this.id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();

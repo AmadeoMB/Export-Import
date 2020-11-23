@@ -93,6 +93,12 @@ namespace Export_Import
 
         private void btnGet_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 this.id_so = dataGridView.Rows[idx].Cells[0].Value.ToString();

@@ -41,7 +41,7 @@
             // btnGet
             // 
             this.btnGet.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGet.Location = new System.Drawing.Point(379, 6);
+            this.btnGet.Location = new System.Drawing.Point(366, 6);
             this.btnGet.Name = "btnGet";
             this.btnGet.Size = new System.Drawing.Size(75, 35);
             this.btnGet.TabIndex = 13;

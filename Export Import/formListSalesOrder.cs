@@ -23,6 +23,8 @@ namespace Export_Import
         public formListSalesOrder()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
         }
 
         public formListSalesOrder(formMasterGudang gudang)
@@ -77,11 +79,11 @@ namespace Export_Import
                     "select count(d.id_item) " +
                     "from d_sales_order d " +
                     "where d.id_sales_order = h.id_sales_order" +
-                ") > " + data[2];
+                ") > " + data[2] + " ";
 
             if (data[1] != null)
             {
-                cmd += " AND tgl_sales_order =" + data[1];
+                cmd += "AND tgl_sales_order =" + data[1];
             }
 
             daSO = new OracleDataAdapter(cmd, conn);
@@ -142,6 +144,12 @@ namespace Export_Import
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 id_sales_order = dataGridView.Rows[idx].Cells[0].Value.ToString();

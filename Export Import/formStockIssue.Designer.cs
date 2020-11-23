@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbJenis = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtIdStockIssue = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -36,17 +38,8 @@
             this.txtDeskripsi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
-            this.btnRedo = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUndo = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -56,8 +49,13 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
-            this.cbJenis = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnRedo = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTengah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -80,6 +78,29 @@
             this.pnlAtas.Size = new System.Drawing.Size(1354, 100);
             this.pnlAtas.TabIndex = 2;
             this.pnlAtas.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(94, 70);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 19);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Jenis :";
+            // 
+            // cbJenis
+            // 
+            this.cbJenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbJenis.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbJenis.FormattingEnabled = true;
+            this.cbJenis.Items.AddRange(new object[] {
+            "Tambah",
+            "Kurang"});
+            this.cbJenis.Location = new System.Drawing.Point(158, 67);
+            this.cbJenis.Name = "cbJenis";
+            this.cbJenis.Size = new System.Drawing.Size(250, 27);
+            this.cbJenis.TabIndex = 6;
             // 
             // label4
             // 
@@ -143,8 +164,6 @@
             this.pnlTengah.Controls.Add(this.btnRedo);
             this.pnlTengah.Controls.Add(this.dataGridView);
             this.pnlTengah.Controls.Add(this.btnUndo);
-            this.pnlTengah.Controls.Add(this.btnDown);
-            this.pnlTengah.Controls.Add(this.btnUp);
             this.pnlTengah.Controls.Add(this.btnMinus);
             this.pnlTengah.Controls.Add(this.btnPlus);
             this.pnlTengah.Location = new System.Drawing.Point(0, 129);
@@ -152,17 +171,6 @@
             this.pnlTengah.Size = new System.Drawing.Size(1353, 515);
             this.pnlTengah.TabIndex = 4;
             this.pnlTengah.TabStop = false;
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(230, 10);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(52, 30);
-            this.btnRedo.TabIndex = 9;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // dataGridView
             // 
@@ -181,90 +189,18 @@
             this.dataGridView.Size = new System.Drawing.Size(1347, 466);
             this.dataGridView.TabIndex = 8;
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID Item";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama Item";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 200;
-            // 
-            // qty_item
-            // 
-            this.qty_item.DataPropertyName = "qty";
-            this.qty_item.Frozen = true;
-            this.qty_item.HeaderText = "QTY";
-            this.qty_item.Name = "qty_item";
-            this.qty_item.ReadOnly = true;
-            // 
-            // satuan
-            // 
-            this.satuan.DataPropertyName = "satuan";
-            this.satuan.Frozen = true;
-            this.satuan.HeaderText = "Satuan";
-            this.satuan.Name = "satuan";
-            this.satuan.ReadOnly = true;
-            // 
-            // harga
-            // 
-            this.harga.DataPropertyName = "harga";
-            this.harga.Frozen = true;
-            this.harga.HeaderText = "Harga";
-            this.harga.Name = "harga";
-            this.harga.ReadOnly = true;
-            this.harga.Width = 150;
-            // 
-            // subtotal
-            // 
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.Frozen = true;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 200;
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
             // btnUndo
             // 
             this.btnUndo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUndo.Location = new System.Drawing.Point(172, 10);
+            this.btnUndo.Location = new System.Drawing.Point(70, 10);
             this.btnUndo.Name = "btnUndo";
             this.btnUndo.Size = new System.Drawing.Size(52, 30);
             this.btnUndo.TabIndex = 4;
             this.btnUndo.Text = "Undo";
             this.btnUndo.UseVisualStyleBackColor = true;
             this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnDown
-            // 
-            this.btnDown.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDown.Location = new System.Drawing.Point(111, 10);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(55, 30);
-            this.btnDown.TabIndex = 3;
-            this.btnDown.Text = "Down";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUp.Location = new System.Drawing.Point(70, 10);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(35, 30);
-            this.btnUp.TabIndex = 2;
-            this.btnUp.Text = "Up";
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // btnMinus
             // 
@@ -363,28 +299,66 @@
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
             // 
-            // cbJenis
+            // id_item
             // 
-            this.cbJenis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbJenis.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbJenis.FormattingEnabled = true;
-            this.cbJenis.Items.AddRange(new object[] {
-            "Tambah",
-            "Kurang"});
-            this.cbJenis.Location = new System.Drawing.Point(158, 67);
-            this.cbJenis.Name = "cbJenis";
-            this.cbJenis.Size = new System.Drawing.Size(250, 27);
-            this.cbJenis.TabIndex = 6;
+            this.id_item.DataPropertyName = "id";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID Item";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
             // 
-            // label5
+            // nama_item
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(94, 70);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(49, 19);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "Jenis :";
+            this.nama_item.DataPropertyName = "nama";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 200;
+            // 
+            // qty_item
+            // 
+            this.qty_item.DataPropertyName = "qty";
+            this.qty_item.Frozen = true;
+            this.qty_item.HeaderText = "QTY";
+            this.qty_item.Name = "qty_item";
+            // 
+            // satuan
+            // 
+            this.satuan.DataPropertyName = "satuan";
+            this.satuan.Frozen = true;
+            this.satuan.HeaderText = "Satuan";
+            this.satuan.Name = "satuan";
+            this.satuan.ReadOnly = true;
+            // 
+            // harga
+            // 
+            this.harga.DataPropertyName = "harga";
+            this.harga.Frozen = true;
+            this.harga.HeaderText = "Harga";
+            this.harga.Name = "harga";
+            this.harga.ReadOnly = true;
+            this.harga.Width = 150;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.Frozen = true;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRedo.Location = new System.Drawing.Point(128, 10);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(52, 30);
+            this.btnRedo.TabIndex = 9;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // formStockIssue
             // 
@@ -417,8 +391,6 @@
         private System.Windows.Forms.GroupBox pnlTengah;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnUndo;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.Button btnPlus;
         private System.Windows.Forms.Label label15;
@@ -434,14 +406,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtIdStockIssue;
-        private System.Windows.Forms.Button btnRedo;
+        private System.Windows.Forms.ComboBox cbJenis;
+        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn satuan;
         private System.Windows.Forms.DataGridViewTextBoxColumn harga;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.ComboBox cbJenis;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnRedo;
     }
 }

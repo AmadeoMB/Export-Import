@@ -16,7 +16,7 @@ namespace Export_Import
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formMasterStock());
+            Application.Run(new formListSalesOrder());
         }
     }
 }

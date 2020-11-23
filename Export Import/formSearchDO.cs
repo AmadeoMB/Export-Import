@@ -56,9 +56,18 @@ namespace Export_Import
 
         private void btnGet_Click(object sender, EventArgs e)
         {
-            this.id_do = dataGridView.Rows[idx].Cells[0].Value.ToString();
-            this.DialogResult = DialogResult.Yes;
-            this.Close();
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
+            if (idx > -1)
+            {
+                this.id_do = dataGridView.Rows[idx].Cells[0].Value.ToString();
+                this.DialogResult = DialogResult.Yes;
+                this.Close();
+            }
         }
 
         private void dataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
