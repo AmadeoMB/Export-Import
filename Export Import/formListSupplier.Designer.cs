@@ -269,7 +269,7 @@
             this.Controls.Add(this.pnlAtas);
             this.Name = "formListSupplier";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "formSupplier";
+            this.Text = "List Supplier";
             this.Load += new System.EventHandler(this.formSupplier_Load);
             this.pnlAtas.ResumeLayout(false);
             this.pnlAtas.PerformLayout();

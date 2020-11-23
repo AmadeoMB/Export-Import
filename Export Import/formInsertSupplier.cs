@@ -50,7 +50,6 @@ namespace Export_Import
 
                 if (txtNama.Text[0].ToString().ToLower().Equals("p") && txtNama.Text[1].ToString().ToLower().Equals("t"))
                 {
-                    MessageBox.Show("Test");
                     if (txtNama.Text[j + 1].Equals(' '))
                     {
                         txtNama.Text = "PT. " + txtNama.Text.Substring(j + 2);

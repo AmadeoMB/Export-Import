@@ -119,6 +119,13 @@ namespace Export_Import
                 return;
             }
 
+            if (numQty.Value > 999999)
+            {
+                MessageBox.Show("Qty tidak boleh lebih dari 999.999");
+                numQty.Value = 0;
+                return;
+            }
+
             if (idx > -1)
             {
                 if (numQty.Value > 0)
