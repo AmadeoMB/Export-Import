@@ -21,6 +21,10 @@ namespace Export_Import
         formMasterStock master;
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
+        private List<Int64> qtyList = new List<Int64>(999);
+        private List<Int64> hargaList = new List<Int64>(999);
+        private List<Int64> subtotalList = new List<Int64>(999);
+        private Int64 total = 0;
 
         public formStockIssue()
         {
@@ -63,12 +67,12 @@ namespace Export_Import
 
         void refreshTotal()
         {
-            Int64 total = 0;
+            total = 0;
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
             {
-                total += Convert.ToInt32(ds.Tables["item"].Rows[i][5]);
+                total += Convert.ToInt64(ds.Tables["item"].Rows[i][5]);
             }
-            txtTotal.Text = "Rp " + total;
+            txtTotal.Text = "Rp " + total.ToString("#,##0.00");
         }
 
         void insertItem(Object[] data)
@@ -76,11 +80,14 @@ namespace Export_Import
             int discount = Convert.ToInt32(data[1]);
             Int64 qty = Convert.ToInt32(data[2]);
             object id_item = data[0];
+            qtyList.Add(qty);
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_beli_item from item where id_item ='" + id_item + "'";
-            int hargaBeli = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
+            Int64 hargaBeli = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
             Int64 subtotal = hargaBeli * qty;
+            hargaList.Add(hargaBeli);
+            subtotalList.Add(subtotal);
 
             if (dataGridView.Rows.Count > 1)
             {
@@ -305,10 +312,10 @@ namespace Export_Import
             {
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][1].ToString();
-                int qty_item = Convert.ToInt32(ds.Tables["item"].Rows[i][2].ToString());
                 String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
-                String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
-                int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
+                Int64 qty_item = qtyList[i];
+                Int64 hBeli_item = hargaList[i];
+                Int64 subtotal = subtotalList[i];
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty,  :harga,:jenis, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
@@ -331,7 +338,7 @@ namespace Export_Import
             String jenis = cbJenis.Text;
             DateTime tanggal = dateStockIssue.Value;
             String deskripsi = txtDeskripsi.Text;
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+            Int64 total = this.total;
 
             OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :ids, :jenis, :do, :gudang, :total)", conn);
             cmd.Parameters.Add(":id", id_si);
@@ -346,10 +353,10 @@ namespace Export_Import
             {
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][1].ToString();
-                int qty_item = Convert.ToInt32(ds.Tables["item"].Rows[i][2].ToString());
                 String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
-                String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
-                int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
+                Int64 qty_item = qtyList[i];
+                Int64 hBeli_item = hargaList[i];
+                Int64 subtotal = subtotalList[i];
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty, :harga,:jenis, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
@@ -371,6 +378,7 @@ namespace Export_Import
             if (cbJenis.SelectedIndex < 0)
             {
                 MessageBox.Show("Mohon pilih jenis");
+                return;
             }
 
             if (txtDeskripsi.Text.Length == 0)
@@ -404,6 +412,7 @@ namespace Export_Import
             if (cbJenis.SelectedIndex < 0)
             {
                 MessageBox.Show("Mohon pilih jenis");
+                return;
             }
 
             if (txtDeskripsi.Text.Length == 0)
@@ -456,6 +465,11 @@ namespace Export_Import
                 dataGridView.DataSource = ds.Tables["item"];
                 refreshTotal();
             }
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
         }
     }
 }

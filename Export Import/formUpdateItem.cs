@@ -33,7 +33,7 @@ namespace Export_Import
             cbCategory.DataSource = form.ds.Tables["category"];
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "Category";
-
+            
             txtNama.Text = form.data[1];
             cbCategory.SelectedValue = form.data[2];
             txtBerat.Text = form.data[3].Substring(0, form.data[3].Length - 1);
@@ -42,8 +42,8 @@ namespace Export_Import
             txtLebar.Text = form.data[6].Substring(0, form.data[6].Length - 2);
             txtKadarAir.Text = form.data[7].Substring(0, form.data[7].Length - 1);
             cbSatuan.Text = form.data[9];
-            txtHargaJual.Text = form.data[10].Substring(3).Replace(",", "");
-            txtHargaBeli.Text = form.data[11].Substring(3).Replace(",", "");
+            txtHargaJual.Text = form.data[10].Substring(3).Replace(",", "").Replace(" ", "");
+            txtHargaBeli.Text = form.data[11].Substring(3).Replace(",", "").Replace(" ", "");
 
             if (form.data[8].Equals("EXC"))
             {

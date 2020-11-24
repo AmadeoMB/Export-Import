@@ -29,6 +29,10 @@ namespace Export_Import
         private List<Int64> beratList = new List<Int64>(999);
         private List<Int64> subtotalList = new List<Int64>(999);
         private String admin;
+        private Int64 total = 0;
+        private Int64 totalPPN = 0;
+        private Int64 netTotal = 0;
+        private Int64 convertTotal = 0;
 
         public formSalesOrder()
         {
@@ -510,10 +514,6 @@ namespace Export_Import
             convertTotal = (netTotal / rate);
             txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + convertTotal.ToString("#,##0.00");
         }
-        Int64 total = 0;
-        Int64 totalPPN = 0;
-        Int64 netTotal = 0;
-        Int64 convertTotal = 0;
         private void cbIdCust_SelectedIndexChanged(object sender, EventArgs e)
         {
             int idx = cbIdCust.SelectedIndex;

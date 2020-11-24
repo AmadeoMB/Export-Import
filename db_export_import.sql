@@ -373,6 +373,7 @@ CREATE OR REPLACE TRIGGER update_stok_after_si
 DECLARE
     jenis_si VARCHAR2(6);
     OLD_QTY INTEGER;
+    QTY_SISA INTEGER;
 BEGIN
     SELECT JENIS INTO jenis_si
     FROM H_STOCK_ISSUE
@@ -386,13 +387,17 @@ BEGIN
       UPDATE item
       set stok_item = (stok_item + :NEW.qty_item)
       where id_item = :NEW.id_item;
+
+      QTY_SISA := (OLD_QTY + :New.qty_item);
     ELSE
       UPDATE item
       set stok_item = (stok_item - :NEW.qty_item)
       where id_item = :NEW.id_item;
+
+      QTY_SISA := (OLD_QTY - :New.qty_item);
     END IF;
 
-    insert_log(:New.id_item, :New.ID_STOCK_ISSUE, OLD_QTY, :New.qty_item, (OLD_QTY + :New.qty_item), (:New.qty_item * :New.HARGA_ITEM));
+    insert_log(:New.id_item, :New.ID_STOCK_ISSUE, OLD_QTY, :New.qty_item, QTY_SISA, (:New.qty_item * :New.HARGA_ITEM));
 END;
 /
 
@@ -428,7 +433,7 @@ BEGIN
     set stok_item = (stok_item - :NEW.qty_item)
     where id_item = :NEW.id_item;
 
-    insert_log(:New.id_item, :New.ID_INVOICE, OLD_QTY, :New.qty_item, (OLD_QTY + :New.qty_item), (:New.qty_item * :New.HARGA_SATUAN));
+    insert_log(:New.id_item, :New.ID_INVOICE, OLD_QTY, :New.qty_item, (OLD_QTY - :New.qty_item), (:New.qty_item * :New.HARGA_SATUAN));
 END;
 /
 

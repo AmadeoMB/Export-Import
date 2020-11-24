@@ -38,7 +38,14 @@
             this.txtDeskripsi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
+            this.btnRedo = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUndo = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
@@ -49,13 +56,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.harga = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnRedo = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTengah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -172,6 +172,17 @@
             this.pnlTengah.TabIndex = 4;
             this.pnlTengah.TabStop = false;
             // 
+            // btnRedo
+            // 
+            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRedo.Location = new System.Drawing.Point(128, 10);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(52, 30);
+            this.btnRedo.TabIndex = 9;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
+            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -188,8 +199,59 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1347, 466);
             this.dataGridView.TabIndex = 8;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
+            // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID Item";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 200;
+            // 
+            // qty_item
+            // 
+            this.qty_item.DataPropertyName = "qty";
+            this.qty_item.Frozen = true;
+            this.qty_item.HeaderText = "QTY";
+            this.qty_item.Name = "qty_item";
+            // 
+            // satuan
+            // 
+            this.satuan.DataPropertyName = "satuan";
+            this.satuan.Frozen = true;
+            this.satuan.HeaderText = "Satuan";
+            this.satuan.Name = "satuan";
+            this.satuan.ReadOnly = true;
+            // 
+            // harga
+            // 
+            this.harga.DataPropertyName = "harga";
+            this.harga.Frozen = true;
+            this.harga.HeaderText = "Harga";
+            this.harga.Name = "harga";
+            this.harga.ReadOnly = true;
+            this.harga.Width = 150;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.Frozen = true;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
             // 
             // btnUndo
             // 
@@ -242,6 +304,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(250, 27);
             this.txtTotal.TabIndex = 6;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label2
             // 
@@ -298,67 +361,6 @@
             this.btnPreview.Text = "Preview";
             this.btnPreview.UseVisualStyleBackColor = true;
             this.btnPreview.Click += new System.EventHandler(this.btnPreview_Click);
-            // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID Item";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama Item";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 200;
-            // 
-            // qty_item
-            // 
-            this.qty_item.DataPropertyName = "qty";
-            this.qty_item.Frozen = true;
-            this.qty_item.HeaderText = "QTY";
-            this.qty_item.Name = "qty_item";
-            // 
-            // satuan
-            // 
-            this.satuan.DataPropertyName = "satuan";
-            this.satuan.Frozen = true;
-            this.satuan.HeaderText = "Satuan";
-            this.satuan.Name = "satuan";
-            this.satuan.ReadOnly = true;
-            // 
-            // harga
-            // 
-            this.harga.DataPropertyName = "harga";
-            this.harga.Frozen = true;
-            this.harga.HeaderText = "Harga";
-            this.harga.Name = "harga";
-            this.harga.ReadOnly = true;
-            this.harga.Width = 150;
-            // 
-            // subtotal
-            // 
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.Frozen = true;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 200;
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(128, 10);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(52, 30);
-            this.btnRedo.TabIndex = 9;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
             // 
             // formStockIssue
             // 
