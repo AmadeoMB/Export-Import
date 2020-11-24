@@ -91,6 +91,12 @@ namespace Export_Import
                 beli = "Beli";
             }
 
+            if (cbPembanding.SelectedIndex > 0 && !checkBoxJual.Checked && !checkBoxJual.Checked)
+            {
+                MessageBox.Show("Mohon pilih Harga Jual atau Harga Beli");
+                return;
+            }
+
             Object[] temp = {txtKeyword.Text,
             cbCategory.SelectedIndex,
             cbSatuan.Text,

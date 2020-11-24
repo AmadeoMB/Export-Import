@@ -275,7 +275,7 @@ namespace Export_Import
 
         void save()
         {
-            if (dataGridView.Rows.Count <= 0)
+            if (dataGridView.Rows.Count <= 1)
             {
                 MessageBox.Show("Mohon tambahkan setidaknya 1 item");
                 return;
@@ -361,7 +361,7 @@ namespace Export_Import
 
         void overwrite()
         {
-            if (dataGridView.Rows.Count <= 0)
+            if (dataGridView.Rows.Count <= 1)
             {
                 MessageBox.Show("Mohon tambahkan setidaknya 1 item");
                 return;

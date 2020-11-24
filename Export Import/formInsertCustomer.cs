@@ -95,7 +95,7 @@ namespace Export_Import
 
                 OracleCommand command;
                 command = new OracleCommand("select count(id_customer)+1 from customer where id_customer like '" + id_customer + "%'", conn);
-                MessageBox.Show(command.CommandText);
+                
                 int jum = Convert.ToInt32(command.ExecuteScalar());
 
                 if (jum < 10)

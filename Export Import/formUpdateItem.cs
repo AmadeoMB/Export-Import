@@ -42,8 +42,8 @@ namespace Export_Import
             txtLebar.Text = form.data[6].Substring(0, form.data[6].Length - 2);
             txtKadarAir.Text = form.data[7].Substring(0, form.data[7].Length - 1);
             cbSatuan.Text = form.data[9];
-            txtHargaJual.Text = form.data[10].Substring(3);
-            txtHargaBeli.Text = form.data[11].Substring(3);
+            txtHargaJual.Text = form.data[10].Substring(3).Replace(",", "");
+            txtHargaBeli.Text = form.data[11].Substring(3).Replace(",", "");
 
             if (form.data[8].Equals("EXC"))
             {
@@ -78,6 +78,9 @@ namespace Export_Import
         }
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            txtHargaJual.Text = txtHargaJual.Text.Replace(",", "");
+            txtHargaBeli.Text = txtHargaBeli.Text.Replace(",", "");
+
             if (!cekAngka(txtBerat))
             {
                 return;
@@ -104,6 +107,12 @@ namespace Export_Import
             }
             if (!cekAngka(txtTinggi))
             {
+                return;
+            }
+
+            if (cbSatuan.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih satuan barang");
                 return;
             }
 

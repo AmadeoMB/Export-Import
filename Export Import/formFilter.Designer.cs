@@ -215,6 +215,7 @@
             // 
             // cbPembanding
             // 
+            this.cbPembanding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPembanding.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPembanding.FormattingEnabled = true;
             this.cbPembanding.Items.AddRange(new object[] {

@@ -26,6 +26,8 @@ namespace Export_Import
         public formListCustomer()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
         }
 
         public formListCustomer(formMasterPenjualan form)
@@ -61,7 +63,9 @@ namespace Export_Import
             string cmd = "select " +
                 "id_customer, nama_customer, alamat_customer, " +
                 "'0'||no_telp_customer as no_telp_customer, " +
-                "email_customer from customer where lower(nama_customer) like '%" + optional[0].ToString().ToLower() + "%'";
+                "email_customer from customer where " +
+                "lower(nama_customer) like '%" + optional[0].ToString().ToLower() + "%' AND " +
+                "lower(id_customer) like '%"+ optional[0].ToString().ToLower() +"%'";
 
             daCustomer = new OracleDataAdapter(cmd, conn);
             daCustomer.Fill(ds, "customer");
