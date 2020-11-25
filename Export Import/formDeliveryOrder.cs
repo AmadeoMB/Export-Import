@@ -23,15 +23,15 @@ namespace Export_Import
         private OracleDataAdapter daItem;
         private OracleDataAdapter daNegara;
         private DataSet ds = new DataSet();
-        private List<Int32> qtyList = new List<Int32>(999);
-        private List<Int32> hJualList = new List<Int32>(999);
-        private List<Int32> beratList = new List<Int32>(999);
-        private List<Int32> subtotalList = new List<Int32>(999);
+        private List<Int64> qtyList = new List<Int64>(999);
+        private List<Int64> hJualList = new List<Int64>(999);
+        private List<Int64> beratList = new List<Int64>(999);
+        private List<Int64> subtotalList = new List<Int64>(999);
         private DataTable dtSO = new DataTable();
-        Int32 total = 0;
-        Int32 totalPPN = 0;
-        Int32 netTotal = 0;
-        Int32 totalConvert = 0;
+        Int64 total = 0;
+        Int64 totalPPN = 0;
+        Int64 netTotal = 0;
+        Int64 totalConvert = 0;
         public String id_so = "";
 
         public formDeliveryOrder()
@@ -240,7 +240,6 @@ namespace Export_Import
             {
                 cmd += " where id_sales_order = '" + id + "'";
                 ds.Tables["ekspedisi"].Clear();
-                MessageBox.Show(cmd);
             }
 
             daEkspedisi = new OracleDataAdapter(cmd, conn);
@@ -288,19 +287,19 @@ namespace Export_Import
                 cbCreditTerm.Text = ct + " Day(s)";
 
                 cmd = "select total from h_sales_order where id_sales_order = '" + id + "'";
-                total += Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                total += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
                 txtTotal.Text = "Rp " + total.ToString("#,##0.00");
 
                 cmd = "select total_ppn from h_sales_order where id_sales_order = '" + id + "'";
-                totalPPN += Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                totalPPN += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
                 txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
 
                 cmd = "select total_harga from h_sales_order where id_sales_order = '" + id + "'";
-                netTotal += Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                netTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
                 txtNetTotal.Text = "Rp " + netTotal.ToString("#,##0.00");
 
                 cmd = "select total_harga_convert from h_sales_order where id_sales_order = '" + id + "'";
-                totalConvert += Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                totalConvert += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
                 txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + totalConvert.ToString("#,##0.00");
 
                 isiDataItem(id);
@@ -317,29 +316,29 @@ namespace Export_Import
                     reader.GetValue(0).ToString(),
                     reader.GetValue(1).ToString(),
                     reader.GetValue(2).ToString(),
-                    Convert.ToInt32(reader.GetValue(3)).ToString("#,###"),
+                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
                     reader.GetValue(4).ToString(),
-                    Convert.ToInt32(reader.GetValue(5)).ToString("Rp #,##0.00"),
-                    Convert.ToInt32(reader.GetValue(6)).ToString("#,###"),
+                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
+                    Convert.ToInt64(reader.GetValue(6)).ToString("#,###"),
                     reader.GetValue(7).ToString(),
                     reader.GetValue(8).ToString(),
-                    Convert.ToInt32(reader.GetValue(9)).ToString("Rp #,##0.00")
+                    Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00")
                 });
                 //DataRow newRow = dtSO.NewRow();
                 //newRow[0] = reader.GetValue(0).ToString();
                 //newRow["id_so"] = reader.GetValue(1).ToString();
                 //newRow["nama_item"] = reader.GetValue(2).ToString();
-                //newRow["qty_item"] = Convert.ToInt32(reader.GetValue(3)).ToString("#,###");
+                //newRow["qty_item"] = Convert.ToInt64(reader.GetValue(3)).ToString("#,###");
                 //newRow["jenis_satuan"] = reader.GetValue(4).ToString();
-                //newRow["harga_satuan"] = Convert.ToInt32(reader.GetValue(5)).ToString("Rp #,##0.00");
-                //newRow["berat_total"] = Convert.ToInt32(reader.GetValue(6)).ToString("#,###");
+                //newRow["harga_satuan"] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00");
+                //newRow["berat_total"] = Convert.ToInt64(reader.GetValue(6)).ToString("#,###");
                 //newRow["jenis_ppn"] = reader.GetValue(7).ToString();
                 //newRow["discount"] = reader.GetValue(8).ToString();
-                //newRow["subtotal"] = Convert.ToInt32(reader.GetValue(9)).ToString("Rp #,##0.00");
-                qtyList.Add(Convert.ToInt32(reader.GetValue(3)));
-                hJualList.Add(Convert.ToInt32(reader.GetValue(5)));
-                beratList.Add(Convert.ToInt32(reader.GetValue(6)));
-                subtotalList.Add(Convert.ToInt32(reader.GetValue(9)));
+                //newRow["subtotal"] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
+                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
+                hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
+                beratList.Add(Convert.ToInt64(reader.GetValue(6)));
+                subtotalList.Add(Convert.ToInt64(reader.GetValue(9)));
             }
             dataGridView.DataSource = dtSO;
         }
@@ -361,16 +360,16 @@ namespace Export_Import
                     isiDataItem(search.id_so);
 
                     String cmd = "select total from h_sales_order where id_sales_order = '" + search.id_so + "'";
-                    txtTotal.Text = "Rp " + (total + Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString()));
+                    txtTotal.Text = "Rp " + (total + Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString())).ToString("#,##0.00");
 
                     cmd = "select total_ppn from h_sales_order where id_sales_order = '" + search.id_so + "'";
-                    txtTotalPPN.Text = "Rp " + (totalPPN + Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString()));
+                    txtTotalPPN.Text = "Rp " + (totalPPN + Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString())).ToString("#,##0.00");
 
                     cmd = "select total_harga from h_sales_order where id_sales_order = '" + search.id_so + "'";
-                    txtNetTotal.Text = "Rp " + (netTotal + Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString()));
+                    txtNetTotal.Text = "Rp " + (netTotal + Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString())).ToString("#,##0.00");
 
                     cmd = "select total_harga_convert from h_sales_order where id_sales_order = '" + search.id_so + "'";
-                    txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + (totalConvert + Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar().ToString()));
+                    txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + (totalConvert + Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString())).ToString("#,##0.00");
                 }
                 else
                 {

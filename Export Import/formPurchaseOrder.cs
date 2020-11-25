@@ -24,7 +24,13 @@ namespace Export_Import
         private Stack<Object[]> undone = new Stack<Object[]>(100);
         DataSet ds = new DataSet();
         int idx = -1;
+        private List<Int64> qtyList = new List<Int64>(999);
+        private List<Int64> hBeliList = new List<Int64>(999);
+        private List<Int64> subtotalList = new List<Int64>(999);
+        Int64 localNetTotal = 0;
         Int64 netTotal = 0;
+        Int64 total = 0;
+        Int64 totalPPN = 0;
         public String admin = "";
 
         public formPurchaseOrder()
@@ -77,27 +83,33 @@ namespace Export_Import
             comboBox4.DisplayMember = "nama_ekspedisi";
         }
         public void refreshnettotal() {
-            netTotal = 0;
-            Int64 total = 0;
+            total = 0;
+            totalPPN = 0;
             Int64 itung = dataGridView1.Rows.Count;
-            if (itung == 0) {
+            if (itung <= 1) {
                 return;
             }
             else {
                 for (int i = 0; i < dataGridView1.Rows.Count-1; i++)
                 {
-                    Int64 harga = Int64.Parse(ds.Tables["item"].Rows[i][7].ToString());
+                    Int64 harga = subtotalList[i];
                     total += harga;
+                    if (dataGridView1.Rows[i].Cells[5].Value.Equals("EXC"))
+                    {
+                        totalPPN += harga / 10;
+                    }
                 }
-                txtTotal.Text = total.ToString();
-                txtTotalPPN.Text = totalPPN.ToString();
-                textBox5.Text = (total + totalPPN).ToString();
+                netTotal = (total + totalPPN);
+
+                txtTotal.Text = total.ToString("Rp #,##0.0");
+                txtTotalPPN.Text = totalPPN.ToString("Rp #,##0.0");
+                textBox5.Text = netTotal.ToString("Rp #,##0.0");
             }
         }
         public void refreshlocalnet() {
-            Int64 ubahnettotal = Int64.Parse(textBox5.Text);
             Int64 ubahrate = Int64.Parse(textBox7.Text);
-            LNTotal.Text = (ubahnettotal / ubahrate).ToString();
+            localNetTotal = (netTotal / ubahrate);
+            LNTotal.Text = localNetTotal.ToString("Rp #,##0.0");
         }
         private void formPurchaseOrder_Load(object sender, EventArgs e)
         {
@@ -137,34 +149,30 @@ namespace Export_Import
 
             PONO.Text = nomerPO;
         }
-        Int64 totalPPN = 0;
 
         public void InsertItem(Object[] data) {
             Int64 diskon = Convert.ToInt64(data[1]);
             Int64 qty = Convert.ToInt64(data[2]);
+            qtyList.Add(qty);
             object id_item = data[0];
 
             String cmd = "select harga_beli_item from item where id_item ='" + id_item + "'";
             Int64 hargaBeli = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+            hBeliList.Add(hargaBeli);
             Int64 subtotal = hargaBeli * qty;
 
             Int64 totalDiscount = subtotal * diskon / 100;
             subtotal -= totalDiscount;
+            subtotalList.Add(subtotal);
 
-            cmd = "select jenis_ppn from item where id_item='" + id_item + "'";
-            String ppn = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
-            if (ppn.Equals("EXC"))
-            {
-                this.totalPPN += subtotal * 10 / 100;
-            }
             
-            cmd = "select id_item, nama_item, " +
-                qty + " as qty_item, " +
-                "satuan_item, " +
-                hargaBeli + " as harga_beli_item, "+
+            cmd = "select id_item, nama_item, '" +
+                qty.ToString("#,###") + "' as qty_item, " +
+                "satuan_item, '" +
+                hargaBeli.ToString("Rp #,##0.0") + "' as harga_beli_item, "+
                 "jenis_ppn, " +
-                diskon + " as discount, " +
-                subtotal + " as subtotal " +
+                diskon + " as discount, '" +
+                subtotal.ToString("Rp #,##0.0") + "' as subtotal " +
                 "from item " +
                 "where id_item = '" + id_item + "'";
 
@@ -184,7 +192,6 @@ namespace Export_Import
                 Array.Resize(ref temp, temp.Length + 1);
                 temp[3] = "insert";
                 done.Push(temp);
-                
             }
             refreshnettotal();
             refreshlocalnet();
@@ -341,10 +348,6 @@ namespace Export_Import
         {
             //kurang pengecekan textbox atau combobox
             //buat header PO
-            Int64 lntot = Int64.Parse(LNTotal.Text);
-            Int64 tot = Int64.Parse(textBox5.Text);
-            Int64 total = Int64.Parse(txtTotal.Text);
-            Int64 totalPPN = Int64.Parse(txtTotalPPN.Text);
             Int64 rat = Int64.Parse(textBox7.Text);
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
@@ -352,7 +355,7 @@ namespace Export_Import
             string sales = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
 
             OracleCommand cmd2;
-            cmd2 = new OracleCommand("insert Int64o H_PURCHASE_ORDER values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :total, :totalPPN, :totalh, :totalhc)", conn);
+            cmd2 = new OracleCommand("insert into H_PURCHASE_ORDER  values(:idp, :ids, :idst, :idg, :nama, :alamat, :tgl, :creditterm, :shipvia, :currencypo, :rate, :total, :totalPPN, :totalh, :totalhc)", conn);
             cmd2.Parameters.Add(":idp", PONO.Text);
             cmd2.Parameters.Add(":ids", cbcreditor.SelectedValue);
             cmd2.Parameters.Add(":idst", sales);
@@ -366,8 +369,8 @@ namespace Export_Import
             cmd2.Parameters.Add(":rate", rat);
             cmd2.Parameters.Add(":total", total);
             cmd2.Parameters.Add(":totalPPN", totalPPN);
-            cmd2.Parameters.Add(":totalh", tot);
-            cmd2.Parameters.Add(":totalhc", lntot);
+            cmd2.Parameters.Add(":totalh", netTotal);
+            cmd2.Parameters.Add(":totalhc", localNetTotal);
             cmd2.ExecuteNonQuery();
 
             //buat detail PO (belum jadi sama sekali)
@@ -377,17 +380,14 @@ namespace Export_Import
             {
                 string nama = ds.Tables["item"].Rows[i][1].ToString();
                 string iditems = ds.Tables["item"].Rows[i][0].ToString();
-                string qtyy = ds.Tables["item"].Rows[i][2].ToString();
-                Int64 qtty = Int64.Parse(qtyy);
+                Int64 qtty = qtyList[i];
                 string jeniss = ds.Tables["item"].Rows[i][3].ToString();
-                string hargas = ds.Tables["item"].Rows[i][4].ToString();
-                Int64 hargass = Int64.Parse(hargas);
+                Int64 hargass = hBeliList[i];
                 string diskoun = ds.Tables["item"].Rows[i][6].ToString();
                 Int64 discroun = Int64.Parse(diskoun);
                 string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
-                string subtotal = ds.Tables["item"].Rows[i][7].ToString();
-                Int64 stotal = Int64.Parse(subtotal);
-                cmd3 = new OracleCommand("insert Int64o D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
+                Int64 stotal = subtotalList[i];
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);
                 cmd3.Parameters.Add(":nama", nama);
@@ -450,10 +450,6 @@ namespace Export_Import
             }
             //kurang pengecekan textbox atau combobox
             //buat header PO
-            Int64 lntot = Int64.Parse(LNTotal.Text);
-            Int64 tot = Int64.Parse(textBox5.Text);
-            Int64 total = Int64.Parse(txtTotal.Text);
-            Int64 totalPPN = Int64.Parse(txtTotalPPN.Text);
             Int64 rat = Int64.Parse(textBox7.Text);
             string a = comboBox2.SelectedItem.ToString();
             string b = a.Substring(0, 1);
@@ -490,8 +486,8 @@ namespace Export_Import
             cmd2.Parameters.Add(":rate", rat);
             cmd2.Parameters.Add(":total", total);
             cmd2.Parameters.Add(":totalppn", totalPPN);
-            cmd2.Parameters.Add(":totalh", tot);
-            cmd2.Parameters.Add(":totalhc", lntot);
+            cmd2.Parameters.Add(":totalh", netTotal);
+            cmd2.Parameters.Add(":totalhc", localNetTotal);
             cmd2.ExecuteNonQuery();
 
             //Delete
@@ -502,16 +498,13 @@ namespace Export_Import
             {
                 string nama = ds.Tables["item"].Rows[i][1].ToString();
                 string iditems = ds.Tables["item"].Rows[i][0].ToString();
-                string qtyy = ds.Tables["item"].Rows[i][2].ToString();
-                Int64 qtty = Int64.Parse(qtyy);
+                Int64 qtty = qtyList[i];
                 string jeniss = ds.Tables["item"].Rows[i][3].ToString();
-                string hargas = ds.Tables["item"].Rows[i][4].ToString();
-                Int64 hargass = Int64.Parse(hargas);
+                Int64 hargass = hBeliList[i];
                 string diskoun = ds.Tables["item"].Rows[i][6].ToString();
                 Int64 discroun = Int64.Parse(diskoun);
                 string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
-                string subtotal = ds.Tables["item"].Rows[i][7].ToString();
-                Int64 stotal = Int64.Parse(subtotal);
+                Int64 stotal = subtotalList[i];
                 cmd3 = new OracleCommand("insert Int64o D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);

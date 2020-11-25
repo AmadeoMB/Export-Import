@@ -271,7 +271,7 @@ namespace Export_Import
             {
                 Object[] temp = {
                     ds.Tables["item"].Rows[idx][0],
-                    ds.Tables["item"].Rows[idx][8],
+                    ds.Tables["item"].Rows[idx][7],
                     ds.Tables["item"].Rows[idx][2],
                     "delete",
                 };
@@ -493,6 +493,8 @@ namespace Export_Import
 
         void refreshTotal()
         {
+            totalPPN = 0;
+            total = 0;
             for (int i = 0; i < dataGridView.RowCount - 1; i++)
             {
                 Int64 subtotal = subtotalList[i];
