@@ -144,7 +144,7 @@ namespace Export_Import
         void generatecreateNomerPO()
         {
             String nomerPO = "PO";
-            nomerPO += DateToday.Value.ToString("/dd/MM/yyyy/");
+            nomerPO += DateToday.Value.ToString("/yyyy/MM/dd/");
             nomerPO += getNomerPO(nomerPO);
 
             PONO.Text = nomerPO;

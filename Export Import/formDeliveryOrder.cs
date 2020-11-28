@@ -138,7 +138,7 @@ namespace Export_Import
         void generatecreateNomerDO()
         {
             String nomerSO = "DO";
-            nomerSO += dateDO.Value.ToString("/dd/MM/yyyy/");
+            nomerSO += dateDO.Value.ToString("/yyyy/MM/dd/");
             nomerSO += getNomerSO(nomerSO);
 
             txtIdDO.Text = nomerSO;

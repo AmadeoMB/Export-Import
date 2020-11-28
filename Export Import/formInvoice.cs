@@ -109,7 +109,7 @@ namespace Export_Import
         void generatecreateNomerInvoice()
         {
             String nomerInvoice = "IN";
-            nomerInvoice += dateInvoice.Value.ToString("/dd/MM/yyyy/");
+            nomerInvoice += dateInvoice.Value.ToString("/yyyy/MM/dd/");
             nomerInvoice += getNomerInvoice(nomerInvoice);
 
             txtIdInvoice.Text = nomerInvoice;

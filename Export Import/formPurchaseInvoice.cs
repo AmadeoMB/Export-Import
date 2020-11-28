@@ -96,7 +96,7 @@ namespace Export_Import
         void generatecreateNomerPI()
         {
             String nomerPI = "PI";
-            nomerPI += DateToday.Value.ToString("/dd/MM/yyyy/");
+            nomerPI += DateToday.Value.ToString("/yyyy/MM/dd/");
             nomerPI += getNomerPI(nomerPI);
 
             txtIdPI.Text = nomerPI;

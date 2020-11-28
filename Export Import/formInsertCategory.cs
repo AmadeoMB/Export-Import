@@ -58,7 +58,6 @@ namespace Export_Import
             if (DialogResult.Yes == MessageBox.Show("Anda yakin mau input category baru dengan nama " + txtNama.Text, "Confirmation", MessageBoxButtons.YesNo))
             {
                 cmd2.ExecuteNonQuery();//ini buat insert update delete
-                conn.Close();
                 this.Close();
             }
         }
@@ -66,16 +65,6 @@ namespace Export_Import
         private void formInsertCategory_Load(object sender, EventArgs e)
         {
             conn = form.conn;
-
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                throw;
-            }
         }
 
         String keyChar = "";

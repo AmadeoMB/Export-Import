@@ -115,7 +115,7 @@ namespace Export_Import
 
         void generatecreateNomerSO() {
             String nomerSO = "SO";
-            nomerSO += dateSO.Value.ToString("/dd/MM/yyyy/");
+            nomerSO += dateSO.Value.ToString("/yyyy/MM/dd/");
             nomerSO += getNomerSO(nomerSO);
 
             txtIdSO.Text = nomerSO;
@@ -144,7 +144,7 @@ namespace Export_Import
         {
             this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns["harga_satuan"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dateSO.Value = DateTime.Today;
+            this.dateSO.Value = DateTime.Parse("2020-01-01");
 
             try
             {
@@ -270,14 +270,17 @@ namespace Export_Import
             if (idx > -1)
             {
                 Object[] temp = {
-                    ds.Tables["item"].Rows[idx][0],
-                    ds.Tables["item"].Rows[idx][7],
-                    ds.Tables["item"].Rows[idx][2],
+                    ds.Tables["item"].Rows[idx][0],// Id Item
+                    ds.Tables["item"].Rows[idx][7],// Discount
+                    qtyList[idx],// Qty
                     "delete",
                 };
                 done.Push(temp);
 
                 ds.Tables["item"].Rows.RemoveAt(idx);
+                hJualList.RemoveAt(idx);
+                beratList.RemoveAt(idx);
+                qtyList.RemoveAt(idx);
                 subtotalList.RemoveAt(idx);
                 refreshTotal();
             }
@@ -394,17 +397,6 @@ namespace Export_Import
 
         void save()
         {
-            if (dataGridView.Rows.Count <= 1)
-            {
-                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
-                return;
-            }
-            if (cbCreditTerm.SelectedIndex < 0)
-            {
-                MessageBox.Show("Pilih Credit Term");
-                return;
-            }
-
             int creditTerm = 1;
             if (cbCreditTerm.Text != "Cash")
             {
@@ -478,6 +470,17 @@ namespace Export_Import
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
+                return;
+            }
+            if (cbCreditTerm.SelectedIndex < 0)
+            {
+                MessageBox.Show("Pilih Credit Term");
+                return;
+            }
+
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -649,6 +652,17 @@ namespace Export_Import
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
+                return;
+            }
+            if (cbCreditTerm.SelectedIndex < 0)
+            {
+                MessageBox.Show("Pilih Credit Term");
+                return;
+            }
+
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
