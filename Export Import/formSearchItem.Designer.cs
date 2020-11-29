@@ -89,7 +89,7 @@
             this.nama_item.HeaderText = "Nama";
             this.nama_item.Name = "nama_item";
             this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 175;
+            this.nama_item.Width = 170;
             // 
             // harga_jual
             // 
@@ -175,8 +175,8 @@
             this.numQty.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numQty.Location = new System.Drawing.Point(243, 123);
             this.numQty.Maximum = new decimal(new int[] {
-            999999,
-            0,
+            1215752191,
+            23,
             0,
             0});
             this.numQty.Name = "numQty";

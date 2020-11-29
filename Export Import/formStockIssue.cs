@@ -21,6 +21,10 @@ namespace Export_Import
         formMasterStock master;
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
+        private List<Int64> qtyList = new List<Int64>(999);
+        private List<Int64> hargaList = new List<Int64>(999);
+        private List<Int64> subtotalList = new List<Int64>(999);
+        private Int64 total = 0;
 
         public formStockIssue()
         {
@@ -63,24 +67,27 @@ namespace Export_Import
 
         void refreshTotal()
         {
-            int total = 0;
+            total = 0;
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
             {
-                total += Convert.ToInt32(ds.Tables["item"].Rows[i][5]);
+                total += Convert.ToInt64(ds.Tables["item"].Rows[i][5]);
             }
-            txtTotal.Text = "Rp " + total;
+            txtTotal.Text = "Rp " + total.ToString("#,##0.00");
         }
 
         void insertItem(Object[] data)
         {
             int discount = Convert.ToInt32(data[1]);
-            int qty = Convert.ToInt32(data[2]);
+            Int64 qty = Convert.ToInt32(data[2]);
             object id_item = data[0];
+            qtyList.Add(qty);
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_beli_item from item where id_item ='" + id_item + "'";
-            int hargaBeli = Convert.ToInt32(new OracleCommand(cmd, conn).ExecuteScalar());
-            int subtotal = hargaBeli * qty;
+            Int64 hargaBeli = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+            Int64 subtotal = hargaBeli * qty;
+            hargaList.Add(hargaBeli);
+            subtotalList.Add(subtotal);
 
             if (dataGridView.Rows.Count > 1)
             {
@@ -154,6 +161,12 @@ namespace Export_Import
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 ds.Tables["item"].Rows.RemoveAt(idx);
@@ -299,10 +312,10 @@ namespace Export_Import
             {
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][1].ToString();
-                int qty_item = Convert.ToInt32(ds.Tables["item"].Rows[i][2].ToString());
                 String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
-                String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
-                int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
+                Int64 qty_item = qtyList[i];
+                Int64 hBeli_item = hargaList[i];
+                Int64 subtotal = subtotalList[i];
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty,  :harga,:jenis, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
@@ -319,23 +332,13 @@ namespace Export_Import
 
         void save()
         {
-            if (txtDeskripsi.Text.Length == 0)
-            {
-                MessageBox.Show("Mohon isi deskipsi");
-                return;
-            }
-            if (dataGridView.Rows.Count <= 1)
-            {
-                MessageBox.Show("Mohon isi barang");
-                return;
-            }
 
             String id_si = txtIdStockIssue.Text;
             String id_staff = new OracleCommand("select id_staff from staff where nama_staff = '" + admin + "'", conn).ExecuteScalar().ToString();
             String jenis = cbJenis.Text;
             DateTime tanggal = dateStockIssue.Value;
             String deskripsi = txtDeskripsi.Text;
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+            Int64 total = this.total;
 
             OracleCommand cmd = new OracleCommand("insert into h_stock_issue values (:id, :ids, :jenis, :do, :gudang, :total)", conn);
             cmd.Parameters.Add(":id", id_si);
@@ -350,10 +353,10 @@ namespace Export_Import
             {
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][1].ToString();
-                int qty_item = Convert.ToInt32(ds.Tables["item"].Rows[i][2].ToString());
                 String satuan_item = ds.Tables["item"].Rows[i][3].ToString();
-                String hBeli_item = ds.Tables["item"].Rows[i][4].ToString();
-                int subtotal = Convert.ToInt32(ds.Tables["item"].Rows[i][5].ToString());
+                Int64 qty_item = qtyList[i];
+                Int64 hBeli_item = hargaList[i];
+                Int64 subtotal = subtotalList[i];
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_stock_issue values (:id, :si, :nama, :qty, :harga,:jenis, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
@@ -372,6 +375,23 @@ namespace Export_Import
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (cbJenis.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih jenis");
+                return;
+            }
+
+            if (txtDeskripsi.Text.Length == 0)
+            {
+                MessageBox.Show("Mohon isi deskipsi");
+                return;
+            }
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Mohon isi barang");
+                return;
+            }
+
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -389,6 +409,12 @@ namespace Export_Import
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            if (cbJenis.SelectedIndex < 0)
+            {
+                MessageBox.Show("Mohon pilih jenis");
+                return;
+            }
+
             if (txtDeskripsi.Text.Length == 0)
             {
                 MessageBox.Show("Mohon isi deskipsi");
@@ -399,6 +425,7 @@ namespace Export_Import
                 MessageBox.Show("Mohon isi barang");
                 return;
             }
+
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -419,6 +446,30 @@ namespace Export_Import
         {
             this.Close();
             master.Show();
+        }
+
+        private void dataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 2 && dataGridView.Rows.Count > 1)
+            {
+                object jumlah = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                if (Convert.ToInt32(jumlah) != 0)
+                {
+                    ds.Tables["item"].Rows[e.RowIndex][e.ColumnIndex] = jumlah;
+                    ds.Tables["item"].Rows[e.RowIndex][5] = Convert.ToInt32(jumlah) * Convert.ToInt32(ds.Tables["item"].Rows[e.RowIndex][4]);
+                }
+                else
+                {
+                    ds.Tables["item"].Rows.RemoveAt(e.RowIndex);
+                }
+                dataGridView.DataSource = ds.Tables["item"];
+                refreshTotal();
+            }
+        }
+
+        private void dataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idx = e.RowIndex;
         }
     }
 }

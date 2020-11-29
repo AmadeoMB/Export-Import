@@ -67,6 +67,12 @@
             this.txtTotalHarga = new System.Windows.Forms.TextBox();
             this.txtTotalHargaConvert = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.groupButton = new System.Windows.Forms.GroupBox();
+            this.btnRedo = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,14 +82,6 @@
             this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupButton = new System.Windows.Forms.GroupBox();
-            this.btnRedo = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnMoveDown = new System.Windows.Forms.Button();
-            this.btnMoveUp = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -453,6 +451,7 @@
             // 
             // cbCurrency
             // 
+            this.cbCurrency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrency.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrency.FormattingEnabled = true;
             this.cbCurrency.Location = new System.Drawing.Point(523, 423);
@@ -542,6 +541,70 @@
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
+            this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
+            // 
+            // groupButton
+            // 
+            this.groupButton.Controls.Add(this.btnRedo);
+            this.groupButton.Controls.Add(this.btnUndo);
+            this.groupButton.Controls.Add(this.btnMinus);
+            this.groupButton.Controls.Add(this.btnPlus);
+            this.groupButton.Location = new System.Drawing.Point(3, 30);
+            this.groupButton.Name = "groupButton";
+            this.groupButton.Size = new System.Drawing.Size(1898, 45);
+            this.groupButton.TabIndex = 1;
+            this.groupButton.TabStop = false;
+            this.groupButton.Text = "Table Button";
+            // 
+            // btnRedo
+            // 
+            this.btnRedo.Location = new System.Drawing.Point(123, 16);
+            this.btnRedo.Name = "btnRedo";
+            this.btnRedo.Size = new System.Drawing.Size(50, 23);
+            this.btnRedo.TabIndex = 26;
+            this.btnRedo.Text = "Redo";
+            this.btnRedo.UseVisualStyleBackColor = true;
+            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
+            // 
+            // btnUndo
+            // 
+            this.btnUndo.Location = new System.Drawing.Point(67, 16);
+            this.btnUndo.Name = "btnUndo";
+            this.btnUndo.Size = new System.Drawing.Size(50, 23);
+            this.btnUndo.TabIndex = 25;
+            this.btnUndo.Text = "Undo";
+            this.btnUndo.UseVisualStyleBackColor = true;
+            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
+            // 
+            // btnMinus
+            // 
+            this.btnMinus.Location = new System.Drawing.Point(38, 16);
+            this.btnMinus.Name = "btnMinus";
+            this.btnMinus.Size = new System.Drawing.Size(23, 23);
+            this.btnMinus.TabIndex = 22;
+            this.btnMinus.Text = "-";
+            this.btnMinus.UseVisualStyleBackColor = true;
+            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
+            // 
+            // btnPlus
+            // 
+            this.btnPlus.Location = new System.Drawing.Point(9, 16);
+            this.btnPlus.Name = "btnPlus";
+            this.btnPlus.Size = new System.Drawing.Size(23, 23);
+            this.btnPlus.TabIndex = 21;
+            this.btnPlus.Text = "+";
+            this.btnPlus.UseVisualStyleBackColor = true;
+            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(624, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(95, 26);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "List Order";
             // 
             // id_item
             // 
@@ -566,7 +629,6 @@
             this.qty_item.Frozen = true;
             this.qty_item.HeaderText = "QTY Item";
             this.qty_item.Name = "qty_item";
-            this.qty_item.ReadOnly = true;
             // 
             // jenis_satuan
             // 
@@ -621,91 +683,6 @@
             this.subtotal.ReadOnly = true;
             this.subtotal.Width = 200;
             // 
-            // groupButton
-            // 
-            this.groupButton.Controls.Add(this.btnRedo);
-            this.groupButton.Controls.Add(this.btnUndo);
-            this.groupButton.Controls.Add(this.btnMoveDown);
-            this.groupButton.Controls.Add(this.btnMoveUp);
-            this.groupButton.Controls.Add(this.btnMinus);
-            this.groupButton.Controls.Add(this.btnPlus);
-            this.groupButton.Location = new System.Drawing.Point(3, 30);
-            this.groupButton.Name = "groupButton";
-            this.groupButton.Size = new System.Drawing.Size(1898, 45);
-            this.groupButton.TabIndex = 1;
-            this.groupButton.TabStop = false;
-            this.groupButton.Text = "Table Button";
-            // 
-            // btnRedo
-            // 
-            this.btnRedo.Location = new System.Drawing.Point(235, 16);
-            this.btnRedo.Name = "btnRedo";
-            this.btnRedo.Size = new System.Drawing.Size(50, 23);
-            this.btnRedo.TabIndex = 26;
-            this.btnRedo.Text = "Redo";
-            this.btnRedo.UseVisualStyleBackColor = true;
-            this.btnRedo.Click += new System.EventHandler(this.btnRedo_Click);
-            // 
-            // btnUndo
-            // 
-            this.btnUndo.Location = new System.Drawing.Point(179, 16);
-            this.btnUndo.Name = "btnUndo";
-            this.btnUndo.Size = new System.Drawing.Size(50, 23);
-            this.btnUndo.TabIndex = 25;
-            this.btnUndo.Text = "Undo";
-            this.btnUndo.UseVisualStyleBackColor = true;
-            this.btnUndo.Click += new System.EventHandler(this.btnUndo_Click);
-            // 
-            // btnMoveDown
-            // 
-            this.btnMoveDown.Location = new System.Drawing.Point(123, 16);
-            this.btnMoveDown.Name = "btnMoveDown";
-            this.btnMoveDown.Size = new System.Drawing.Size(50, 23);
-            this.btnMoveDown.TabIndex = 24;
-            this.btnMoveDown.Text = "Down";
-            this.btnMoveDown.UseVisualStyleBackColor = true;
-            this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
-            // 
-            // btnMoveUp
-            // 
-            this.btnMoveUp.Location = new System.Drawing.Point(67, 16);
-            this.btnMoveUp.Name = "btnMoveUp";
-            this.btnMoveUp.Size = new System.Drawing.Size(50, 23);
-            this.btnMoveUp.TabIndex = 23;
-            this.btnMoveUp.Text = "Up";
-            this.btnMoveUp.UseVisualStyleBackColor = true;
-            this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
-            // 
-            // btnMinus
-            // 
-            this.btnMinus.Location = new System.Drawing.Point(38, 16);
-            this.btnMinus.Name = "btnMinus";
-            this.btnMinus.Size = new System.Drawing.Size(23, 23);
-            this.btnMinus.TabIndex = 22;
-            this.btnMinus.Text = "-";
-            this.btnMinus.UseVisualStyleBackColor = true;
-            this.btnMinus.Click += new System.EventHandler(this.btnMinus_Click);
-            // 
-            // btnPlus
-            // 
-            this.btnPlus.Location = new System.Drawing.Point(9, 16);
-            this.btnPlus.Name = "btnPlus";
-            this.btnPlus.Size = new System.Drawing.Size(23, 23);
-            this.btnPlus.TabIndex = 21;
-            this.btnPlus.Text = "+";
-            this.btnPlus.UseVisualStyleBackColor = true;
-            this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(624, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(95, 26);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "List Order";
-            // 
             // formSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -752,8 +729,6 @@
         private System.Windows.Forms.GroupBox groupButton;
         private System.Windows.Forms.Button btnMinus;
         private System.Windows.Forms.Button btnPlus;
-        private System.Windows.Forms.Button btnMoveDown;
-        private System.Windows.Forms.Button btnMoveUp;
         private System.Windows.Forms.Button btnUndo;
         private System.Windows.Forms.Button btnRedo;
         private System.Windows.Forms.DataGridView dataGridView;
@@ -769,6 +744,12 @@
         private System.Windows.Forms.Button btnPreview;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtTotalPPN;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.ComboBox cbNegara;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty_item;
@@ -778,11 +759,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn jenis_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox txtTotalPPN;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cbNegara;
     }
 }

@@ -55,7 +55,6 @@ namespace Export_Import
         void refreshTable(String id, String keyword)
         {
             List<String> temp = form.groupSO;
-            MessageBox.Show(temp.Count + "");
 
             String cmd = "select id_sales_order, nama_customer, tgl_sales_order from h_sales_order " +
                 "where id_sales_order != '" + id + "' AND " +
@@ -94,6 +93,12 @@ namespace Export_Import
 
         private void btnGet_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 this.id_so = dataGridView.Rows[idx].Cells[0].Value.ToString();

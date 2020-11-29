@@ -55,14 +55,14 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // formPreviewLaporanStock
+            // formLaporanStock
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 747);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.crystalReportViewer);
-            this.Name = "formPreviewLaporanStock";
+            this.Name = "formLaporanStock";
             this.Text = "formPreviewLaporanStock";
             this.Load += new System.EventHandler(this.formPreviewLaporanStock_Load);
             this.ResumeLayout(false);

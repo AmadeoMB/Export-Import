@@ -65,5 +65,11 @@ namespace Export_Import
             rep.SetParameterValue("no_container", txtNomerContainer.Text);
             crystalReportViewer.ReportSource = rep;
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            master.Show();
+        }
     }
 }

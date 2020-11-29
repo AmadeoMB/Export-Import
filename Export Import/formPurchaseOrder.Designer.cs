@@ -63,8 +63,6 @@
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRedo = new System.Windows.Forms.Button();
             this.BtnUndo = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
             this.Kurang = new System.Windows.Forms.Button();
             this.Tambah = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -355,8 +353,6 @@
             this.groupBox2.Controls.Add(this.dataGridView1);
             this.groupBox2.Controls.Add(this.btnRedo);
             this.groupBox2.Controls.Add(this.BtnUndo);
-            this.groupBox2.Controls.Add(this.btnDown);
-            this.groupBox2.Controls.Add(this.btnUp);
             this.groupBox2.Controls.Add(this.Kurang);
             this.groupBox2.Controls.Add(this.Tambah);
             this.groupBox2.Location = new System.Drawing.Point(0, 203);
@@ -448,7 +444,7 @@
             // btnRedo
             // 
             this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRedo.Location = new System.Drawing.Point(230, 10);
+            this.btnRedo.Location = new System.Drawing.Point(128, 10);
             this.btnRedo.Name = "btnRedo";
             this.btnRedo.Size = new System.Drawing.Size(64, 30);
             this.btnRedo.TabIndex = 3;
@@ -459,35 +455,13 @@
             // BtnUndo
             // 
             this.BtnUndo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnUndo.Location = new System.Drawing.Point(172, 10);
+            this.BtnUndo.Location = new System.Drawing.Point(70, 10);
             this.BtnUndo.Name = "BtnUndo";
             this.BtnUndo.Size = new System.Drawing.Size(52, 30);
             this.BtnUndo.TabIndex = 4;
             this.BtnUndo.Text = "Undo";
             this.BtnUndo.UseVisualStyleBackColor = true;
             this.BtnUndo.Click += new System.EventHandler(this.BtnUndo_Click);
-            // 
-            // btnDown
-            // 
-            this.btnDown.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDown.Location = new System.Drawing.Point(111, 10);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(55, 30);
-            this.btnDown.TabIndex = 3;
-            this.btnDown.Text = "Down";
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
-            // 
-            // btnUp
-            // 
-            this.btnUp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUp.Location = new System.Drawing.Point(70, 10);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(35, 30);
-            this.btnUp.TabIndex = 2;
-            this.btnUp.Text = "Up";
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
             // 
             // Kurang
             // 
@@ -560,7 +534,8 @@
             this.txtTotal.ReadOnly = true;
             this.txtTotal.Size = new System.Drawing.Size(157, 27);
             this.txtTotal.TabIndex = 12;
-            this.txtTotal.Text = "0";
+            this.txtTotal.Text = "Rp 0";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label13
             // 
@@ -581,7 +556,8 @@
             this.txtTotalPPN.ReadOnly = true;
             this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
             this.txtTotalPPN.TabIndex = 10;
-            this.txtTotalPPN.Text = "0";
+            this.txtTotalPPN.Text = "Rp 0";
+            this.txtTotalPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox7
             // 
@@ -614,6 +590,7 @@
             // 
             // cbCurrent
             // 
+            this.cbCurrent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrent.FormattingEnabled = true;
             this.cbCurrent.Location = new System.Drawing.Point(746, 118);
@@ -651,7 +628,8 @@
             this.LNTotal.ReadOnly = true;
             this.LNTotal.Size = new System.Drawing.Size(157, 27);
             this.LNTotal.TabIndex = 3;
-            this.LNTotal.Text = "0";
+            this.LNTotal.Text = "Rp 0";
+            this.LNTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox5
             // 
@@ -662,7 +640,8 @@
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(157, 27);
             this.textBox5.TabIndex = 2;
-            this.textBox5.Text = "0";
+            this.textBox5.Text = "Rp 0";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // button11
             // 
@@ -763,8 +742,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button BtnUndo;
-        private System.Windows.Forms.Button btnDown;
-        private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button Kurang;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox textBox7;

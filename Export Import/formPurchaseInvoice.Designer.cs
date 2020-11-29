@@ -75,6 +75,16 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnPreview = new System.Windows.Forms.Button();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_po_column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discount_column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kadar_air = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal_column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlAtas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.pnlTengah.SuspendLayout();
@@ -362,6 +372,17 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id_item,
+            this.id_po_column,
+            this.nama_item,
+            this.qty_item,
+            this.satuan_item,
+            this.harga_item,
+            this.discount_column,
+            this.kadar_air,
+            this.jenis_ppn,
+            this.subtotal_column});
             this.dataGridView1.Location = new System.Drawing.Point(6, 46);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1341, 265);
@@ -442,6 +463,8 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(157, 27);
             this.txtTotal.TabIndex = 12;
+            this.txtTotal.Text = "Rp 0";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label14
             // 
@@ -461,6 +484,8 @@
             this.txtTotalPPN.Name = "txtTotalPPN";
             this.txtTotalPPN.Size = new System.Drawing.Size(157, 27);
             this.txtTotalPPN.TabIndex = 10;
+            this.txtTotalPPN.Text = "Rp 0";
+            this.txtTotalPPN.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtRate
             // 
@@ -493,6 +518,7 @@
             // 
             // cbCurrent
             // 
+            this.cbCurrent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCurrent.Enabled = false;
             this.cbCurrent.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCurrent.FormattingEnabled = true;
@@ -530,6 +556,8 @@
             this.txtTotalConvert.Name = "txtTotalConvert";
             this.txtTotalConvert.Size = new System.Drawing.Size(157, 27);
             this.txtTotalConvert.TabIndex = 3;
+            this.txtTotalConvert.Text = "0";
+            this.txtTotalConvert.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtNetTotal
             // 
@@ -539,6 +567,8 @@
             this.txtNetTotal.Name = "txtNetTotal";
             this.txtNetTotal.Size = new System.Drawing.Size(157, 27);
             this.txtNetTotal.TabIndex = 2;
+            this.txtNetTotal.Text = "Rp 0";
+            this.txtNetTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // btnCancel
             // 
@@ -584,6 +614,86 @@
             this.pnlBawah.Size = new System.Drawing.Size(1347, 40);
             this.pnlBawah.TabIndex = 6;
             this.pnlBawah.TabStop = false;
+            // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "ID";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "Id Item";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // id_po_column
+            // 
+            this.id_po_column.DataPropertyName = "IDPO";
+            this.id_po_column.Frozen = true;
+            this.id_po_column.HeaderText = "Id P/O";
+            this.id_po_column.Name = "id_po_column";
+            this.id_po_column.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "Nama";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            // 
+            // qty_item
+            // 
+            this.qty_item.DataPropertyName = "Qty";
+            this.qty_item.Frozen = true;
+            this.qty_item.HeaderText = "Qty Item";
+            this.qty_item.Name = "qty_item";
+            this.qty_item.ReadOnly = true;
+            // 
+            // satuan_item
+            // 
+            this.satuan_item.DataPropertyName = "Satuan";
+            this.satuan_item.Frozen = true;
+            this.satuan_item.HeaderText = "Satuan";
+            this.satuan_item.Name = "satuan_item";
+            this.satuan_item.ReadOnly = true;
+            // 
+            // harga_item
+            // 
+            this.harga_item.DataPropertyName = "Harga";
+            this.harga_item.Frozen = true;
+            this.harga_item.HeaderText = "Harga Item";
+            this.harga_item.Name = "harga_item";
+            this.harga_item.ReadOnly = true;
+            // 
+            // discount_column
+            // 
+            this.discount_column.DataPropertyName = "discount";
+            this.discount_column.Frozen = true;
+            this.discount_column.HeaderText = "Discount";
+            this.discount_column.Name = "discount_column";
+            this.discount_column.ReadOnly = true;
+            // 
+            // kadar_air
+            // 
+            this.kadar_air.DataPropertyName = "kadar";
+            this.kadar_air.Frozen = true;
+            this.kadar_air.HeaderText = "Kadar Air";
+            this.kadar_air.Name = "kadar_air";
+            this.kadar_air.ReadOnly = true;
+            // 
+            // jenis_ppn
+            // 
+            this.jenis_ppn.DataPropertyName = "PPN";
+            this.jenis_ppn.Frozen = true;
+            this.jenis_ppn.HeaderText = "Jenis PPN";
+            this.jenis_ppn.Name = "jenis_ppn";
+            this.jenis_ppn.ReadOnly = true;
+            // 
+            // subtotal_column
+            // 
+            this.subtotal_column.DataPropertyName = "subtotal";
+            this.subtotal_column.Frozen = true;
+            this.subtotal_column.HeaderText = "Subtotal";
+            this.subtotal_column.Name = "subtotal_column";
+            this.subtotal_column.ReadOnly = true;
             // 
             // formPurchaseInvoice
             // 
@@ -659,5 +769,15 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtTotalPPN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_po_column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qty_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn satuan_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn harga_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discount_column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn kadar_air;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jenis_ppn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal_column;
     }
 }

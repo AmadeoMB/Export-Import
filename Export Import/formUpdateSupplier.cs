@@ -25,6 +25,7 @@ namespace Export_Import
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
         }
 
         private void formUpdateSupplier_Load(object sender, EventArgs e)
@@ -34,8 +35,6 @@ namespace Export_Import
             cbProvinsi.Text = form.data[3];
             txtNoTelp.Text = form.data[4];
             txtEmail.Text = form.data[5];
-
-            conn = form.conn;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)

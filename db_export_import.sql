@@ -262,7 +262,7 @@ create table D_PURCHASE_ORDER
    DISCOUNT             INTEGER              not null,
    JENIS_PPN            VARCHAR2(3)          not null,
    SUBTOTAL             INTEGER              not null,
-   constraint PK_D_PUCHASE_ORDER primary key (ID_ITEM, ID_PURCHASE_ORDER)
+   constraint PK_D_PURCHASE_ORDER primary key (ID_ITEM, ID_PURCHASE_ORDER)
 );
 
 create table H_PURCHASE_INVOICE 
@@ -332,7 +332,9 @@ CREATE TABLE LOG_STOCK
    ID_LOG      VARCHAR2(17)   NOT NULL,
    ID_ITEM     VARCHAR2(5)    NOT NULL,
    ID_DOKUMEN  VARCHAR2(16)   NOT NULL,
+   OLD_QTY     INTEGER        NOT NULL,
    QTY         INTEGER        NOT NULL,
+   NEW_QTY     INTEGER        NOT NULL,
    BALANCE     INTEGER        NOT NULL,
    TGL_LOG     DATE           NOT NULL,
    constraint PK_LOG_STOCK primary key (ID_LOG)
@@ -341,7 +343,9 @@ CREATE TABLE LOG_STOCK
 CREATE OR REPLACE PROCEDURE insert_log(
    id_item in VARCHAR2, 
    id_dokumen in VARCHAR2, 
+   old_qty in INTEGER, 
    qty in INTEGER, 
+   new_qty in INTEGER, 
    balance in INTEGER
 )
 AS
@@ -359,7 +363,7 @@ BEGIN
     END IF;
 
     INSERT INTO LOG_STOCK
-    VALUES (id_log, id_item, id_dokumen, qty, balance, sysdate);
+    VALUES (id_log, id_item, id_dokumen, old_qty, qty, new_qty, balance, sysdate);
 END;
 /
 
@@ -368,46 +372,68 @@ CREATE OR REPLACE TRIGGER update_stok_after_si
     FOR EACH ROW 
 DECLARE
     jenis_si VARCHAR2(6);
+    OLD_QTY INTEGER;
+    QTY_SISA INTEGER;
 BEGIN
     SELECT JENIS INTO jenis_si
     FROM H_STOCK_ISSUE
     WHERE ID_STOCK_ISSUE = :New.ID_STOCK_ISSUE;
 
+    SELECT STOK_ITEM INTO OLD_QTY
+    FROM ITEM
+    WHERE ID_ITEM = :New.ID_ITEM;
+
     IF ( jenis_si = 'Tambah' ) THEN
       UPDATE item
       set stok_item = (stok_item + :NEW.qty_item)
       where id_item = :NEW.id_item;
+
+      QTY_SISA := (OLD_QTY + :New.qty_item);
     ELSE
       UPDATE item
       set stok_item = (stok_item - :NEW.qty_item)
       where id_item = :NEW.id_item;
+
+      QTY_SISA := (OLD_QTY - :New.qty_item);
     END IF;
 
-    insert_log(:New.id_item, :New.ID_STOCK_ISSUE, :New.qty_item, (:New.qty_item * :New.HARGA_ITEM));
+    insert_log(:New.id_item, :New.ID_STOCK_ISSUE, OLD_QTY, :New.qty_item, QTY_SISA, (:New.qty_item * :New.HARGA_ITEM));
 END;
 /
 
 CREATE OR REPLACE TRIGGER update_stok_after_pi
     AFTER INSERT ON D_PURCHASE_INVOICE
     FOR EACH ROW 
+DECLARE
+    OLD_QTY INTEGER;
 BEGIN
+    SELECT STOK_ITEM INTO OLD_QTY
+    FROM ITEM
+    WHERE ID_ITEM = :New.ID_ITEM;
+
     UPDATE item
     set stok_item = (stok_item + :NEW.qty_item)
     where id_item = :NEW.id_item;
 
-    insert_log(:New.id_item, :New.ID_PURCHASE_INVOICE, :New.qty_item, (:New.qty_item * :New.HARGA_SATUAN));
+    insert_log(:New.id_item, :New.ID_PURCHASE_INVOICE, OLD_QTY, :New.qty_item, (OLD_QTY + :New.qty_item), (:New.qty_item * :New.HARGA_SATUAN));
 END;
 /
 
 CREATE OR REPLACE TRIGGER update_stok_after_invoice
     AFTER INSERT ON D_INVOICE
     FOR EACH ROW 
+DECLARE
+    OLD_QTY INTEGER;
 BEGIN
+    SELECT STOK_ITEM INTO OLD_QTY
+    FROM ITEM
+    WHERE ID_ITEM = :New.ID_ITEM;
+
     UPDATE item
     set stok_item = (stok_item - :NEW.qty_item)
     where id_item = :NEW.id_item;
 
-    insert_log(:New.id_item, :New.ID_INVOICE, :New.qty_item, (:New.qty_item * :New.HARGA_SATUAN));
+    insert_log(:New.id_item, :New.ID_INVOICE, OLD_QTY, :New.qty_item, (OLD_QTY - :New.qty_item), (:New.qty_item * :New.HARGA_SATUAN));
 END;
 /
 

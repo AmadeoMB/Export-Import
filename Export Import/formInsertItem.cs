@@ -61,6 +61,9 @@ namespace Export_Import
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
+            txtHargaJual.Text = txtHargaJual.Text.Replace(",", "");
+            txtHargaBeli.Text = txtHargaBeli.Text.Replace(",", "");
+
             if (!cekAngka(txtBerat)) {
                 return;
             }

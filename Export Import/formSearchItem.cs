@@ -113,7 +113,20 @@ namespace Export_Import
 
         private void btnGet_Click(object sender, EventArgs e)
         {
-            if (idx != -1)
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
+            if (numQty.Value > 999999)
+            {
+                MessageBox.Show("Qty tidak boleh lebih dari 999.999");
+                numQty.Value = 0;
+                return;
+            }
+
+            if (idx > -1)
             {
                 if (numQty.Value > 0)
                 {
@@ -122,9 +135,6 @@ namespace Export_Import
                     {
                         discount = numDiscount.Value;
                     }
-                    MessageBox.Show(dataGridView.Rows[idx].Cells[0].Value.ToString() + " " +
-                        discount + " " +
-                        numQty.Value);
                     Object[] temp = {
                         dataGridView.Rows[idx].Cells[0].Value.ToString(),
                         discount,

@@ -26,6 +26,14 @@ namespace Export_Import
         private OracleDataAdapter daItem;
         private DataSet ds = new DataSet();
         private Boolean saved = false;
+        private List<Int64> qtyList = new List<Int64>(999);
+        private List<Int64> hJualList = new List<Int64>(999);
+        private List<Int64> beratList = new List<Int64>(999);
+        private List<Int64> subtotalList = new List<Int64>(999);
+        Int64 total = 0;
+        Int64 totalPPN = 0;
+        Int64 netTotal = 0;
+        Int64 totalConvert = 0;
 
         public formInvoice()
         {
@@ -101,7 +109,7 @@ namespace Export_Import
         void generatecreateNomerInvoice()
         {
             String nomerInvoice = "IN";
-            nomerInvoice += dateInvoice.Value.ToString("/dd/MM/yyyy/");
+            nomerInvoice += dateInvoice.Value.ToString("/yyyy/MM/dd/");
             nomerInvoice += getNomerInvoice(nomerInvoice);
 
             txtIdInvoice.Text = nomerInvoice;
@@ -236,16 +244,20 @@ namespace Export_Import
                 cbCreditTerm.Text = new OracleCommand(cmd, conn).ExecuteScalar().ToString() + " Days";
 
                 cmd = "select total from h_delivery_order where id_delivery_order = '" + id + "'";
-                txtTotal.Text = "Rp " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                total = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+                txtTotal.Text = "Rp " + total.ToString("#,##0.00");
 
                 cmd = "select total_ppn from h_delivery_order where id_delivery_order = '" + id + "'";
-                txtTotalPPN.Text = "Rp " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                totalPPN = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+                txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
 
                 cmd = "select total_harga from h_delivery_order where id_delivery_order = '" + id + "'";
-                txtNetTotal.Text = "Rp " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                netTotal = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+                txtNetTotal.Text = "Rp " + netTotal.ToString("#,##0.00");
 
                 cmd = "select total_harga_convert from h_delivery_order where id_delivery_order = '" + id + "'";
-                txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                totalConvert = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+                txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + totalConvert.ToString("#,##0.00");
 
                 isiDataItem(id);
             }
@@ -261,13 +273,17 @@ namespace Export_Import
                 newRow[0] = reader.GetValue(0).ToString();
                 newRow[1] = reader.GetValue(1).ToString();
                 newRow[2] = reader.GetValue(2).ToString();
-                newRow[3] = reader.GetValue(3).ToString();
+                newRow[3] = Convert.ToInt64(reader.GetValue(3)).ToString("#,###");
                 newRow[4] = reader.GetValue(4).ToString();
-                newRow[5] = reader.GetValue(5).ToString();
-                newRow[6] = reader.GetValue(6).ToString();
+                newRow[5] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00");
+                newRow[6] = Convert.ToInt64(reader.GetValue(6)).ToString("#,###");
                 newRow[7] = reader.GetValue(7).ToString();
                 newRow[8] = reader.GetValue(8).ToString();
-                newRow[9] = reader.GetValue(9).ToString();
+                newRow[9] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
+                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
+                hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
+                beratList.Add(Convert.ToInt64(reader.GetValue(6)));
+                subtotalList.Add(Convert.ToInt64(reader.GetValue(9)));
                 ds.Tables["item"].Rows.Add(newRow);
             }
             dataGridView.DataSource = ds.Tables["item"];
@@ -275,7 +291,7 @@ namespace Export_Import
 
         void save()
         {
-            if (dataGridView.Rows.Count <= 0)
+            if (dataGridView.Rows.Count <= 1)
             {
                 MessageBox.Show("Mohon tambahkan setidaknya 1 item");
                 return;
@@ -296,10 +312,6 @@ namespace Export_Import
             String negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(txtRate.Text.Substring(4));
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
-            int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
-            int netTotal = Convert.ToInt32(txtNetTotal.Text.Substring(3));
-            int convert = Convert.ToInt32(txtTotalConvert.Text.Substring(4));
 
             OracleCommand cmd = new OracleCommand("insert into h_invoice values (:id, :gudang, :customer, :staff, :nama, :alamat, :tgl, :credit, :ship,:negara ,:currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
             cmd.Parameters.Add(":id", id_invoice);
@@ -317,7 +329,7 @@ namespace Export_Import
             cmd.Parameters.Add(":total", total);
             cmd.Parameters.Add(":totalPPN", totalPPN);
             cmd.Parameters.Add(":netTotal", netTotal);
-            cmd.Parameters.Add(":convert", convert);
+            cmd.Parameters.Add(":convert", totalConvert);
             cmd.ExecuteNonQuery();
 
             for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
@@ -325,13 +337,13 @@ namespace Export_Import
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String id_SO = ds.Tables["item"].Rows[i][1].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][2].ToString();
-                String qty_item = ds.Tables["item"].Rows[i][3].ToString();
                 String satuan_item = ds.Tables["item"].Rows[i][4].ToString();
-                String hJual_item = ds.Tables["item"].Rows[i][5].ToString();
-                String berat_item = ds.Tables["item"].Rows[i][6].ToString();
                 String jenis_ppn = ds.Tables["item"].Rows[i][7].ToString();
                 String discount = ds.Tables["item"].Rows[i][8].ToString();
-                String subtotal = ds.Tables["item"].Rows[i][9].ToString();
+                String qty_item = qtyList[i].ToString();
+                String hJual_item = hJualList[i].ToString();
+                String berat_item = beratList[i].ToString();
+                String subtotal = subtotalList[i].ToString();
 
                 OracleCommand cmdDetail = new OracleCommand("insert into d_invoice values (:id, :so, :do, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
                 cmdDetail.Parameters.Add(":id", id_item);
@@ -361,7 +373,7 @@ namespace Export_Import
 
         void overwrite()
         {
-            if (dataGridView.Rows.Count <= 0)
+            if (dataGridView.Rows.Count <= 1)
             {
                 MessageBox.Show("Mohon tambahkan setidaknya 1 item");
                 return;
@@ -382,10 +394,6 @@ namespace Export_Import
             String negara = cbNegara.SelectedValue + "";
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(txtRate.Text.Substring(4));
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
-            int totalPPN = Convert.ToInt32(txtTotalPPN.Text.Substring(3));
-            int netTotal = Convert.ToInt32(txtNetTotal.Text.Substring(3));
-            int convert = Convert.ToInt32(txtTotalConvert.Text.Substring(4));
 
             OracleCommand cmd = new OracleCommand("update h_invoice " +
                 "set " +
@@ -398,7 +406,7 @@ namespace Export_Import
             cmd.Parameters.Add(":total", total);
             cmd.Parameters.Add(":totalPPN", totalPPN);
             cmd.Parameters.Add(":netTotal", netTotal);
-            cmd.Parameters.Add(":convert", convert);
+            cmd.Parameters.Add(":convert", totalConvert);
 
             cmd.ExecuteNonQuery();
 
@@ -411,13 +419,13 @@ namespace Export_Import
                 String id_item = ds.Tables["item"].Rows[i][0].ToString();
                 String id_SO = ds.Tables["item"].Rows[i][1].ToString();
                 String nama_item = ds.Tables["item"].Rows[i][2].ToString();
-                String qty_item = ds.Tables["item"].Rows[i][3].ToString();
                 String satuan_item = ds.Tables["item"].Rows[i][4].ToString();
-                String hJual_item = ds.Tables["item"].Rows[i][5].ToString();
-                String berat_item = ds.Tables["item"].Rows[i][6].ToString();
                 String jenis_ppn = ds.Tables["item"].Rows[i][7].ToString();
                 String discount = ds.Tables["item"].Rows[i][8].ToString();
-                String subtotal = ds.Tables["item"].Rows[i][9].ToString();
+                String qty_item = qtyList[i].ToString();
+                String hJual_item = hJualList[i].ToString();
+                String berat_item = beratList[i].ToString();
+                String subtotal = subtotalList[i].ToString();
 
                 new OracleCommand("update h_sales_order set id_invoice = '" + id_invoice + "' where id_sales_order = '" + id_SO + "'", conn).ExecuteNonQuery();
                 OracleCommand cmdDetail = new OracleCommand("insert into d_invoice values (:id, :so, :do, :nama, :qty, :jenis, :harga, :berat, :ppn, :discount, :subtotal)", conn);
@@ -443,6 +451,7 @@ namespace Export_Import
         {
             this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns["harga_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dateInvoice.Value = DateTime.Today;
 
             try
             {
@@ -479,6 +488,7 @@ namespace Export_Import
                 {
                     isiDataItem(reader.GetValue(0).ToString());
                 }
+                btnGetSO.Enabled = false;
             }
         }
 

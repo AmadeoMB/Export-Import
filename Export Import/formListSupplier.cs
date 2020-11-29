@@ -24,6 +24,8 @@ namespace Export_Import
         public formListSupplier()
         {
             InitializeComponent();
+            this.conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            this.conn.Open();
         }
 
         public formListSupplier(formMasterPembelian form)
@@ -52,7 +54,9 @@ namespace Export_Import
             string cmd = "select " +
                 "id_supplier, nama_supplier, alamat_supplier, " +
                 "provinsi_supplier, '0'||no_telp_supplier as no_telp_supplier, " +
-                "email_supplier from supplier where lower(nama_supplier) like '%" + optional[0].ToString().ToLower() + "%'";
+                "email_supplier from supplier where " +
+                "lower(nama_supplier) like '%" + optional[0].ToString().ToLower() + "%' AND " +
+                "lower(id_supplier) like '%" + optional[0].ToString().ToLower() + "%'";
             if (Convert.ToInt32(optional[1]) < ds.Tables["provinsi"].Rows.Count - 1 && Convert.ToInt32(optional[1]) > -1)
             {
                 cmd += " AND provinsi_supplier = '" + cbProvinsi.SelectedValue + "'";
@@ -133,6 +137,12 @@ namespace Export_Import
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             String[] obj =  
                 {
                     dataGridView.Rows[idx].Cells[0].Value.ToString(),
@@ -169,12 +179,18 @@ namespace Export_Import
 
         private void btnDelete_Click_1(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 try
                 {
 
-                    String cmd = "delete from Supplier where id_supplier = '" + dataGridView.Rows[idx].Cells[0].ToString() + "'";
+                    String cmd = "delete from Supplier where id_supplier = '" + dataGridView.Rows[idx].Cells[0].Value.ToString() + "'";
                     new OracleCommand(cmd, conn).ExecuteNonQuery();
                     ds.Tables["supplier"].Clear();
                     refreshTabel();

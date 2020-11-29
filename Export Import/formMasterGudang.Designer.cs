@@ -116,6 +116,7 @@
             this.btnLaporanMuatan.TabIndex = 9;
             this.btnLaporanMuatan.Text = "Laporan Muatan";
             this.btnLaporanMuatan.UseVisualStyleBackColor = false;
+            this.btnLaporanMuatan.Click += new System.EventHandler(this.btnLaporanMuatan_Click);
             // 
             // lblSignOut
             // 
