@@ -143,7 +143,7 @@
             this.chartPembelian.Name = "chartPembelian";
             this.chartPembelian.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
             series2.Legend = "Legend1";
             series2.Name = "Total";
             this.chartPembelian.Series.Add(series2);

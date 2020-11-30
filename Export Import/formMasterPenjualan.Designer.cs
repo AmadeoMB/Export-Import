@@ -128,6 +128,7 @@
             this.btnLaporanPenjualan.TabIndex = 8;
             this.btnLaporanPenjualan.Text = "Laporan Penjualan";
             this.btnLaporanPenjualan.UseVisualStyleBackColor = false;
+            this.btnLaporanPenjualan.Click += new System.EventHandler(this.btnLaporanPenjualan_Click);
             // 
             // lblSignOut
             // 
