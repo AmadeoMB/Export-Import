@@ -30,6 +30,7 @@ namespace Export_Import
         private List<Int64> hJualList = new List<Int64>(999);
         private List<Int64> beratList = new List<Int64>(999);
         private List<Int64> subtotalList = new List<Int64>(999);
+        private DataTable dtSO = new DataTable();
         Int64 total = 0;
         Int64 totalPPN = 0;
         Int64 netTotal = 0;
@@ -132,11 +133,17 @@ namespace Export_Import
 
         void setColomnDS()
         {
-            String cmd = "select * from d_sales_order";
-            daItem = new OracleDataAdapter(cmd, conn);
-            daItem.Fill(ds, "item");
-
-            ds.Tables["item"].Clear();
+            dtSO.Clear();
+            dtSO.Columns.Add("id_item");
+            dtSO.Columns.Add("id_sales_order");
+            dtSO.Columns.Add("nama_item");
+            dtSO.Columns.Add("qty_item");
+            dtSO.Columns.Add("jenis_satuan");
+            dtSO.Columns.Add("harga_satuan");
+            dtSO.Columns.Add("berat_total");
+            dtSO.Columns.Add("jenis_ppn");
+            dtSO.Columns.Add("discount");
+            dtSO.Columns.Add("subtotal");
         }
 
         void ambilDataDO(String id)
@@ -198,7 +205,6 @@ namespace Export_Import
                 ds.Tables["ekspedisi"].Clear();
             }
 
-            MessageBox.Show(cmd);
             daEkspedisi = new OracleDataAdapter(cmd, conn);
             daEkspedisi.Fill(ds, "ekspedisi");
             cbShipVia.DataSource = ds.Tables["ekspedisi"];
@@ -213,7 +219,6 @@ namespace Export_Import
                 ds.Tables["negara"].Clear();
             }
 
-            MessageBox.Show(cmd);
             daNegara = new OracleDataAdapter(cmd, conn);
             daNegara.Fill(ds, "negara");
             cbNegara.DataSource = ds.Tables["negara"];
@@ -269,24 +274,24 @@ namespace Export_Import
             OracleDataReader reader = new OracleCommand(cmd, conn).ExecuteReader();
             while (reader.Read())
             {
-                DataRow newRow = ds.Tables["item"].NewRow();
-                newRow[0] = reader.GetValue(0).ToString();
-                newRow[1] = reader.GetValue(1).ToString();
-                newRow[2] = reader.GetValue(2).ToString();
-                newRow[3] = Convert.ToInt64(reader.GetValue(3)).ToString("#,###");
-                newRow[4] = reader.GetValue(4).ToString();
-                newRow[5] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00");
-                newRow[6] = Convert.ToInt64(reader.GetValue(6)).ToString("#,###");
-                newRow[7] = reader.GetValue(7).ToString();
-                newRow[8] = reader.GetValue(8).ToString();
-                newRow[9] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
+                dtSO.Rows.Add(new Object[] {
+                    reader.GetValue(0).ToString(),
+                    reader.GetValue(1).ToString(),
+                    reader.GetValue(2).ToString(),
+                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
+                    reader.GetValue(4).ToString(),
+                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
+                    Convert.ToInt64(reader.GetValue(6)).ToString("#,###"),
+                    reader.GetValue(7).ToString(),
+                    reader.GetValue(8).ToString(),
+                    Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00")
+                });
                 qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
                 hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
                 beratList.Add(Convert.ToInt64(reader.GetValue(6)));
                 subtotalList.Add(Convert.ToInt64(reader.GetValue(9)));
-                ds.Tables["item"].Rows.Add(newRow);
             }
-            dataGridView.DataSource = ds.Tables["item"];
+            dataGridView.DataSource = dtSO;
         }
 
         void save()
@@ -332,14 +337,14 @@ namespace Export_Import
             cmd.Parameters.Add(":convert", totalConvert);
             cmd.ExecuteNonQuery();
 
-            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
             {
-                String id_item = ds.Tables["item"].Rows[i][0].ToString();
-                String id_SO = ds.Tables["item"].Rows[i][1].ToString();
-                String nama_item = ds.Tables["item"].Rows[i][2].ToString();
-                String satuan_item = ds.Tables["item"].Rows[i][4].ToString();
-                String jenis_ppn = ds.Tables["item"].Rows[i][7].ToString();
-                String discount = ds.Tables["item"].Rows[i][8].ToString();
+                String id_item = dataGridView.Rows[i].Cells[0].Value.ToString();
+                String id_SO = dataGridView.Rows[i].Cells[1].Value.ToString();
+                String nama_item = dataGridView.Rows[i].Cells[2].Value.ToString();
+                String satuan_item = dataGridView.Rows[i].Cells[4].Value.ToString();
+                String jenis_ppn = dataGridView.Rows[i].Cells[7].Value.ToString();
+                String discount = dataGridView.Rows[i].Cells[8].Value.ToString();
                 String qty_item = qtyList[i].ToString();
                 String hJual_item = hJualList[i].ToString();
                 String berat_item = beratList[i].ToString();
@@ -414,14 +419,14 @@ namespace Export_Import
             cmd = new OracleCommand("delete from d_invoice where id_invoice = '" + id_invoice + "'", conn);
             cmd.ExecuteNonQuery();
 
-            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
             {
-                String id_item = ds.Tables["item"].Rows[i][0].ToString();
-                String id_SO = ds.Tables["item"].Rows[i][1].ToString();
-                String nama_item = ds.Tables["item"].Rows[i][2].ToString();
-                String satuan_item = ds.Tables["item"].Rows[i][4].ToString();
-                String jenis_ppn = ds.Tables["item"].Rows[i][7].ToString();
-                String discount = ds.Tables["item"].Rows[i][8].ToString();
+                String id_item = dataGridView.Rows[i].Cells[0].Value.ToString();
+                String id_SO = dataGridView.Rows[i].Cells[1].Value.ToString();
+                String nama_item = dataGridView.Rows[i].Cells[2].Value.ToString();
+                String satuan_item = dataGridView.Rows[i].Cells[4].Value.ToString();
+                String jenis_ppn = dataGridView.Rows[i].Cells[7].Value.ToString();
+                String discount = dataGridView.Rows[i].Cells[8].Value.ToString();
                 String qty_item = qtyList[i].ToString();
                 String hJual_item = hJualList[i].ToString();
                 String berat_item = beratList[i].ToString();

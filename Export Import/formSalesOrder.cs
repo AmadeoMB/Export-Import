@@ -144,7 +144,7 @@ namespace Export_Import
         {
             this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns["harga_satuan"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            this.dateSO.Value = DateTime.Parse("2020-01-01");
+            this.dateSO.Value = DateTime.Today;
 
             try
             {

@@ -97,7 +97,7 @@ namespace Export_Import
                 "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category " +
                 "where lower(i.nama_item) like '%" + keyword.ToLower() + "%' " +
-                "and lower(i.id_item) like '%"+ keyword.ToLower() +"%'";
+                "or lower(i.id_item) like '%"+ keyword.ToLower() +"%'";
             if (index != ds.Tables["category"].Rows.Count - 1)
             {
                 cmd += " AND i.id_category = '" + cbCategory.SelectedValue + "'";
@@ -128,7 +128,7 @@ namespace Export_Import
                 "TO_CHAR(stok_item,'9G999G999') as Qty " +
                 "from item i join category c on i.id_category = c.id_category " +
                 "where lower(i.nama_item) like '%" + optional[0].ToString().ToLower() + "%' " +
-                "and lower(i.id_item) like '%" + optional[0].ToString().ToLower() + "%'";
+                "or lower(i.id_item) like '%" + optional[0].ToString().ToLower() + "%'";
             if (Convert.ToInt32(optional[1]) < ds.Tables["category"].Rows.Count - 1 && Convert.ToInt32(optional[1]) > -1)
             {
                 cmd += " AND i.id_category = '" + cbCategory.SelectedValue + "'";

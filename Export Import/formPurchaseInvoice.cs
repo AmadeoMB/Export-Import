@@ -391,6 +391,12 @@ namespace Export_Import
 
         private void btnTD_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.Rows.Count <= 1 || idx == dataGridView1.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             if (idx < 0)
             {
                 MessageBox.Show("Mohon pilih isi tabel");

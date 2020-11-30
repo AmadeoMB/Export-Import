@@ -92,7 +92,6 @@ namespace Export_Import
                 cmd2.Parameters.Add(":email", txtEmail.Text);
                 cmd2.ExecuteNonQuery();//ini buat insert update delete
 
-                conn.Close();
                 this.Close();
             }
             catch (Exception ex)

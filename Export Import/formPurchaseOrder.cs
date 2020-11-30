@@ -150,11 +150,12 @@ namespace Export_Import
             PONO.Text = nomerPO;
         }
 
-        public void InsertItem(Object[] data) {
+        public void InsertItem(Object[] data)
+        {
+            object id_item = data[0];
             Int64 diskon = Convert.ToInt64(data[1]);
             Int64 qty = Convert.ToInt64(data[2]);
             qtyList.Add(qty);
-            object id_item = data[0];
 
             String cmd = "select harga_beli_item from item where id_item ='" + id_item + "'";
             Int64 hargaBeli = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
@@ -205,16 +206,20 @@ namespace Export_Import
                 return;
             }
 
+
             if (idx > -1)
             {
                 Object[] temp = {
                     ds.Tables["item"].Rows[idx][0],
-                    ds.Tables["item"].Rows[idx][7],
-                    ds.Tables["item"].Rows[idx][2],
+                    ds.Tables["item"].Rows[idx][6],
+                    qtyList[idx],
                     "delete",
                 };
                 done.Push(temp);
 
+                qtyList.RemoveAt(idx);
+                subtotalList.RemoveAt(idx);
+                hBeliList.RemoveAt(idx);
                 ds.Tables["item"].Rows.RemoveAt(idx);
 
                 refreshnettotal();
@@ -505,7 +510,7 @@ namespace Export_Import
                 Int64 discroun = Int64.Parse(diskoun);
                 string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
                 Int64 stotal = subtotalList[i];
-                cmd3 = new OracleCommand("insert Int64o D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
+                cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
                 cmd3.Parameters.Add(":idpo", PONO.Text);
                 cmd3.Parameters.Add(":nama", nama);

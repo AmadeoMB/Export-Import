@@ -64,7 +64,7 @@ namespace Export_Import
                 "id_customer, nama_customer, alamat_customer, " +
                 "'0'||no_telp_customer as no_telp_customer, " +
                 "email_customer from customer where " +
-                "lower(nama_customer) like '%" + optional[0].ToString().ToLower() + "%' AND " +
+                "lower(nama_customer) like '%" + optional[0].ToString().ToLower() + "%' OR " +
                 "lower(id_customer) like '%"+ optional[0].ToString().ToLower() +"%'";
 
             daCustomer = new OracleDataAdapter(cmd, conn);
@@ -125,6 +125,12 @@ namespace Export_Import
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             String[] obj =
                 {
                     dataGridView.Rows[idx].Cells[0].Value.ToString(),
@@ -159,6 +165,12 @@ namespace Export_Import
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
             if (idx > -1)
             {
                 try

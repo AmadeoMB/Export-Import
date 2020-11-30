@@ -41,8 +41,6 @@
             this.groupFilter = new System.Windows.Forms.GroupBox();
             this.numJumlah = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateFilter = new System.Windows.Forms.DateTimePicker();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
@@ -164,8 +162,6 @@
             // 
             this.groupFilter.Controls.Add(this.numJumlah);
             this.groupFilter.Controls.Add(this.label4);
-            this.groupFilter.Controls.Add(this.label3);
-            this.groupFilter.Controls.Add(this.dateFilter);
             this.groupFilter.Controls.Add(this.txtKeyword);
             this.groupFilter.Controls.Add(this.label2);
             this.groupFilter.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,25 +189,6 @@
             this.label4.Size = new System.Drawing.Size(112, 19);
             this.label4.TabIndex = 4;
             this.label4.Text = "Jumlah Barang :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(65, 63);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Tanggal :";
-            // 
-            // dateFilter
-            // 
-            this.dateFilter.CalendarFont = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateFilter.Location = new System.Drawing.Point(139, 64);
-            this.dateFilter.Name = "dateFilter";
-            this.dateFilter.Size = new System.Drawing.Size(200, 23);
-            this.dateFilter.TabIndex = 2;
-            this.dateFilter.ValueChanged += new System.EventHandler(this.dateFilter_ValueChanged);
             // 
             // txtKeyword
             // 
@@ -262,8 +239,6 @@
         private System.Windows.Forms.GroupBox groupFilter;
         public System.Windows.Forms.TextBox txtKeyword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateFilter;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numJumlah;
         private System.Windows.Forms.DataGridView dataGridView;
