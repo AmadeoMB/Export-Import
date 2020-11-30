@@ -161,12 +161,5 @@ namespace Export_Import
             this.Close();
             gudang.Show();
         }
-
-        private void dateFilter_VisibleChanged(object sender, EventArgs e)
-        {
-            filter[1] = dateFilter.Value.ToString("yyyy-MM-dd");
-
-            refreshTable(filter);
-        }
     }
 }
