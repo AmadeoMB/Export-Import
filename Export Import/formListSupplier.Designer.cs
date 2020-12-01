@@ -233,6 +233,7 @@
             // 
             // cbProvinsi
             // 
+            this.cbProvinsi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProvinsi.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbProvinsi.FormattingEnabled = true;
             this.cbProvinsi.Location = new System.Drawing.Point(93, 65);

@@ -421,6 +421,9 @@
     <EmbeddedResource Include="formLaporanPembelian.resx">
       <DependentUpon>formLaporanPembelian.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="formLaporanPenjualan.resx">
+      <DependentUpon>formLaporanPenjualan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="formListCustomer.resx">
       <DependentUpon>formListCustomer.cs</DependentUpon>
     </EmbeddedResource>

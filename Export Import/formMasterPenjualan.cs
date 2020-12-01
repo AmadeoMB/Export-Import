@@ -67,5 +67,10 @@ namespace Export_Import
             this.Close();
             form.Show();
         }
+
+        private void btnLaporanPenjualan_Click(object sender, EventArgs e)
+        {
+            new formLaporanPenjualan(this).ShowDialog();
+        }
     }
 }

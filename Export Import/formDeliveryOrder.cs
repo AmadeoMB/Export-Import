@@ -387,12 +387,6 @@ namespace Export_Import
 
         void overwrite()
         {
-            if (dataGridView.Rows.Count <= 0)
-            {
-                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
-                return;
-            }
-
             String id_DO = txtIdDO.Text;
 
             OracleCommand cmd = new OracleCommand("update h_delivery_order " +
@@ -449,12 +443,6 @@ namespace Export_Import
 
         void save()
         {
-            if (dataGridView.Rows.Count <= 0)
-            {
-                MessageBox.Show("Mohon tambahkan setidaknya 1 item");
-                return;
-            }
-
             int creditTerm = Convert.ToInt32(cbCreditTerm.Text.Substring(0, 2));
 
             String id_customer = cbIdCust.SelectedValue + "";
@@ -530,6 +518,12 @@ namespace Export_Import
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
+
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -547,6 +541,12 @@ namespace Export_Import
 
         private void btnPreview_Click(object sender, EventArgs e)
         {
+            if (dataGridView.Rows.Count <= 1)
+            {
+                MessageBox.Show("Barang kosong");
+                return;
+            }
+
             if (saved)
             {
                 if (MessageBox.Show("Anda sudah meng-save apakah anda mau meng-update dokumen terakhir?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)

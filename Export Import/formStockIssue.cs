@@ -291,7 +291,7 @@ namespace Export_Import
             DateTime tanggal = dateStockIssue.Value;
             String jenis = cbJenis.Text;
             String deskripsi = txtDeskripsi.Text;
-            int total = Convert.ToInt32(txtTotal.Text.Substring(3));
+            Int64 total = this.total;
 
             OracleCommand cmd = new OracleCommand("update h_stock_issue set " +
                 "desk_stock_issue = :deskripsi, " +

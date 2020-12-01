@@ -100,9 +100,7 @@ namespace Export_Import
 
         private void dateFilter_ValueChanged(object sender, EventArgs e)
         {
-            filter[1] = dateFilter.Value;
-
-            refreshTable(filter);
+            
         }
 
         private void numJumlah_ValueChanged(object sender, EventArgs e)

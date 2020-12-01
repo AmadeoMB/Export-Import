@@ -22,6 +22,12 @@ namespace Export_Import
             this.conn.Open();
         }
 
+        public formLaporanPembelian(formMasterPembelian form)
+        {
+            InitializeComponent();
+            this.conn = form.conn;
+        }
+
         private String getMonth(int monthIndex)
         {
             if (monthIndex == 1)
@@ -85,7 +91,12 @@ namespace Export_Import
 
             for (int i = 1; i < 13; i++)
             {
-                String cmd = "select sum(total_harga)+0 from h_purchase_invoice where id_purchase_invoice like 'PI/" + tahunSekarang + "/" + i + "/%'";
+                String monthIndex = i + "";
+                if (i < 10)
+                {
+                    monthIndex = "0" + monthIndex;
+                }
+                String cmd = "select sum(total_harga)+0 from h_purchase_invoice where id_purchase_invoice like 'PI/" + tahunSekarang + "/" + monthIndex + "/%'";
                 String hasilQuery = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
                 Int64 total = 0;
                 if (!hasilQuery.Equals(""))
@@ -101,17 +112,17 @@ namespace Export_Import
             String tahunSekarang = DateTime.Today.ToString("yyyy");
             lblKategori.Text += " " + tahunSekarang;
 
-            //String cmd = "select sum(total_harga)+0 from h_purchase_invoice where id_purchase_invoice like 'PI/" + tahunSekarang + "/" + i + "/%'";
-            //String hasilQuery = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
-            //Int64 total = 0;
-            //if (!hasilQuery.Equals(""))
-            //{
-            //    total = Convert.ToInt64(hasilQuery);
-            //}
-
-            for (int i = 1; i < 13; i++)
+            String cmd =    "select nama_category, count(*) "+
+                            "from d_purchase_invoice d "+
+                            "join item i on d.id_item = i.id_item "+
+                            "join category c on i.id_category = c.id_category "+
+                            "where "+
+                            "id_purchase_invoice like 'PI/" + tahunSekarang + "/%' "+
+                            "group by nama_category ";
+            OracleDataReader hasilQuery = new OracleCommand(cmd, conn).ExecuteReader();
+            while (hasilQuery.Read())
             {
-                chartPie.Series["Kategori"].Points.AddXY(getMonth(i), 1);
+                chartPie.Series["Kategori"].Points.AddXY(hasilQuery.GetValue(0), hasilQuery.GetValue(1));
             }
         }
 

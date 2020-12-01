@@ -61,7 +61,7 @@ namespace Export_Import
 
         private void btnLaporanPembelian_Click(object sender, EventArgs e)
         {
-
+            new formLaporanPembelian(this).ShowDialog();
         }
     }
 }
