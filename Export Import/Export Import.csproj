@@ -323,6 +323,12 @@
       <DependentUpon>LaporanMuatan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LaporanPenjualan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LaporanPenjualan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LaporanStock.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -535,6 +541,10 @@
     <EmbeddedResource Include="LaporanMuatan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LaporanMuatan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaporanPenjualan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LaporanPenjualan.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LaporanStock.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
