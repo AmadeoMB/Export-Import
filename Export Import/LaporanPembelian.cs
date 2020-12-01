@@ -16,14 +16,14 @@ namespace Export_Import {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class LaporanPenjualan : ReportClass {
+    public class LaporanPembelian : ReportClass {
         
-        public LaporanPenjualan() {
+        public LaporanPembelian() {
         }
         
         public override string ResourceName {
             get {
-                return "LaporanPenjualan.rpt";
+                return "LaporanPembelian.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Export_Import {
         
         public override string FullResourceName {
             get {
-                return "Export_Import.LaporanPenjualan.rpt";
+                return "Export_Import.LaporanPembelian.rpt";
             }
             set {
                 // Do nothing
@@ -106,9 +106,9 @@ namespace Export_Import {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedLaporanPenjualan : Component, ICachedReport {
+    public class CachedLaporanPembelian : Component, ICachedReport {
         
-        public CachedLaporanPenjualan() {
+        public CachedLaporanPembelian() {
         }
         
         [Browsable(false)]
@@ -145,7 +145,7 @@ namespace Export_Import {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            LaporanPenjualan rpt = new LaporanPenjualan();
+            LaporanPembelian rpt = new LaporanPembelian();
             rpt.Site = this.Site;
             return rpt;
         }

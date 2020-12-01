@@ -22,7 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -323,11 +323,16 @@
       <DependentUpon>LaporanMuatan.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="LaporanPembelian.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LaporanPembelian.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="LaporanPenjualan.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LaporanPenjualan.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="LaporanStock.cs">
       <AutoGen>True</AutoGen>
@@ -541,6 +546,10 @@
     <EmbeddedResource Include="LaporanMuatan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>LaporanMuatan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaporanPembelian.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>LaporanPembelian.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="LaporanPenjualan.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
