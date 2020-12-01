@@ -16,7 +16,7 @@ namespace Export_Import
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new formSalesOrder());
+            Application.Run(new LoginForm());
         }
     }
 }
