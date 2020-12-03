@@ -43,6 +43,7 @@
             this.tabPageLaporan = new System.Windows.Forms.TabPage();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnBack = new System.Windows.Forms.Button();
             this.tabPageGrafik.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPembelian)).BeginInit();
@@ -59,7 +60,7 @@
             this.tabPageGrafik.Location = new System.Drawing.Point(4, 35);
             this.tabPageGrafik.Name = "tabPageGrafik";
             this.tabPageGrafik.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGrafik.Size = new System.Drawing.Size(1342, 623);
+            this.tabPageGrafik.Size = new System.Drawing.Size(1342, 567);
             this.tabPageGrafik.TabIndex = 0;
             this.tabPageGrafik.Text = "Grafik";
             this.tabPageGrafik.UseVisualStyleBackColor = true;
@@ -123,12 +124,12 @@
             // 
             this.tabControl.Controls.Add(this.tabPageGrafik);
             this.tabControl.Controls.Add(this.tabPageLaporan);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(0, 85);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1350, 662);
+            this.tabControl.Size = new System.Drawing.Size(1350, 606);
             this.tabControl.TabIndex = 4;
             // 
             // tabPageLaporan
@@ -161,15 +162,29 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Laporan Penjualan";
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Red;
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(12, 700);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 35);
+            this.btnBack.TabIndex = 24;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // formLaporanPenjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1350, 747);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formLaporanPenjualan";
-            this.Text = "formLaporanPenjualan";
+            this.Text = "Laporan Penjualan";
             this.Load += new System.EventHandler(this.formLaporanPenjualan_Load);
             this.tabPageGrafik.ResumeLayout(false);
             this.tabPageGrafik.PerformLayout();
@@ -193,5 +208,6 @@
         private System.Windows.Forms.TabPage tabPageLaporan;
         private System.Windows.Forms.Panel pnlAtas;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBack;
     }
 }

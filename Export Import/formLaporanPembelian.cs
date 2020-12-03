@@ -131,5 +131,10 @@ namespace Export_Import
             loadChart();
             loadChartPie();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

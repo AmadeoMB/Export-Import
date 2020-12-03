@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -43,6 +43,7 @@
             this.lblChartPembelian = new System.Windows.Forms.Label();
             this.chartPembelian = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPageLaporan = new System.Windows.Forms.TabPage();
+            this.btnBack = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.tabPageGrafik.SuspendLayout();
@@ -74,12 +75,12 @@
             // 
             this.tabControl.Controls.Add(this.tabPageGrafik);
             this.tabControl.Controls.Add(this.tabPageLaporan);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl.Dock = System.Windows.Forms.DockStyle.Top;
             this.tabControl.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl.Location = new System.Drawing.Point(0, 85);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(1350, 662);
+            this.tabControl.Size = new System.Drawing.Size(1350, 597);
             this.tabControl.TabIndex = 2;
             // 
             // tabPageGrafik
@@ -91,7 +92,7 @@
             this.tabPageGrafik.Location = new System.Drawing.Point(4, 35);
             this.tabPageGrafik.Name = "tabPageGrafik";
             this.tabPageGrafik.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageGrafik.Size = new System.Drawing.Size(1342, 623);
+            this.tabPageGrafik.Size = new System.Drawing.Size(1342, 558);
             this.tabPageGrafik.TabIndex = 0;
             this.tabPageGrafik.Text = "Grafik";
             this.tabPageGrafik.UseVisualStyleBackColor = true;
@@ -108,17 +109,17 @@
             // 
             // chartPie
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chartPie.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chartPie.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.chartPie.Legends.Add(legend5);
             this.chartPie.Location = new System.Drawing.Point(809, 78);
             this.chartPie.Name = "chartPie";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series1.Legend = "Legend1";
-            series1.Name = "Kategori";
-            this.chartPie.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series5.Legend = "Legend1";
+            series5.Name = "Kategori";
+            this.chartPie.Series.Add(series5);
             this.chartPie.Size = new System.Drawing.Size(444, 404);
             this.chartPie.TabIndex = 2;
             this.chartPie.Text = "chart1";
@@ -135,18 +136,18 @@
             // 
             // chartPembelian
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chartPembelian.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartPembelian.Legends.Add(legend2);
+            chartArea6.Name = "ChartArea1";
+            this.chartPembelian.ChartAreas.Add(chartArea6);
+            legend6.Name = "Legend1";
+            this.chartPembelian.Legends.Add(legend6);
             this.chartPembelian.Location = new System.Drawing.Point(18, 78);
             this.chartPembelian.Name = "chartPembelian";
             this.chartPembelian.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Total";
-            this.chartPembelian.Series.Add(series2);
+            series6.ChartArea = "ChartArea1";
+            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series6.Legend = "Legend1";
+            series6.Name = "Total";
+            this.chartPembelian.Series.Add(series6);
             this.chartPembelian.Size = new System.Drawing.Size(685, 404);
             this.chartPembelian.TabIndex = 0;
             this.chartPembelian.Text = "chart1";
@@ -161,11 +162,25 @@
             this.tabPageLaporan.Text = "Laporan";
             this.tabPageLaporan.UseVisualStyleBackColor = true;
             // 
+            // btnBack
+            // 
+            this.btnBack.BackColor = System.Drawing.Color.Red;
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(12, 700);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(100, 35);
+            this.btnBack.TabIndex = 24;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = false;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // formLaporanPembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1350, 747);
+            this.Controls.Add(this.btnBack);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.pnlAtas);
             this.Name = "formLaporanPembelian";
@@ -193,5 +208,6 @@
         private System.Windows.Forms.Label lblChartPembelian;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
         private System.Windows.Forms.Label lblKategori;
+        private System.Windows.Forms.Button btnBack;
     }
 }
