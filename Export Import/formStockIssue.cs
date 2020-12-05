@@ -68,9 +68,9 @@ namespace Export_Import
         void refreshTotal()
         {
             total = 0;
-            for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+            for (int i = 0; i < subtotalList.Count; i++)
             {
-                total += Convert.ToInt64(ds.Tables["item"].Rows[i][5]);
+                total += Convert.ToInt64(subtotalList[i]);
             }
             txtTotal.Text = "Rp " + total.ToString("#,##0.00");
         }
@@ -112,11 +112,11 @@ namespace Export_Import
             }
 
             cmd = "select id_item as id, " +
-                "nama_item as nama, " +
-                qty + " as qty, " +
-                "satuan_item as satuan, " +
-                hargaBeli + " as harga, " +
-                subtotal + " as subtotal " +
+                "nama_item as nama, '" +
+                qty.ToString("#,###") + "' as qty, " +
+                "satuan_item as satuan, '" +
+                hargaBeli.ToString("Rp #,##0.00") + "' as harga, '" +
+                subtotal.ToString("Rp #,##0.00") + "' as subtotal " +
                 "from item " +
                 "where id_item = '" + id_item + "'";
 
@@ -169,7 +169,19 @@ namespace Export_Import
 
             if (idx > -1)
             {
+                Object[] temp = {
+                    ds.Tables["item"].Rows[idx][0],
+                    0,
+                    qtyList[idx],
+                    "delete",
+                };
+                done.Push(temp);
+
                 ds.Tables["item"].Rows.RemoveAt(idx);
+                subtotalList.RemoveAt(idx);
+                hargaList.RemoveAt(idx);
+                qtyList.RemoveAt(idx);
+
                 refreshTotal();
             }
             else
@@ -245,6 +257,9 @@ namespace Export_Import
                         if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
                         {
                             ds.Tables["item"].Rows.RemoveAt(i);
+                            subtotalList.RemoveAt(i);
+                            hargaList.RemoveAt(i);
+                            qtyList.RemoveAt(i);
                             break;
                         }
                     }
@@ -275,6 +290,9 @@ namespace Export_Import
                         if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
                         {
                             ds.Tables["item"].Rows.RemoveAt(i);
+                            subtotalList.RemoveAt(i);
+                            hargaList.RemoveAt(i);
+                            qtyList.RemoveAt(i);
                             break;
                         }
                     }

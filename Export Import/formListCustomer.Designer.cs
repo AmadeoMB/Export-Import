@@ -35,15 +35,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.id_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alamat_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.no_telp_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnInsert = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.pnlBawah = new System.Windows.Forms.Panel();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.id_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.alamat_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.negara = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.no_telp_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlAtas.SuspendLayout();
             this.groupFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -119,6 +120,7 @@
             this.id_customer,
             this.nama_customer,
             this.alamat_customer,
+            this.negara,
             this.no_telp_customer,
             this.email_customer});
             this.dataGridView.Location = new System.Drawing.Point(0, 155);
@@ -128,50 +130,6 @@
             this.dataGridView.TabIndex = 3;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
-            // 
-            // id_customer
-            // 
-            this.id_customer.DataPropertyName = "id_customer";
-            this.id_customer.Frozen = true;
-            this.id_customer.HeaderText = "ID";
-            this.id_customer.Name = "id_customer";
-            this.id_customer.ReadOnly = true;
-            // 
-            // nama_customer
-            // 
-            this.nama_customer.DataPropertyName = "nama_customer";
-            this.nama_customer.Frozen = true;
-            this.nama_customer.HeaderText = "Nama";
-            this.nama_customer.Name = "nama_customer";
-            this.nama_customer.ReadOnly = true;
-            this.nama_customer.Width = 250;
-            // 
-            // alamat_customer
-            // 
-            this.alamat_customer.DataPropertyName = "alamat_customer";
-            this.alamat_customer.Frozen = true;
-            this.alamat_customer.HeaderText = "Lokasi";
-            this.alamat_customer.Name = "alamat_customer";
-            this.alamat_customer.ReadOnly = true;
-            this.alamat_customer.Width = 300;
-            // 
-            // no_telp_customer
-            // 
-            this.no_telp_customer.DataPropertyName = "no_telp_customer";
-            this.no_telp_customer.Frozen = true;
-            this.no_telp_customer.HeaderText = "No HP";
-            this.no_telp_customer.Name = "no_telp_customer";
-            this.no_telp_customer.ReadOnly = true;
-            this.no_telp_customer.Width = 150;
-            // 
-            // email_customer
-            // 
-            this.email_customer.DataPropertyName = "email_customer";
-            this.email_customer.Frozen = true;
-            this.email_customer.HeaderText = "Email";
-            this.email_customer.Name = "email_customer";
-            this.email_customer.ReadOnly = true;
-            this.email_customer.Width = 250;
             // 
             // btnInsert
             // 
@@ -222,6 +180,59 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
+            // id_customer
+            // 
+            this.id_customer.DataPropertyName = "id_customer";
+            this.id_customer.Frozen = true;
+            this.id_customer.HeaderText = "ID";
+            this.id_customer.Name = "id_customer";
+            this.id_customer.ReadOnly = true;
+            // 
+            // nama_customer
+            // 
+            this.nama_customer.DataPropertyName = "nama_customer";
+            this.nama_customer.Frozen = true;
+            this.nama_customer.HeaderText = "Nama";
+            this.nama_customer.Name = "nama_customer";
+            this.nama_customer.ReadOnly = true;
+            this.nama_customer.Width = 250;
+            // 
+            // alamat_customer
+            // 
+            this.alamat_customer.DataPropertyName = "alamat_customer";
+            this.alamat_customer.Frozen = true;
+            this.alamat_customer.HeaderText = "Lokasi";
+            this.alamat_customer.Name = "alamat_customer";
+            this.alamat_customer.ReadOnly = true;
+            this.alamat_customer.Width = 300;
+            // 
+            // negara
+            // 
+            this.negara.DataPropertyName = "negara";
+            this.negara.Frozen = true;
+            this.negara.HeaderText = "Negara";
+            this.negara.Name = "negara";
+            this.negara.ReadOnly = true;
+            this.negara.Width = 150;
+            // 
+            // no_telp_customer
+            // 
+            this.no_telp_customer.DataPropertyName = "no_telp_customer";
+            this.no_telp_customer.Frozen = true;
+            this.no_telp_customer.HeaderText = "No HP";
+            this.no_telp_customer.Name = "no_telp_customer";
+            this.no_telp_customer.ReadOnly = true;
+            this.no_telp_customer.Width = 150;
+            // 
+            // email_customer
+            // 
+            this.email_customer.DataPropertyName = "email_customer";
+            this.email_customer.Frozen = true;
+            this.email_customer.HeaderText = "Email";
+            this.email_customer.Name = "email_customer";
+            this.email_customer.ReadOnly = true;
+            this.email_customer.Width = 250;
+            // 
             // formListCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,14 +263,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alamat_customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn no_telp_customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email_customer;
         private System.Windows.Forms.Button btnInsert;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Panel pnlBawah;
         private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn alamat_customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn negara;
+        private System.Windows.Forms.DataGridViewTextBoxColumn no_telp_customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email_customer;
     }
 }

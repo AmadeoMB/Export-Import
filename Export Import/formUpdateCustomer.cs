@@ -15,6 +15,8 @@ namespace Export_Import
     {
         OracleConnection conn;
         formListCustomer form;
+        OracleDataAdapter daNegara;
+        DataTable dtNegara = new DataTable();
 
         public formUpdateCustomer()
         {
@@ -71,12 +73,19 @@ namespace Export_Import
                     return;
                 }
 
+                if (cbNegara.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Masukkan negara!");
+                    return;
+                }
+
                 String id_customer = form.data[0];
 
                 OracleCommand cmd2;
-                cmd2 = new OracleCommand("update customer set nama_customer = :nama, alamat_customer = :alamat, no_telp_customer = :nomer, email_customer = :email where id_customer = '" + id_customer + "'", conn);
+                cmd2 = new OracleCommand("update customer set nama_customer = :nama, alamat_customer = :alamat, id_negara = :negara, no_telp_customer = :nomer, email_customer = :email where id_customer = '" + id_customer + "'", conn);
                 cmd2.Parameters.Add(":nama", txtNama.Text);
                 cmd2.Parameters.Add(":alamat", txtAlamat.Text);
+                cmd2.Parameters.Add(":negara", cbNegara.SelectedValue);
                 cmd2.Parameters.Add(":nomer", txtNoTelp.Text);
                 cmd2.Parameters.Add(":email", txtEmail.Text);
                 cmd2.ExecuteNonQuery();//ini buat insert update delete
@@ -90,14 +99,33 @@ namespace Export_Import
             }
         }
 
+        private void isiCBNegara()
+        {
+            daNegara = new OracleDataAdapter("select id_negara, nama_negara from negara", conn);
+            daNegara.Fill(dtNegara);
+            cbNegara.DataSource = dtNegara;
+            cbNegara.DisplayMember = "nama_negara";
+            cbNegara.ValueMember = "id_negara";
+        }
+
+        private void cariNegara(String nama)
+        {
+            String id = new OracleCommand("select id_negara from negara where nama_negara = '" + nama + "'", conn).ExecuteScalar().ToString();
+            cbNegara.Text = nama;
+            cbNegara.SelectedValue = id;
+        }
+
         private void formUpdateCustomer_Load(object sender, EventArgs e)
         {
             txtNama.Text = form.data[1];
             txtAlamat.Text = form.data[2];
-            txtNoTelp.Text = form.data[3];
-            txtEmail.Text = form.data[4];
+            String negara = form.data[3];
+            txtNoTelp.Text = form.data[4];
+            txtEmail.Text = form.data[5];
 
             this.conn = form.conn;
+            isiCBNegara();
+            cariNegara(negara);
         }
     }
 }

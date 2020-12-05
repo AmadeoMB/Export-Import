@@ -32,6 +32,14 @@ CREATE TABLE EKSPEDISI
 	NO_TELP NUMBER(20) NOT NULL
 );
 
+CREATE TABLE NEGARA
+(
+	ID_NEGARA VARCHAR2(5) NOT NULL,
+	NAMA_NEGARA VARCHAR2(255) NOT NULL,
+	IBUKOTA_NEGARA VARCHAR2(255) NOT NULL,
+   constraint PK_NEGARA primary key (ID_NEGARA)
+);
+
 create table CURRENCY
 (
    ID_CURRENCY          VARCHAR2(3)          not null,
@@ -59,6 +67,7 @@ create table CUSTOMER
    ID_CUSTOMER          VARCHAR2(5)          not null,
    NAMA_CUSTOMER        VARCHAR2(255)        not null,
    ALAMAT_CUSTOMER      VARCHAR2(255)        not null,
+   ID_NEGARA            VARCHAR2(5)          not null,
    NO_TELP_CUSTOMER     NUMBER(12)           not null,
    EMAIL_CUSTOMER       VARCHAR2(255)        not null,
    constraint PK_CUSTOMER primary key (ID_CUSTOMER)
@@ -300,6 +309,7 @@ create table D_PURCHASE_INVOICE
    SUBTOTAL             INTEGER              not null,
    constraint PK_D_PURCHASE_INVOICE primary key (ID_PURCHASE_INVOICE, ID_ITEM)
 );
+
 CREATE TABLE H_STOCK_ISSUE
 (
 	ID_STOCK_ISSUE VARCHAR2(16) NOT NULL,
@@ -310,6 +320,7 @@ CREATE TABLE H_STOCK_ISSUE
 	TOTAL_STOCK_ISSUE INTEGER NOT NULL,
    constraint PK_H_STOCK_ISSUE primary key (ID_STOCK_ISSUE)
 );
+
 CREATE TABLE D_STOCK_ISSUE
 (
 	ID_ITEM VARCHAR2(5) NOT NULL,
@@ -321,12 +332,7 @@ CREATE TABLE D_STOCK_ISSUE
 	SUBTOTAL INTEGER NOT NULL,
 	constraint PK_D_STOCK_ISSUE primary key (ID_STOCK_ISSUE,ID_ITEM)
 );
-CREATE TABLE NEGARA
-(
-	ID_NEGARA VARCHAR2(5) PRIMARY KEY,
-	NAMA_NEGARA VARCHAR2(255) NOT NULL,
-	IBUKOTA_NEGARA VARCHAR2(255) NOT NULL
-);
+
 CREATE TABLE LOG_STOCK
 (
    ID_LOG      VARCHAR2(17)   NOT NULL,
@@ -437,6 +443,59 @@ BEGIN
 END;
 /
 
+---
+
+CREATE OR REPLACE TRIGGER delete_stok_after_si
+    BEFORE DELETE ON D_STOCK_ISSUE
+    FOR EACH ROW 
+DECLARE
+    jenis_si VARCHAR2(6);
+BEGIN
+    SELECT JENIS INTO jenis_si
+    FROM H_STOCK_ISSUE
+    WHERE ID_STOCK_ISSUE = :Old.ID_STOCK_ISSUE;
+
+    IF ( jenis_si = 'Tambah' ) THEN
+      UPDATE item
+      set stok_item = (stok_item - :Old.qty_item)
+      where id_item = :Old.id_item;
+    ELSE
+      UPDATE item
+      set stok_item = (stok_item + :Old.qty_item)
+      where id_item = :Old.id_item;
+    END IF;
+
+    DELETE from LOG_STOCK where id_dokumen = :Old.ID_STOCK_ISSUE;
+
+END;
+/
+
+CREATE OR REPLACE TRIGGER update_stok_after_pi
+    BEFORE DELETE ON D_PURCHASE_INVOICE
+    FOR EACH ROW 
+BEGIN
+    UPDATE item
+    set stok_item = (stok_item - :Old.qty_item)
+    where id_item = :Old.id_item;
+    
+    DELETE from LOG_STOCK where id_dokumen = :Old.ID_PURCHASE_INVOICE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER update_stok_after_invoice
+    BEFORE DELETE ON D_INVOICE
+    FOR EACH ROW 
+BEGIN
+    UPDATE item
+    set stok_item = (stok_item + :Old.qty_item)
+    where id_item = :Old.id_item;
+    
+    DELETE from LOG_STOCK where id_dokumen = :Old.ID_INVOICE;
+END;
+/
+
+commit;
+
 INSERT INTO EKSPEDISI VALUES('TM001','PT. TRANS MANDIRI LOGISTIC','JL. BAWAL NO 23, SURABAYA','NOOR', 082256378471);
 INSERT INTO EKSPEDISI VALUES('SL001','PT. SINAR LOGISTIC','JL. KEMBANG KUNING NO 123, SURABAYA','CAHYO', 081132856487);
 INSERT INTO EKSPEDISI VALUES('TL002','PT. TRANSPRATAMA LOGISTIC','JL. TANJUNG PERAK NO 201-206, SURABAYA','ARIF', 085968741264);
@@ -446,13 +505,11 @@ INSERT INTO EKSPEDISI VALUES('PI001','PT. PRATAMA INDO LOGISTIC','JL. MANYAR KER
 insert into JABATAN values (1, 'Admin Gudang');
 insert into JABATAN values (2, 'Admin Penjualan');
 insert into JABATAN values (3, 'Admin Pembelian');
-insert into JABATAN values (4, 'Admin Akutansi');
 insert into JABATAN values (5, 'Sales');
 
 insert into STAFF values('AM001', 1, 'Amadeo Maheswara', 'amadeo', 'amadeo', sysdate, 'Perum Jaga Tikus F6/29', 081234567890, sysdate, 'amadeoganteng@gmail.com');
 insert into STAFF values('MA001', 2, 'Maikel Anjayani', 'maikel', 'anjayani', sysdate, 'Apartemen Gaji Buta, Rungkut Kidul', 087654321234, sysdate, 'maikeljelek@gmail.com');
 insert into STAFF values('MT001', 3, 'Melvern Tallall', 'melvern', 'tallall', sysdate, 'Jalan Buaya Darat no 1', 089098765432, sysdate, 'melvernpakboi@gmail.com');
-insert into STAFF values('BH001', 4, 'Brian Horizon', 'brian', 'yahoo', sysdate, 'Jalan Setan gg Buntu no 35', 089012345678, sysdate, 'briansiluman@gmail.com');
 insert into STAFF values('VC001', 5, 'Valkrie Camiela', 'valk', 'cam321', sysdate, 'Perum Tersembunyi Blok A3/69', 087765432112, sysdate, 'valkcam@gmail.com');
 insert into STAFF values('NR001', 5, 'Natural Regina', 'natural', 'regin123', sysdate, 'Perum Green House Blok F6/12', 081716151413, sysdate, 'nregin@gmail.com');
 
@@ -482,11 +539,11 @@ insert into ITEM values('BH001', 'P01', 'GK001', 'Baju Harley Kuning', 5600, 'PI
 insert into ITEM values('LP001', 'E01', 'GB001', 'Logitooth Pro X', 3500, 'PIECE', 1250000, 850000, 1000, 33, 2, 10, 0, 3500*1250000, 'INC');
 insert into ITEM values('SA001', 'E01', 'GB001', 'StilSeris Aktris 1', 5000, 'PIECE', 1100000, 600000, 450, 24, 7, 13, 0, 5000*600000, 'EXC');
 
-insert into CUSTOMER values('MO001', 'Mang Oleh', 'Jalan Bandung Selatan no 15', 081894367328, 'odadingenak@oleh.com');
-insert into CUSTOMER values('MK001', 'Manusia Karet', 'Jalan Anjayani IV no 65', 088265349876, 'lutfionepiece@gmail.com');
-insert into CUSTOMER values('IJ001', 'Invisible John', 'Perum WWA Cluster SmackDown no 48', 082853463821, 'iaminvisible@yahoo.com');
-insert into CUSTOMER values('DI001', 'Dea Impostor', 'Jalan Ventilasi no 13', 087123564889, 'fitnahenak@gmail.com');
-insert into CUSTOMER values('BC001', 'Bambank Crewmate', 'Perum Mirahq Cluster Cafetaria no 2', 089396467124, 'donttrustanybody@gmail.com');
+insert into CUSTOMER values('MO001', 'Mang Oleh', 'Jalan Bandung Selatan no 15', 'INDO1', 081894367328, 'odadingenak@oleh.com');
+insert into CUSTOMER values('MK001', 'Manusia Karet', 'Jalan Anjayani IV no 65', 'INDO1', 088265349876, 'lutfionepiece@gmail.com');
+insert into CUSTOMER values('IJ001', 'Invisible John', 'Perum WWA Cluster SmackDown no 48', 'INDO1', 082853463821, 'iaminvisible@yahoo.com');
+insert into CUSTOMER values('DI001', 'Dea Impostor', 'Jalan Ventilasi no 13', 'INDO1', 087123564889, 'fitnahenak@gmail.com');
+insert into CUSTOMER values('BC001', 'Bambank Crewmate', 'Perum Mirahq Cluster Cafetaria no 2', 'INDO1', 089396467124, 'donttrustanybody@gmail.com');
 
 insert into CURRENCY values('IDR', 'Indonesia Rupiah', 1);
 insert into CURRENCY values('CNY', 'Chinese Yuan', 2190);

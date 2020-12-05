@@ -295,6 +295,9 @@ namespace Export_Import
                         if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
                         {
                             ds.Tables["item"].Rows.RemoveAt(i);
+                            subtotalList.RemoveAt(i);
+                            hBeliList.RemoveAt(i);
+                            qtyList.RemoveAt(i);
                             break;
                         }
                     }
@@ -338,6 +341,9 @@ namespace Export_Import
                         if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
                         {
                             ds.Tables["item"].Rows.RemoveAt(i);
+                            subtotalList.RemoveAt(i);
+                            hBeliList.RemoveAt(i);
+                            qtyList.RemoveAt(i);
                             break;
                         }
                     }

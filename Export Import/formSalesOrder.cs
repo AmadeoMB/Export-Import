@@ -72,17 +72,9 @@ namespace Export_Import
                 txtAlamatCust.Text = search.data[2].ToString();
             }
         }
-        void isiCBNegara()
-        {
-            String cmd = "select * from negara";
-            daNegara = new OracleDataAdapter(cmd, conn);
-            daNegara.Fill(ds, "negara");
-            cbNegara.DataSource = ds.Tables["negara"];
-            cbNegara.DisplayMember = "nama_negara";
-            cbNegara.ValueMember = "id_negara";
-        }
+
         void isiCBCustomer() {
-            String cmd = "select id_customer, nama_customer, alamat_customer from customer";
+            String cmd = "select id_customer, nama_customer, alamat_customer, id_negara from customer";
             daCustomer = new OracleDataAdapter(cmd, conn);
             daCustomer.Fill(ds, "customer");
             cbIdCust.DataSource = ds.Tables["customer"];
@@ -153,7 +145,6 @@ namespace Export_Import
                 isiCBShipVia();
                 isiCBGudang();
                 isiCBSales();
-                isiCBNegara();
                 generatecreateNomerSO();
             }
             catch (Exception ex)
@@ -355,6 +346,10 @@ namespace Export_Import
                         if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
                         {
                             ds.Tables["item"].Rows.RemoveAt(i);
+                            subtotalList.RemoveAt(i);
+                            hJualList.RemoveAt(i);
+                            qtyList.RemoveAt(i);
+                            beratList.RemoveAt(i);
                             break;
                         }
                     }
@@ -385,6 +380,10 @@ namespace Export_Import
                         if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
                         {
                             ds.Tables["item"].Rows.RemoveAt(i);
+                            subtotalList.RemoveAt(i);
+                            hJualList.RemoveAt(i);
+                            qtyList.RemoveAt(i);
+                            beratList.RemoveAt(i);
                             break;
                         }
                     }
@@ -409,7 +408,7 @@ namespace Export_Import
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
             String shipVia = cbShip.SelectedValue + "";
-            String Negara = cbNegara.SelectedValue + "";
+            String Negara = ds.Tables["customer"].Rows[cbIdCust.SelectedIndex][3] + "";
             String currency = cbCurrency.SelectedValue + "";
             Int64 rate = Convert.ToInt64(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
             Int64 total = this.total;
@@ -571,7 +570,7 @@ namespace Export_Import
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
             String shipVia = cbShip.Text;
-            String negara = cbNegara.SelectedValue + "";
+            String negara = ds.Tables["customer"].Rows[cbIdCust.SelectedIndex][3] + "";
             String currency = cbCurrency.SelectedValue + "";
             Int64 rate = Convert.ToInt64(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
             Int64 total = this.total;

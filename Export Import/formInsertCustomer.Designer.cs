@@ -39,6 +39,8 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnInsert = new System.Windows.Forms.Button();
+            this.cbNegara = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,7 +104,7 @@
             // txtNoTelp
             // 
             this.txtNoTelp.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNoTelp.Location = new System.Drawing.Point(189, 270);
+            this.txtNoTelp.Location = new System.Drawing.Point(189, 311);
             this.txtNoTelp.Name = "txtNoTelp";
             this.txtNoTelp.Size = new System.Drawing.Size(275, 27);
             this.txtNoTelp.TabIndex = 21;
@@ -111,7 +113,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(51, 273);
+            this.label5.Location = new System.Drawing.Point(51, 314);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(132, 19);
             this.label5.TabIndex = 22;
@@ -120,7 +122,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(189, 313);
+            this.txtEmail.Location = new System.Drawing.Point(189, 354);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(275, 27);
             this.txtEmail.TabIndex = 23;
@@ -129,7 +131,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(64, 316);
+            this.label6.Location = new System.Drawing.Point(64, 357);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 19);
             this.label6.TabIndex = 24;
@@ -138,7 +140,7 @@
             // btnInsert
             // 
             this.btnInsert.Font = new System.Drawing.Font("Calibri", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsert.Location = new System.Drawing.Point(482, 289);
+            this.btnInsert.Location = new System.Drawing.Point(500, 330);
             this.btnInsert.Name = "btnInsert";
             this.btnInsert.Size = new System.Drawing.Size(125, 51);
             this.btnInsert.TabIndex = 25;
@@ -146,11 +148,33 @@
             this.btnInsert.UseVisualStyleBackColor = true;
             this.btnInsert.Click += new System.EventHandler(this.btnInsert_Click);
             // 
+            // cbNegara
+            // 
+            this.cbNegara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbNegara.FormattingEnabled = true;
+            this.cbNegara.Location = new System.Drawing.Point(189, 269);
+            this.cbNegara.Name = "cbNegara";
+            this.cbNegara.Size = new System.Drawing.Size(275, 27);
+            this.cbNegara.TabIndex = 26;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(119, 272);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 19);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Negara :";
+            // 
             // formInsertCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 358);
+            this.ClientSize = new System.Drawing.Size(637, 394);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.cbNegara);
             this.Controls.Add(this.btnInsert);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtEmail);
@@ -185,5 +209,7 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnInsert;
+        private System.Windows.Forms.ComboBox cbNegara;
+        private System.Windows.Forms.Label label4;
     }
 }

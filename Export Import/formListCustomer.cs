@@ -50,7 +50,9 @@ namespace Export_Import
             string cmd = "select " +
                 "id_customer, nama_customer, alamat_customer, " +
                 "'0'||no_telp_customer as no_telp_customer, " +
-                "email_customer from customer";
+                "nama_negara as negara, " +
+                "email_customer from customer c " +
+                "join negara n on c.id_negara = n.id_negara";
 
             daCustomer = new OracleDataAdapter(cmd, conn);
             daCustomer.Fill(ds, "customer");
@@ -63,7 +65,10 @@ namespace Export_Import
             string cmd = "select " +
                 "id_customer, nama_customer, alamat_customer, " +
                 "'0'||no_telp_customer as no_telp_customer, " +
-                "email_customer from customer where " +
+                "nama_negara as negara, " +
+                "email_customer from customer c " +
+                "join negara n on c.id_negara = n.id_negara " +
+                "where " +
                 "lower(nama_customer) like '%" + optional[0].ToString().ToLower() + "%' OR " +
                 "lower(id_customer) like '%"+ optional[0].ToString().ToLower() +"%'";
 
@@ -136,8 +141,9 @@ namespace Export_Import
                     dataGridView.Rows[idx].Cells[0].Value.ToString(),
                     dataGridView.Rows[idx].Cells[1].Value.ToString(),
                     dataGridView.Rows[idx].Cells[2].Value.ToString(),
-                    dataGridView.Rows[idx].Cells[3].Value.ToString(),
                     dataGridView.Rows[idx].Cells[4].Value.ToString(),
+                    dataGridView.Rows[idx].Cells[3].Value.ToString(),
+                    dataGridView.Rows[idx].Cells[5].Value.ToString(),
                 };
 
             data = obj;

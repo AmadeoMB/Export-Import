@@ -15,16 +15,30 @@ namespace Export_Import
     {
         formListCustomer form;
         OracleConnection conn;
+        OracleDataAdapter daNegara;
+        DataTable dtNegara = new DataTable();
 
         public formInsertCustomer()
         {
             InitializeComponent();
+            conn = new OracleConnection("user id=export;password=import;data source=orcl");
+            conn.Open();
         }
 
         public formInsertCustomer(formListCustomer form)
         {
             InitializeComponent();
             this.form = form;
+            this.conn = form.conn;
+        }
+
+        private void isiCBNegara()
+        {
+            daNegara = new OracleDataAdapter("select id_negara, nama_negara from negara", conn);
+            daNegara.Fill(dtNegara);
+            cbNegara.DataSource = dtNegara;
+            cbNegara.DisplayMember = "nama_negara";
+            cbNegara.ValueMember = "id_negara";
         }
 
         private void btnInsert_Click(object sender, EventArgs e)
@@ -71,6 +85,12 @@ namespace Export_Import
                     return;
                 }
 
+                if (cbNegara.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Masukkan negara!");
+                    return;
+                }
+
                 String id_customer = txtNama.Text[0].ToString();
                 int i = 0;
                 for (; i < txtNama.Text.Length; i++)
@@ -112,10 +132,11 @@ namespace Export_Import
                 }
 
                 OracleCommand cmd2;
-                cmd2 = new OracleCommand("insert into customer values(:id, :nama, :alamat, :nomer, :email)", conn);
+                cmd2 = new OracleCommand("insert into customer values(:id, :nama, :alamat, :negara, :nomer, :email)", conn);
                 cmd2.Parameters.Add(":id", id_customer);
                 cmd2.Parameters.Add(":nama", txtNama.Text);
                 cmd2.Parameters.Add(":alamat", txtAlamat.Text);
+                cmd2.Parameters.Add(":negara", cbNegara.SelectedValue);
                 cmd2.Parameters.Add(":nomer", txtNoTelp.Text);
                 cmd2.Parameters.Add(":email", txtEmail.Text);
                 cmd2.ExecuteNonQuery();//ini buat insert update delete
@@ -131,16 +152,7 @@ namespace Export_Import
 
         private void formInsertCustomer_Load(object sender, EventArgs e)
         {
-            conn = new OracleConnection("user id=export;password=import;data source=orcl");
-            try
-            {
-                conn.Open();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                throw;
-            }
+            isiCBNegara();
         }
     }
 }

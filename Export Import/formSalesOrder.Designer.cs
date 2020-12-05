@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.pnlAtas = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.cbNegara = new System.Windows.Forms.ComboBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -91,8 +89,6 @@
             // pnlAtas
             // 
             this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.pnlAtas.Controls.Add(this.label17);
-            this.pnlAtas.Controls.Add(this.cbNegara);
             this.pnlAtas.Controls.Add(this.btnSearch);
             this.pnlAtas.Controls.Add(this.label9);
             this.pnlAtas.Controls.Add(this.label8);
@@ -117,26 +113,6 @@
             this.pnlAtas.Name = "pnlAtas";
             this.pnlAtas.Size = new System.Drawing.Size(1350, 210);
             this.pnlAtas.TabIndex = 1;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(971, 180);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(56, 19);
-            this.label17.TabIndex = 23;
-            this.label17.Text = "Negara";
-            // 
-            // cbNegara
-            // 
-            this.cbNegara.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbNegara.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbNegara.FormattingEnabled = true;
-            this.cbNegara.Location = new System.Drawing.Point(1038, 177);
-            this.cbNegara.Name = "cbNegara";
-            this.cbNegara.Size = new System.Drawing.Size(300, 27);
-            this.cbNegara.TabIndex = 22;
             // 
             // btnSearch
             // 
@@ -750,8 +726,6 @@
         private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtTotalPPN;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.ComboBox cbNegara;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty_item;
