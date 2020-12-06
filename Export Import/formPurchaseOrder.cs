@@ -155,15 +155,41 @@ namespace Export_Import
             object id_item = data[0];
             Int64 diskon = Convert.ToInt64(data[1]);
             Int64 qty = Convert.ToInt64(data[2]);
-            qtyList.Add(qty);
 
             String cmd = "select harga_beli_item from item where id_item ='" + id_item + "'";
             Int64 hargaBeli = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
-            hBeliList.Add(hargaBeli);
             Int64 subtotal = hargaBeli * qty;
 
             Int64 totalDiscount = subtotal * diskon / 100;
             subtotal -= totalDiscount;
+
+            if (dataGridView1.Rows.Count > 1)
+            {
+                int i = 0;
+                bool ada = false;
+                for (; i < ds.Tables["item"].Rows.Count; i++)
+                {
+                    if (ds.Tables["item"].Rows[i][0].ToString().Equals(id_item))
+                    {
+                        ada = true;
+                        break;
+                    }
+                }
+
+                if (ada)
+                {
+                    qtyList[i] += qty;
+                    subtotalList[i] += subtotal;
+
+                    ds.Tables["item"].Rows[i][2] = qtyList[i].ToString("#,###");
+                    ds.Tables["item"].Rows[i][7] = subtotalList[i].ToString("Rp #,##0.00");
+
+                    return;
+                }
+            }
+
+            qtyList.Add(qty);
+            hBeliList.Add(hargaBeli);
             subtotalList.Add(subtotal);
 
             

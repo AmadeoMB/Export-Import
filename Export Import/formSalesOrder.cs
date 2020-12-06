@@ -165,25 +165,21 @@ namespace Export_Import
         {
             Int64 discount = Convert.ToInt64(data[1]);
             Int64 qty = Convert.ToInt64(data[2]);
-            qtyList.Add(qty);
             object id_item = data[0]; 
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_jual_item from item where id_item ='" + id_item + "'";
             Int64 hargaJual = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
             Int64 subtotal = hargaJual * qty;
-            hJualList.Add(hargaJual);
 
             //Hitung Discount
             Int64 totalDiscount = subtotal * discount / 100;
             subtotal -= totalDiscount;
-            subtotalList.Add(subtotal);
 
             //Hitung berat
             cmd = "select berat_item from item where id_item='" + id_item + "'";
             Int64 berat = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
             Int64 beratTotal = berat * qty;
-            beratList.Add(beratTotal);
 
             if (dataGridView.Rows.Count > 1)
             {
@@ -210,6 +206,11 @@ namespace Export_Import
                     return;
                 }
             }
+
+            qtyList.Add(qty);
+            hJualList.Add(hargaJual);
+            subtotalList.Add(subtotal);
+            beratList.Add(beratTotal);
 
             cmd = "select id_item, nama_item, '" +
                 qty.ToString("#,###") + "' as qty_item, " +

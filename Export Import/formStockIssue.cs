@@ -77,17 +77,14 @@ namespace Export_Import
 
         void insertItem(Object[] data)
         {
+            object id_item = data[0];
             int discount = Convert.ToInt32(data[1]);
             Int64 qty = Convert.ToInt32(data[2]);
-            object id_item = data[0];
-            qtyList.Add(qty);
 
             //Hitung Subtotal Kotor
             String cmd = "select harga_beli_item from item where id_item ='" + id_item + "'";
             Int64 hargaBeli = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
             Int64 subtotal = hargaBeli * qty;
-            hargaList.Add(hargaBeli);
-            subtotalList.Add(subtotal);
 
             if (dataGridView.Rows.Count > 1)
             {
@@ -104,12 +101,20 @@ namespace Export_Import
 
                 if (ada)
                 {
-                    ds.Tables["item"].Rows[i][2] = Convert.ToInt32(ds.Tables["item"].Rows[i][2]) + qty;
-                    ds.Tables["item"].Rows[i][5] = Convert.ToInt32(ds.Tables["item"].Rows[i][5]) + subtotal;
+                    qtyList[i] += qty;
+                    subtotalList[i] += subtotal;
+
+                    ds.Tables["item"].Rows[i][2] = qtyList[i].ToString("#,###");
+                    ds.Tables["item"].Rows[i][5] = subtotalList[i].ToString("Rp #,##0.00");
 
                     return;
                 }
             }
+
+            qtyList.Add(qty);
+            hargaList.Add(hargaBeli);
+            subtotalList.Add(subtotal);
+            
 
             cmd = "select id_item as id, " +
                 "nama_item as nama, '" +

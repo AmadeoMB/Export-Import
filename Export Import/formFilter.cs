@@ -76,8 +76,6 @@ namespace Export_Import
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Yes;
-
             String beli = "";
             String jual = "";
 
@@ -91,7 +89,7 @@ namespace Export_Import
                 beli = "Beli";
             }
 
-            if (cbPembanding.SelectedIndex > 0 && !checkBoxJual.Checked && !checkBoxJual.Checked)
+            if (cbPembanding.SelectedIndex > 0 && !checkBoxJual.Checked && !checkBoxBeli.Checked)
             {
                 MessageBox.Show("Mohon pilih Harga Jual atau Harga Beli");
                 return;
@@ -108,7 +106,7 @@ namespace Export_Import
             cbLokasi.Text,
             cbJenisPPN.Text};
 
-
+            this.DialogResult = DialogResult.Yes;
             this.hasil = temp;
             this.Close();
         }
