@@ -130,11 +130,41 @@ namespace Export_Import
         {
             loadChart();
             loadChartPie();
+
+            dateTimePicker1.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.Today;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (dateTimePicker1.Value > DateTime.Now)
+            {
+                MessageBox.Show("Value tanggal 1 tidak bisa lebih besar dari hari ini");
+                return;
+            }
+
+            if (dateTimePicker2.Value > DateTime.Now)
+            {
+                MessageBox.Show("Value tanggal 2 tidak bisa lebih besar dari hari ini");
+                return;
+            }
+
+            if (dateTimePicker1.Value > dateTimePicker2.Value)
+            {
+                MessageBox.Show("Value tanggal 1 tidak bisa lebih besar dari tanggal 2");
+                return;
+            }
+
+            LaporanPembelian rep = new LaporanPembelian();
+            rep.SetDatabaseLogon("export", "import", "orcl", "");
+            rep.SetParameterValue("Awal", dateTimePicker1.Value.ToString("dd-MMM-yy"));
+            rep.SetParameterValue("Akhir", dateTimePicker2.Value.ToString("dd-MMM-yy"));
+            crystalReportViewer.ReportSource = rep;
         }
     }
 }

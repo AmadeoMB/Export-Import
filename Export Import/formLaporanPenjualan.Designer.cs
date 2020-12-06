@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.tabPageGrafik = new System.Windows.Forms.TabPage();
             this.lblKategori = new System.Windows.Forms.Label();
             this.chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -44,10 +44,17 @@
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBack = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
+            this.btnPrint = new System.Windows.Forms.Button();
             this.tabPageGrafik.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPembelian)).BeginInit();
             this.tabControl.SuspendLayout();
+            this.tabPageLaporan.SuspendLayout();
             this.pnlAtas.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,17 +84,17 @@
             // 
             // chartPie
             // 
-            chartArea7.Name = "ChartArea1";
-            this.chartPie.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            this.chartPie.Legends.Add(legend7);
+            chartArea3.Name = "ChartArea1";
+            this.chartPie.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chartPie.Legends.Add(legend3);
             this.chartPie.Location = new System.Drawing.Point(809, 78);
             this.chartPie.Name = "chartPie";
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series7.Legend = "Legend1";
-            series7.Name = "Kategori";
-            this.chartPie.Series.Add(series7);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
+            series3.Legend = "Legend1";
+            series3.Name = "Kategori";
+            this.chartPie.Series.Add(series3);
             this.chartPie.Size = new System.Drawing.Size(444, 404);
             this.chartPie.TabIndex = 2;
             this.chartPie.Text = "chart1";
@@ -104,18 +111,18 @@
             // 
             // chartPembelian
             // 
-            chartArea8.Name = "ChartArea1";
-            this.chartPembelian.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.chartPembelian.Legends.Add(legend8);
+            chartArea4.Name = "ChartArea1";
+            this.chartPembelian.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chartPembelian.Legends.Add(legend4);
             this.chartPembelian.Location = new System.Drawing.Point(18, 78);
             this.chartPembelian.Name = "chartPembelian";
             this.chartPembelian.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Berry;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series8.Legend = "Legend1";
-            series8.Name = "Total";
-            this.chartPembelian.Series.Add(series8);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Total";
+            this.chartPembelian.Series.Add(series4);
             this.chartPembelian.Size = new System.Drawing.Size(685, 404);
             this.chartPembelian.TabIndex = 0;
             this.chartPembelian.Text = "chart1";
@@ -134,10 +141,16 @@
             // 
             // tabPageLaporan
             // 
+            this.tabPageLaporan.Controls.Add(this.btnPrint);
+            this.tabPageLaporan.Controls.Add(this.crystalReportViewer);
+            this.tabPageLaporan.Controls.Add(this.dateTimePicker2);
+            this.tabPageLaporan.Controls.Add(this.dateTimePicker1);
+            this.tabPageLaporan.Controls.Add(this.label3);
+            this.tabPageLaporan.Controls.Add(this.label2);
             this.tabPageLaporan.Location = new System.Drawing.Point(4, 35);
             this.tabPageLaporan.Name = "tabPageLaporan";
             this.tabPageLaporan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageLaporan.Size = new System.Drawing.Size(1342, 623);
+            this.tabPageLaporan.Size = new System.Drawing.Size(1342, 567);
             this.tabPageLaporan.TabIndex = 1;
             this.tabPageLaporan.Text = "Laporan";
             this.tabPageLaporan.UseVisualStyleBackColor = true;
@@ -174,6 +187,65 @@
             this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 19);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Tanggal 1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(376, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 19);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tanggal 2";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Location = new System.Drawing.Point(93, 18);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 27);
+            this.dateTimePicker1.TabIndex = 2;
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker2.Location = new System.Drawing.Point(454, 18);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(200, 27);
+            this.dateTimePicker2.TabIndex = 3;
+            // 
+            // crystalReportViewer
+            // 
+            this.crystalReportViewer.ActiveViewIndex = -1;
+            this.crystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.crystalReportViewer.Location = new System.Drawing.Point(3, 63);
+            this.crystalReportViewer.Name = "crystalReportViewer";
+            this.crystalReportViewer.Size = new System.Drawing.Size(1336, 501);
+            this.crystalReportViewer.TabIndex = 4;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnPrint.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.Location = new System.Drawing.Point(1234, 16);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(100, 35);
+            this.btnPrint.TabIndex = 25;
+            this.btnPrint.Text = "Print";
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            // 
             // formLaporanPenjualan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +263,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.chartPie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartPembelian)).EndInit();
             this.tabControl.ResumeLayout(false);
+            this.tabPageLaporan.ResumeLayout(false);
+            this.tabPageLaporan.PerformLayout();
             this.pnlAtas.ResumeLayout(false);
             this.pnlAtas.PerformLayout();
             this.ResumeLayout(false);
@@ -209,5 +283,11 @@
         private System.Windows.Forms.Panel pnlAtas;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnPrint;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
     }
 }
