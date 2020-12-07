@@ -239,14 +239,22 @@ namespace Export_Import
             if (!id.Equals(""))
             {
                 cmd += " where id_sales_order = '" + id + "'";
+                MessageBox.Show(cmd);
                 ds.Tables["ekspedisi"].Clear();
+                daEkspedisi = new OracleDataAdapter(cmd, conn);
+                daEkspedisi.Fill(ds, "ekspedisi");
+                cbShipVia.DataSource = ds.Tables["ekspedisi"];
+                cbShipVia.DisplayMember = "Nama";
+                cbShipVia.ValueMember = "ID";
             }
-
-            daEkspedisi = new OracleDataAdapter(cmd, conn);
-            daEkspedisi.Fill(ds, "ekspedisi");
-            cbShipVia.DataSource = ds.Tables["ekspedisi"];
-            cbShipVia.DisplayMember = "Nama";
-            cbShipVia.ValueMember = "ID";
+            else
+            {
+                daEkspedisi = new OracleDataAdapter(cmd, conn);
+                daEkspedisi.Fill(ds, "ekspedisi");
+                cbShipVia.DataSource = ds.Tables["ekspedisi"];
+                cbShipVia.DisplayMember = "Nama";
+                cbShipVia.ValueMember = "ID";
+            }
 
             cmd = "select distinct a.id_negara as ID, b.nama_negara as Nama from h_sales_order a join negara  b on b.id_negara = a.id_negara";
 
@@ -455,7 +463,7 @@ namespace Export_Import
             String currency = cbCurrency.SelectedValue + "";
             int rate = Convert.ToInt32(txtRate.Text.Substring(4));
 
-            OracleCommand cmd = new OracleCommand("insert into h_delivery_order values (:id, :customer, :gudang, :staff, :nama, :alamat, :tgl, :credit, :ship,:negara ,:currency, :rate, :total, :totalPPN, :netTotal, :convert)", conn);
+            OracleCommand cmd = new OracleCommand("insert into h_delivery_order values (:id, :customer, :gudang, :staff, :nama, :alamat, :tgl, :credit, :ship,:negara ,:currency, :rate, :total, :totalPPN, :netTotal, :convert, 0)", conn);
             cmd.Parameters.Add(":id", id_DO);
             cmd.Parameters.Add(":customer", id_customer);
             cmd.Parameters.Add(":gudang", id_gudang);

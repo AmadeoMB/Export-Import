@@ -26,6 +26,7 @@ namespace Export_Import
         private OracleDataAdapter daItem;
         private DataSet ds = new DataSet();
         private Boolean saved = false;
+        private string id_do = "";
         private List<Int64> qtyList = new List<Int64>(999);
         private List<Int64> hJualList = new List<Int64>(999);
         private List<Int64> beratList = new List<Int64>(999);
@@ -337,6 +338,8 @@ namespace Export_Import
             cmd.Parameters.Add(":convert", totalConvert);
             cmd.ExecuteNonQuery();
 
+            new OracleCommand("update h_delivery_order set status_do = 1 where id_delivery_order = '" + this.id_do +"'", conn).ExecuteNonQuery();
+
             for (int i = 0; i < dataGridView.Rows.Count - 1; i++)
             {
                 String id_item = dataGridView.Rows[i].Cells[0].Value.ToString();
@@ -487,6 +490,7 @@ namespace Export_Import
             if (search.ShowDialog() == DialogResult.Yes)
             {
                 ambilDataDO(search.id_do);
+                this.id_do = search.id_do;
 
                 OracleDataReader reader = new OracleCommand("select distinct id_sales_order from d_delivery_order where id_delivery_order = '"+search.id_do+"'", conn).ExecuteReader();
                 while (reader.Read())
