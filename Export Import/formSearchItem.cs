@@ -119,11 +119,23 @@ namespace Export_Import
                 return;
             }
 
-            if (numQty.Value > 999999)
+            if (numQty.Value > 100000)
             {
-                MessageBox.Show("Qty tidak boleh lebih dari 999.999");
+                MessageBox.Show("Qty tidak boleh lebih dari 100.000");
                 numQty.Value = 0;
                 return;
+            }
+
+            if (this.formSO != null || this.formSI != null)
+            {
+                String id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
+                String cmd = "select stok_item from item where id_item ='"+id_item+"'";
+                Int64 jumlahStok = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+                if (numQty.Value > jumlahStok)
+                {
+                    MessageBox.Show("Stok melebihi yang ada di gudang");
+                    return;
+                }
             }
 
             if (idx > -1)

@@ -570,7 +570,7 @@ namespace Export_Import
             String id_SO = txtIdSO.Text;
             String id_staff = cbStaff.SelectedValue + "";
             DateTime tanggalSO = dateSO.Value;
-            String shipVia = cbShip.Text;
+            String shipVia = cbShip.SelectedValue + "";
             String negara = ds.Tables["customer"].Rows[cbIdCust.SelectedIndex][3] + "";
             String currency = cbCurrency.SelectedValue + "";
             Int64 rate = Convert.ToInt64(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);

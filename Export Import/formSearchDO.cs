@@ -37,8 +37,8 @@ namespace Export_Import
         void refreshTable(String keyword)
         {
             String cmd = "select id_delivery_order, nama_customer, tgl_delivery_order from h_delivery_order " +
-                "where id_delivery_order like '%" + keyword + "%' OR " +
-                "nama_customer like '%" + keyword + "%'";
+                "where (id_delivery_order like '%" + keyword + "%' OR " +
+                "nama_customer like '%" + keyword + "%') AND status_do = 0";
             daDeliveryOrder = new OracleDataAdapter(cmd, conn);
             daDeliveryOrder.Fill(ds, "DeliveryOrder");
             dataGridView.DataSource = ds.Tables["DeliveryOrder"];

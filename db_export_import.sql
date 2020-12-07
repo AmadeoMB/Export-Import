@@ -177,13 +177,14 @@ create table H_DELIVERY_ORDER
    TGL_DELIVERY_ORDER   DATE                 not null,
    CREDIT_TERM_DELIVERY_ORDER INTEGER        not null,
    SHIP_VIA             VARCHAR2(255)        not null,
-   ID_NEGARA	        VARCHAR2(5)	     not null,
+   ID_NEGARA	         VARCHAR2(5)	         not null,
    CURRENCY_DELIVERY_ORDER VARCHAR2(3)       not null,
    RATE                 INTEGER              not null,
    TOTAL                INTEGER              not null,
    TOTAL_PPN            INTEGER              not null,
    TOTAL_HARGA          INTEGER              not null,
    TOTAL_HARGA_CONVERT  INTEGER              not null,
+   STATUS_DO            NUMBER(1)            not null,
    constraint PK_DELIVERY_ORDER primary key (ID_DELIVERY_ORDER)
 );
 
@@ -470,7 +471,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE TRIGGER update_stok_after_pi
+CREATE OR REPLACE TRIGGER delete_stok_before_pi
     BEFORE DELETE ON D_PURCHASE_INVOICE
     FOR EACH ROW 
 BEGIN
@@ -482,7 +483,7 @@ BEGIN
 END;
 /
 
-CREATE OR REPLACE TRIGGER update_stok_after_invoice
+CREATE OR REPLACE TRIGGER delete_stok_before_invoice
     BEFORE DELETE ON D_INVOICE
     FOR EACH ROW 
 BEGIN

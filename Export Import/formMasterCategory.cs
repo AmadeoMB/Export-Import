@@ -46,7 +46,7 @@ namespace Export_Import
 
         private void formMasterJabatan_Load(object sender, EventArgs e)
         {
-            conn = form.conn;
+            conn = new OracleConnection("user id=export;password=import;data source=orcl");
 
             try
             {
@@ -63,20 +63,14 @@ namespace Export_Import
 
         private void btnInsert_Click(object sender, EventArgs e)
         {
-            conn.Close();
             new formInsertCategory(this).ShowDialog();
-
-            conn.Open();
             ds.Tables["category"].Clear();
             refreshTabel();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            conn.Close();
             new formUpdateCategory(this).ShowDialog();
-
-            conn.Open();
             ds.Tables["category"].Clear();
             refreshTabel();
         }
