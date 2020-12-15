@@ -239,7 +239,6 @@ namespace Export_Import
             if (!id.Equals(""))
             {
                 cmd += " where id_sales_order = '" + id + "'";
-                MessageBox.Show(cmd);
                 ds.Tables["ekspedisi"].Clear();
                 daEkspedisi = new OracleDataAdapter(cmd, conn);
                 daEkspedisi.Fill(ds, "ekspedisi");

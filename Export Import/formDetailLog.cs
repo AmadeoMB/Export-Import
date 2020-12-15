@@ -71,7 +71,8 @@ namespace Export_Import
                 "TO_CHAR(old_qty, '9G999G999') as Old, " +
                 "TO_CHAR(qty, '9G999G999') as Changes, " +
                 "TO_CHAR(new_qty, '9G999G999') as New, " +
-                "'Rp '||TO_CHAR(balance, '9G999G999G999') as Balance from log_stock where id_item = '" + id + "'";
+                "'Rp '||TO_CHAR(balance, '9G999G999G999') as Balance from log_stock where id_item = '" + id + "' " +
+                "order by 1";
             daLog = new OracleDataAdapter(cmd, conn);
             daLog.Fill(ds, "log");
             dataGridView.DataSource = ds.Tables["log"];

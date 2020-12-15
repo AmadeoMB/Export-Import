@@ -110,6 +110,12 @@ namespace Export_Import
                 return;
             }
 
+            if (cbSatuan.SelectedIndex < 0)
+            {
+                MessageBox.Show("Pilih satuan barang");
+                return;
+            }
+
             String id_item = txtNama.Text[0].ToString();
             int i = 0;
             for (; i < txtNama.Text.Length; i++)

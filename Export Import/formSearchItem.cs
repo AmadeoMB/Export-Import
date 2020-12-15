@@ -113,33 +113,32 @@ namespace Export_Import
 
         private void btnGet_Click(object sender, EventArgs e)
         {
-            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
-            {
-                MessageBox.Show("Data kosong");
-                return;
-            }
-
-            if (numQty.Value > 100000)
-            {
-                MessageBox.Show("Qty tidak boleh lebih dari 100.000");
-                numQty.Value = 0;
-                return;
-            }
-
-            if (this.formSO != null || this.formSI != null)
-            {
-                String id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
-                String cmd = "select stok_item from item where id_item ='"+id_item+"'";
-                Int64 jumlahStok = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
-                if (numQty.Value > jumlahStok)
-                {
-                    MessageBox.Show("Stok melebihi yang ada di gudang");
-                    return;
-                }
-            }
-
             if (idx > -1)
             {
+                if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+                {
+                    MessageBox.Show("Data kosong");
+                    return;
+                }
+
+                if (numQty.Value > 100000)
+                {
+                    MessageBox.Show("Qty tidak boleh lebih dari 100.000");
+                    numQty.Value = 0;
+                    return;
+                }
+
+                if (this.formSO != null || this.formSI != null)
+                {
+                    String id_item = dataGridView.Rows[idx].Cells[0].Value.ToString();
+                    String cmd = "select stok_item from item where id_item ='" + id_item + "'";
+                    Int64 jumlahStok = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
+                    if (numQty.Value > jumlahStok)
+                    {
+                        MessageBox.Show("Stok melebihi yang ada di gudang");
+                        return;
+                    }
+                }
                 if (numQty.Value > 0)
                 {
                     decimal discount = 0;

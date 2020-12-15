@@ -55,13 +55,12 @@ namespace Export_Import
                 "id_supplier, nama_supplier, alamat_supplier, " +
                 "provinsi_supplier, '0'||no_telp_supplier as no_telp_supplier, " +
                 "email_supplier from supplier where " +
-                "lower(nama_supplier) like '%" + optional[0].ToString().ToLower() + "%' OR " +
-                "lower(id_supplier) like '%" + optional[0].ToString().ToLower() + "%'";
+                "(lower(nama_supplier) like '%" + optional[0].ToString().ToLower() + "%' OR " +
+                "lower(id_supplier) like '%" + optional[0].ToString().ToLower() + "%')";
             if (Convert.ToInt32(optional[1]) < ds.Tables["provinsi"].Rows.Count - 1 && Convert.ToInt32(optional[1]) > -1)
             {
                 cmd += " AND provinsi_supplier = '" + cbProvinsi.SelectedValue + "'";
             }
-
             daSupplier = new OracleDataAdapter(cmd, conn);
             daSupplier.Fill(ds, "supplier");
             dataGridView.DataSource = ds.Tables["supplier"];

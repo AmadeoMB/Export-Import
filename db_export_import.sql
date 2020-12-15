@@ -569,53 +569,61 @@ insert into NEGARA values('BRUN1','Brunei-Darusalam','Bandar seri Bengawan');
 insert into NEGARA values('KAMB1','Kamboja','Phomn Phen');
 insert into NEGARA values('LAOS1','Laos','Vientiane');
 
-insert into H_INVOICE values('IN/2020/09/11/01', 'GB001', 'MO001', 'AM001', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 30, 'TM001', 'INDO1', 'IDR' , 1, 7227000, 103000, 7330000, 7330000);
-insert into H_INVOICE values('IN/2020/10/01/02', 'GK001', 'MK001', 'MA001', 'Manusia Karet', 'Jalan Anjayani IV no 65', sysdate, 14, 'SL001', 'SING1', 'SGD' , 10796, 31675000, 575000, 32250000, 2987.21);
-insert into H_INVOICE values('IN/2020/12/29/03', 'GU001', 'IJ001', 'MT001', 'Invisible John', 'Perum WWA Cluster SmackDown no 48', sysdate, 7, 'TL001', 'MALA1', 'MYR' , 3534, 59800000, 5200000, 65000000, 18392.75);
-insert into H_INVOICE values('IN/2020/01/02/04', 'GB001', 'DI001', 'BH001', 'Dea Impostor', 'Jalan Ventilasi no 13', sysdate, 21, 'LM001', 'FILI1', 'USD' , 14670, 57750000, 0, 57750000, 3936.60);
+insert into H_INVOICE values('IN/2020/01/11/01', 'GB001', 'MO001', 'AM001', 'Mang Oleh', 'Jalan Bandung Selatan no 15', sysdate, 30, 'TM001', 'INDO1', 'IDR' , 1, 7227000, 103000, 7330000, 7330000);
+
+insert into D_INVOICE values('KK001', 'SO/2020/08/11/01', 'IN/2020/01/11/01', 'Keripik Kentang Original', 10, 'BOX', 65000, 225000, 'INC', 20000, 630000);
+insert into D_INVOICE values('OM001', 'SO/2020/08/11/02', 'IN/2020/01/11/01', 'Odading Mang Oleh', 50, 'BOX', 130000, 162500, 'EXC', 200000, 6300000);
+insert into D_INVOICE values('JL001', 'SO/2020/08/11/03', 'IN/2020/01/11/01', 'Jus Lemon Segar', 5, 'BOX', 85000, 9375, 'INC', 25000, 400000);
+
+insert into H_INVOICE values('IN/2020/02/01/02', 'GK001', 'MK001', 'MA001', 'Manusia Karet', 'Jalan Anjayani IV no 65', sysdate, 14, 'SL001', 'SING1', 'SGD' , 10796, 31675000, 575000, 32250000, 2987.21);
+
+insert into D_INVOICE values('JT001', 'SO/2020/09/01/01', 'IN/2020/02/01/02', 'Jus Tomat Enak', 30, 'BOX', 60000, 76500, 'INC', 300000, 1500000);
+insert into D_INVOICE values('BK001', 'SO/2020/09/11/02', 'IN/2020/02/01/02', 'Boneka Key2', 100, 'PIECE', 275000, 450000, 'EXC', 1000000, 26500000);
+insert into D_INVOICE values('GA001', 'SO/2020/09/11/03', 'IN/2020/02/01/02', 'Gundam Anjayani', 50, 'PIECE', 90000, 250000, 'INC', 250000, 4250000);
+
+insert into H_INVOICE values('IN/2020/03/29/03', 'GU001', 'IJ001', 'MT001', 'Invisible John', 'Perum WWA Cluster SmackDown no 48', sysdate, 7, 'TL001', 'MALA1', 'MYR' , 3534, 59800000, 5200000, 65000000, 18392.75);
+
+insert into D_INVOICE values('KI001', 'SO/2020/11/29/01', 'IN/2020/03/29/03', 'Kostum Iron Man Mang Oleh', 150, 'PIECE', 250000, 37500, 'INC', 7500000, 30000000);
+insert into D_INVOICE values('BH001', 'SO/2020/11/23/02', 'IN/2020/03/29/03', 'Baju Harley Kuning', 100, 'PIECE', 150000, 27500, 'EXC', 2000000, 13000000);
+insert into D_INVOICE values('LP001', 'SO/2020/11/23/03', 'IN/2020/03/29/03', 'Logitooth Pro X', 20, 'PIECE', 1250000, 20000, 'INC', 3000000, 22000000);
+
+insert into H_INVOICE values('IN/2020/04/02/04', 'GB001', 'DI001', 'BH001', 'Dea Impostor', 'Jalan Ventilasi no 13', sysdate, 21, 'LM001', 'FILI1', 'USD' , 14670, 57750000, 0, 57750000, 3936.60);
+
+insert into D_INVOICE values('SA001', 'SO/2020/01/01/01', 'IN/2020/04/02/04', 'StilSeris Aktris 1', 25, 'PIECE', 1100000, 11250, 'EXC', 3750000, 23750000);
+insert into D_INVOICE values('OM001', 'SO/2020/01/01/02', 'IN/2020/04/02/04', 'Odading Mang Oleh', 100, 'BOX', 130000, 325000, 'EXC', 1000000, 12000000);
+insert into D_INVOICE values('BK001', 'SO/2020/01/01/03', 'IN/2020/04/02/04', 'Boneka Key2', 70, 'PIECE', 275000, 315000, 'EXC', 3000000, 22000000);
+
 insert into H_INVOICE values('IN/2020/05/15/05', 'GK001', 'BC001', 'VC001', 'Bambank Crewmate', 'Perum Mirahq Cluster Cafetaria no 2', sysdate, 14, 'PI001', 'THAI1', 'EUR' , 17190, 40455000, 4495000, 44950000, 2614.89);
-
-insert into D_INVOICE values('KK001', 'SO/2020/08/11/01', 'IN/2020/09/11/01', 'Keripik Kentang Original', 10, 'BOX', 65000, 225000, 'INC', 20000, 630000);
-insert into D_INVOICE values('OM001', 'SO/2020/08/11/02', 'IN/2020/09/11/01', 'Odading Mang Oleh', 50, 'BOX', 130000, 162500, 'EXC', 200000, 6300000);
-insert into D_INVOICE values('JL001', 'SO/2020/08/11/03', 'IN/2020/09/11/01', 'Jus Lemon Segar', 5, 'BOX', 85000, 9375, 'INC', 25000, 400000);
-
-insert into D_INVOICE values('JT001', 'SO/2020/09/01/01', 'IN/2020/10/01/02', 'Jus Tomat Enak', 30, 'BOX', 60000, 76500, 'INC', 300000, 1500000);
-insert into D_INVOICE values('BK001', 'SO/2020/09/11/02', 'IN/2020/10/01/02', 'Boneka Key2', 100, 'PIECE', 275000, 450000, 'EXC', 1000000, 26500000);
-insert into D_INVOICE values('GA001', 'SO/2020/09/11/03', 'IN/2020/10/01/02', 'Gundam Anjayani', 50, 'PIECE', 90000, 250000, 'INC', 250000, 4250000);
-
-insert into D_INVOICE values('KI001', 'SO/2020/11/29/01', 'IN/2020/12/29/03', 'Kostum Iron Man Mang Oleh', 150, 'PIECE', 250000, 37500, 'INC', 7500000, 30000000);
-insert into D_INVOICE values('BH001', 'SO/2020/11/23/02', 'IN/2020/12/29/03', 'Baju Harley Kuning', 100, 'PIECE', 150000, 27500, 'EXC', 2000000, 13000000);
-insert into D_INVOICE values('LP001', 'SO/2020/11/23/03', 'IN/2020/12/29/03', 'Logitooth Pro X', 20, 'PIECE', 1250000, 20000, 'INC', 3000000, 22000000);
-
-insert into D_INVOICE values('SA001', 'SO/2020/01/01/01', 'IN/2020/01/02/04', 'StilSeris Aktris 1', 25, 'PIECE', 1100000, 11250, 'EXC', 3750000, 23750000);
-insert into D_INVOICE values('OM001', 'SO/2020/01/01/02', 'IN/2020/01/02/04', 'Odading Mang Oleh', 100, 'BOX', 130000, 325000, 'EXC', 1000000, 12000000);
-insert into D_INVOICE values('BK001', 'SO/2020/01/01/03', 'IN/2020/01/02/04', 'Boneka Key2', 70, 'PIECE', 275000, 315000, 'EXC', 3000000, 22000000);
 
 insert into D_INVOICE values('KK001', 'SO/2020/04/15/01', 'IN/2020/05/15/05', 'Keripik Kentang Original', 80, 'BOX', 65000, 180000, 'INC', 400000, 4800000);
 insert into D_INVOICE values('LP001', 'SO/2020/04/15/02', 'IN/2020/05/15/05', 'Logitooth Pro X', 35, 'PIECE', 1100000, 15750, 'INC', 1750000, 36750000);
 insert into D_INVOICE values('GA001', 'SO/2020/04/15/03', 'IN/2020/05/15/05', 'Gundam Anjayani', 40, 'PIECE', 90000, 200000, 'INC', 200000, 3400000);
 
-insert into H_PURCHASE_INVOICE values('PI/2020/10/01/01', 'JT001', 'GB001', 'AM001', 'PT. Maju Kena Mundur Kena', 'Jalan Uninstall Windows no 25', 'SIN/2020/09/01/01', sysdate, 7, 'TM001', 'IDR', 1, 28810000, 640000, 29450000, 29450000);
-insert into H_PURCHASE_INVOICE values('PI/2020/09/28/02', 'BA001', 'GK001', 'MA001', 'PT. Muter Muter Pusing', 'Jalan Yamisok Mahal no 89', 'SIN/2020/09/28/02', sysdate, 14, 'SL001', 'CNY', 2190, 58793000, 977000, 59770000, 2729.23);
-insert into H_PURCHASE_INVOICE values('PI/2020/12/20/03', 'JB001', 'GU001', 'MT001', 'PT. Kanan Kiri Sama Saja', 'Jalan Petrik Setar no 27', 'SIN/2020/12/20/03', sysdate, 21, 'TL001', 'EUR', 17190, 75950000, 7450000, 83400000, 4851.65);
-insert into H_PURCHASE_INVOICE values('PI/2020/01/01/04', 'JT002', 'GB001', 'BH001', 'PT. Naik Turun Aja', 'Jalan MumboWumbo no 768', 'IN/2020/01/01/01', sysdate, 30, 'LM001', 'HKD', 1893, 1692500, 60000, 1752500, 925.77);
-insert into H_PURCHASE_INVOICE values('PI/2020/05/05/05', 'JT001', 'GB001', 'VC001', 'PT. Maju Kena Mundur Kena', 'Jalan Uninstall Windows no 25', 'IN/2020/05/05/05', sysdate, 7, 'PI001', 'SGD', 10796, 3098500, 66500, 3165000, 293.16);
+insert into H_PURCHASE_INVOICE values('PI/2020/02/01/01', 'JT001', 'GB001', 'AM001', 'PT. Maju Kena Mundur Kena', 'Jalan Uninstall Windows no 25', 'SIN/2020/09/01/01', sysdate, 7, 'TM001', 'IDR', 1, 28810000, 640000, 29450000, 29450000);
 
-insert into D_PURCHASE_INVOICE values('PI/2020/10/01/01', 'KK001', 'Keripik Kentang Original', 100, 'BOX', 50000, 0, 0, 'INC', 5000000);
-insert into D_PURCHASE_INVOICE values('PI/2020/10/01/01', 'OM001', 'Odading Mang Oleh', 200, 'BOX', 115250, 0, 0, 'EXC', 23050000);
-insert into D_PURCHASE_INVOICE values('PI/2020/10/01/01', 'JL001', 'Jus Lemon Segar', 20, 'BOX', 70000, 0, 100, 'INC', 1400000);
+insert into D_PURCHASE_INVOICE values('PI/2020/02/01/01', 'KK001', 'Keripik Kentang Original', 100, 'BOX', 50000, 0, 0, 'INC', 5000000);
+insert into D_PURCHASE_INVOICE values('PI/2020/02/01/01', 'OM001', 'Odading Mang Oleh', 200, 'BOX', 115250, 0, 0, 'EXC', 23050000);
+insert into D_PURCHASE_INVOICE values('PI/2020/02/01/01', 'JL001', 'Jus Lemon Segar', 20, 'BOX', 70000, 0, 100, 'INC', 1400000);
 
-insert into D_PURCHASE_INVOICE values('PI/2020/09/28/02', 'JT001', 'Jus Tomat Enak', 50, 'BOX', 55000, 0, 100, 'INC', 2750000);
-insert into D_PURCHASE_INVOICE values('PI/2020/09/28/02', 'BK001', 'Boneka Key2', 200, 'PIECE', 250000, 0, 0, 'EXC', 50000000);
-insert into D_PURCHASE_INVOICE values('PI/2020/09/28/02', 'GA001', 'Gundam Anjayani', 90, 'PIECE', 78000, 0, 0, 'INC', 7020000);
+insert into H_PURCHASE_INVOICE values('PI/2020/03/28/02', 'BA001', 'GK001', 'MA001', 'PT. Muter Muter Pusing', 'Jalan Yamisok Mahal no 89', 'SIN/2020/09/28/02', sysdate, 14, 'SL001', 'CNY', 2190, 58793000, 977000, 59770000, 2729.23);
 
-insert into D_PURCHASE_INVOICE values('PI/2020/12/20/03', 'KI001', 'Kostum Iron Man Mang Oleh', 150, 'PIECE', 185000, 0, 0, 'INC', 27750000);
-insert into D_PURCHASE_INVOICE values('PI/2020/12/20/03', 'BH001', 'Baju Harley Kuning', 100, 'PIECE', 89000, 0, 0, 'EXC', 8900000);
-insert into D_PURCHASE_INVOICE values('PI/2020/12/20/03', 'LP001', 'Logitooth Pro X', 55, 'PIECE', 850000, 0, 0, 'INC', 46750000);
+insert into D_PURCHASE_INVOICE values('PI/2020/03/28/02', 'JT001', 'Jus Tomat Enak', 50, 'BOX', 55000, 0, 100, 'INC', 2750000);
+insert into D_PURCHASE_INVOICE values('PI/2020/03/28/02', 'BK001', 'Boneka Key2', 200, 'PIECE', 250000, 0, 0, 'EXC', 50000000);
+insert into D_PURCHASE_INVOICE values('PI/2020/03/28/02', 'GA001', 'Gundam Anjayani', 90, 'PIECE', 78000, 0, 0, 'INC', 7020000);
 
-insert into D_PURCHASE_INVOICE values('PI/2020/01/01/04', 'KK001', 'Keripik Kentang Original', 5, 'BOX', 50000, 0, 0, 'INC', 250000);
-insert into D_PURCHASE_INVOICE values('PI/2020/01/01/04', 'OM001', 'Odading Mang Oleh', 10, 'BOX', 115250, 0, 0, 'EXC', 1152500);
-insert into D_PURCHASE_INVOICE values('PI/2020/01/01/04', 'JL001', 'Jus Lemon Segar', 5, 'BOX', 70000, 0, 100, 'INC', 350000);
+insert into H_PURCHASE_INVOICE values('PI/2020/04/20/03', 'JB001', 'GU001', 'MT001', 'PT. Kanan Kiri Sama Saja', 'Jalan Petrik Setar no 27', 'SIN/2020/12/20/03', sysdate, 21, 'TL001', 'EUR', 17190, 75950000, 7450000, 83400000, 4851.65);
+
+insert into D_PURCHASE_INVOICE values('PI/2020/04/20/03', 'KI001', 'Kostum Iron Man Mang Oleh', 150, 'PIECE', 185000, 0, 0, 'INC', 27750000);
+insert into D_PURCHASE_INVOICE values('PI/2020/04/20/03', 'BH001', 'Baju Harley Kuning', 100, 'PIECE', 89000, 0, 0, 'EXC', 8900000);
+insert into D_PURCHASE_INVOICE values('PI/2020/04/20/03', 'LP001', 'Logitooth Pro X', 55, 'PIECE', 850000, 0, 0, 'INC', 46750000);
+
+insert into H_PURCHASE_INVOICE values('PI/2020/05/01/04', 'JT002', 'GB001', 'BH001', 'PT. Naik Turun Aja', 'Jalan MumboWumbo no 768', 'IN/2020/01/01/01', sysdate, 30, 'LM001', 'HKD', 1893, 1692500, 60000, 1752500, 925.77);
+
+insert into D_PURCHASE_INVOICE values('PI/2020/06/01/04', 'KK001', 'Keripik Kentang Original', 5, 'BOX', 50000, 0, 0, 'INC', 250000);
+insert into D_PURCHASE_INVOICE values('PI/2020/06/01/04', 'OM001', 'Odading Mang Oleh', 10, 'BOX', 115250, 0, 0, 'EXC', 1152500);
+insert into D_PURCHASE_INVOICE values('PI/2020/06/01/04', 'JL001', 'Jus Lemon Segar', 5, 'BOX', 70000, 0, 100, 'INC', 350000);
+
+insert into H_PURCHASE_INVOICE values('PI/2020/06/05/05', 'JT001', 'GB001', 'VC001', 'PT. Maju Kena Mundur Kena', 'Jalan Uninstall Windows no 25', 'IN/2020/05/05/05', sysdate, 7, 'PI001', 'SGD', 10796, 3098500, 66500, 3165000, 293.16);
 
 insert into D_PURCHASE_INVOICE values('PI/2020/05/05/05', 'JT001', 'Jus Tomat Enak', 5, 'BOX', 55000, 0, 100, 'INC', 275000);
 insert into D_PURCHASE_INVOICE values('PI/2020/05/05/05', 'BK001', 'Boneka Key2', 10, 'PIECE', 250000, 0, 0, 'EXC', 2500000);
