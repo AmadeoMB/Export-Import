@@ -149,6 +149,12 @@
     <Compile Include="FormListDeliveryOrder.Designer.cs">
       <DependentUpon>FormListDeliveryOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormListInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListInvoice.Designer.cs">
+      <DependentUpon>FormListInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormListpurchaseorder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -470,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormListDeliveryOrder.resx">
       <DependentUpon>FormListDeliveryOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListInvoice.resx">
+      <DependentUpon>FormListInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListpurchaseorder.resx">
       <DependentUpon>FormListpurchaseorder.cs</DependentUpon>
