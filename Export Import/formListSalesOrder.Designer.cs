@@ -43,6 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -72,6 +73,7 @@
             // 
             // pnlBawah
             // 
+            this.pnlBawah.Controls.Add(this.btnEdit);
             this.pnlBawah.Controls.Add(this.btnBack);
             this.pnlBawah.Controls.Add(this.btnCreate);
             this.pnlBawah.Controls.Add(this.dataGridView);
@@ -97,7 +99,7 @@
             // 
             this.btnCreate.Enabled = false;
             this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(590, 80);
+            this.btnCreate.Location = new System.Drawing.Point(590, 116);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(150, 42);
             this.btnCreate.TabIndex = 6;
@@ -114,10 +116,10 @@
             this.tgl_so,
             this.jumlah_barang});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 128);
+            this.dataGridView.Location = new System.Drawing.Point(0, 164);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1350, 528);
+            this.dataGridView.Size = new System.Drawing.Size(1350, 492);
             this.dataGridView.TabIndex = 2;
             this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
@@ -167,7 +169,7 @@
             this.groupFilter.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupFilter.Location = new System.Drawing.Point(12, 13);
             this.groupFilter.Name = "groupFilter";
-            this.groupFilter.Size = new System.Drawing.Size(572, 109);
+            this.groupFilter.Size = new System.Drawing.Size(572, 145);
             this.groupFilter.TabIndex = 1;
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
@@ -209,6 +211,18 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama Customer :";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(590, 68);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(150, 42);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // formListSalesOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,5 +262,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
         private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

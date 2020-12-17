@@ -15,6 +15,7 @@ namespace Export_Import
     {
         public OracleConnection conn;
         public formMasterGudang gudang;
+        public formMasterPenjualan jual;
         OracleDataAdapter daSO;
         DataSet ds = new DataSet();
         Object[] filter = { "", null, 0 };
@@ -32,6 +33,12 @@ namespace Export_Import
             InitializeComponent();
             this.gudang = gudang;
             this.conn = gudang.conn;
+        }
+        public formListSalesOrder(formMasterPenjualan jual)
+        {
+            InitializeComponent();
+            this.jual = jual;
+            this.conn = jual.conn;
         }
 
         private void formListSalesOrder_Load(object sender, EventArgs e)
@@ -119,10 +126,12 @@ namespace Export_Import
             if (idx > -1)
             {
                 btnCreate.Enabled = true;
+                btnEdit.Enabled = true;
             }
             else
             {
                 btnCreate.Enabled = false;
+                btnEdit.Enabled = false;
             }
         }
 
@@ -133,10 +142,12 @@ namespace Export_Import
             if (idx > -1)
             {
                 btnCreate.Enabled = true;
+                btnEdit.Enabled = true;
             }
             else
             {
                 btnCreate.Enabled = false;
+                btnEdit.Enabled = false;
             }
         }
 
@@ -160,6 +171,22 @@ namespace Export_Import
         {
             this.Close();
             gudang.Show();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
+            if (idx > -1)
+            {
+                id_sales_order = dataGridView.Rows[idx].Cells[0].Value.ToString();
+                this.Hide();
+                new formSalesOrder(this).Show();
+            }
         }
     }
 }

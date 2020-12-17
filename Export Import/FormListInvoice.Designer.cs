@@ -1,6 +1,6 @@
 ﻿namespace Export_Import
 {
-    partial class FormListInvoice
+    partial class formListInvoice
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,10 @@
         {
             this.pnlBawah = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupFilter = new System.Windows.Forms.GroupBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
@@ -39,10 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.id_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
@@ -52,7 +52,9 @@
             // 
             // pnlBawah
             // 
+            this.pnlBawah.Controls.Add(this.btnEdit);
             this.pnlBawah.Controls.Add(this.dataGridView);
+            this.pnlBawah.Controls.Add(this.btnBack);
             this.pnlBawah.Controls.Add(this.groupFilter);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
@@ -75,10 +77,44 @@
             this.dataGridView.Size = new System.Drawing.Size(1350, 524);
             this.dataGridView.TabIndex = 2;
             // 
+            // id_invoice
+            // 
+            this.id_invoice.DataPropertyName = "id";
+            this.id_invoice.Frozen = true;
+            this.id_invoice.HeaderText = "Nomer Invoice";
+            this.id_invoice.Name = "id_invoice";
+            this.id_invoice.ReadOnly = true;
+            this.id_invoice.Width = 150;
+            // 
+            // nama_customer
+            // 
+            this.nama_customer.DataPropertyName = "nama";
+            this.nama_customer.Frozen = true;
+            this.nama_customer.HeaderText = "Nama Customer";
+            this.nama_customer.Name = "nama_customer";
+            this.nama_customer.ReadOnly = true;
+            this.nama_customer.Width = 150;
+            // 
+            // tgl_so
+            // 
+            this.tgl_so.DataPropertyName = "tanggal";
+            this.tgl_so.Frozen = true;
+            this.tgl_so.HeaderText = "Tanggal";
+            this.tgl_so.Name = "tgl_so";
+            this.tgl_so.ReadOnly = true;
+            this.tgl_so.Width = 150;
+            // 
+            // jumlah_barang
+            // 
+            this.jumlah_barang.DataPropertyName = "jumlah";
+            this.jumlah_barang.Frozen = true;
+            this.jumlah_barang.HeaderText = "Jumlah Barang";
+            this.jumlah_barang.Name = "jumlah_barang";
+            this.jumlah_barang.ReadOnly = true;
+            this.jumlah_barang.Width = 150;
+            // 
             // groupFilter
             // 
-            this.groupFilter.Controls.Add(this.btnEdit);
-            this.groupFilter.Controls.Add(this.btnBack);
             this.groupFilter.Controls.Add(this.numJumlah);
             this.groupFilter.Controls.Add(this.label4);
             this.groupFilter.Controls.Add(this.txtKeyword);
@@ -93,7 +129,7 @@
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(416, 58);
+            this.btnEdit.Location = new System.Drawing.Point(590, 77);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(150, 41);
             this.btnEdit.TabIndex = 3;
@@ -103,7 +139,7 @@
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(416, 7);
+            this.btnBack.Location = new System.Drawing.Point(590, 26);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(150, 42);
             this.btnBack.TabIndex = 7;
@@ -165,50 +201,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "List Invoice";
             // 
-            // id_invoice
-            // 
-            this.id_invoice.DataPropertyName = "id";
-            this.id_invoice.Frozen = true;
-            this.id_invoice.HeaderText = "Nomer Invoice";
-            this.id_invoice.Name = "id_invoice";
-            this.id_invoice.ReadOnly = true;
-            this.id_invoice.Width = 150;
-            // 
-            // nama_customer
-            // 
-            this.nama_customer.DataPropertyName = "nama";
-            this.nama_customer.Frozen = true;
-            this.nama_customer.HeaderText = "Nama Customer";
-            this.nama_customer.Name = "nama_customer";
-            this.nama_customer.ReadOnly = true;
-            this.nama_customer.Width = 150;
-            // 
-            // tgl_so
-            // 
-            this.tgl_so.DataPropertyName = "tanggal";
-            this.tgl_so.Frozen = true;
-            this.tgl_so.HeaderText = "Tanggal";
-            this.tgl_so.Name = "tgl_so";
-            this.tgl_so.ReadOnly = true;
-            this.tgl_so.Width = 150;
-            // 
-            // jumlah_barang
-            // 
-            this.jumlah_barang.DataPropertyName = "jumlah";
-            this.jumlah_barang.Frozen = true;
-            this.jumlah_barang.HeaderText = "Jumlah Barang";
-            this.jumlah_barang.Name = "jumlah_barang";
-            this.jumlah_barang.ReadOnly = true;
-            this.jumlah_barang.Width = 150;
-            // 
-            // FormListInvoice
+            // formListInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 747);
             this.Controls.Add(this.pnlBawah);
             this.Controls.Add(this.pnlAtas);
-            this.Name = "FormListInvoice";
+            this.Name = "formListInvoice";
             this.Text = "FormListInvoice";
             this.pnlBawah.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

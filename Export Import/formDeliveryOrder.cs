@@ -33,6 +33,8 @@ namespace Export_Import
         Int64 netTotal = 0;
         Int64 totalConvert = 0;
         public String id_so = "";
+        public String id_delivery_order = "";
+
 
         public formDeliveryOrder()
         {
@@ -56,13 +58,19 @@ namespace Export_Import
             this.id_so = list.id_sales_order;
         }
 
+        public formDeliveryOrder(formListDeliveryOrder list)
+        {
+            InitializeComponent();
+            this.master = list.gudang;
+            this.conn = list.conn;
+            this.id_delivery_order = list.id_delivery_order;
+        }
+
         private void formDeliveryOrder_Load(object sender, EventArgs e)
         {
             this.dataGridView.Columns["subtotal"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView.Columns["harga"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
-            try
-            {
                 if (!this.id_so.Equals(""))
                 {
                     this.groupSO.Add(this.id_so);
@@ -78,12 +86,7 @@ namespace Export_Import
                 isiCBNegara();
                 generatecreateNomerDO();
                 ambilDataSO(id_so);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return;
-            }
+                ambilDataDO(id_delivery_order);
         }
 
         void isiCBCustomer()
@@ -313,10 +316,152 @@ namespace Export_Import
             }
         }
 
+        void ambilDataDO(String id)
+        {
+            txtIdDO.Text = id;
+            String cmd = "select distinct c.id_customer as ID, c.nama_customer as Nama, c.alamat_customer as Alamat from h_delivery_order h join customer c on h.id_customer = c.id_customer";
+
+            if (!id.Equals(""))
+            {
+                ds.Tables["customer"].Clear();
+
+                cmd += " where id_delivery_order = '" + id + "'";
+                daCustomer = new OracleDataAdapter(cmd, conn);
+                daCustomer.Fill(ds, "customer");
+                txtNamaCust.Text = new OracleCommand("select nama_customer from h_delivery_order where id_delivery_order = '" + id + "'", conn).ExecuteScalar().ToString();
+                txtAlamatCust.Text = new OracleCommand("select alamat_customer from h_delivery_order where id_delivery_order = '" + id + "'", conn).ExecuteScalar().ToString();
+
+                pnlAtas.Enabled = false;
+            }
+
+            daCustomer = new OracleDataAdapter(cmd, conn);
+            daCustomer.Fill(ds, "customer");
+            cbIdCust.DataSource = ds.Tables["customer"];
+            cbIdCust.DisplayMember = "ID";
+            cbIdCust.ValueMember = "ID";
+
+            cmd = "select distinct g.id_gudang as ID, g.nama_gudang as Nama from h_delivery_order h join gudang g " +
+                "on h.id_gudang = g.id_gudang";
+
+            if (!id.Equals(""))
+            {
+                cmd += " where id_delivery_order = '" + id + "'";
+                ds.Tables["gudang"].Clear();
+            }
+
+            daGudang = new OracleDataAdapter(cmd, conn);
+            daGudang.Fill(ds, "gudang");
+            cbGudang.DataSource = ds.Tables["gudang"];
+            cbGudang.DisplayMember = "Nama";
+            cbGudang.ValueMember = "ID";
+
+            cmd = "select distinct h.id_staff as ID, nama_staff as Nama from h_delivery_order h join staff s on h.id_staff = s.id_staff";
+
+            if (!id.Equals(""))
+            {
+                cmd += " where id_delivery_order = '" + id + "'";
+                ds.Tables["staff"].Clear();
+            }
+
+            daStaff = new OracleDataAdapter(cmd, conn);
+            daStaff.Fill(ds, "staff");
+            cbNamaSales.DataSource = ds.Tables["staff"];
+            cbNamaSales.DisplayMember = "Nama";
+            cbNamaSales.ValueMember = "ID";
+
+            cmd = "select distinct ship_via as ID, nama_ekspedisi as Nama from h_delivery_order join ekspedisi on ship_via = id_ekspedisi";
+
+            if (!id.Equals(""))
+            {
+                cmd += " where id_delivery_order = '" + id + "'";
+                ds.Tables["ekspedisi"].Clear();
+                daEkspedisi = new OracleDataAdapter(cmd, conn);
+                daEkspedisi.Fill(ds, "ekspedisi");
+                cbShipVia.DataSource = ds.Tables["ekspedisi"];
+                cbShipVia.DisplayMember = "Nama";
+                cbShipVia.ValueMember = "ID";
+            }
+            else
+            {
+                daEkspedisi = new OracleDataAdapter(cmd, conn);
+                daEkspedisi.Fill(ds, "ekspedisi");
+                cbShipVia.DataSource = ds.Tables["ekspedisi"];
+                cbShipVia.DisplayMember = "Nama";
+                cbShipVia.ValueMember = "ID";
+            }
+
+            cmd = "select distinct a.id_negara as ID, b.nama_negara as Nama from h_delivery_order a join negara  b on b.id_negara = a.id_negara";
+
+            if (!id.Equals(""))
+            {
+                cmd += " where id_delivery_order = '" + id + "'";
+                ds.Tables["negara"].Clear();
+            }
+
+            daNegara = new OracleDataAdapter(cmd, conn);
+            daNegara.Fill(ds, "negara");
+            cbNegara.DataSource = ds.Tables["negara"];
+            cbNegara.DisplayMember = "Nama";
+            cbNegara.ValueMember = "ID";
+
+            cmd = "select distinct currency_delivery_order as ID, nama_currency as Nama from h_delivery_order h join currency c on currency_delivery_order = id_currency";
+
+            if (!id.Equals(""))
+            {
+                cmd += " where id_delivery_order = '" + id + "'";
+                ds.Tables["currency"].Clear();
+
+                daCurrency = new OracleDataAdapter(cmd, conn);
+                daCurrency.Fill(ds, "currency");
+                txtRate.Text = "1 : " + new OracleCommand("select rate from h_delivery_order where id_delivery_order = '" + id + "'", conn).ExecuteScalar().ToString();
+            }
+
+            daCurrency = new OracleDataAdapter(cmd, conn);
+            daCurrency.Fill(ds, "currency");
+            cbCurrency.DataSource = ds.Tables["currency"];
+            cbCurrency.DisplayMember = "Nama";
+            cbCurrency.ValueMember = "ID";
+
+            if (!id.Equals(""))
+            {
+                cmd = "select credit_term_delivery_order from h_delivery_order where id_delivery_order = '" + id + "'";
+                string ct = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                cbCreditTerm.Text = ct + " Day(s)";
+
+                cmd = "select total from h_delivery_order where id_delivery_order = '" + id + "'";
+                total += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotal.Text = "Rp " + total.ToString("#,##0.00");
+
+                cmd = "select total_ppn from h_delivery_order where id_delivery_order = '" + id + "'";
+                totalPPN += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
+
+                cmd = "select total_harga from h_delivery_order where id_delivery_order = '" + id + "'";
+                netTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtNetTotal.Text = "Rp " + netTotal.ToString("#,##0.00");
+
+                cmd = "select total_harga_convert from h_delivery_order where id_delivery_order = '" + id + "'";
+                totalConvert += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + totalConvert.ToString("#,##0.00");
+
+                isiDataItem(id);
+            }
+        }
+
         void isiDataItem(String id)
         {
-            String cmd = "select * from d_sales_order where id_sales_order = '" + id + "'";
-            OracleDataReader reader = new OracleCommand(cmd, conn).ExecuteReader();
+            String cmd = "";
+            OracleDataReader reader;
+            if (id_so.Equals(""))
+            {
+                cmd = "select id_item, id_sales_order, nama_item, qty_item, jenis_satuan, harga_satuan, berat_total, jenis_ppn, discount, subtotal from d_delivery_order where id_delivery_order = '" + id + "'";
+                reader = new OracleCommand(cmd, conn).ExecuteReader();
+            }
+            else
+            {
+                cmd = "select * from d_sales_order where id_sales_order = '" + id + "'";
+                reader = new OracleCommand(cmd, conn).ExecuteReader();
+            }
             while (reader.Read())
             {
                 dtSO.Rows.Add(new Object[] {

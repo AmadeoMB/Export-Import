@@ -20,7 +20,7 @@ namespace Export_Import
         private OracleDataAdapter daGudang;
         private OracleDataAdapter daEkspedisi;
         private OracleDataAdapter daItem;
-        private OracleDataAdapter daNegara;
+        private OracleDataAdapter daCurrency;
         private DataSet ds = new DataSet();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
@@ -28,6 +28,7 @@ namespace Export_Import
         private List<Int64> hJualList = new List<Int64>(999);
         private List<Int64> beratList = new List<Int64>(999);
         private List<Int64> subtotalList = new List<Int64>(999);
+        private DataTable dtSO = new DataTable();
         private String admin;
         private Int64 total = 0;
         private Int64 totalPPN = 0;
@@ -48,6 +49,15 @@ namespace Export_Import
             this.master = master;
             this.conn = master.conn;
             this.admin = master.admin;
+        }
+
+        public formSalesOrder(formListSalesOrder list)
+        {
+            InitializeComponent();
+            this.master = list.jual;
+            this.conn = list.conn;
+            this.id_so = list.id_sales_order;
+            //this.admin = master.admin;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -146,6 +156,7 @@ namespace Export_Import
                 isiCBGudang();
                 isiCBSales();
                 generatecreateNomerSO();
+                ambilDataSO(this.id_so);
             }
             catch (Exception ex)
             {
@@ -227,6 +238,86 @@ namespace Export_Import
             dataGridView.DataSource = ds.Tables["item"];
         }
 
+        void ambilDataSO(String id)
+        {
+            txtIdSO.Text = id;
+            String cmd = "";
+
+            if (!id.Equals(""))
+            {
+                cmd = "select credit_term_sales_order from h_sales_order where id_sales_order = '" + id + "'";
+                string ct = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                cbCreditTerm.Text = ct + " Day(s)";
+
+                cmd = "select total from h_sales_order where id_sales_order = '" + id + "'";
+                total += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotal.Text = "Rp " + total.ToString("#,##0.00");
+
+                cmd = "select total_ppn from h_sales_order where id_sales_order = '" + id + "'";
+                totalPPN += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
+
+                cmd = "select total_harga from h_sales_order where id_sales_order = '" + id + "'";
+                netTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalHarga.Text = "Rp " + netTotal.ToString("#,##0.00");
+
+                cmd = "select total_harga_convert from h_sales_order where id_sales_order = '" + id + "'";
+                convertTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalHargaConvert.Text = cbCurrency.SelectedValue.ToString() + " " + convertTotal.ToString("#,##0.00");
+
+                isiDataItem(id);
+            }
+        }
+
+        void isiDataItem(String id)
+        {
+            dtSO.Clear();
+            dtSO.Columns.Add("id_item");
+            dtSO.Columns.Add("nama_item");
+            dtSO.Columns.Add("qty_item");
+            dtSO.Columns.Add("satuan_item");
+            dtSO.Columns.Add("harga_jual_item");
+            dtSO.Columns.Add("berat");
+            dtSO.Columns.Add("jenis_ppn");
+            dtSO.Columns.Add("discount");
+            dtSO.Columns.Add("subtotal");
+
+            String cmd = "";
+            OracleDataReader reader;
+            cmd = "select * from d_sales_order where id_sales_order = '" + id + "'";
+            reader = new OracleCommand(cmd, conn).ExecuteReader();
+            while (reader.Read())
+            {
+                dtSO.Rows.Add(new Object[] {
+                    reader.GetValue(0).ToString(),
+                    reader.GetValue(2).ToString(),
+                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
+                    reader.GetValue(4).ToString(),
+                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
+                    Convert.ToInt64(reader.GetValue(6)).ToString("#,###"),
+                    reader.GetValue(7).ToString(),
+                    reader.GetValue(8).ToString(),
+                    Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00")
+                });
+                //DataRow newRow = dtSO.NewRow();
+                //newRow[0] = reader.GetValue(0).ToString();
+                //newRow["id_so"] = reader.GetValue(1).ToString();
+                //newRow["nama_item"] = reader.GetValue(2).ToString();
+                //newRow["qty_item"] = Convert.ToInt64(reader.GetValue(3)).ToString("#,###");
+                //newRow["jenis_satuan"] = reader.GetValue(4).ToString();
+                //newRow["harga_satuan"] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00");
+                //newRow["berat_total"] = Convert.ToInt64(reader.GetValue(6)).ToString("#,###");
+                //newRow["jenis_ppn"] = reader.GetValue(7).ToString();
+                //newRow["discount"] = reader.GetValue(8).ToString();
+                //newRow["subtotal"] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
+                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
+                hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
+                beratList.Add(Convert.ToInt64(reader.GetValue(6)));
+                subtotalList.Add(Convert.ToInt64(reader.GetValue(9)));
+            }
+            dataGridView.DataSource = dtSO;
+        }
+
         private void btnPlus_Click(object sender, EventArgs e)
         {
             formSearchItem search = new formSearchItem(this);
@@ -262,14 +353,22 @@ namespace Export_Import
             if (idx > -1)
             {
                 Object[] temp = {
-                    ds.Tables["item"].Rows[idx][0],// Id Item
-                    ds.Tables["item"].Rows[idx][7],// Discount
+                    dataGridView.Rows[idx].Cells[0].Value,// Id Item
+                    dataGridView.Rows[idx].Cells[7].Value,// Discount
                     qtyList[idx],// Qty
                     "delete",
                 };
                 done.Push(temp);
 
-                ds.Tables["item"].Rows.RemoveAt(idx);
+                if (ds.Tables["item"] != null)
+                {
+                    ds.Tables["item"].Rows.RemoveAt(idx);
+                }
+                else
+                {
+                    dtSO.Rows.RemoveAt(idx);
+                }
+
                 hJualList.RemoveAt(idx);
                 beratList.RemoveAt(idx);
                 qtyList.RemoveAt(idx);
@@ -537,11 +636,7 @@ namespace Export_Import
 
         private void cbCurrency_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
-            Int64 totalRp = netTotal;
-            Int64 rate = Convert.ToInt64(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
-
-            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate).ToString("#,##0.00") ;
+            
         }
 
         public String id_so = "";
@@ -696,6 +791,15 @@ namespace Export_Import
                 dataGridView.DataSource = ds.Tables["item"];
                 refreshTotal();
             }
+        }
+
+        private void cbCurrency_DropDownClosed(object sender, EventArgs e)
+        {
+            txtRate.Text = "1 : " + ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2].ToString();
+            Int64 totalRp = netTotal;
+            Int64 rate = Convert.ToInt64(ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][2]);
+
+            txtTotalHargaConvert.Text = ds.Tables["currency"].Rows[cbCurrency.SelectedIndex][0] + " " + (totalRp / rate).ToString("#,##0.00");
         }
     }
 }

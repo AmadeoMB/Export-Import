@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Export_Import
 {
-    public partial class FormListInvoice : Form
+    public partial class formListInvoice : Form
     {
-        public FormListInvoice()
+        public formListInvoice()
         {
             InitializeComponent();
         }
