@@ -155,6 +155,12 @@
     <Compile Include="FormListInvoice.Designer.cs">
       <DependentUpon>FormListInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormListPurchaseInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormListPurchaseInvoice.Designer.cs">
+      <DependentUpon>FormListPurchaseInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormListpurchaseorder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -479,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormListInvoice.resx">
       <DependentUpon>FormListInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormListPurchaseInvoice.resx">
+      <DependentUpon>FormListPurchaseInvoice.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormListpurchaseorder.resx">
       <DependentUpon>FormListpurchaseorder.cs</DependentUpon>

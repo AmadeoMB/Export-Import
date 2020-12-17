@@ -52,8 +52,6 @@
             // 
             // pnlBawah
             // 
-            this.pnlBawah.Controls.Add(this.btnBack);
-            this.pnlBawah.Controls.Add(this.btnCreate);
             this.pnlBawah.Controls.Add(this.dataGridView);
             this.pnlBawah.Controls.Add(this.groupFilter);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -65,7 +63,7 @@
             // btnBack
             // 
             this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(590, 20);
+            this.btnBack.Location = new System.Drawing.Point(416, 7);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(150, 42);
             this.btnBack.TabIndex = 7;
@@ -76,7 +74,7 @@
             // 
             this.btnCreate.Enabled = false;
             this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(590, 80);
+            this.btnCreate.Location = new System.Drawing.Point(416, 55);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(150, 42);
             this.btnCreate.TabIndex = 6;
@@ -92,14 +90,16 @@
             this.tgl_so,
             this.jumlah_barang});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 128);
+            this.dataGridView.Location = new System.Drawing.Point(0, 121);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1350, 528);
+            this.dataGridView.Size = new System.Drawing.Size(1350, 535);
             this.dataGridView.TabIndex = 2;
             // 
             // groupFilter
             // 
+            this.groupFilter.Controls.Add(this.btnCreate);
+            this.groupFilter.Controls.Add(this.btnBack);
             this.groupFilter.Controls.Add(this.numJumlah);
             this.groupFilter.Controls.Add(this.label4);
             this.groupFilter.Controls.Add(this.txtKeyword);
@@ -107,7 +107,7 @@
             this.groupFilter.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupFilter.Location = new System.Drawing.Point(12, 13);
             this.groupFilter.Name = "groupFilter";
-            this.groupFilter.Size = new System.Drawing.Size(572, 109);
+            this.groupFilter.Size = new System.Drawing.Size(572, 102);
             this.groupFilter.TabIndex = 1;
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
