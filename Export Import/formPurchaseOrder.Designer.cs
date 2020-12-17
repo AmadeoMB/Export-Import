@@ -53,14 +53,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diskon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnRedo = new System.Windows.Forms.Button();
             this.BtnUndo = new System.Windows.Forms.Button();
             this.Kurang = new System.Windows.Forms.Button();
@@ -83,6 +75,14 @@
             this.button12 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qty = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.harga_beli_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.diskon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -381,66 +381,6 @@
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id_item";
-            this.id_item.HeaderText = "ID ITEM";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama_item";
-            this.nama_item.HeaderText = "Nama Item";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 230;
-            // 
-            // qty
-            // 
-            this.qty.DataPropertyName = "qty_item";
-            this.qty.HeaderText = "QTY";
-            this.qty.Name = "qty";
-            this.qty.ReadOnly = true;
-            this.qty.Width = 80;
-            // 
-            // satuan_item
-            // 
-            this.satuan_item.DataPropertyName = "satuan_item";
-            this.satuan_item.HeaderText = "Satuan";
-            this.satuan_item.Name = "satuan_item";
-            this.satuan_item.ReadOnly = true;
-            // 
-            // harga_beli_item
-            // 
-            this.harga_beli_item.DataPropertyName = "harga_beli_item";
-            this.harga_beli_item.HeaderText = "Harga";
-            this.harga_beli_item.Name = "harga_beli_item";
-            this.harga_beli_item.ReadOnly = true;
-            this.harga_beli_item.Width = 200;
-            // 
-            // diskon
-            // 
-            this.diskon.DataPropertyName = "discount";
-            this.diskon.HeaderText = "Discount";
-            this.diskon.Name = "diskon";
-            this.diskon.ReadOnly = true;
-            // 
-            // jenis_ppn
-            // 
-            this.jenis_ppn.DataPropertyName = "jenis_ppn";
-            this.jenis_ppn.HeaderText = "Jenis PPN";
-            this.jenis_ppn.Name = "jenis_ppn";
-            this.jenis_ppn.ReadOnly = true;
-            // 
-            // subtotal
-            // 
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 200;
-            // 
             // btnRedo
             // 
             this.btnRedo.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -687,6 +627,66 @@
             this.groupBox5.Size = new System.Drawing.Size(1339, 51);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
+            // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id_item";
+            this.id_item.HeaderText = "ID ITEM";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama_item";
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 230;
+            // 
+            // qty
+            // 
+            this.qty.DataPropertyName = "qty_item";
+            this.qty.HeaderText = "QTY";
+            this.qty.Name = "qty";
+            this.qty.ReadOnly = true;
+            this.qty.Width = 80;
+            // 
+            // satuan_item
+            // 
+            this.satuan_item.DataPropertyName = "satuan_item";
+            this.satuan_item.HeaderText = "Satuan";
+            this.satuan_item.Name = "satuan_item";
+            this.satuan_item.ReadOnly = true;
+            // 
+            // harga_beli_item
+            // 
+            this.harga_beli_item.DataPropertyName = "harga_beli_item";
+            this.harga_beli_item.HeaderText = "Harga";
+            this.harga_beli_item.Name = "harga_beli_item";
+            this.harga_beli_item.ReadOnly = true;
+            this.harga_beli_item.Width = 200;
+            // 
+            // diskon
+            // 
+            this.diskon.DataPropertyName = "discount";
+            this.diskon.HeaderText = "Discount";
+            this.diskon.Name = "diskon";
+            this.diskon.ReadOnly = true;
+            // 
+            // jenis_ppn
+            // 
+            this.jenis_ppn.DataPropertyName = "jenis_ppn";
+            this.jenis_ppn.HeaderText = "Jenis PPN";
+            this.jenis_ppn.Name = "jenis_ppn";
+            this.jenis_ppn.ReadOnly = true;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
             // 
             // formPurchaseOrder
             // 

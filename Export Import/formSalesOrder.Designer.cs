@@ -65,6 +65,12 @@
             this.txtTotalHarga = new System.Windows.Forms.TextBox();
             this.txtTotalHargaConvert = new System.Windows.Forms.TextBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.groupButton = new System.Windows.Forms.GroupBox();
+            this.btnRedo = new System.Windows.Forms.Button();
+            this.btnUndo = new System.Windows.Forms.Button();
+            this.btnMinus = new System.Windows.Forms.Button();
+            this.btnPlus = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,12 +80,6 @@
             this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupButton = new System.Windows.Forms.GroupBox();
-            this.btnRedo = new System.Windows.Forms.Button();
-            this.btnUndo = new System.Windows.Forms.Button();
-            this.btnMinus = new System.Windows.Forms.Button();
-            this.btnPlus = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -521,83 +521,6 @@
             this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             this.dataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellValueChanged);
             // 
-            // id_item
-            // 
-            this.id_item.DataPropertyName = "id_item";
-            this.id_item.Frozen = true;
-            this.id_item.HeaderText = "ID Item";
-            this.id_item.Name = "id_item";
-            this.id_item.ReadOnly = true;
-            // 
-            // nama_item
-            // 
-            this.nama_item.DataPropertyName = "nama_item";
-            this.nama_item.Frozen = true;
-            this.nama_item.HeaderText = "Nama Item";
-            this.nama_item.Name = "nama_item";
-            this.nama_item.ReadOnly = true;
-            this.nama_item.Width = 200;
-            // 
-            // qty_item
-            // 
-            this.qty_item.DataPropertyName = "qty_item";
-            this.qty_item.Frozen = true;
-            this.qty_item.HeaderText = "QTY Item";
-            this.qty_item.Name = "qty_item";
-            // 
-            // jenis_satuan
-            // 
-            this.jenis_satuan.DataPropertyName = "satuan_item";
-            this.jenis_satuan.Frozen = true;
-            this.jenis_satuan.HeaderText = "Satuan";
-            this.jenis_satuan.Name = "jenis_satuan";
-            this.jenis_satuan.ReadOnly = true;
-            this.jenis_satuan.Width = 150;
-            // 
-            // harga_satuan
-            // 
-            this.harga_satuan.DataPropertyName = "harga_jual_item";
-            this.harga_satuan.Frozen = true;
-            this.harga_satuan.HeaderText = "Harga Satuan";
-            this.harga_satuan.Name = "harga_satuan";
-            this.harga_satuan.ReadOnly = true;
-            this.harga_satuan.Width = 150;
-            // 
-            // berat_total
-            // 
-            this.berat_total.DataPropertyName = "berat";
-            this.berat_total.Frozen = true;
-            this.berat_total.HeaderText = "Berat Total";
-            this.berat_total.Name = "berat_total";
-            this.berat_total.ReadOnly = true;
-            // 
-            // jenis_ppn
-            // 
-            this.jenis_ppn.DataPropertyName = "jenis_ppn";
-            this.jenis_ppn.Frozen = true;
-            this.jenis_ppn.HeaderText = "Jenis PPN";
-            this.jenis_ppn.Name = "jenis_ppn";
-            this.jenis_ppn.ReadOnly = true;
-            this.jenis_ppn.Width = 75;
-            // 
-            // discount
-            // 
-            this.discount.DataPropertyName = "discount";
-            this.discount.Frozen = true;
-            this.discount.HeaderText = "Discount";
-            this.discount.Name = "discount";
-            this.discount.ReadOnly = true;
-            this.discount.Width = 75;
-            // 
-            // subtotal
-            // 
-            this.subtotal.DataPropertyName = "subtotal";
-            this.subtotal.Frozen = true;
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            this.subtotal.Width = 200;
-            // 
             // groupButton
             // 
             this.groupButton.Controls.Add(this.btnRedo);
@@ -660,6 +583,84 @@
             this.label11.Size = new System.Drawing.Size(95, 26);
             this.label11.TabIndex = 0;
             this.label11.Text = "List Order";
+            // 
+            // id_item
+            // 
+            this.id_item.DataPropertyName = "id_item";
+            this.id_item.Frozen = true;
+            this.id_item.HeaderText = "ID Item";
+            this.id_item.Name = "id_item";
+            this.id_item.ReadOnly = true;
+            // 
+            // nama_item
+            // 
+            this.nama_item.DataPropertyName = "nama_item";
+            this.nama_item.Frozen = true;
+            this.nama_item.HeaderText = "Nama Item";
+            this.nama_item.Name = "nama_item";
+            this.nama_item.ReadOnly = true;
+            this.nama_item.Width = 200;
+            // 
+            // qty_item
+            // 
+            this.qty_item.DataPropertyName = "qty_item";
+            this.qty_item.Frozen = true;
+            this.qty_item.HeaderText = "QTY Item";
+            this.qty_item.Name = "qty_item";
+            this.qty_item.ReadOnly = true;
+            // 
+            // jenis_satuan
+            // 
+            this.jenis_satuan.DataPropertyName = "satuan_item";
+            this.jenis_satuan.Frozen = true;
+            this.jenis_satuan.HeaderText = "Satuan";
+            this.jenis_satuan.Name = "jenis_satuan";
+            this.jenis_satuan.ReadOnly = true;
+            this.jenis_satuan.Width = 150;
+            // 
+            // harga_satuan
+            // 
+            this.harga_satuan.DataPropertyName = "harga_jual_item";
+            this.harga_satuan.Frozen = true;
+            this.harga_satuan.HeaderText = "Harga Satuan";
+            this.harga_satuan.Name = "harga_satuan";
+            this.harga_satuan.ReadOnly = true;
+            this.harga_satuan.Width = 150;
+            // 
+            // berat_total
+            // 
+            this.berat_total.DataPropertyName = "berat";
+            this.berat_total.Frozen = true;
+            this.berat_total.HeaderText = "Berat Total";
+            this.berat_total.Name = "berat_total";
+            this.berat_total.ReadOnly = true;
+            // 
+            // jenis_ppn
+            // 
+            this.jenis_ppn.DataPropertyName = "jenis_ppn";
+            this.jenis_ppn.Frozen = true;
+            this.jenis_ppn.HeaderText = "Jenis PPN";
+            this.jenis_ppn.Name = "jenis_ppn";
+            this.jenis_ppn.ReadOnly = true;
+            this.jenis_ppn.Width = 75;
+            // 
+            // discount
+            // 
+            this.discount.DataPropertyName = "discount";
+            this.discount.Frozen = true;
+            this.discount.HeaderText = "Discount";
+            this.discount.Name = "discount";
+            this.discount.ReadOnly = true;
+            this.discount.Width = 75;
+            // 
+            // subtotal
+            // 
+            this.subtotal.DataPropertyName = "subtotal";
+            this.subtotal.Frozen = true;
+            this.subtotal.HeaderText = "Subtotal";
+            this.subtotal.Name = "subtotal";
+            this.subtotal.ReadOnly = true;
+            this.subtotal.Width = 200;
             // 
             // formSalesOrder
             // 
