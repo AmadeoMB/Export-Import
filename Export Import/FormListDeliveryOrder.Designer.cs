@@ -79,7 +79,7 @@
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(150, 42);
             this.btnCreate.TabIndex = 6;
-            this.btnCreate.Text = "Create P/I";
+            this.btnCreate.Text = "Create Invoice";
             this.btnCreate.UseVisualStyleBackColor = true;
             // 
             // dataGridView
