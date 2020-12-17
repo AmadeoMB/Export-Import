@@ -28,48 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlAtas = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.pnlBawah = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.groupFilter = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
             this.numJumlah = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCreate = new System.Windows.Forms.Button();
+            this.pnlAtas = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.id_do = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pnlAtas.SuspendLayout();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).BeginInit();
+            this.pnlAtas.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // pnlAtas
-            // 
-            this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.pnlAtas.Controls.Add(this.label1);
-            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlAtas.Location = new System.Drawing.Point(0, 0);
-            this.pnlAtas.Name = "pnlAtas";
-            this.pnlAtas.Size = new System.Drawing.Size(1350, 85);
-            this.pnlAtas.TabIndex = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 59);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "List Delivery Order";
             // 
             // pnlBawah
             // 
@@ -79,7 +59,28 @@
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
             this.pnlBawah.Name = "pnlBawah";
             this.pnlBawah.Size = new System.Drawing.Size(1350, 656);
-            this.pnlBawah.TabIndex = 9;
+            this.pnlBawah.TabIndex = 8;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(416, 7);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(150, 42);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Enabled = false;
+            this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Location = new System.Drawing.Point(416, 111);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(150, 42);
+            this.btnCreate.TabIndex = 6;
+            this.btnCreate.Text = "Create P/I";
+            this.btnCreate.UseVisualStyleBackColor = true;
             // 
             // dataGridView
             // 
@@ -90,62 +91,41 @@
             this.tgl_so,
             this.jumlah_barang});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 160);
+            this.dataGridView.Location = new System.Drawing.Point(0, 187);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1350, 496);
+            this.dataGridView.Size = new System.Drawing.Size(1350, 469);
             this.dataGridView.TabIndex = 2;
             // 
             // groupFilter
             // 
-            this.groupFilter.Controls.Add(this.btnCreate);
             this.groupFilter.Controls.Add(this.btnEdit);
+            this.groupFilter.Controls.Add(this.btnCreate);
             this.groupFilter.Controls.Add(this.btnBack);
             this.groupFilter.Controls.Add(this.numJumlah);
             this.groupFilter.Controls.Add(this.label4);
             this.groupFilter.Controls.Add(this.txtKeyword);
             this.groupFilter.Controls.Add(this.label2);
             this.groupFilter.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupFilter.Location = new System.Drawing.Point(12, 3);
+            this.groupFilter.Location = new System.Drawing.Point(12, 13);
             this.groupFilter.Name = "groupFilter";
-            this.groupFilter.Size = new System.Drawing.Size(572, 152);
+            this.groupFilter.Size = new System.Drawing.Size(572, 153);
             this.groupFilter.TabIndex = 1;
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Enabled = false;
-            this.btnEdit.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(406, 61);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(150, 42);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(406, 13);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(150, 42);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
             // numJumlah
             // 
-            this.numJumlah.Location = new System.Drawing.Point(149, 68);
+            this.numJumlah.Location = new System.Drawing.Point(139, 68);
             this.numJumlah.Name = "numJumlah";
-            this.numJumlah.Size = new System.Drawing.Size(200, 23);
+            this.numJumlah.Size = new System.Drawing.Size(191, 23);
             this.numJumlah.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(31, 67);
+            this.label4.Location = new System.Drawing.Point(21, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 19);
             this.label4.TabIndex = 4;
@@ -154,7 +134,7 @@
             // txtKeyword
             // 
             this.txtKeyword.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtKeyword.Location = new System.Drawing.Point(149, 22);
+            this.txtKeyword.Location = new System.Drawing.Point(139, 22);
             this.txtKeyword.Name = "txtKeyword";
             this.txtKeyword.Size = new System.Drawing.Size(200, 27);
             this.txtKeyword.TabIndex = 1;
@@ -169,16 +149,34 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Nama Customer :";
             // 
-            // btnCreate
+            // pnlAtas
             // 
-            this.btnCreate.Enabled = false;
-            this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(406, 109);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(150, 42);
-            this.btnCreate.TabIndex = 7;
-            this.btnCreate.Text = "Create Invoice";
-            this.btnCreate.UseVisualStyleBackColor = true;
+            this.pnlAtas.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.pnlAtas.Controls.Add(this.label1);
+            this.pnlAtas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlAtas.Location = new System.Drawing.Point(0, 0);
+            this.pnlAtas.Name = "pnlAtas";
+            this.pnlAtas.Size = new System.Drawing.Size(1350, 85);
+            this.pnlAtas.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(387, 59);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "List Delivery Order";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(416, 58);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(150, 41);
+            this.btnEdit.TabIndex = 3;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
             // 
             // id_do
             // 
@@ -221,38 +219,38 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1350, 747);
-            this.Controls.Add(this.pnlAtas);
             this.Controls.Add(this.pnlBawah);
+            this.Controls.Add(this.pnlAtas);
             this.Name = "FormListDeliveryOrder";
             this.Text = "FormListDeliveryOrder";
-            this.pnlAtas.ResumeLayout(false);
-            this.pnlAtas.PerformLayout();
             this.pnlBawah.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupFilter.ResumeLayout(false);
             this.groupFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numJumlah)).EndInit();
+            this.pnlAtas.ResumeLayout(false);
+            this.pnlAtas.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlAtas;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlBawah;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_do;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
         private System.Windows.Forms.GroupBox groupFilter;
         private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.NumericUpDown numJumlah;
         private System.Windows.Forms.Label label4;
         public System.Windows.Forms.TextBox txtKeyword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_do;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
-        private System.Windows.Forms.Button btnCreate;
+        private System.Windows.Forms.Panel pnlAtas;
+        private System.Windows.Forms.Label label1;
     }
 }
