@@ -174,7 +174,7 @@
             // 
             // numJumlah
             // 
-            this.numJumlah.Location = new System.Drawing.Point(375, 64);
+            this.numJumlah.Location = new System.Drawing.Point(139, 68);
             this.numJumlah.Name = "numJumlah";
             this.numJumlah.Size = new System.Drawing.Size(191, 23);
             this.numJumlah.TabIndex = 5;
@@ -184,7 +184,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(371, 25);
+            this.label4.Location = new System.Drawing.Point(21, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 19);
             this.label4.TabIndex = 4;
