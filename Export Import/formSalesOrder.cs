@@ -683,11 +683,11 @@ namespace Export_Import
         {
             if (e.ColumnIndex == 2 && dataGridView.Rows.Count > 1)
             {
-                object jumlah = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                object jumlah = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString().Replace(".", "");
                 if (Convert.ToInt32(jumlah) != 0)
                 {
                     ds.Tables["item"].Rows[e.RowIndex][e.ColumnIndex] = jumlah;
-                    ds.Tables["item"].Rows[e.RowIndex][5] = Convert.ToInt32(jumlah) * Convert.ToInt32(ds.Tables["item"].Rows[e.RowIndex][4]);
+                    ds.Tables["item"].Rows[e.RowIndex][5] = Convert.ToInt32(jumlah) * Convert.ToInt32(ds.Tables["item"].Rows[e.RowIndex][4].ToString().Replace(".", ""));
                 }
                 else
                 {

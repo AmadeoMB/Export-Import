@@ -109,6 +109,7 @@ namespace Export_Import
             this.dataGridView1.Columns["harga_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             this.dataGridView1.Columns["qty_item"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
 
+            DateToday.Value = DateTime.Now;
 
             this.groupPO.Add(id_po);
             isicbsupplier();

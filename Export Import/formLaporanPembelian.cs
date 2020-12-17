@@ -132,7 +132,7 @@ namespace Export_Import
             loadChartPie();
 
             dateTimePicker1.Value = DateTime.Today;
-            dateTimePicker2.Value = DateTime.Today;
+            dateTimePicker2.Value = DateTime.UtcNow;
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -145,12 +145,6 @@ namespace Export_Import
             if (dateTimePicker1.Value > DateTime.Now)
             {
                 MessageBox.Show("Value tanggal 1 tidak bisa lebih besar dari hari ini");
-                return;
-            }
-
-            if (dateTimePicker2.Value > DateTime.Now)
-            {
-                MessageBox.Show("Value tanggal 2 tidak bisa lebih besar dari hari ini");
                 return;
             }
 
