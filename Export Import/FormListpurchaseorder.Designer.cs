@@ -43,6 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
@@ -69,11 +70,13 @@
             this.tgl_so,
             this.jumlah_barang});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView.Location = new System.Drawing.Point(0, 121);
+            this.dataGridView.Location = new System.Drawing.Point(0, 183);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(1350, 535);
+            this.dataGridView.Size = new System.Drawing.Size(1350, 473);
             this.dataGridView.TabIndex = 2;
+            this.dataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellClick);
+            this.dataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellContentClick);
             // 
             // id_po
             // 
@@ -113,6 +116,7 @@
             // 
             // groupFilter
             // 
+            this.groupFilter.Controls.Add(this.btnEdit);
             this.groupFilter.Controls.Add(this.btnCreate);
             this.groupFilter.Controls.Add(this.btnBack);
             this.groupFilter.Controls.Add(this.numJumlah);
@@ -122,7 +126,7 @@
             this.groupFilter.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupFilter.Location = new System.Drawing.Point(12, 13);
             this.groupFilter.Name = "groupFilter";
-            this.groupFilter.Size = new System.Drawing.Size(572, 102);
+            this.groupFilter.Size = new System.Drawing.Size(572, 145);
             this.groupFilter.TabIndex = 1;
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
@@ -131,7 +135,7 @@
             // 
             this.btnCreate.Enabled = false;
             this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(416, 55);
+            this.btnCreate.Location = new System.Drawing.Point(416, 103);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.Size = new System.Drawing.Size(150, 42);
             this.btnCreate.TabIndex = 6;
@@ -204,6 +208,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "List Purchase Order";
             // 
+            // btnEdit
+            // 
+            this.btnEdit.Font = new System.Drawing.Font("Calibri", 12F);
+            this.btnEdit.Location = new System.Drawing.Point(416, 55);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(150, 41);
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
             // FormListPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,5 +257,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
         private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
+        private System.Windows.Forms.Button btnEdit;
     }
 }

@@ -20,6 +20,7 @@ namespace Export_Import
         OracleDataAdapter daItem;
         OracleDataAdapter daCurrent;
         OracleDataAdapter daship;
+        DataTable dtPO = new DataTable();
         private Stack<Object[]> done = new Stack<Object[]>(100);
         private Stack<Object[]> undone = new Stack<Object[]>(100);
         DataSet ds = new DataSet();
@@ -48,6 +49,15 @@ namespace Export_Import
             this.conn = form.conn;
             this.admin = form.admin;
         }
+        public formPurchaseOrder(FormListPurchaseOrder pembelian)
+        {
+            InitializeComponent();
+            this.form = pembelian.pembelian;
+            this.conn = pembelian.conn;
+            this.admin = "Melvern Tallall";
+            this.id_po = pembelian.id_purchase_order;
+        }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -81,6 +91,84 @@ namespace Export_Import
             comboBox4.DataSource = ds.Tables["ekspedisi"];
             comboBox4.ValueMember = "id_ekspedisi";
             comboBox4.DisplayMember = "nama_ekspedisi";
+        }
+        void ambilDataSO(String id)
+        {
+            saved = true;
+            PONO.Text = id;
+            String cmd = "";
+
+            if (!id.Equals(""))
+            {
+                cmd = "select credit_term_purchase_order from h_purchase_order where id_purchase_order = '" + id + "'";
+                string ct = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                comboBox2.Text = ct + " Day(s)";
+
+                cmd = "select total from h_purchase_order where id_purchase_order = '" + id + "'";
+                total += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotal.Text = "Rp " + total.ToString("#,##0.00");
+
+                cmd = "select total_ppn from h_purchase_order where id_purchase_order = '" + id + "'";
+                totalPPN += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
+
+                cmd = "select total_harga from h_purchase_order where id_purchase_order = '" + id + "'";
+                netTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                textBox5.Text = "Rp " + netTotal.ToString("#,##0.00");
+
+                cmd = "select total_harga_convert from h_purchase_order where id_purchase_order = '" + id + "'";
+                localNetTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                LNTotal.Text = cbCurrent.SelectedValue.ToString() + " " + localNetTotal.ToString("#,##0.00");
+
+                isiDataItem(id);
+            }
+        }
+
+        void isiDataItem(String id)
+        {
+            dtPO.Clear();
+            dtPO.Columns.Add("id_item");
+            dtPO.Columns.Add("nama_item");
+            dtPO.Columns.Add("qty_item");
+            dtPO.Columns.Add("satuan_item");
+            dtPO.Columns.Add("harga_beli_item");
+            dtPO.Columns.Add("discount");
+            dtPO.Columns.Add("jenis_ppn");
+
+            dtPO.Columns.Add("subtotal");
+
+            String cmd = "";
+            OracleDataReader reader;
+            cmd = "select * from d_purchase_order where id_purchase_order = '" + id + "'";
+            reader = new OracleCommand(cmd, conn).ExecuteReader();
+            while (reader.Read())
+            {
+                dtPO.Rows.Add(new Object[] {
+                    reader.GetValue(0).ToString(),
+                    reader.GetValue(2).ToString(),
+                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
+                    reader.GetValue(4).ToString(),
+                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
+                    reader.GetValue(6).ToString(),
+                    reader.GetValue(7).ToString(),
+                    Convert.ToInt64(reader.GetValue(8)).ToString("Rp #,##0.00")
+                });
+                //DataRow newRow = dtSO.NewRow();
+                //newRow[0] = reader.GetValue(0).ToString();
+                //newRow["id_so"] = reader.GetValue(1).ToString();
+                //newRow["nama_item"] = reader.GetValue(2).ToString();
+                //newRow["qty_item"] = Convert.ToInt64(reader.GetValue(3)).ToString("#,###");
+                //newRow["jenis_satuan"] = reader.GetValue(4).ToString();
+                //newRow["harga_satuan"] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00");
+                //newRow["berat_total"] = Convert.ToInt64(reader.GetValue(6)).ToString("#,###");
+                //newRow["jenis_ppn"] = reader.GetValue(7).ToString();
+                //newRow["discount"] = reader.GetValue(8).ToString();
+                //newRow["subtotal"] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
+                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
+                hBeliList.Add(Convert.ToInt64(reader.GetValue(5)));
+                subtotalList.Add(Convert.ToInt64(reader.GetValue(8)));
+            }
+            dataGridView1.DataSource = dtPO;
         }
         public void refreshnettotal() {
             total = 0;
@@ -125,6 +213,9 @@ namespace Export_Import
             isicbCurrent();
             isicbship();
             refreshnettotal();
+            if (!this.id_po.Equals("")) {
+                ambilDataSO(id_po);
+            }
             refreshlocalnet();
         }
         String getNomerPO(String tgl)
@@ -167,9 +258,10 @@ namespace Export_Import
             {
                 int i = 0;
                 bool ada = false;
-                for (; i < ds.Tables["item"].Rows.Count; i++)
+                for (; i < dataGridView1.Rows.Count-1; i++)
                 {
-                    if (ds.Tables["item"].Rows[i][0].ToString().Equals(id_item))
+                    MessageBox.Show(dataGridView1.Rows[i].Cells[0].Value.ToString());
+                    if (dataGridView1.Rows[i].Cells[0].Value.ToString().Equals(id_item))
                     {
                         ada = true;
                         break;
@@ -181,8 +273,8 @@ namespace Export_Import
                     qtyList[i] += qty;
                     subtotalList[i] += subtotal;
 
-                    ds.Tables["item"].Rows[i][2] = qtyList[i].ToString("#,###");
-                    ds.Tables["item"].Rows[i][7] = subtotalList[i].ToString("Rp #,##0.00");
+                    dataGridView1.Rows[i].Cells[2].Value = qtyList[i].ToString("#,###");
+                    dataGridView1.Rows[i].Cells[7].Value = subtotalList[i].ToString("Rp #,##0.00");
 
                     return;
                 }
@@ -197,15 +289,15 @@ namespace Export_Import
                 qty.ToString("#,###") + "' as qty_item, " +
                 "satuan_item, '" +
                 hargaBeli.ToString("Rp #,##0.0") + "' as harga_beli_item, "+
-                "jenis_ppn, " +
-                diskon + " as discount, '" +
+                diskon + " as discount, " +
+                "jenis_ppn, '" +
                 subtotal.ToString("Rp #,##0.0") + "' as subtotal " +
                 "from item " +
                 "where id_item = '" + id_item + "'";
 
             daItem = new OracleDataAdapter(cmd, conn);
-            daItem.Fill(ds, "item");
-            dataGridView1.DataSource = ds.Tables["item"];
+            daItem.Fill(dtPO);
+            dataGridView1.DataSource = dtPO;
         }
         private void Tambah_Click(object sender, EventArgs e)
         {
@@ -236,8 +328,8 @@ namespace Export_Import
             if (idx > -1)
             {
                 Object[] temp = {
-                    ds.Tables["item"].Rows[idx][0],
-                    ds.Tables["item"].Rows[idx][6],
+                    dataGridView1.Rows[idx].Cells[0].Value,
+                    dataGridView1.Rows[idx].Cells[6].Value,
                     qtyList[idx],
                     "delete",
                 };
@@ -246,7 +338,7 @@ namespace Export_Import
                 qtyList.RemoveAt(idx);
                 subtotalList.RemoveAt(idx);
                 hBeliList.RemoveAt(idx);
-                ds.Tables["item"].Rows.RemoveAt(idx);
+                dataGridView1.Rows.RemoveAt(idx);
 
                 refreshnettotal();
                 refreshlocalnet();
@@ -258,54 +350,6 @@ namespace Export_Import
 
         }
 
-        private void btnUp_Click(object sender, EventArgs e)
-        {
-            if (idx > -1)
-            {
-                if (idx > 0)
-                {
-                    Object[] tempBawah = ds.Tables["item"].Rows[idx].ItemArray;
-                    Object[] tempAtas = ds.Tables["item"].Rows[idx - 1].ItemArray;
-
-                    ds.Tables["item"].Rows[idx].ItemArray = tempAtas;
-                    ds.Tables["item"].Rows[idx - 1].ItemArray = tempBawah;
-                }
-                else
-                {
-                    MessageBox.Show("Data sudah berada dipaling atas");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Click salah satu baris pada tabel terlebih dahulu");
-            }
-            refreshnettotal();
-            refreshlocalnet();
-        }
-        private void btnDown_Click(object sender, EventArgs e)
-        {
-            if (idx > -1)
-            {
-                if (idx < ds.Tables["item"].Rows.Count - 1)
-                {
-                    Object[] tempAtas = ds.Tables["item"].Rows[idx].ItemArray;
-                    Object[] tempBawah = ds.Tables["item"].Rows[idx + 1].ItemArray;
-
-                    ds.Tables["item"].Rows[idx].ItemArray = tempBawah;
-                    ds.Tables["item"].Rows[idx + 1].ItemArray = tempAtas;
-                }
-                else
-                {
-                    MessageBox.Show("Data sudah berada dipaling bawah");
-                }
-                refreshnettotal();
-                refreshlocalnet();
-            }
-            else
-            {
-                MessageBox.Show("Click salah satu baris pada tabel terlebih dahulu");
-            }
-        }
 
         private void BtnUndo_Click(object sender, EventArgs e)
         {
@@ -316,11 +360,11 @@ namespace Export_Import
 
                 if (temp[3].ToString().Equals("insert"))
                 {
-                    for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
+                        if (dataGridView1.Rows[i].Cells[0].Value.ToString().Equals(temp[0]))
                         {
-                            ds.Tables["item"].Rows.RemoveAt(i);
+                            dataGridView1.Rows.RemoveAt(i);
                             subtotalList.RemoveAt(i);
                             hBeliList.RemoveAt(i);
                             qtyList.RemoveAt(i);
@@ -362,11 +406,11 @@ namespace Export_Import
                 }
                 else
                 {
-                    for (int i = 0; i < ds.Tables["item"].Rows.Count; i++)
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
                     {
-                        if (ds.Tables["item"].Rows[i][0].ToString().Equals(temp[0]))
+                        if (dataGridView1.Rows[i].Cells[0].Value.ToString().Equals(temp[0]))
                         {
-                            ds.Tables["item"].Rows.RemoveAt(i);
+                            dataGridView1.Rows.RemoveAt(i);
                             subtotalList.RemoveAt(i);
                             hBeliList.RemoveAt(i);
                             qtyList.RemoveAt(i);
@@ -415,14 +459,14 @@ namespace Export_Import
             OracleCommand cmd3;
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                string nama = ds.Tables["item"].Rows[i][1].ToString();
-                string iditems = ds.Tables["item"].Rows[i][0].ToString();
+                string nama = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                string iditems = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 Int64 qtty = qtyList[i];
-                string jeniss = ds.Tables["item"].Rows[i][3].ToString();
+                string jeniss = dataGridView1.Rows[i].Cells[3].Value.ToString();
                 Int64 hargass = hBeliList[i];
-                string diskoun = ds.Tables["item"].Rows[i][6].ToString();
+                string diskoun = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 Int64 discroun = Int64.Parse(diskoun);
-                string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
+                string jenisppn = dataGridView1.Rows[i].Cells[6].Value.ToString();
                 Int64 stotal = subtotalList[i];
                 cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
@@ -533,14 +577,14 @@ namespace Export_Import
             OracleCommand cmd3;
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
-                string nama = ds.Tables["item"].Rows[i][1].ToString();
-                string iditems = ds.Tables["item"].Rows[i][0].ToString();
+                string nama = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                string iditems = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 Int64 qtty = qtyList[i];
-                string jeniss = ds.Tables["item"].Rows[i][3].ToString();
+                string jeniss = dataGridView1.Rows[i].Cells[3].Value.ToString();
                 Int64 hargass = hBeliList[i];
-                string diskoun = ds.Tables["item"].Rows[i][6].ToString();
+                string diskoun = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 Int64 discroun = Int64.Parse(diskoun);
-                string jenisppn = ds.Tables["item"].Rows[i][5].ToString();
+                string jenisppn = dataGridView1.Rows[i].Cells[6].Value.ToString();
                 Int64 stotal = subtotalList[i];
                 cmd3 = new OracleCommand("insert into D_PURCHASE_ORDER values(:iditem, :idpo,:nama,:qty,:jeniss,:hargas,:diskon,:jenisppn,:subtotal)", conn);
                 cmd3.Parameters.Add(":iditem", iditems);
