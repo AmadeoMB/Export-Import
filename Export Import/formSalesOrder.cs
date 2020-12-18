@@ -156,7 +156,10 @@ namespace Export_Import
                 isiCBGudang();
                 isiCBSales();
                 generatecreateNomerSO();
-                ambilDataSO(this.id_so);
+                if (!this.id_so.Equals("")) {
+                    ambilDataSO(this.id_so);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -240,6 +243,7 @@ namespace Export_Import
 
         void ambilDataSO(String id)
         {
+            saved = true;
             txtIdSO.Text = id;
             String cmd = "";
 

@@ -30,19 +30,18 @@
         {
             this.pnlBawah = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.id_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupFilter = new System.Windows.Forms.GroupBox();
-            this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.groupFilter = new System.Windows.Forms.GroupBox();
             this.numJumlah = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.id_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgl_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
@@ -52,9 +51,7 @@
             // 
             // pnlBawah
             // 
-            this.pnlBawah.Controls.Add(this.btnEdit);
             this.pnlBawah.Controls.Add(this.dataGridView);
-            this.pnlBawah.Controls.Add(this.btnBack);
             this.pnlBawah.Controls.Add(this.groupFilter);
             this.pnlBawah.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pnlBawah.Location = new System.Drawing.Point(0, 91);
@@ -68,7 +65,7 @@
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_invoice,
             this.nama_customer,
-            this.tgl_so,
+            this.tgl_invoice,
             this.jumlah_barang});
             this.dataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView.Location = new System.Drawing.Point(0, 132);
@@ -77,45 +74,21 @@
             this.dataGridView.Size = new System.Drawing.Size(1350, 524);
             this.dataGridView.TabIndex = 2;
             // 
-            // id_invoice
+            // btnBack
             // 
-            this.id_invoice.DataPropertyName = "id";
-            this.id_invoice.Frozen = true;
-            this.id_invoice.HeaderText = "Nomer Invoice";
-            this.id_invoice.Name = "id_invoice";
-            this.id_invoice.ReadOnly = true;
-            this.id_invoice.Width = 150;
-            // 
-            // nama_customer
-            // 
-            this.nama_customer.DataPropertyName = "nama";
-            this.nama_customer.Frozen = true;
-            this.nama_customer.HeaderText = "Nama Customer";
-            this.nama_customer.Name = "nama_customer";
-            this.nama_customer.ReadOnly = true;
-            this.nama_customer.Width = 150;
-            // 
-            // tgl_so
-            // 
-            this.tgl_so.DataPropertyName = "tanggal";
-            this.tgl_so.Frozen = true;
-            this.tgl_so.HeaderText = "Tanggal";
-            this.tgl_so.Name = "tgl_so";
-            this.tgl_so.ReadOnly = true;
-            this.tgl_so.Width = 150;
-            // 
-            // jumlah_barang
-            // 
-            this.jumlah_barang.DataPropertyName = "jumlah";
-            this.jumlah_barang.Frozen = true;
-            this.jumlah_barang.HeaderText = "Jumlah Barang";
-            this.jumlah_barang.Name = "jumlah_barang";
-            this.jumlah_barang.ReadOnly = true;
-            this.jumlah_barang.Width = 150;
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(416, 13);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(150, 42);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // groupFilter
             // 
             this.groupFilter.Controls.Add(this.numJumlah);
+            this.groupFilter.Controls.Add(this.btnBack);
             this.groupFilter.Controls.Add(this.label4);
             this.groupFilter.Controls.Add(this.txtKeyword);
             this.groupFilter.Controls.Add(this.label2);
@@ -127,31 +100,13 @@
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(590, 77);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(150, 41);
-            this.btnEdit.TabIndex = 3;
-            this.btnEdit.Text = "Edit";
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(590, 26);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(150, 42);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
             // numJumlah
             // 
             this.numJumlah.Location = new System.Drawing.Point(139, 68);
             this.numJumlah.Name = "numJumlah";
             this.numJumlah.Size = new System.Drawing.Size(191, 23);
             this.numJumlah.TabIndex = 5;
+            this.numJumlah.ValueChanged += new System.EventHandler(this.numJumlah_ValueChanged);
             // 
             // label4
             // 
@@ -170,6 +125,7 @@
             this.txtKeyword.Name = "txtKeyword";
             this.txtKeyword.Size = new System.Drawing.Size(200, 27);
             this.txtKeyword.TabIndex = 1;
+            this.txtKeyword.TextChanged += new System.EventHandler(this.txtKeyword_TextChanged);
             // 
             // label2
             // 
@@ -201,6 +157,42 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "List Invoice";
             // 
+            // id_invoice
+            // 
+            this.id_invoice.DataPropertyName = "id";
+            this.id_invoice.Frozen = true;
+            this.id_invoice.HeaderText = "Nomer Invoice";
+            this.id_invoice.Name = "id_invoice";
+            this.id_invoice.ReadOnly = true;
+            this.id_invoice.Width = 150;
+            // 
+            // nama_customer
+            // 
+            this.nama_customer.DataPropertyName = "nama";
+            this.nama_customer.Frozen = true;
+            this.nama_customer.HeaderText = "Nama Customer";
+            this.nama_customer.Name = "nama_customer";
+            this.nama_customer.ReadOnly = true;
+            this.nama_customer.Width = 150;
+            // 
+            // tgl_invoice
+            // 
+            this.tgl_invoice.DataPropertyName = "tanggal";
+            this.tgl_invoice.Frozen = true;
+            this.tgl_invoice.HeaderText = "Tanggal";
+            this.tgl_invoice.Name = "tgl_invoice";
+            this.tgl_invoice.ReadOnly = true;
+            this.tgl_invoice.Width = 150;
+            // 
+            // jumlah_barang
+            // 
+            this.jumlah_barang.DataPropertyName = "jumlah";
+            this.jumlah_barang.Frozen = true;
+            this.jumlah_barang.HeaderText = "Jumlah Barang";
+            this.jumlah_barang.Name = "jumlah_barang";
+            this.jumlah_barang.ReadOnly = true;
+            this.jumlah_barang.Width = 150;
+            // 
             // formListInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -210,6 +202,7 @@
             this.Controls.Add(this.pnlAtas);
             this.Name = "formListInvoice";
             this.Text = "FormListInvoice";
+            this.Load += new System.EventHandler(this.formListInvoice_Load);
             this.pnlBawah.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupFilter.ResumeLayout(false);
@@ -225,12 +218,7 @@
 
         private System.Windows.Forms.Panel pnlBawah;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_invoice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tgl_so;
-        private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
         private System.Windows.Forms.GroupBox groupFilter;
-        private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.NumericUpDown numJumlah;
         private System.Windows.Forms.Label label4;
@@ -238,5 +226,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pnlAtas;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_invoice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_customer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tgl_invoice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn jumlah_barang;
     }
 }

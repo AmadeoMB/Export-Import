@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.pnlBawah = new System.Windows.Forms.Panel();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnCreate = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id_po = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupFilter = new System.Windows.Forms.GroupBox();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
             this.numJumlah = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.txtKeyword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.id_po = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
@@ -60,27 +60,6 @@
             this.pnlBawah.Size = new System.Drawing.Size(1350, 656);
             this.pnlBawah.TabIndex = 6;
             // 
-            // btnBack
-            // 
-            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(416, 7);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(150, 42);
-            this.btnBack.TabIndex = 7;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
-            // btnCreate
-            // 
-            this.btnCreate.Enabled = false;
-            this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreate.Location = new System.Drawing.Point(416, 55);
-            this.btnCreate.Name = "btnCreate";
-            this.btnCreate.Size = new System.Drawing.Size(150, 42);
-            this.btnCreate.TabIndex = 6;
-            this.btnCreate.Text = "Create P/I";
-            this.btnCreate.UseVisualStyleBackColor = true;
-            // 
             // dataGridView
             // 
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -95,6 +74,42 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1350, 535);
             this.dataGridView.TabIndex = 2;
+            // 
+            // id_po
+            // 
+            this.id_po.DataPropertyName = "id";
+            this.id_po.Frozen = true;
+            this.id_po.HeaderText = "Nomer P/O";
+            this.id_po.Name = "id_po";
+            this.id_po.ReadOnly = true;
+            this.id_po.Width = 150;
+            // 
+            // nama_supplier
+            // 
+            this.nama_supplier.DataPropertyName = "nama";
+            this.nama_supplier.Frozen = true;
+            this.nama_supplier.HeaderText = "Nama Supplier";
+            this.nama_supplier.Name = "nama_supplier";
+            this.nama_supplier.ReadOnly = true;
+            this.nama_supplier.Width = 150;
+            // 
+            // tgl_so
+            // 
+            this.tgl_so.DataPropertyName = "tanggal";
+            this.tgl_so.Frozen = true;
+            this.tgl_so.HeaderText = "Tanggal";
+            this.tgl_so.Name = "tgl_so";
+            this.tgl_so.ReadOnly = true;
+            this.tgl_so.Width = 150;
+            // 
+            // jumlah_barang
+            // 
+            this.jumlah_barang.DataPropertyName = "jumlah";
+            this.jumlah_barang.Frozen = true;
+            this.jumlah_barang.HeaderText = "Jumlah Barang";
+            this.jumlah_barang.Name = "jumlah_barang";
+            this.jumlah_barang.ReadOnly = true;
+            this.jumlah_barang.Width = 150;
             // 
             // groupFilter
             // 
@@ -111,6 +126,28 @@
             this.groupFilter.TabIndex = 1;
             this.groupFilter.TabStop = false;
             this.groupFilter.Text = "Filter";
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Enabled = false;
+            this.btnCreate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCreate.Location = new System.Drawing.Point(416, 55);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(150, 42);
+            this.btnCreate.TabIndex = 6;
+            this.btnCreate.Text = "Create P/I";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            // 
+            // btnBack
+            // 
+            this.btnBack.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBack.Location = new System.Drawing.Point(416, 7);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(150, 42);
+            this.btnBack.TabIndex = 7;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // numJumlah
             // 
@@ -167,42 +204,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "List Purchase Order";
             // 
-            // id_po
-            // 
-            this.id_po.DataPropertyName = "id";
-            this.id_po.Frozen = true;
-            this.id_po.HeaderText = "Nomer P/O";
-            this.id_po.Name = "id_po";
-            this.id_po.ReadOnly = true;
-            this.id_po.Width = 150;
-            // 
-            // nama_supplier
-            // 
-            this.nama_supplier.DataPropertyName = "nama";
-            this.nama_supplier.Frozen = true;
-            this.nama_supplier.HeaderText = "Nama Supplier";
-            this.nama_supplier.Name = "nama_supplier";
-            this.nama_supplier.ReadOnly = true;
-            this.nama_supplier.Width = 150;
-            // 
-            // tgl_so
-            // 
-            this.tgl_so.DataPropertyName = "tanggal";
-            this.tgl_so.Frozen = true;
-            this.tgl_so.HeaderText = "Tanggal";
-            this.tgl_so.Name = "tgl_so";
-            this.tgl_so.ReadOnly = true;
-            this.tgl_so.Width = 150;
-            // 
-            // jumlah_barang
-            // 
-            this.jumlah_barang.DataPropertyName = "jumlah";
-            this.jumlah_barang.Frozen = true;
-            this.jumlah_barang.HeaderText = "Jumlah Barang";
-            this.jumlah_barang.Name = "jumlah_barang";
-            this.jumlah_barang.ReadOnly = true;
-            this.jumlah_barang.Width = 150;
-            // 
             // FormListPurchaseOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +213,7 @@
             this.Controls.Add(this.pnlAtas);
             this.Name = "FormListPurchaseOrder";
             this.Text = "FormListPurchaseOrder";
+            this.Load += new System.EventHandler(this.FormListPurchaseOrder_Load);
             this.pnlBawah.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupFilter.ResumeLayout(false);

@@ -73,6 +73,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.pnlTengah = new System.Windows.Forms.GroupBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.btnSearchSO = new System.Windows.Forms.Button();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ID_Sales = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,7 +84,6 @@
             this.jenis_ppn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSearchSO = new System.Windows.Forms.Button();
             this.pnlAtas.SuspendLayout();
             this.pnlTotal.SuspendLayout();
             this.pnlBawah.SuspendLayout();
@@ -593,6 +593,17 @@
             this.dataGridView.Size = new System.Drawing.Size(1341, 265);
             this.dataGridView.TabIndex = 8;
             // 
+            // btnSearchSO
+            // 
+            this.btnSearchSO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchSO.Location = new System.Drawing.Point(1138, 10);
+            this.btnSearchSO.Name = "btnSearchSO";
+            this.btnSearchSO.Size = new System.Drawing.Size(200, 30);
+            this.btnSearchSO.TabIndex = 7;
+            this.btnSearchSO.Text = "Search S/O";
+            this.btnSearchSO.UseVisualStyleBackColor = true;
+            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
+            // 
             // ID
             // 
             this.ID.DataPropertyName = "id_item";
@@ -679,17 +690,6 @@
             this.subtotal.ReadOnly = true;
             this.subtotal.Width = 170;
             // 
-            // btnSearchSO
-            // 
-            this.btnSearchSO.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchSO.Location = new System.Drawing.Point(1138, 10);
-            this.btnSearchSO.Name = "btnSearchSO";
-            this.btnSearchSO.Size = new System.Drawing.Size(200, 30);
-            this.btnSearchSO.TabIndex = 7;
-            this.btnSearchSO.Text = "Search S/O";
-            this.btnSearchSO.UseVisualStyleBackColor = true;
-            this.btnSearchSO.Click += new System.EventHandler(this.btnSearchSO_Click);
-            // 
             // formDeliveryOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -758,6 +758,12 @@
         private System.Windows.Forms.GroupBox pnlTengah;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button btnSearchSO;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtTotalPPN;
+        private System.Windows.Forms.ComboBox cbNegara;
+        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID_Sales;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama;
@@ -768,11 +774,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn jenis_ppn;
         private System.Windows.Forms.DataGridViewTextBoxColumn discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtTotalPPN;
-        private System.Windows.Forms.ComboBox cbNegara;
-        private System.Windows.Forms.Label label21;
     }
 }

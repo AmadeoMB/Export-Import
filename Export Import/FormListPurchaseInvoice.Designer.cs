@@ -30,6 +30,10 @@
         {
             this.pnlBawah = new System.Windows.Forms.Panel();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.id_purchase_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupFilter = new System.Windows.Forms.GroupBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
@@ -39,10 +43,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pnlAtas = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.id_purchase_invoice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nama_supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tgl_so = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.jumlah_barang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlBawah.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.groupFilter.SuspendLayout();
@@ -74,6 +74,42 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(1350, 535);
             this.dataGridView.TabIndex = 2;
+            // 
+            // id_purchase_invoice
+            // 
+            this.id_purchase_invoice.DataPropertyName = "id";
+            this.id_purchase_invoice.Frozen = true;
+            this.id_purchase_invoice.HeaderText = "Nomer Purchase Invoice";
+            this.id_purchase_invoice.Name = "id_purchase_invoice";
+            this.id_purchase_invoice.ReadOnly = true;
+            this.id_purchase_invoice.Width = 150;
+            // 
+            // nama_supplier
+            // 
+            this.nama_supplier.DataPropertyName = "nama";
+            this.nama_supplier.Frozen = true;
+            this.nama_supplier.HeaderText = "Nama Supplier";
+            this.nama_supplier.Name = "nama_supplier";
+            this.nama_supplier.ReadOnly = true;
+            this.nama_supplier.Width = 150;
+            // 
+            // tgl_so
+            // 
+            this.tgl_so.DataPropertyName = "tanggal";
+            this.tgl_so.Frozen = true;
+            this.tgl_so.HeaderText = "Tanggal";
+            this.tgl_so.Name = "tgl_so";
+            this.tgl_so.ReadOnly = true;
+            this.tgl_so.Width = 150;
+            // 
+            // jumlah_barang
+            // 
+            this.jumlah_barang.DataPropertyName = "jumlah";
+            this.jumlah_barang.Frozen = true;
+            this.jumlah_barang.HeaderText = "Jumlah Barang";
+            this.jumlah_barang.Name = "jumlah_barang";
+            this.jumlah_barang.ReadOnly = true;
+            this.jumlah_barang.Width = 150;
             // 
             // groupFilter
             // 
@@ -167,42 +203,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "List Purchase Invoice";
             // 
-            // id_purchase_invoice
-            // 
-            this.id_purchase_invoice.DataPropertyName = "id";
-            this.id_purchase_invoice.Frozen = true;
-            this.id_purchase_invoice.HeaderText = "Nomer Purchase Invoice";
-            this.id_purchase_invoice.Name = "id_purchase_invoice";
-            this.id_purchase_invoice.ReadOnly = true;
-            this.id_purchase_invoice.Width = 150;
-            // 
-            // nama_supplier
-            // 
-            this.nama_supplier.DataPropertyName = "nama";
-            this.nama_supplier.Frozen = true;
-            this.nama_supplier.HeaderText = "Nama Supplier";
-            this.nama_supplier.Name = "nama_supplier";
-            this.nama_supplier.ReadOnly = true;
-            this.nama_supplier.Width = 150;
-            // 
-            // tgl_so
-            // 
-            this.tgl_so.DataPropertyName = "tanggal";
-            this.tgl_so.Frozen = true;
-            this.tgl_so.HeaderText = "Tanggal";
-            this.tgl_so.Name = "tgl_so";
-            this.tgl_so.ReadOnly = true;
-            this.tgl_so.Width = 150;
-            // 
-            // jumlah_barang
-            // 
-            this.jumlah_barang.DataPropertyName = "jumlah";
-            this.jumlah_barang.Frozen = true;
-            this.jumlah_barang.HeaderText = "Jumlah Barang";
-            this.jumlah_barang.Name = "jumlah_barang";
-            this.jumlah_barang.ReadOnly = true;
-            this.jumlah_barang.Width = 150;
-            // 
             // FormListPurchaseInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +212,7 @@
             this.Controls.Add(this.pnlAtas);
             this.Name = "FormListPurchaseInvoice";
             this.Text = "FormListPurchaseInvoice";
+            this.Load += new System.EventHandler(this.FormListPurchaseInvoice_Load);
             this.pnlBawah.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.groupFilter.ResumeLayout(false);

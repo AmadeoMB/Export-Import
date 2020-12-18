@@ -86,7 +86,10 @@ namespace Export_Import
                 isiCBNegara();
                 generatecreateNomerDO();
                 ambilDataSO(id_so);
-                ambilDataDO(id_delivery_order);
+                if (!this.id_delivery_order.Equals("")) {
+                    ambilDataDO(id_delivery_order);
+                }
+                
         }
 
         void isiCBCustomer()
@@ -318,6 +321,7 @@ namespace Export_Import
 
         void ambilDataDO(String id)
         {
+            saved = true;
             txtIdDO.Text = id;
             String cmd = "select distinct c.id_customer as ID, c.nama_customer as Nama, c.alamat_customer as Alamat from h_delivery_order h join customer c on h.id_customer = c.id_customer";
 
