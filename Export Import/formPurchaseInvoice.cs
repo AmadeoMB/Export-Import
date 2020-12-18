@@ -31,6 +31,7 @@ namespace Export_Import
         Int64 totalPPN = 0;
         Int64 netTotal = 0;
         Int64 totalConvert = 0;
+        string admin = "Melvern TallAll";
         private DataTable dtPO = new DataTable();
 
         public formPurchaseInvoice()
@@ -46,7 +47,92 @@ namespace Export_Import
             this.master = master;
             this.conn = master.conn;
         }
+        public formPurchaseInvoice(FormListPurchaseInvoice pembelian)
+        {
+            InitializeComponent();
+            this.master = pembelian.pembelian;
+            this.conn = pembelian.conn;
+            this.admin = "Melvern Tallall";
+            this.id_pi = pembelian.id_pi;
+        }
+        void ambilDataPI(String id)
+        {
+            saved = true;
+            txtIdPI.Text = id;
+            String cmd = "";
 
+            if (!id.Equals(""))
+            {
+                cmd = "select credit_term_purchase_invoice from h_purchase_invoice where id_purchase_invoice = '" + id + "'";
+                string ct = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
+                cbCreditTerm.Text = ct + " Day(s)";
+
+                cmd = "select total from h_purchase_invoice where id_purchase_invoice = '" + id + "'";
+                total += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotal.Text = "Rp " + total.ToString("#,##0.00");
+
+                cmd = "select total_ppn from h_purchase_invoice where id_purchase_invoice = '" + id + "'";
+                totalPPN += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalPPN.Text = "Rp " + totalPPN.ToString("#,##0.00");
+
+                cmd = "select total_harga from h_purchase_invoice where id_purchase_invoice = '" + id + "'";
+                netTotal += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtNetTotal.Text = "Rp " + netTotal.ToString("#,##0.00");
+
+                cmd = "select total_harga_convert from h_purchase_invoice where id_purchase_invoice = '" + id + "'";
+                totalConvert += Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar().ToString());
+                txtTotalConvert.Text = cbCurrent.SelectedValue.ToString() + " " + totalConvert.ToString("#,##0.00");
+
+                isiDataItem(id);
+            }
+        }
+
+        void isiDataItem(String id)
+        {
+            dtPO.Clear();
+            dtPO.Columns.Add("id_item");
+            dtPO.Columns.Add("nama_item");
+            dtPO.Columns.Add("qty_item");
+            dtPO.Columns.Add("satuan_item");
+            dtPO.Columns.Add("harga_beli_item");
+            dtPO.Columns.Add("discount");
+            dtPO.Columns.Add("jenis_ppn");
+
+            dtPO.Columns.Add("subtotal");
+
+            String cmd = "";
+            OracleDataReader reader;
+            cmd = "select * from d_purchase_order where id_purchase_order = '" + id + "'";
+            reader = new OracleCommand(cmd, conn).ExecuteReader();
+            while (reader.Read())
+            {
+                dtPO.Rows.Add(new Object[] {
+                    reader.GetValue(0).ToString(),
+                    reader.GetValue(2).ToString(),
+                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
+                    reader.GetValue(4).ToString(),
+                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
+                    reader.GetValue(6).ToString(),
+                    reader.GetValue(7).ToString(),
+                    Convert.ToInt64(reader.GetValue(8)).ToString("Rp #,##0.00")
+                });
+                //DataRow newRow = dtSO.NewRow();
+                //newRow[0] = reader.GetValue(0).ToString();
+                //newRow["id_so"] = reader.GetValue(1).ToString();
+                //newRow["nama_item"] = reader.GetValue(2).ToString();
+                //newRow["qty_item"] = Convert.ToInt64(reader.GetValue(3)).ToString("#,###");
+                //newRow["jenis_satuan"] = reader.GetValue(4).ToString();
+                //newRow["harga_satuan"] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00");
+                //newRow["berat_total"] = Convert.ToInt64(reader.GetValue(6)).ToString("#,###");
+                //newRow["jenis_ppn"] = reader.GetValue(7).ToString();
+                //newRow["discount"] = reader.GetValue(8).ToString();
+                //newRow["subtotal"] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
+                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
+                hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
+                subtotalList.Add(Convert.ToInt64(reader.GetValue(8)));
+            }
+            dataGridView1.DataSource = dtPO;
+        }
         void setColomnDS()
         {
             dtPO.Clear();
@@ -117,7 +203,10 @@ namespace Export_Import
             isicbCurrent();
             isicbSales();
             isicbship();
-            setColomnDS();
+            if (!this.id_pi.Equals("")) {
+                ambilDataPI(id_pi);
+            }
+            //setColomnDS();
             generatecreateNomerPI();
         }
 
@@ -129,55 +218,6 @@ namespace Export_Import
             ////txtAlamatSupplier.Text = ds.Tables["supplier"].Rows[idx][2].ToString();
         }
 
-        void isiDataItem(String id)
-        {
-            String cmd = "select " +
-                "id_item as id, " +
-                "nama_item as nama, " +
-                "id_purchase_order as idPO, " +
-                "qty_item as qty, " +
-                "jenis_satuan as satuan, " +
-                "harga_satuan as harga, " +
-                "discount as discount, " +
-                "0 as kadar, " +
-                "jenis_ppn as ppn, " +
-                "subtotal as subtotal " +
-                "from d_purchase_order " +
-                "where id_purchase_order = '" + id + "'";
-            OracleDataReader reader = new OracleCommand(cmd, conn).ExecuteReader();
-            while (reader.Read())
-            {
-                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
-                hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
-                subtotalList.Add(Convert.ToInt64(reader.GetValue(9)));
-
-                dtPO.Rows.Add(new Object[] {
-                    reader.GetValue(0).ToString(),
-                    reader.GetValue(1).ToString(),
-                    reader.GetValue(2).ToString(),
-                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
-                    reader.GetValue(4).ToString(),
-                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
-                    reader.GetValue(6).ToString(),
-                    reader.GetValue(7).ToString(),
-                    reader.GetValue(8).ToString(),
-                    Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00")
-                });
-
-                //DataRow newRow = dataGridView1.NewRow();
-                //newRow[0] = reader.GetValue(0).ToString();
-                //newRow[1] = reader.GetValue(1).ToString();
-                //newRow[2] = reader.GetValue(2).ToString();
-                //newRow[3] = Convert.ToInt64(reader.GetValue(3)).ToString("#,##0.0");
-                //newRow[4] = reader.GetValue(4).ToString();
-                //newRow[5] = Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.0");
-                //newRow[6] = reader.GetValue(6).ToString();
-                //newRow[7] = reader.GetValue(7).ToString();
-                //newRow[8] = reader.GetValue(8).ToString();
-                //newRow[9] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.0");
-            }
-            dataGridView1.DataSource = dtPO;
-        }
 
         public List<String> groupPO = new List<String>();
         private void button13_Click(object sender, EventArgs e)
