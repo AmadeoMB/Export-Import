@@ -182,7 +182,7 @@ namespace Export_Import
                 {
                     Int64 harga = subtotalList[i];
                     total += harga;
-                    if (dataGridView1.Rows[i].Cells[5].Value.Equals("EXC"))
+                    if (dataGridView1.Rows[i].Cells[6].Value.Equals("EXC"))
                     {
                         totalPPN += harga / 10;
                     }

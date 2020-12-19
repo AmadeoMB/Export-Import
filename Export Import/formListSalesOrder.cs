@@ -70,52 +70,8 @@ namespace Export_Import
             dataGridView.DataSource = ds.Tables["so"];
         }
 
-        void refreshTable(Object[] data)
-        {
-            String cmd = 
-                "select h.id_sales_order as id, nama_customer as nama, tgl_sales_order as tanggal, ( " +
-                    "select count(d.id_item) " +
-                    "from d_sales_order d " +
-                    "where d.id_sales_order = h.id_sales_order" +
-                ") as jumlah " +
-                "from h_sales_order h " +
-                "where id_delivery_order = '-' ";
 
-            cmd += "AND nama_customer = '" + data[0] + "' ";
-            cmd += "AND ( " +
-                    "select count(d.id_item) " +
-                    "from d_sales_order d " +
-                    "where d.id_sales_order = h.id_sales_order" +
-                ") > " + data[2] + " ";
 
-            if (data[1] != null)
-            {
-                cmd += "AND tgl_sales_order =" + data[1];
-            }
-
-            daSO = new OracleDataAdapter(cmd, conn);
-            daSO.Fill(ds, "so");
-            dataGridView.DataSource = ds.Tables["so"];
-        }
-
-        private void txtKeyword_TextChanged(object sender, EventArgs e)
-        {
-            filter[0] = txtKeyword.Text;
-
-            refreshTable(filter);
-        }
-
-        private void dateFilter_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void numJumlah_ValueChanged(object sender, EventArgs e)
-        {
-            filter[2] = numJumlah.Value;
-
-            refreshTable(filter);
-        }
 
         int idx = -1;
 

@@ -57,45 +57,6 @@ namespace Export_Import
             dataGridView.DataSource = ds.Tables["invoice"];
         }
 
-        void refreshTable(Object[] data)
-        {
-            String cmd =
-                "select h.id_invoice as id, nama_customer as nama, tgl_invoice as tanggal, ( " +
-                    "select count(d.id_item) " +
-                    "from d_invoice d " +
-                    "where d.id_invoice = h.id_invoice" +
-                ") as jumlah " +
-                "from h_invoice h ";
 
-            cmd += "AND nama_customer = '" + data[0] + "' ";
-            cmd += "AND ( " +
-                    "select count(d.id_item) " +
-                    "from d_invoice d " +
-                    "where d.id_invoice = h.id_invoice" +
-                ") > " + data[2] + " ";
-
-            if (data[1] != null)
-            {
-                cmd += "AND tgl_invoice =" + data[1];
-            }
-
-            daInvoice = new OracleDataAdapter(cmd, conn);
-            daInvoice.Fill(ds, "invoice");
-            dataGridView.DataSource = ds.Tables["invoice"];
-        }
-
-        private void txtKeyword_TextChanged(object sender, EventArgs e)
-        {
-            filter[0] = txtKeyword.Text;
-
-            refreshTable(filter);
-        }
-
-        private void numJumlah_ValueChanged(object sender, EventArgs e)
-        {
-            filter[0] = numJumlah.Text;
-
-            refreshTable(filter);
-        }
     }
 }

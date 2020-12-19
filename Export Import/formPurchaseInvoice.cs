@@ -22,6 +22,7 @@ namespace Export_Import
         OracleDataAdapter daCurrent;
         OracleDataAdapter daShip;
         public string id_po = "";
+        public string id_pi = "";
         formMasterPembelian master;
         private List<Int64> qtyList = new List<Int64>(999);
         private List<Int64> hJualList = new List<Int64>(999);
@@ -54,6 +55,16 @@ namespace Export_Import
             this.conn = pembelian.conn;
             this.admin = "Melvern Tallall";
             this.id_pi = pembelian.id_pi;
+            button13.Enabled = false;
+        }
+        public formPurchaseInvoice(FormListPurchaseOrder pembelian)
+        {
+            InitializeComponent();
+            this.master = pembelian.pembelian;
+            this.conn = pembelian.conn;
+            this.admin = "Melvern Tallall";
+            this.id_po = pembelian.id_purchase_order;
+            button13.Enabled = false;
         }
         void ambilDataPI(String id)
         {
@@ -63,6 +74,87 @@ namespace Export_Import
 
             if (!id.Equals(""))
             {
+                 cmd = "select distinct s.id_supplier as ID, s.nama_supplier as Nama, s.alamat_supplier as Alamat from h_purchase_invoice h join supplier s on h.id_supplier = s.id_supplier";
+
+                if (!id.Equals(""))
+                {
+                    ds.Tables["supplier"].Clear();
+
+                    cmd += " where id_purchase_invoice = '" + id + "'";
+                    daSupplier = new OracleDataAdapter(cmd, conn);
+                    daSupplier.Fill(ds, "supplier");
+                    txtNamaSupplier.Text = ds.Tables["supplier"].Rows[0][1].ToString();
+                    txtAlamatSupplier.Text = ds.Tables["supplier"].Rows[0][2].ToString();
+                }
+
+                daSupplier = new OracleDataAdapter(cmd, conn);
+                daSupplier.Fill(ds, "supplier");
+                cbIdSupplier.DataSource = ds.Tables["supplier"];
+                cbIdSupplier.DisplayMember = "ID";
+                cbIdSupplier.ValueMember = "Nama";
+
+                cmd = "select distinct g.id_gudang as ID, g.nama_gudang as Nama from h_purchase_invoice h join gudang g " +
+                    "on h.id_gudang = g.id_gudang";
+
+                if (!id.Equals(""))
+                {
+                    cmd += " where id_purchase_invoice = '" + id + "'";
+                    ds.Tables["gudang"].Clear();
+                }
+
+                daGudang = new OracleDataAdapter(cmd, conn);
+                daGudang.Fill(ds, "gudang");
+                cbGudang.DataSource = ds.Tables["gudang"];
+                cbGudang.DisplayMember = "Nama";
+                cbGudang.ValueMember = "ID";
+
+                cmd = "select distinct h.id_staff as ID, nama_staff as Nama from h_purchase_invoice h join staff s on h.id_staff = s.id_staff";
+
+                if (!id.Equals(""))
+                {
+                    cmd += " where id_purchase_invoice = '" + id + "'";
+                    ds.Tables["staff"].Clear();
+                }
+
+                daSales = new OracleDataAdapter(cmd, conn);
+                daSales.Fill(ds, "staff");
+                cbNamaStaff.DataSource = ds.Tables["staff"];
+                cbNamaStaff.DisplayMember = "Nama";
+                cbNamaStaff.ValueMember = "ID";
+
+                cmd = "select distinct ship_via as ID, nama_ekspedisi as Nama from h_purchase_invoice join ekspedisi on ship_via = id_ekspedisi";
+
+                if (!id.Equals(""))
+                {
+                    cmd += " where id_purchase_invoice = '" + id + "'";
+                    ds.Tables["ekspedisi"].Clear();
+                }
+
+                daShip = new OracleDataAdapter(cmd, conn);
+                daShip.Fill(ds, "ekspedisi");
+                cbEkspedisi.DataSource = ds.Tables["ekspedisi"];
+                cbEkspedisi.DisplayMember = "Nama";
+                cbEkspedisi.ValueMember = "ID";
+
+                cmd = "select distinct currency_purchase_invoice as ID, c.nama_currency as Nama from h_purchase_invoice h join currency c on id_currency = currency_purchase_invoice";
+
+                if (!id.Equals(""))
+                {
+                    cmd += " where id_purchase_invoice = '" + id + "'";
+                    ds.Tables["currency"].Clear();
+
+                    daCurrent = new OracleDataAdapter(cmd, conn);
+                    daCurrent.Fill(ds, "currency");
+
+                    txtRate.Text = "1 : " + new OracleCommand("select rate from h_purchase_invoice where id_purchase_invoice = '" + id + "'", conn).ExecuteScalar();
+                }
+
+                daCurrent = new OracleDataAdapter(cmd, conn);
+                daCurrent.Fill(ds, "currency");
+                cbCurrent.DataSource = ds.Tables["currency"];
+                cbCurrent.DisplayMember = "Nama";
+                cbCurrent.ValueMember = "ID";
+
                 cmd = "select credit_term_purchase_invoice from h_purchase_invoice where id_purchase_invoice = '" + id + "'";
                 string ct = new OracleCommand(cmd, conn).ExecuteScalar().ToString();
                 cbCreditTerm.Text = ct + " Day(s)";
@@ -93,25 +185,32 @@ namespace Export_Import
             dtPO.Columns.Add("id_item");
             dtPO.Columns.Add("nama_item");
             dtPO.Columns.Add("qty_item");
-            dtPO.Columns.Add("satuan_item");
-            dtPO.Columns.Add("harga_beli_item");
+            dtPO.Columns.Add("jenis_satuan");
+            dtPO.Columns.Add("harga_satuan");
             dtPO.Columns.Add("discount");
             dtPO.Columns.Add("jenis_ppn");
-
+            dtPO.Columns.Add("kadar_air");
             dtPO.Columns.Add("subtotal");
 
             String cmd = "";
             OracleDataReader reader;
-            cmd = "select * from d_purchase_order where id_purchase_order = '" + id + "'";
+            if (id_pi.Equals(""))
+            {
+                cmd = "select id_item,nama_item,qty_item,jenis_satuan,harga_satuan, discount,jenis_ppn,0 as kadar_air,subtotal from d_purchase_order where id_purchase_order = '" + id + "'";
+            }
+            else {
+                cmd = "select id_item,nama_item,qty_item,jenis_satuan,harga_satuan, discount,jenis_ppn,0 as kadar_air,subtotal from d_purchase_invoice where id_purchase_invoice = '" + id + "'";
+            }
             reader = new OracleCommand(cmd, conn).ExecuteReader();
             while (reader.Read())
             {
                 dtPO.Rows.Add(new Object[] {
                     reader.GetValue(0).ToString(),
-                    reader.GetValue(2).ToString(),
-                    Convert.ToInt64(reader.GetValue(3)).ToString("#,###"),
-                    reader.GetValue(4).ToString(),
-                    Convert.ToInt64(reader.GetValue(5)).ToString("Rp #,##0.00"),
+                    reader.GetValue(1).ToString(),
+                    Convert.ToInt64(reader.GetValue(2)).ToString("#,###"),
+                    reader.GetValue(3).ToString(),
+                    Convert.ToInt64(reader.GetValue(4)).ToString("Rp #,##0.00"),
+                    reader.GetValue(5).ToString(),
                     reader.GetValue(6).ToString(),
                     reader.GetValue(7).ToString(),
                     Convert.ToInt64(reader.GetValue(8)).ToString("Rp #,##0.00")
@@ -127,8 +226,8 @@ namespace Export_Import
                 //newRow["jenis_ppn"] = reader.GetValue(7).ToString();
                 //newRow["discount"] = reader.GetValue(8).ToString();
                 //newRow["subtotal"] = Convert.ToInt64(reader.GetValue(9)).ToString("Rp #,##0.00");
-                qtyList.Add(Convert.ToInt64(reader.GetValue(3)));
-                hJualList.Add(Convert.ToInt64(reader.GetValue(5)));
+                qtyList.Add(Convert.ToInt64(reader.GetValue(2)));
+                hJualList.Add(Convert.ToInt64(reader.GetValue(4)));
                 subtotalList.Add(Convert.ToInt64(reader.GetValue(8)));
             }
             dataGridView1.DataSource = dtPO;
@@ -203,6 +302,7 @@ namespace Export_Import
             isicbCurrent();
             isicbSales();
             isicbship();
+            ambilDataPO(id_po);
             if (!this.id_pi.Equals("")) {
                 ambilDataPI(id_pi);
             }
@@ -380,7 +480,8 @@ namespace Export_Import
             for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
             {
                 total += subtotalList[i];
-                if (dataGridView1.Rows[i].Cells[8].Value.Equals("EXC"))
+                MessageBox.Show(dataGridView1.Rows[i].Cells[7].Value.ToString());
+                if (dataGridView1.Rows[i].Cells[7].Value.Equals("EXC"))
                 {
                     totalPPN += (subtotalList[i] / 10);
                 }
@@ -465,9 +566,9 @@ namespace Export_Import
 
                         qtyList[i] = qty;
                         subtotalList[i] = subtotal;
-                        dataGridView1.Rows[i].Cells[7].Value = kadar;
-                        dataGridView1.Rows[i].Cells[3].Value = qty.ToString("#,###");
-                        dataGridView1.Rows[i].Cells[9].Value = subtotal.ToString("Rp #,##0.0");
+                        dataGridView1.Rows[i].Cells[5].Value = kadar;
+                        dataGridView1.Rows[i].Cells[2].Value = qty.ToString("#,###");
+                        dataGridView1.Rows[i].Cells[8].Value = subtotal.ToString("Rp #,##0.0");
                     }
                 }
                 refreshTotal();
@@ -533,13 +634,13 @@ namespace Export_Import
                 string iditems = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 string nama = dataGridView1.Rows[i].Cells[1].Value.ToString();
                 Int64 qtty = qtyList[i];
-                string jeniss = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                string jeniss = dataGridView1.Rows[i].Cells[3].Value.ToString();
                 Int64 hargass = hJualList[i];
-                string diskoun = dataGridView1.Rows[i].Cells[6].Value.ToString();
+                string diskoun = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 int discroun = Int32.Parse(diskoun);
                 string kadar = dataGridView1.Rows[i].Cells[7].Value.ToString();
                 int kadarr = Int32.Parse(kadar);
-                string jenisppn = dataGridView1.Rows[i].Cells[8].Value.ToString();
+                string jenisppn = dataGridView1.Rows[i].Cells[6].Value.ToString();
                 Int64 stotal = subtotalList[i];
                 cmd3 = new OracleCommand("insert into D_PURCHASE_INVOICE values(:idpi, :iditem, :nama, :qty, :jeniss, :hargas, :diskon, :kadar, :jenisppn, :subtotal)", conn);
                 cmd3.Parameters.Add(":idpi", id_pi);
@@ -626,13 +727,13 @@ namespace Export_Import
                 string iditems = dataGridView1.Rows[i].Cells[0].Value.ToString();
                 string nama = dataGridView1.Rows[i].Cells[1].Value.ToString();
                 Int64 qtty = qtyList[i];
-                string jeniss = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                string jeniss = dataGridView1.Rows[i].Cells[3].Value.ToString();
                 Int64 hargass = hJualList[i];
-                string diskoun = dataGridView1.Rows[i].Cells[6].Value.ToString();
+                string diskoun = dataGridView1.Rows[i].Cells[5].Value.ToString();
                 int discroun = Int32.Parse(diskoun);
                 string kadar = dataGridView1.Rows[i].Cells[7].Value.ToString();
                 int kadarr = Int32.Parse(kadar);
-                string jenisppn = dataGridView1.Rows[i].Cells[8].Value.ToString();
+                string jenisppn = dataGridView1.Rows[i].Cells[6].Value.ToString();
                 Int64 stotal = subtotalList[i];
                 cmd3 = new OracleCommand("insert into D_PURCHASE_INVOICE values(:idpi, :iditem, :nama, :qty, :jeniss, :hargas, :diskon, :kadar, :jenisppn, :subtotal)", conn);
                 cmd3.Parameters.Add(":idpi", id_pi);
@@ -666,7 +767,6 @@ namespace Export_Import
             }
         }
 
-        public String id_pi;
 
         private void btnPreview_Click(object sender, EventArgs e)
         {

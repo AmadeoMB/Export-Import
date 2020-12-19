@@ -108,5 +108,21 @@ namespace Export_Import
                 btnEdit.Enabled = false;
             }
         }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if (dataGridView.Rows.Count <= 1 || idx == dataGridView.Rows.Count - 1)
+            {
+                MessageBox.Show("Data kosong");
+                return;
+            }
+
+            if (idx > -1)
+            {
+                id_purchase_order = dataGridView.Rows[idx].Cells[0].Value.ToString();
+                this.Hide();
+                new formPurchaseInvoice(this).Show();
+            }
+        }
     }
 }

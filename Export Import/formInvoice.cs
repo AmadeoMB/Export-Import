@@ -50,6 +50,14 @@ namespace Export_Import
             this.form = form;
             this.conn = form.conn;
         }
+        public formInvoice(formListDeliveryOrder form)
+        {
+            InitializeComponent();
+            this.form = form.penjualan;
+            this.conn = form.conn;
+            this.id_do = form.id_delivery_order;
+            btnGetSO.Enabled = false;
+        }
         void isiCBNegara()
         {
             String cmd = "select * from negara";
@@ -264,8 +272,11 @@ namespace Export_Import
                 cmd = "select total_harga_convert from h_delivery_order where id_delivery_order = '" + id + "'";
                 totalConvert = Convert.ToInt64(new OracleCommand(cmd, conn).ExecuteScalar());
                 txtTotalConvert.Text = cbCurrency.SelectedValue.ToString() + " " + totalConvert.ToString("#,##0.00");
-
-                isiDataItem(id);
+                OracleDataReader reader = new OracleCommand("select distinct id_sales_order from d_delivery_order where id_delivery_order = '" + id + "'", conn).ExecuteReader();
+                while (reader.Read())
+                {
+                    isiDataItem(reader.GetValue(0).ToString());
+                }
             }
         }
 
@@ -470,6 +481,7 @@ namespace Export_Import
                 isicbStaff();
                 isiCBNegara();
                 isiCBShipVia();
+                ambilDataDO(id_do);
                 generatecreateNomerInvoice();
             }
             catch (Exception ex)
@@ -492,11 +504,7 @@ namespace Export_Import
                 ambilDataDO(search.id_do);
                 this.id_do = search.id_do;
 
-                OracleDataReader reader = new OracleCommand("select distinct id_sales_order from d_delivery_order where id_delivery_order = '"+search.id_do+"'", conn).ExecuteReader();
-                while (reader.Read())
-                {
-                    isiDataItem(reader.GetValue(0).ToString());
-                }
+                
                 btnGetSO.Enabled = false;
             }
         }

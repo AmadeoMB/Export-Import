@@ -76,7 +76,6 @@
             this.btnPreview = new System.Windows.Forms.Button();
             this.pnlBawah = new System.Windows.Forms.GroupBox();
             this.id_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_po_column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.qty_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.satuan_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -374,7 +373,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_item,
-            this.id_po_column,
             this.nama_item,
             this.qty_item,
             this.satuan_item,
@@ -617,23 +615,15 @@
             // 
             // id_item
             // 
-            this.id_item.DataPropertyName = "ID";
+            this.id_item.DataPropertyName = "id_item";
             this.id_item.Frozen = true;
             this.id_item.HeaderText = "Id Item";
             this.id_item.Name = "id_item";
             this.id_item.ReadOnly = true;
             // 
-            // id_po_column
-            // 
-            this.id_po_column.DataPropertyName = "IDPO";
-            this.id_po_column.Frozen = true;
-            this.id_po_column.HeaderText = "Id P/O";
-            this.id_po_column.Name = "id_po_column";
-            this.id_po_column.ReadOnly = true;
-            // 
             // nama_item
             // 
-            this.nama_item.DataPropertyName = "Nama";
+            this.nama_item.DataPropertyName = "nama_item";
             this.nama_item.Frozen = true;
             this.nama_item.HeaderText = "Nama Item";
             this.nama_item.Name = "nama_item";
@@ -641,7 +631,7 @@
             // 
             // qty_item
             // 
-            this.qty_item.DataPropertyName = "Qty";
+            this.qty_item.DataPropertyName = "qty_item";
             this.qty_item.Frozen = true;
             this.qty_item.HeaderText = "Qty Item";
             this.qty_item.Name = "qty_item";
@@ -649,7 +639,7 @@
             // 
             // satuan_item
             // 
-            this.satuan_item.DataPropertyName = "Satuan";
+            this.satuan_item.DataPropertyName = "jenis_satuan";
             this.satuan_item.Frozen = true;
             this.satuan_item.HeaderText = "Satuan";
             this.satuan_item.Name = "satuan_item";
@@ -657,7 +647,7 @@
             // 
             // harga_item
             // 
-            this.harga_item.DataPropertyName = "Harga";
+            this.harga_item.DataPropertyName = "harga_satuan";
             this.harga_item.Frozen = true;
             this.harga_item.HeaderText = "Harga Item";
             this.harga_item.Name = "harga_item";
@@ -673,7 +663,7 @@
             // 
             // kadar_air
             // 
-            this.kadar_air.DataPropertyName = "kadar";
+            this.kadar_air.DataPropertyName = "kadar_air";
             this.kadar_air.Frozen = true;
             this.kadar_air.HeaderText = "Kadar Air";
             this.kadar_air.Name = "kadar_air";
@@ -681,7 +671,7 @@
             // 
             // jenis_ppn
             // 
-            this.jenis_ppn.DataPropertyName = "PPN";
+            this.jenis_ppn.DataPropertyName = "jenis_ppn";
             this.jenis_ppn.Frozen = true;
             this.jenis_ppn.HeaderText = "Jenis PPN";
             this.jenis_ppn.Name = "jenis_ppn";
@@ -770,7 +760,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtTotalPPN;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_item;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id_po_column;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn qty_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn satuan_item;

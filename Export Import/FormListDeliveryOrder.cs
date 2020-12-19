@@ -15,6 +15,7 @@ namespace Export_Import
     {
         public OracleConnection conn;
         public formMasterGudang gudang;
+        public formMasterPenjualan penjualan;
         OracleDataAdapter daSO;
         DataSet ds = new DataSet();
         Object[] filter = { "", null, 0 };
@@ -33,7 +34,12 @@ namespace Export_Import
             this.gudang = gudang;
             this.conn = gudang.conn;
         }
-        
+        public formListDeliveryOrder(formMasterPenjualan penjualan)
+        {
+            InitializeComponent();
+            this.penjualan = penjualan;
+            this.conn = penjualan.conn;
+        }
         private void formListDeliveryOrder_Load(object sender, EventArgs e)
         {
             try
@@ -101,7 +107,7 @@ namespace Export_Import
             {
                 id_delivery_order = dataGridView.Rows[idx].Cells[0].Value.ToString();
                 this.Hide();
-                //new formInvoice(this).Show();
+                new formInvoice(this).Show();
             }
         }
 
